@@ -21,7 +21,7 @@
 [WP-2 Manual](https://archive.org/search.php?query=Tandy%20WP-2)  
 Contains schematics, pinout, and mechanical drawings of the card and slot.
 
-[Card & Slot Connectors](ref/JC20-B38S-F1.pdf)
+[Card & Slot Connectors](ref/JC20-B38S-F1.pdf)  
 Datasheet for both the slot in the computer and the connector in the card.
 
 You can't get the real connector any more, but you can get a generic 1.27mm pitch 1x50 socket header which fits the pins.  
@@ -32,7 +32,7 @@ The PCB is recessed so that when the card is inserted as far as possible, the pi
 [1x50 1.27mm pitch sockets](https://ebay.com/sch/i.html?_nkw=1.27mm+header+female)
 
 Compatible RAM chips  
-SRAM 128Kx8 5v Parallel TSOP-32 or sTSOP-32
+SRAM 128Kx8 5v Parallel TSOP-32 or sTSOP-32  
 [DigiKey](https://www.digikey.com/short/zw38nv)  
 [Mouser](https://mou.sr/2GcUWHl) (ignore the pictures, several have wrong pictures)  
 
