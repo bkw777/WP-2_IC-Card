@@ -17,6 +17,10 @@
 ![](PCB/WP-2_IC_Card_RAM_128K.svg)  
 
 # Links to get the parts
+
+NOT YET TESTED - BUY AT OWN RISK - FOR REFERENCE ONLY UNTIL VERIFIED  
+Status: 2020-09-28 waiting for PCB and carrier to arrive  
+
 3d-printed carrier  
 [Sculpteo](https://www.sculpteo.com/en/print/wp-2_ic_card/RrbcGWJX)  
 [ShapeWays](http://shpws.me/ShjK)  
