@@ -16,6 +16,21 @@
 ![](PCB/WP-2_IC_Card_RAM_128K_3.jpg)  
 ![](PCB/WP-2_IC_Card_RAM_128K.svg)  
 
+# Links to get the parts
+3d-printed carrier  
+[Sculpteo](https://www.sculpteo.com/en/print/wp-2_ic_card/RrbcGWJX)  
+[ShapeWays](http://shpws.me/ShjK)  
+
+PCB  
+[OSHPark](https://oshpark.com/shared_projects/7Gr3WoFh) (Select 0.8mm pcb)  
+
+SRAM  
+[DigiKey](https://www.digikey.com/short/zw38nv)  
+[Mouser](https://mou.sr/2GcUWHl) (ignore the pictures, several are wrong)  
+
+Pin Socket  
+[1x50 1.27mm pitch sockets](https://ebay.com/sch/i.html?_nkw=1.27mm+header+female) Look for single row by 40 or more pins.
+
 
 # References
 [WP-2 Manual](https://archive.org/search.php?query=Tandy%20WP-2)  
@@ -29,16 +44,11 @@ The card socket has 38 pins, and the generic socket has 50 pins. The extra socke
 The pins in the slot inside the WP-2 are 6.0mm long, and the generic socket is only 4.4mm deep.  
 The PCB is recessed so that when the card is inserted as far as possible, the pins only go 4.4mm into the socket.
 
-[1x50 1.27mm pitch sockets](https://ebay.com/sch/i.html?_nkw=1.27mm+header+female)
-
-Compatible RAM chips  
-SRAM 128Kx8 5v Parallel TSOP-32 or sTSOP-32  
-[DigiKey](https://www.digikey.com/short/zw38nv)  
-[Mouser](https://mou.sr/2GcUWHl) (ignore the pictures, several have wrong pictures)  
+Compatible RAM chips: SRAM 128Kx8 5v Parallel, TSOP-32 or sTSOP-32  
 
 # TODO
 See if 256K RAM works:  
-https://www.mouser.com/ProductDetail/Alliance-Memory/AS6C2008A-55STIN  
+[256Kx8 SRAM](https://www.mouser.com/ProductDetail/Alliance-Memory/AS6C2008A-55STIN)  
 The WP-2 manual states that the max RAM card supported is 128K, and the max ROM card is 256K.  
 There is an A17 pin in the slot. Try connecting the A17 line and just see if the WP-2 firmware actually recognizes 256K RAM.  
 

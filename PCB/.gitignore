@@ -7,3 +7,5 @@ sym-lib-table
 *.sch-bak
 *-cache.lib
 *.net
+GERBER
+*.zip
