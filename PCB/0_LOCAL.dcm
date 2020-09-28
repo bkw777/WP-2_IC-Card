@@ -1,0 +1,27 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP 62-65C1024_SOP32
+D 512K x 8 HIGH-SPEED CMOS STATIC RAM, 25ns, SOP-32
+K SRAM MEMORY
+F http://www.issi.com/WW/pdf/61-64C5128AL.pdf
+$ENDCMP
+#
+$CMP 62-65C1024_TSOP-I-32
+D 512K x 8 HIGH-SPEED CMOS STATIC RAM, 25ns, SOP-32
+K SRAM MEMORY
+F http://www.issi.com/WW/pdf/61-64C5128AL.pdf
+$ENDCMP
+#
+$CMP Conn_01x38_Female
+D Generic connector, single row, 01x38, script generated (kicad-library-utils/schlib/autogen/connector/)
+K connector
+F ~
+$ENDCMP
+#
+$CMP Net-Tie_2
+D Net tie, 2 pins
+K net tie short
+F ~
+$ENDCMP
+#
+#End Doc Library
