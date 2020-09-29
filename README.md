@@ -22,7 +22,7 @@ NOT YET TESTED - BUY AT OWN RISK - FOR REFERENCE ONLY UNTIL VERIFIED
 Status: 2020-09-28 waiting for PCB and carrier to arrive  
 
 3d-printed carrier  
-[Sculpteo](https://www.sculpteo.com/en/print/wp-2_ic_card/RrbcGWJX)  
+[Sculpteo](https://www.sculpteo.com/en/print/wp-2_ic_card-4/2joyUyqq)  
 [ShapeWays](http://shpws.me/ShjK)  
 
 PCB  
