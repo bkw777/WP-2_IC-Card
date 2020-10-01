@@ -61,5 +61,7 @@ CamelFORTH on ROM
 But how to construct rom image?  
 
 # Variations
-Simple version, normal 1.6mm pcb, no carrier.  
-![](PCB/WP-2_IC_Card_RAM_128K_bare_1.jpg)
+Experimenter, normal 1.6mm pcb, no carrier, testing capacitor keep-alive, and A17 line for 256K.  
+<https://oshpark.com/shared_projects/nYCuDoZs>  
+![](PCB/WP-2_IC_Card_RAM_128K_bare_1.jpg)  
+![](PCB/WP-2_IC_Card_RAM_128K_bare.svg)  
