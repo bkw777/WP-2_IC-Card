@@ -60,8 +60,14 @@ ROM version
 CamelFORTH on ROM  
 But how to construct rom image?  
 
-# Variations
-Experimenter, normal 1.6mm pcb, no carrier, testing capacitor keep-alive, and A17 line for 256K.  
-<https://oshpark.com/shared_projects/nYCuDoZs>  
+# Variations / WIP
+v003: keep-alive cap and CE pulldown, A17 line for 256K
+Experimenter, normal 1.6mm pcb, no carrier  
+<https://oshpark.com/shared_projects/ZoP4Znqc>  
 ![](PCB/WP-2_IC_Card_RAM_128K_bare_1.jpg)  
-![](PCB/WP-2_IC_Card_RAM_128K_bare.svg)  
+
+0.8mm pcb and carrier, smaller than orig plus keep-alive cap  
+Carrier not finished. 3d printing problems, too many too-thin walls.  
+<https://oshpark.com/shared_projects/SvRw3RG8>  
+![](PCB/WP-2_IC_Card_RAM_128K_003_1.jpg)  
+![](PCB/WP-2_IC_Card_RAM_128K_003.svg)  
