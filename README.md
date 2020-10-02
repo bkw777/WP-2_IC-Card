@@ -93,7 +93,7 @@ v003:
 
 v003-bare:  
 * Experimenter, normal 1.6mm pcb, no carrier  
-* Without a carrier to fill the slot and ensure the pin header is always perfectly centered, it's possible to damage the pins in the slot, use with care.  
+* Without a carrier to fill the slot and ensure the pin header is always perfectly centered, it's possible to damage the pins in the slot. Use with care.  
 * v003 schematic  
 <https://oshpark.com/shared_projects/ZoP4Znqc>  
 ![](PCB/WP-2_IC_Card_RAM_128K_bare_1.jpg)  
