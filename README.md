@@ -82,8 +82,10 @@ This one looks good so far. Waiting for parts to verify.
 ![](PCB/WP-2_IC_Card_RAM_128K_v003_2.jpg)  
 ![](PCB/WP-2_IC_Card_RAM_128K_v003_3.jpg)  
 ![](PCB/WP-2_IC_Card_RAM_128K_v003_4.jpg)  
-![](PCB/WP-2_IC_Card_RAM_128K_v003_5.jpg)  TSOP 8x14  
-![](PCB/WP-2_IC_Card_RAM_128K_v003_6.jpg)  TSOP 8x20  
+TSOP 8x14
+![](PCB/WP-2_IC_Card_RAM_128K_v003_5.jpg)  
+TSOP 8x20
+![](PCB/WP-2_IC_Card_RAM_128K_v003_6.jpg)  
 ![](PCB/WP-2_IC_Card_RAM_128K_v003_7.jpg)  
 ![](PCB/WP-2_IC_Card_RAM_128K_v003_8.jpg)  
 ![](Carrier/Carrier_v003_1.jpg)  
