@@ -21,8 +21,8 @@
 NOT YET TESTED - BUY AT OWN RISK - FOR REFERENCE ONLY UNTIL VERIFIED  
 Status: 2020-09-28 waiting for PCB and carrier to arrive  
 
-3d-printed carrier  
-[Sculpteo](https://www.sculpteo.com/en/print/wp-2_ic_card-4/2joyUyqq)  
+3d-printed carrier (hint, select Multijet Fusion PA12 Black for a close match to the WP-2 itself)  
+<!-- [Sculpteo](https://www.sculpteo.com/en/print/wp-2_ic_card-4/2joyUyqq)  -->
 [ShapeWays](http://shpws.me/ShjK)  
 
 PCB  
@@ -69,11 +69,14 @@ v002:
 ![](Carrier/Carrier_v002_45mm_3.jpg)  
 
 v003:  
+This one looks good so far. Waiting for parts to verify.  
 * "Captain Crunch" (smaller pcb)  
 * keep-alive cap  
 * attached A17 for possible 256K  
 * redesign carrier to remove un-printable thin walls  
 <https://oshpark.com/shared_projects/SvRw3RG8>  
+<https://www.sculpteo.com/en/print/wp-2_ic_card_carrier_v003/Syi2wLCy>  
+<http://shpws.me/ShJ4>  
 [WP-2_IC_Card_Carrier_v003.stl](Carrier/WP-2_IC_Card_Carrier_v003.stl)  
 ![](PCB/WP-2_IC_Card_RAM_128K_v003.svg)  
 ![](PCB/WP-2_IC_Card_RAM_128K_v003_1.jpg)  
