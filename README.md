@@ -61,7 +61,7 @@ CamelFORTH on ROM
 But how to construct rom image?  
 
 # Variations / WIP
-V002:  
+v002:  
 * Alternative pcb & carrier design to avoid unprintable thin walls around the pin header. Technically meets printability specs, but the big flat 0.7mm sheets are probably pushing the limit too far to actually get good results.  
 ![](Carrier/PCB_v002_1.jpg)  
 ![](Carrier/Carrier_v002_45mm_1.jpg)  
@@ -87,12 +87,13 @@ v003:
 ![](Carrier/Carrier_v003_3.jpg)  
 ![](Carrier/Carrier_v003_4.jpg)  
 ![](Carrier/Carrier_v003_5.jpg)  
-![](Carrier/Carrier_v003_6.jpg)  
+<!-- ![](Carrier/Carrier_v003_6.jpg)   -->
 ![](Carrier/Carrier_v003_7.jpg)  
 [WP-2_IC_Card_Carrier_v003.stl](Carrier/WP-2_IC_Card_Carrier_v003.stl)
 
 v003-bare:  
 * Experimenter, normal 1.6mm pcb, no carrier  
+* Without a carrier to fill the slot and ensure the pin header is always perfectly centered, it's possible to damage the pins in the slot, use with care.  
 * v003 schematic  
 <https://oshpark.com/shared_projects/ZoP4Znqc>  
 ![](PCB/WP-2_IC_Card_RAM_128K_bare_1.jpg)  
