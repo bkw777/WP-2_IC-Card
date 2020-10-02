@@ -74,6 +74,7 @@ v003:
 * attached A17 for possible 256K  
 * redesign carrier to remove un-printable thin walls  
 <https://oshpark.com/shared_projects/SvRw3RG8>  
+[WP-2_IC_Card_Carrier_v003.stl](Carrier/WP-2_IC_Card_Carrier_v003.stl)  
 ![](PCB/WP-2_IC_Card_RAM_128K_v003.svg)  
 ![](PCB/WP-2_IC_Card_RAM_128K_v003_1.jpg)  
 ![](PCB/WP-2_IC_Card_RAM_128K_v003_2.jpg)  
@@ -89,7 +90,6 @@ v003:
 ![](Carrier/Carrier_v003_5.jpg)  
 <!-- ![](Carrier/Carrier_v003_6.jpg)   -->
 ![](Carrier/Carrier_v003_7.jpg)  
-[WP-2_IC_Card_Carrier_v003.stl](Carrier/WP-2_IC_Card_Carrier_v003.stl)
 
 v003-bare:  
 * Experimenter, normal 1.6mm pcb, no carrier  
