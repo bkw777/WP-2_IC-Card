@@ -61,13 +61,39 @@ CamelFORTH on ROM
 But how to construct rom image?  
 
 # Variations / WIP
-v003: keep-alive cap and CE pulldown, A17 line for 256K
-Experimenter, normal 1.6mm pcb, no carrier  
+V002:  
+* Alternative pcb & carrier design to avoid unprintable thin walls around the pin header. Technically meets printability specs, but the big flat 0.7mm sheets are probably pushing the limit too far to actually get good results.  
+![](Carrier/PCB_v002_1.jpg)  
+![](Carrier/Carrier_v002_45mm_1.jpg)  
+![](Carrier/Carrier_v002_45mm_2.jpg)  
+![](Carrier/Carrier_v002_45mm_3.jpg)  
+
+v003:  
+* "Captain Crunch" (smaller pcb)  
+* keep-alive cap  
+* attached A17 for possible 256K  
+* redesign carrier to remove un-printable thin walls  
+<https://oshpark.com/shared_projects/SvRw3RG8>  
+![](PCB/WP-2_IC_Card_RAM_128K_v003.svg)  
+![](PCB/WP-2_IC_Card_RAM_128K_v003_1.jpg)  
+![](PCB/WP-2_IC_Card_RAM_128K_v003_2.jpg)  
+![](PCB/WP-2_IC_Card_RAM_128K_v003_3.jpg)  
+![](PCB/WP-2_IC_Card_RAM_128K_v003_4.jpg)  
+![](PCB/WP-2_IC_Card_RAM_128K_v003_5.jpg)  
+![](PCB/WP-2_IC_Card_RAM_128K_v003_6.jpg)  
+![](PCB/WP-2_IC_Card_RAM_128K_v003_7.jpg)  
+![](Carrier/Carrier_v003_1.jpg)  
+![](Carrier/Carrier_v003_2.jpg)  
+![](Carrier/Carrier_v003_3.jpg)  
+![](Carrier/Carrier_v003_4.jpg)  
+![](Carrier/Carrier_v003_5.jpg)  
+![](Carrier/Carrier_v003_6.jpg)  
+![](Carrier/Carrier_v003_7.jpg)  
+[WP-2_IC_Card_Carrier_v003.stl](Carrier/WP-2_IC_Card_Carrier_v003.stl)
+
+v003-bare:  
+* Experimenter, normal 1.6mm pcb, no carrier  
+* v003 schematic  
 <https://oshpark.com/shared_projects/ZoP4Znqc>  
 ![](PCB/WP-2_IC_Card_RAM_128K_bare_1.jpg)  
 
-0.8mm pcb and carrier, smaller than orig plus keep-alive cap  
-Carrier not finished. 3d printing problems, too many too-thin walls.  
-<https://oshpark.com/shared_projects/SvRw3RG8>  
-![](PCB/WP-2_IC_Card_RAM_128K_003_1.jpg)  
-![](PCB/WP-2_IC_Card_RAM_128K_003.svg)  

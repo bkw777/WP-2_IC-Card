@@ -1,6 +1,6 @@
-update=Sat 26 Sep 2020 07:33:27 PM EDT
+update=Wed 30 Sep 2020 03:53:54 AM EDT
 version=1
-last_client=kicad
+last_client=pcbnew
 [general]
 version=1
 RootSch=
@@ -17,7 +17,7 @@ version=1
 PageLayoutDescrFile=
 LastNetListRead=
 CopperLayerCount=2
-BoardThickness=0.8
+BoardThickness=1.6
 AllowMicroVias=0
 AllowBlindVias=0
 RequireCourtyardDefinitions=0
@@ -192,11 +192,11 @@ Name=B.Cu
 Type=0
 Enabled=1
 [pcbnew/Layer.B.Adhes]
-Enabled=1
+Enabled=0
 [pcbnew/Layer.F.Adhes]
 Enabled=1
 [pcbnew/Layer.B.Paste]
-Enabled=1
+Enabled=0
 [pcbnew/Layer.F.Paste]
 Enabled=1
 [pcbnew/Layer.B.SilkS]
@@ -224,7 +224,7 @@ Enabled=1
 [pcbnew/Layer.F.CrtYd]
 Enabled=1
 [pcbnew/Layer.B.Fab]
-Enabled=1
+Enabled=0
 [pcbnew/Layer.F.Fab]
 Enabled=1
 [pcbnew/Layer.Rescue]
