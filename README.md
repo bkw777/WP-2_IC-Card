@@ -73,28 +73,17 @@ This one looks good so far. Waiting for parts to verify.
 * keep-alive cap  
 * attached A17 for possible 256K  
 * redesign carrier to remove un-printable thin walls  
-<https://oshpark.com/shared_projects/SvRw3RG8>  
-<https://www.sculpteo.com/en/print/wp-2_ic_card_carrier_v003/Syi2wLCy>  
-<http://shpws.me/ShJ4>  
+[v003 PCB at OSHPark](https://oshpark.com/shared_projects/2riwzeJS)  
+[v003 Carrier at Shapeways](http://shpws.me/ShPp) or [v003 Carrier at Sculpteo](https://www.sculpteo.com/en/print/wp-2_ic_card_carrier_v003-6/EjsFtMjc)  
 [WP-2_IC_Card_Carrier_v003.stl](Carrier/WP-2_IC_Card_Carrier_v003.stl)  
 ![](PCB/WP-2_IC_Card_RAM_128K_v003.svg)  
 ![](PCB/WP-2_IC_Card_RAM_128K_v003_1.jpg)  
+![](Carrier/Carrier_v003_1.jpg)  
 ![](PCB/WP-2_IC_Card_RAM_128K_v003_2.jpg)  
 ![](PCB/WP-2_IC_Card_RAM_128K_v003_3.jpg)  
 ![](PCB/WP-2_IC_Card_RAM_128K_v003_4.jpg)  
-TSOP 8x14
 ![](PCB/WP-2_IC_Card_RAM_128K_v003_5.jpg)  
-TSOP 8x20
 ![](PCB/WP-2_IC_Card_RAM_128K_v003_6.jpg)  
-![](PCB/WP-2_IC_Card_RAM_128K_v003_7.jpg)  
-![](PCB/WP-2_IC_Card_RAM_128K_v003_8.jpg)  
-![](Carrier/Carrier_v003_1.jpg)  
-![](Carrier/Carrier_v003_2.jpg)  
-![](Carrier/Carrier_v003_3.jpg)  
-![](Carrier/Carrier_v003_4.jpg)  
-![](Carrier/Carrier_v003_5.jpg)  
-<!-- ![](Carrier/Carrier_v003_6.jpg)   -->
-![](Carrier/Carrier_v003_7.jpg)  
 
 v003-bare:  
 * Experimenter, normal 1.6mm pcb, no carrier  
