@@ -92,3 +92,15 @@ v003-bare:
 <https://oshpark.com/shared_projects/ZoP4Znqc>  
 ![](PCB/WP-2_IC_Card_RAM_128K_bare_1.jpg)  
 
+v004:  
+* Different female pin header: SMS-138-01-x-x  
+  PCB is the same as v003 except for the silkscreen version number and the 3d part models of the header and carrier.  
+  carrier is different because the new header has different dimensions.  
+[v004 Carrier at Shapeways](http://shpws.me/Si2L)  
+![](WP-2_IC_Card_RAM_128K_v004_1.jpg)  
+![](WP-2_IC_Card_RAM_128K_v004_2.jpg)  
+![](WP-2_IC_Card_RAM_128K_v004_3.jpg)  
+![](WP-2_IC_Card_RAM_128K_v004_4.jpg)  
+![](WP-2_IC_Card_RAM_128K_v004_5.jpg)  
+![](WP-2_IC_Card_RAM_128K_v004_6.jpg)  
+![](WP-2_IC_Card_RAM_128K_v004_7.jpg)  

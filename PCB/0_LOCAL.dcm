@@ -12,6 +12,12 @@ K SRAM MEMORY
 F http://www.issi.com/WW/pdf/61-64C5128AL.pdf
 $ENDCMP
 #
+$CMP CP1_Small
+D Polarized capacitor, small US symbol
+K cap capacitor
+F ~
+$ENDCMP
+#
 $CMP Conn_01x38_Female
 D Generic connector, single row, 01x38, script generated (kicad-library-utils/schlib/autogen/connector/)
 K connector
@@ -21,6 +27,12 @@ $ENDCMP
 $CMP Net-Tie_2
 D Net tie, 2 pins
 K net tie short
+F ~
+$ENDCMP
+#
+$CMP R
+D Resistor
+K R res resistor
 F ~
 $ENDCMP
 #
