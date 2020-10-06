@@ -74,7 +74,7 @@ This one looks good so far. Waiting for parts to verify.
 * attached A17 for possible 256K  
 * redesign carrier to remove un-printable thin walls  
 [v003 PCB at OSHPark](https://oshpark.com/shared_projects/5IXVjO6N)  
-<!--[v003 Carrier at Shapeways](http://shpws.me/ShPp) or -->[v003 Carrier at Sculpteo](https://www.sculpteo.com/en/print/wp-2_ic_card_carrier_v003-6/EjsFtMjc)  
+[v003 Carrier at Shapeways](http://shpws.me/ShPp)  
 [WP-2_IC_Card_Carrier_v003.stl](Carrier/WP-2_IC_Card_Carrier_v003.stl)  
 ![](PCB/WP-2_IC_Card_RAM_128K_v003.svg)  
 ![](WP-2_IC_Card_v003_1.jpg)  
@@ -92,8 +92,7 @@ v003-bare:
 
 v004:  
 * Different female pin header: SMS-138-01-x-x  
-  PCB is the same as v003 except for the silkscreen version number and the 3d part models of the header and carrier.  
-  carrier is different because the new header has different dimensions.  
+  Socket header has different dimensions so carrier is different, but the PCB is the same v003 PCB  
 [v004 Carrier at Shapeways](http://shpws.me/Si2L)  
 ![](WP-2_IC_Card_RAM_128K_v004_1.jpg)  
 ![](WP-2_IC_Card_RAM_128K_v004_2.jpg)  
