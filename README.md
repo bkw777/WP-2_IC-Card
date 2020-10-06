@@ -77,8 +77,9 @@ This one looks good so far. Waiting for parts to verify.
 <!--[v003 Carrier at Shapeways](http://shpws.me/ShPp) or -->[v003 Carrier at Sculpteo](https://www.sculpteo.com/en/print/wp-2_ic_card_carrier_v003-6/EjsFtMjc)  
 [WP-2_IC_Card_Carrier_v003.stl](Carrier/WP-2_IC_Card_Carrier_v003.stl)  
 ![](PCB/WP-2_IC_Card_RAM_128K_v003.svg)  
-![](WP-2_IC_Card_v003_2.jpg)  
+![](WP-2_IC_Card_v003_1.jpg)  
 ![](Carrier/Carrier_v003_1.jpg)  
+![](WP-2_IC_Card_v003_2.jpg)  
 ![](WP-2_IC_Card_v003_4.jpg)  
 ![](WP-2_IC_Card_v003_3.jpg)  
 
