@@ -26,6 +26,8 @@ SRAM
 
 SAMTEC 8.5mm Pin Socket (for v003-s)  
 <https://duckduckgo.com/?q=SMS-138-01>  
+<https://www.digikey.com/en/products/detail/samtec-inc/SMS-138-01-G-S/9773732>  
+<https://www.mouser.com/ProductDetail/Samtec/SMS-138-01-G-S>  
 
 GENERIC 4.3/4.4mm Pin Socket (for v001 and v003-g)  
 Search for 1.27mm, female, single row, 40 or 50 pins, the 4.3mm style.
