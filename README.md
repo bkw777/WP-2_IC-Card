@@ -21,7 +21,7 @@ PCB (Select 0.8mm pcb option at checkout)
 [PCB v003 at OSHPark](https://oshpark.com/shared_projects/5IXVjO6N)  
 
 BOM  
-[parts for v003-s from DigiKey](https://www.digikey.com/short/zw2vwc)
+[Parts for v003-s from DigiKey](https://www.digikey.com/short/zw2vwc)
 
 
 # Reference
