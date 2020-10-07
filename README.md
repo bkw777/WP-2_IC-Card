@@ -96,7 +96,7 @@ Same v003 schematic
 ![](Carrier_v002_45mm_3.jpg)  
 
 ##v001  
-[Carrier v001 at ShapeWays](http://http://shpws.me/ShPo)  
+[Carrier v001 at ShapeWays](https://shpws.me/ShPo)  
 [PCB v001 OSHPark](https://oshpark.com/shared_projects/7Gr3WoFh)  
 ![](WP-2_IC_Card_v001_1.jpg)  
 ![](WP-2_IC_Card_v001_2.jpg)  
