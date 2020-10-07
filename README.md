@@ -14,7 +14,7 @@ Current/best version is v003-s
 ![](WP-2_IC_Card_v003-s_4.jpg)  
 ![](PCB/WP-2_IC_Card_v003.svg)  
 
-3d-printed carrier (hint, select Multijet Fusion PA12 Black for a close match to the WP-2 itself)  
+3d-printed carrier  
 [Carrier v003-s at Shapeways](http://shpws.me/Si2L)  
 
 PCB (Select 0.8mm pcb option at checkout)  
@@ -22,16 +22,18 @@ PCB (Select 0.8mm pcb option at checkout)
 
 SRAM  
 [DigiKey](https://www.digikey.com/short/zw38nv)  
-[Mouser](https://mou.sr/2GcUWHl) (many of the images are wrong so ignore the pictures)  
+[Mouser](https://mou.sr/2GcUWHl) (many of the pictures are wrong, so ignore the pictures)  
 
-SAMTEC Pin Socket (for v003-s)  
+SAMTEC 8.5mm Pin Socket (for v003-s)  
 <https://duckduckgo.com/?q=SMS-138-01>  
 
-GENERIC Pin Socket (for v001 and v003-g)  
-[1x50 1.27mm pitch sockets](https://ebay.com/sch/i.html?_nkw=1.27mm+header+female) Look for single row by 40 or more pins.  
-Also aliexpress.  
+GENERIC 4.3/4.4mm Pin Socket (for v001 and v003-g)  
+Search for 1.27mm, female, single row, 40 or 50 pins, the 4.3mm style.
+[Search ebay](https://ebay.com/sch/i.html?_nkw=1.27mm+header+female)
+[Search aliexpress](https://www.aliexpress.com/wholesale?SearchText=1.27mm+female)  
+Example: <https://www.aliexpress.com/item/32854195543.html>
 
-# References
+# Reference
 [WP-2 Manual](https://archive.org/search.php?query=Tandy%20WP-2)  
 Contains schematics, pinout, and mechanical drawings of the card and slot.
 
@@ -39,9 +41,8 @@ Contains schematics, pinout, and mechanical drawings of the card and slot.
 Datasheet for both the slot in the computer and the connector in the card.
 
 You can't get the real connector any more, but you can get a generic 1.27mm pitch 1x50 socket header which fits the pins.  
-The card socket has 38 pins, and the generic socket has 50 pins. The extra socket pins can just be cut off.  
-The pins in the slot inside the WP-2 are 6.0mm long, and the generic socket is only 4.4mm deep.  
-The PCB is recessed so that when the card is inserted as far as possible, the pins only go 4.4mm into the socket.
+The card socket has 38 pins, and generic sockets have 40 or 50 pins. The extra socket pins can just be cut off.  
+The pins inside the WP-2 are 6.0mm long, and the generic socket is only 4.4mm deep, so the PCB is recessed so that when the card is inserted into the WP-2 as far as possible, the pins only go 4.4mm into the socket.
 
 Compatible RAM chips: SRAM 128Kx8 5v Parallel, TSOP-32 or sTSOP-32  
 
