@@ -83,6 +83,8 @@ Looks the same but it's not.
 PCB is the same v003 PCB  
 This socket is more expensive but fits better, and you can order it in a 38-pin size without having to hack it, and you can order it right from the same suppliers who sell the SRAM, although it will ship slowly because it is an unusual part. To get the part faster you can order the 40-pin version and cut it down. The 40-pin version is often in inventory. The 40-pin version part number is SMS-140-01-G-S  
 
+(v003-s is the current main version, pics at the top)
+
 ### v003-g = generic, the carrier fits the generic/aliexpress/ebay pin header  
 [Carrier v003-g at Shapeways](https://shpws.me/Sib8)  
 ![](WP-2_IC_Card_v003-g_1.jpg)  
