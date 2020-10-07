@@ -71,19 +71,19 @@ CamelFORTH on ROM?
 But how to construct rom image?  
 
 # Variations / WIP / History  
-##v003 (v003-g, v003-s, v003-b):  
+## v003 (v003-g, v003-s, v003-b):  
 * "Captain Crunch" (smaller pcb)  
 * keep-alive cap  
 * attached A17 for possible 256K  
 * redesign carrier to remove un-printable thin walls  
 
-###v003-s = Samtec pin header SMS-138-01-x-x  
+### v003-s = Samtec pin header SMS-138-01-x-x  
 Socket header has different dimensions so carrier is different  
 Looks the same but it's not.  
 PCB is the same v003 PCB  
 This socket is more expensive but fits better, and you can order it in a 38-pin size without having to hack it, and you can order it right from the same suppliers who sell the SRAM, although it will ship slowly because it is an unusual part. To get the part faster you can order the 40-pin version and cut it down. The 40-pin version is often in inventory. The 40-pin version part number is SMS-140-01-G-S  
 
-###v003-g = generic, the carrier fits the generic/aliexpress/ebay pin header  
+### v003-g = generic, the carrier fits the generic/aliexpress/ebay pin header  
 [Carrier v003-g at Shapeways](https://shpws.me/Sib8)  
 ![](WP-2_IC_Card_v003-g_1.jpg)  
 ![](Carrier_v003-g_1.jpg)  
@@ -91,13 +91,13 @@ This socket is more expensive but fits better, and you can order it in a 38-pin 
 ![](WP-2_IC_Card_v003-g_4.jpg)  
 ![](WP-2_IC_Card_v003-g_3.jpg)  
 
-###v003-b = bare pcb, no carrier, normal 1.6mm pcb  
+### v003-b = bare pcb, no carrier, normal 1.6mm pcb  
 Without a carrier to fill the slot and ensure the pin header is aligned, it's possible to damage the pins in the slot. Use with care.  
 Same v003 schematic  
 [PCB v003-b at OSHPark](https://oshpark.com/shared_projects/ZoP4Znqc)  
 ![](WP-2_IC_Card_v003-b_1.jpg)  
 
-##v002  
+## v002  
 * v002 is like Highlander 2, it never happened, doesn't exist, and we don't talk about it.  
 * Alternative pcb & carrier design to avoid unprintable thin walls around the pin header. Technically meets printability specs, but the big flat 0.7mm sheets are probably pushing the limit too far to actually get good results.  
 ![](PCB_v002_1.jpg)  
@@ -105,7 +105,7 @@ Same v003 schematic
 ![](Carrier_v002_45mm_2.jpg)  
 ![](Carrier_v002_45mm_3.jpg)  
 
-##v001  
+## v001  
 [Carrier v001 at ShapeWays](https://shpws.me/ShPo)  
 [PCB v001 OSHPark](https://oshpark.com/shared_projects/7Gr3WoFh)  
 ![](WP-2_IC_Card_v001_1.jpg)  
