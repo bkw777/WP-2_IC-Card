@@ -1,39 +1,35 @@
 # Expansion IC Card for TANDY WP-2
 
-![](WP-2_IC_Card_v001_1.jpg)  
-![](WP-2_IC_Card_v001_2.jpg)  
-![](WP-2_IC_Card_v001_3.jpg)  
-![](WP-2_IC_Card_v001_4.jpg)  
-![](WP-2_IC_Card_v001_5.jpg)  
-![](WP-2_IC_Card_v001_6.jpg)  
-![](WP-2_IC_Card_v001_7.jpg)  
-![](WP-2_IC_Card_v001_8.jpg)  
-![](WP-2_IC_Card_v001_9.jpg)  
-![](WP-2_IC_Card_Carrier_v001_1.jpg)  
-![](PCB/WP-2_IC_Card_RAM_v001.svg)  
-
-# Links to get the parts
-
-NOT YET TESTED - BUY AT OWN RISK - FOR REFERENCE ONLY UNTIL VERIFIED  
+NOT YET TESTED - FOR REFERENCE ONLY UNTIL VERIFIED  
 Status: 2020-09-28 waiting for PCB and carrier to arrive  
+Current/best version is v003-s  
+
+![](WP-2_IC_Card_v003_1.jpg)  
+![](WP-2_IC_Card_v003_2.jpg)  
+![](WP-2_IC_Card_v003_3.jpg)  
+![](WP-2_IC_Card_v003_4.jpg)  
+![](WP-2_IC_Card_v003-s_1.jpg)  
+![](WP-2_IC_Card_v003-s_2.jpg)  
+![](WP-2_IC_Card_v003-s_3.jpg)  
+![](WP-2_IC_Card_v003-s_4.jpg)  
+![](PCB/WP-2_IC_Card_v003.svg)  
 
 3d-printed carrier (hint, select Multijet Fusion PA12 Black for a close match to the WP-2 itself)  
-[ShapeWays](http://http://shpws.me/ShPo)
+[Carrier v003-s at Shapeways](http://shpws.me/Si2L)  
 
-PCB  
-[OSHPark](https://oshpark.com/shared_projects/7Gr3WoFh) (Select 0.8mm pcb option at checkout)  
+PCB (Select 0.8mm pcb option at checkout)  
+[PCB v003 at OSHPark](https://oshpark.com/shared_projects/5IXVjO6N)  
 
 SRAM  
 [DigiKey](https://www.digikey.com/short/zw38nv)  
 [Mouser](https://mou.sr/2GcUWHl) (many of the images are wrong so ignore the pictures)  
 
-Pin Socket (GENERIC, for v001 and v003-g)  
+SAMTEC Pin Socket (for v003-s)  
+<https://duckduckgo.com/?q=SMS-138-01>  
+
+GENERIC Pin Socket (for v001 and v003-g)  
 [1x50 1.27mm pitch sockets](https://ebay.com/sch/i.html?_nkw=1.27mm+header+female) Look for single row by 40 or more pins.  
 Also aliexpress.  
-
-Pin Socket (SAMTEC, for v003-s)  
-https://duckduckgo.com/?q=SMS-138-01
-
 
 # References
 [WP-2 Manual](https://archive.org/search.php?query=Tandy%20WP-2)  
@@ -59,8 +55,34 @@ ROM:
 CamelFORTH on ROM  
 But how to construct rom image?  
 
-# Variations / WIP
-##v002
+# Variations / WIP / History  
+##v003 (v003-g, v003-s, v003-b):  
+* "Captain Crunch" (smaller pcb)  
+* keep-alive cap  
+* attached A17 for possible 256K  
+* redesign carrier to remove un-printable thin walls  
+
+###v003-s = Samtec pin header SMS-138-01-x-x  
+Socket header has different dimensions so carrier is different  
+Looks the same but it's not.  
+PCB is the same v003 PCB  
+This socket is more expensive but fits better  
+
+###v003-g = generic, the carrier fits the generic/aliexpress/ebay pin header  
+[Carrier v003-g at Shapeways](http://shpws.me/Sib8)  
+![](WP-2_IC_Card_v003-g_1.jpg)  
+![](Carrier_v003-g_1.jpg)  
+![](WP-2_IC_Card_v003-g_2.jpg)  
+![](WP-2_IC_Card_v003-g_4.jpg)  
+![](WP-2_IC_Card_v003-g_3.jpg)  
+
+###v003-b = bare pcb, no carrier, normal 1.6mm pcb  
+Without a carrier to fill the slot and ensure the pin header is aligned, it's possible to damage the pins in the slot. Use with care.  
+Same v003 schematic  
+[PCB v003-b at OSHPark](https://oshpark.com/shared_projects/ZoP4Znqc)  
+![](WP-2_IC_Card_v003-b_1.jpg)  
+
+##v002  
 * v002 is like Highlander 2, it never happened, doesn't exist, and we don't talk about it.  
 * Alternative pcb & carrier design to avoid unprintable thin walls around the pin header. Technically meets printability specs, but the big flat 0.7mm sheets are probably pushing the limit too far to actually get good results.  
 ![](PCB_v002_1.jpg)  
@@ -68,39 +90,18 @@ But how to construct rom image?
 ![](Carrier_v002_45mm_2.jpg)  
 ![](Carrier_v002_45mm_3.jpg)  
 
-##v003 (v003-g, v003-s, v003-b):  
-* "Captain Crunch" (smaller pcb)  
-* keep-alive cap  
-* attached A17 for possible 256K  
-* redesign carrier to remove un-printable thin walls  
-![](WP-2_IC_Card_v003_1.jpg)  
-![](WP-2_IC_Card_v003_2.jpg)  
-![](WP-2_IC_Card_v003_3.jpg)  
-![](WP-2_IC_Card_v003_4.jpg)  
+##v001  
+[Carrier v001 at ShapeWays](http://http://shpws.me/ShPo)  
+[PCB v001 OSHPark](https://oshpark.com/shared_projects/7Gr3WoFh)  
+![](WP-2_IC_Card_v001_1.jpg)  
+![](WP-2_IC_Card_v001_2.jpg)  
+![](WP-2_IC_Card_v001_3.jpg)  
+![](WP-2_IC_Card_v001_4.jpg)  
+![](WP-2_IC_Card_v001_5.jpg)  
+![](WP-2_IC_Card_v001_6.jpg)  
+![](WP-2_IC_Card_v001_7.jpg)  
+![](WP-2_IC_Card_v001_8.jpg)  
+![](WP-2_IC_Card_v001_9.jpg)  
+![](WP-2_IC_Card_Carrier_v001_1.jpg)  
+![](PCB/WP-2_IC_Card_RAM_v001.svg)  
 
-###v003-g = generic, the carrier fits the generic/aliexpress pin header
-[v003-g PCB at OSHPark](https://oshpark.com/shared_projects/5IXVjO6N)  
-[v003-g Carrier at Shapeways](http://shpws.me/Sib8)  
-[WP-2_IC_Card_Carrier_v003-g.stl](Carrier/WP-2_IC_Card_Carrier_v003-g.stl)  
-![](PCB/WP-2_IC_Card_RAM_v003-g.svg)  
-![](WP-2_IC_Card_v003-g_1.jpg)  
-![](Carrier_v003-g_1.jpg)  
-![](WP-2_IC_Card_v003-g_2.jpg)  
-![](WP-2_IC_Card_v003-g_4.jpg)  
-![](WP-2_IC_Card_v003-g_3.jpg)  
-
-###v003-s = Samtec pin header SMS-138-01-x-x  
-Socket header has different dimensions so carrier is different  
-PCB is the same v003 PCB  
-This socket is more expensive but fits better  
-[v003-s Carrier at Shapeways](http://shpws.me/Si2L)  
-![](WP-2_IC_Card_v003-s_1.jpg)  
-![](WP-2_IC_Card_v003-s_2.jpg)  
-![](WP-2_IC_Card_v003-s_3.jpg)  
-![](WP-2_IC_Card_v003-s_4.jpg)  
-
-###v003-b = bare pcb, no carrier, normal 1.6mm pcb  
-Without a carrier to fill the slot and ensure the pin header is aligned, it's possible to damage the pins in the slot. Use with care.  
-Same v003 schematic  
-<https://oshpark.com/shared_projects/ZoP4Znqc>  
-![](WP-2_IC_Card_v003-b_1.jpg)  
