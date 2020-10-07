@@ -40,6 +40,17 @@ The pins inside the WP-2 are 6.0mm long, and the generic socket is only 4.4mm de
 
 The Samtec socket is 8.5mm deep on the outside, but the socket inside only goes 5.9mm deep. The v003-s carrier positions the pcb even further back to allow for this.  
 
+SAMTEC 8.5mm Pin Socket (for v003-s)  
+<https://duckduckgo.com/?q=SMS-138-01>  
+<https://www.digikey.com/en/products/detail/samtec-inc/SMS-138-01-G-S/9773732>  
+<https://www.mouser.com/ProductDetail/Samtec/SMS-138-01-G-S>  
+
+GENERIC 4.3/4.4mm Pin Socket (for v001 and v003-g)  
+Search for 1.27mm, female, single row, 40 or 50 pins, the 4.3mm style.
+[Search ebay](https://ebay.com/sch/i.html?_nkw=1.27mm+header+female)
+[Search aliexpress](https://www.aliexpress.com/wholesale?SearchText=1.27mm+female)  
+Example: <https://www.aliexpress.com/item/32854195543.html>
+
 PCB:  
 Ideally you want to get 0.8mm thick PCB.  
 But you can actually use a regular 1.6mm pcb, you just have to sand a chamfer into the top edges of the PCB, so that the edge of the pcb tucks under the retainer lips. The bottom of the pcb will be flush with the bottom of the carrier body.
@@ -48,7 +59,6 @@ RAM:
 SRAM, 128Kx8, 5v, Parallel, TSOP-32 (8x20mm) or sTSOP-32 (8x14mm)  
 [DigiKey](https://www.digikey.com/short/zw38nv)  
 [Mouser](https://mou.sr/2GcUWHl) (many of the pictures are wrong, so ignore the pictures)  
-
 
 # TODO  
 See if 256K RAM works:  
