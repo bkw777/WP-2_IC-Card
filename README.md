@@ -35,6 +35,8 @@ Search for 1.27mm, female, single row, 40 or 50 pins, the 4.3mm style.
 [Search aliexpress](https://www.aliexpress.com/wholesale?SearchText=1.27mm+female)  
 Example: <https://www.aliexpress.com/item/32854195543.html>
 
+Ideally you want to get 0.8mm PCB. But you can actually use a regular 1.6mm pcb, you just have to sand a chamfer into the top edges of the PCB, so that the edge of the pcb tucks under the retainer lips. The bottom of the pcb will be flush with the bottom of the carrier body.
+
 # Reference
 [WP-2 Manual](https://archive.org/search.php?query=Tandy%20WP-2)  
 Contains schematics, pinout, and mechanical drawings of the card and slot.
