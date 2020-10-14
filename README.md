@@ -71,6 +71,13 @@ CamelFORTH on ROM?
 But how to construct rom image?  
 
 # Variations / WIP / History  
+
+## v003 -> v003_RAM & v003_ROM  
+* Renamed v003 to v003_RAM  
+* Added a v003_ROM version that uses a 39SF0x0/29EE0x0/etc flash chip as a ROM  
+* Still TODO: programming adapter for ROM version.  
+
+
 ## v003 (v003-g, v003-s, v003-b):  
 * "Captain Crunch" (smaller pcb)  
 * keep-alive cap  
