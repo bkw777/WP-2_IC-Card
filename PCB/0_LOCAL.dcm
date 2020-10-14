@@ -12,6 +12,12 @@ K SRAM MEMORY
 F http://www.issi.com/WW/pdf/61-64C5128AL.pdf
 $ENDCMP
 #
+$CMP A_32-LC-TT
+D CONN IC DIP SOCKET 32POS TIN
+K AE10354-ND
+F http://www.assmann-wsw.com/fileadmin/datasheets/ASS_0810_CO.pdf
+$ENDCMP
+#
 $CMP CP1_Small
 D Polarized capacitor, small US symbol
 K cap capacitor
@@ -34,6 +40,12 @@ $CMP R
 D Resistor
 K R res resistor
 F ~
+$ENDCMP
+#
+$CMP SST39SF020
+D Silicon Storage Technology (SSF) 256k x 8 Flash ROM
+K 256k flash rom
+F http://ww1.microchip.com/downloads/en/DeviceDoc/25022B.pdf
 $ENDCMP
 #
 #End Doc Library
