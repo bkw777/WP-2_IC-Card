@@ -26,7 +26,7 @@ BOM
 ![](WP-2_IC_Card_v004_RAM_B_1.jpg)  
 ![](WP-2_IC_Card_v004_RAM_B_2.jpg)  
 ![](WP-2_IC_Card_v004_RAM_B_3.jpg)  
-![](WP-2_IC_Card_v004_RAM_B.svg)  
+![](PCB/WP-2_IC_Card_v004_RAM_B.svg)  
 
 PCB (Select 0.8mm pcb option at checkout)  
 [PCB v004_RAM_B at OSHPark](https://oshpark.com/shared_projects/1InS1yR8)  
@@ -52,7 +52,7 @@ BOM
 ![](WP-2_IC_Card_v003_ROM_programming_adapter_1.jpg)  
 ![](WP-2_IC_Card_v003_ROM_programming_adapter_2.jpg)  
 ![](WP-2_IC_Card_v003_ROM_programming_adapter_3.jpg)  
-![](WP-2_IC_Card_v003_ROM_programming_adapter.svg)  
+![](PCB/WP-2_IC_Card_v003_ROM_programming_adapter.svg)  
 
 PCB (Select 0.8mm pcb option at checkout)  
 [PCB v003_ROM_programming_adapter at OSHPark](https://oshpark.com/shared_projects/5rdprQ0J)  
