@@ -217,36 +217,14 @@ F 3 "" H 7530 5140 50  0001 C CNN
 	1    7530 5140
 	0    -1   -1   0   
 $EndComp
-$Comp
-L power:GND #PWR0105
-U 1 1 5F7A1390
-P 7330 1540
-F 0 "#PWR0105" H 7330 1290 50  0001 C CNN
-F 1 "GND" V 7330 1390 50  0000 R CNN
-F 2 "" H 7330 1540 50  0001 C CNN
-F 3 "" H 7330 1540 50  0001 C CNN
-	1    7330 1540
-	0    1    1    0   
-$EndComp
 Text Notes 7770 1580 0    50   ~ 0
-Card Detect
+Card Detect: GND for RAM, NC for ROM
 Text Notes 7760 5080 0    50   ~ 0
 Battery Check
 Text Notes 7760 5170 0    50   ~ 0
 +5v
-Text Notes 6910 1140 0    50   ~ 0
-1x38 1.27mm pitch female
-$Comp
-L 0_LOCAL:Net-Tie_2 NT1
-U 1 1 5F8923B3
-P 7430 1540
-F 0 "NT1" H 7350 1580 50  0001 C CNN
-F 1 "Net-Tie_2" H 7440 1530 50  0001 C CNN
-F 2 "0_LOCAL:Net_Tie_2p_8mil" H 7430 1540 50  0001 C CNN
-F 3 "~" H 7430 1540 50  0001 C CNN
-	1    7430 1540
-	1    0    0    -1  
-$EndComp
+Text Notes 7190 1140 0    50   ~ 0
+1x38 Male 1.27mm
 $Comp
 L 0_LOCAL:SST39SF020 U2
 U 1 1 5F906116
@@ -477,31 +455,27 @@ NoConn ~ 4410 3900
 $Comp
 L 0_LOCAL:R R1
 U 1 1 5F8FDC45
-P 3360 5700
-F 0 "R1" V 3270 5700 50  0000 C CNN
-F 1 "47K" V 3360 5700 50  0000 C CNN
-F 2 "0_LOCAL:R_0805" V 3290 5700 50  0001 C CNN
-F 3 "~" H 3360 5700 50  0001 C CNN
-	1    3360 5700
+P 3830 5500
+F 0 "R1" V 3740 5500 50  0000 C CNN
+F 1 "47K" V 3830 5500 50  0000 C CNN
+F 2 "0_LOCAL:R_0805" V 3760 5500 50  0001 C CNN
+F 3 "~" H 3830 5500 50  0001 C CNN
+	1    3830 5500
 	0    1    1    0   
 $EndComp
 Entry Wire Line
-	2910 5600 3010 5700
-Wire Wire Line
-	3010 5700 3210 5700
-Text Label 3010 5700 0    50   ~ 0
+	2910 5400 3010 5500
+Text Label 3010 5500 0    50   ~ 0
 ~WE
-Wire Bus Line
-	2910 5200 2910 5600
 $Comp
 L power:VDD #PWR0111
 U 1 1 5F9099AB
-P 3510 5700
-F 0 "#PWR0111" H 3510 5550 50  0001 C CNN
-F 1 "VDD" V 3510 5850 50  0000 L CNN
-F 2 "" H 3510 5700 50  0001 C CNN
-F 3 "" H 3510 5700 50  0001 C CNN
-	1    3510 5700
+P 3980 5500
+F 0 "#PWR0111" H 3980 5350 50  0001 C CNN
+F 1 "VDD" V 3980 5650 50  0000 L CNN
+F 2 "" H 3980 5500 50  0001 C CNN
+F 3 "" H 3980 5500 50  0001 C CNN
+	1    3980 5500
 	0    1    1    0   
 $EndComp
 Text Label 4410 4200 2    50   ~ 0
@@ -727,15 +701,57 @@ Text Notes 2410 1610 0    50   ~ 0
 TSOP-I-32 8x20 footprint
 Text Notes 4500 1610 0    50   ~ 0
 sTSOP-I-32 8x14 footprint
-Wire Bus Line
-	2000 5200 2910 5200
 Text Label 7530 4840 2    50   ~ 0
 R~W
+Wire Bus Line
+	4100 5200 5900 5200
+Text Notes 7770 1680 0    50   ~ 0
+CE2 doesn't actually switch. It's shorted to VDD inside the WP-2.
+Text Notes 7780 2870 0    50   ~ 0
+Manual says NC, but connects to IC5 pin 66
+Text Notes 7780 2970 0    50   ~ 0
+Manual says NC, but connects to IC5 pin 67
+Text Notes 7760 4970 0    50   ~ 0
+Manual says NC, but connects to IC5 pin 68
+Entry Wire Line
+	7030 4740 7130 4840
+$Comp
+L 0_LOCAL:Jumper_NO_Small JP1
+U 1 1 5F96166C
+P 3360 5700
+F 0 "JP1" H 3360 5760 50  0000 C CNN
+F 1 "Write-Enable" H 3360 5640 50  0000 C CNN
+F 2 "0_LOCAL:JP2" H 3360 5700 50  0001 C CNN
+F 3 "~" H 3360 5700 50  0001 C CNN
+	1    3360 5700
+	1    0    0    -1  
+$EndComp
+Entry Wire Line
+	2910 5600 3010 5700
+Text Label 3010 5700 0    50   ~ 0
+R~W
+Wire Wire Line
+	3010 5700 3260 5700
+Wire Bus Line
+	2000 5200 2910 5200
 Connection ~ 2910 5200
 Wire Bus Line
 	2910 5200 3800 5200
+Wire Wire Line
+	3010 5500 3630 5500
+Wire Wire Line
+	3460 5700 3630 5700
+Wire Wire Line
+	3630 5700 3630 5500
+Connection ~ 3630 5500
+Wire Wire Line
+	3630 5500 3680 5500
+Wire Wire Line
+	7530 4840 7130 4840
+Text Notes 1060 7570 0    50   ~ 0
+If the NC pins (15, 16, 36) were really NC inside the WP-2, then it would be possible to eliminate the write-enable JP1\nby connecting R~W~ to ~WE~ through pins 15 & 16, and have the programming adapter short 15 to 16 with a trace.\n\nBut 15, 16, & 36 all actually have traces going to RA5 and IC5. IC5 is a gate-array with unknown programming.\n\nIt may not be safe to drive R~W~ into one of the IC5 pins.\nIt may not be safe to let ~WE~ be driven by one of the IC5 pins.\n\nThat is why those pins are left untouched even though they are nominally NC and available.
 Wire Bus Line
-	4100 5200 5900 5200
+	2910 5200 2910 5600
 Wire Bus Line
 	3800 2000 3800 5200
 Wire Bus Line
@@ -745,5 +761,5 @@ Wire Bus Line
 Wire Bus Line
 	4100 2000 4100 5200
 Wire Bus Line
-	7030 1540 7030 5200
+	7030 1640 7030 5200
 $EndSCHEMATC

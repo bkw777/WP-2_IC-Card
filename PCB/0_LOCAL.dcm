@@ -30,6 +30,30 @@ K connector
 F ~
 $ENDCMP
 #
+$CMP Conn_01x38_Male
+D Generic connector, single row, 01x38, script generated (kicad-library-utils/schlib/autogen/connector/)
+K connector
+F ~
+$ENDCMP
+#
+$CMP Conn_02x16_Counter_Clockwise
+D Generic connector, double row, 02x16, counter clockwise pin numbering scheme (similar to DIP packge numbering), script generated (kicad-library-utils/schlib/autogen/connector/)
+K connector
+F ~
+$ENDCMP
+#
+$CMP D_Schottky_Small_ALT
+D Schottky diode, small symbol, filled shape
+K diode Schottky
+F ~
+$ENDCMP
+#
+$CMP Jumper_NO_Small
+D Jumper, normally open, small symbol
+K jumper link bridge NO
+F ~
+$ENDCMP
+#
 $CMP Net-Tie_2
 D Net tie, 2 pins
 K net tie short

@@ -26,7 +26,7 @@ F 3 "~" H 7730 3240 50  0001 C CNN
 $EndComp
 Text Label 7530 1540 2    50   ~ 0
 ~DET
-Text Label 7530 1640 2    50   ~ 0
+Text Label 3100 5490 0    50   ~ 0
 CE2
 Text Label 7530 1740 2    50   ~ 0
 ~CE1
@@ -100,10 +100,6 @@ F 3 "http://www.issi.com/WW/pdf/61-64C5128AL.pdf" H 2910 3200 50  0001 C CNN
 	1    2910 3200
 	1    0    0    -1  
 $EndComp
-Entry Wire Line
-	7030 1540 7130 1640
-Wire Wire Line
-	7130 1640 7530 1640
 Entry Wire Line
 	7030 1640 7130 1740
 Wire Wire Line
@@ -224,11 +220,11 @@ F 3 "" H 7530 1440 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L power:VDD #PWR0103
+L power:VBUS #PWR0103
 U 1 1 5F7647D4
 P 7530 5140
 F 0 "#PWR0103" H 7530 4990 50  0001 C CNN
-F 1 "VDD" V 7490 5240 50  0000 L CNN
+F 1 "VBUS" V 7490 5240 50  0000 L CNN
 F 2 "" H 7530 5140 50  0001 C CNN
 F 3 "" H 7530 5140 50  0001 C CNN
 	1    7530 5140
@@ -393,7 +389,7 @@ F 3 "" H 2910 4500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text Notes 7770 1580 0    50   ~ 0
-Card Detect
+Card Detect: GND for RAM, N/C for ROM
 Text Notes 7760 5080 0    50   ~ 0
 Battery Check
 Text Notes 7760 5170 0    50   ~ 0
@@ -443,7 +439,7 @@ Wire Wire Line
 Text Notes 2420 1620 0    50   ~ 0
 TSOP-32 8x20 footprint
 Text Notes 6910 1140 0    50   ~ 0
-1x38 1.27mm pitch female
+1x38 Female 1.27mm
 $Comp
 L 0_LOCAL:Net-Tie_2 NT1
 U 1 1 5F8923B3
@@ -669,127 +665,200 @@ $EndComp
 Wire Bus Line
 	7030 5200 5900 5200
 Connection ~ 3800 5200
-Wire Bus Line
-	3800 5200 3000 5200
 Connection ~ 5900 5200
-Wire Bus Line
-	5900 5200 4100 5200
 Connection ~ 4100 5200
 Wire Bus Line
 	4100 5200 3800 5200
 $Comp
 L power:GND #PWR0101
 U 1 1 5F7EFB1F
-P 2910 6220
-F 0 "#PWR0101" H 2910 5970 50  0001 C CNN
-F 1 "GND" V 2910 6020 50  0000 C CNN
-F 2 "" H 2910 6220 50  0001 C CNN
-F 3 "" H 2910 6220 50  0001 C CNN
-	1    2910 6220
+P 2870 6710
+F 0 "#PWR0101" H 2870 6460 50  0001 C CNN
+F 1 "GND" V 2870 6510 50  0000 C CNN
+F 2 "" H 2870 6710 50  0001 C CNN
+F 3 "" H 2870 6710 50  0001 C CNN
+	1    2870 6710
 	0    1    1    0   
 $EndComp
 $Comp
 L 0_LOCAL:CP1_Small C1
 U 1 1 5F7F0020
-P 3110 6220
-F 0 "C1" V 2840 6220 50  0000 C CNN
-F 1 "220uf" V 2940 6220 50  0000 C CNN
-F 2 "0_LOCAL:CP_Tantalum_Case-B_EIA-3528-21_Reflow" H 3110 6220 50  0001 C CNN
-F 3 "~" H 3110 6220 50  0001 C CNN
-	1    3110 6220
+P 3070 6710
+F 0 "C1" V 2910 6710 50  0000 C CNN
+F 1 "220uf" V 2970 6710 50  0000 C CNN
+F 2 "0_LOCAL:CP_Tantalum_Case-B_EIA-3528-21_Reflow" H 3070 6710 50  0001 C CNN
+F 3 "~" H 3070 6710 50  0001 C CNN
+	1    3070 6710
 	0    1    1    0   
 $EndComp
 $Comp
 L 0_LOCAL:R R1
 U 1 1 5F805237
-P 3460 6220
-F 0 "R1" V 3370 6220 50  0000 C CNN
-F 1 "4.7K" V 3460 6220 50  0000 C CNN
-F 2 "0_LOCAL:R_0805" V 3390 6220 50  0001 C CNN
-F 3 "~" H 3460 6220 50  0001 C CNN
-	1    3460 6220
+P 3420 6710
+F 0 "R1" V 3270 6710 50  0000 C CNN
+F 1 "470" V 3340 6710 50  0000 C CNN
+F 2 "0_LOCAL:R_0805" V 3350 6710 50  0001 C CNN
+F 3 "~" H 3420 6710 50  0001 C CNN
+	1    3420 6710
 	0    1    1    0   
 $EndComp
 $Comp
-L power:VDD #PWR0104
+L power:VBUS #PWR0104
 U 1 1 5F82822F
-P 3700 6220
-F 0 "#PWR0104" H 3700 6070 50  0001 C CNN
-F 1 "VDD" V 3700 6370 50  0000 L CNN
-F 2 "" H 3700 6220 50  0001 C CNN
-F 3 "" H 3700 6220 50  0001 C CNN
-	1    3700 6220
+P 3900 6710
+F 0 "#PWR0104" H 3900 6560 50  0001 C CNN
+F 1 "VBUS" V 3900 6860 50  0000 L CNN
+F 2 "" H 3900 6710 50  0001 C CNN
+F 3 "" H 3900 6710 50  0001 C CNN
+	1    3900 6710
 	0    1    1    0   
 $EndComp
 Text Notes 7770 1480 0    50   ~ 0
 GND
 Text Notes 7770 2780 0    50   ~ 0
 GND
-Connection ~ 3000 5200
-Wire Bus Line
-	3000 5200 2000 5200
 $Comp
 L 0_LOCAL:R R2
 U 1 1 5F9FA366
-P 3450 5700
-F 0 "R2" V 3400 5860 50  0000 C CNN
-F 1 "47K" V 3450 5700 50  0000 C CNN
-F 2 "0_LOCAL:R_0805" V 3380 5700 50  0001 C CNN
-F 3 "~" H 3450 5700 50  0001 C CNN
-	1    3450 5700
+P 3450 6140
+F 0 "R2" V 3300 6140 50  0000 C CNN
+F 1 "47K" V 3370 6140 50  0000 C CNN
+F 2 "0_LOCAL:R_0805" V 3380 6140 50  0001 C CNN
+F 3 "~" H 3450 6140 50  0001 C CNN
+	1    3450 6140
 	0    1    1    0   
 $EndComp
-Wire Wire Line
-	3600 5700 3700 5700
 Entry Wire Line
-	3000 5600 3100 5700
+	3000 6040 3100 6140
 Wire Wire Line
-	3100 5700 3300 5700
-Text Label 3100 5700 0    50   ~ 0
-CE2
+	3100 6140 3300 6140
+Text Label 3100 6140 0    50   ~ 0
+~CE1
+Wire Wire Line
+	3170 6710 3270 6710
+Wire Wire Line
+	2870 6710 2970 6710
 $Comp
-L power:GND #PWR0114
-U 1 1 5FA0A052
-P 3700 5700
-F 0 "#PWR0114" H 3700 5450 50  0001 C CNN
-F 1 "GND" V 3700 5500 50  0000 C CNN
-F 2 "" H 3700 5700 50  0001 C CNN
-F 3 "" H 3700 5700 50  0001 C CNN
-	1    3700 5700
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	3210 6220 3310 6220
-Wire Wire Line
-	2910 6220 3010 6220
-Wire Wire Line
-	3610 6220 3700 6220
-Wire Bus Line
-	3000 5200 3000 5600
-$Comp
-L power:VDD #PWR0109
+L power:VMEM #PWR0109
 U 1 1 5F833144
 P 2910 1900
 F 0 "#PWR0109" H 2910 1750 50  0001 C CNN
-F 1 "VDD" H 2910 2050 50  0000 L CNN
+F 1 "VMEM" H 2910 2050 50  0000 L CNN
 F 2 "" H 2910 1900 50  0001 C CNN
 F 3 "" H 2910 1900 50  0001 C CNN
 	1    2910 1900
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:VDD #PWR0110
+L power:VMEM #PWR0110
 U 1 1 5F83B4C3
 P 5010 1900
 F 0 "#PWR0110" H 5010 1750 50  0001 C CNN
-F 1 "VDD" H 5010 2050 50  0000 L CNN
+F 1 "VMEM" H 5010 2050 50  0000 L CNN
 F 2 "" H 5010 1900 50  0001 C CNN
 F 3 "" H 5010 1900 50  0001 C CNN
 	1    5010 1900
 	1    0    0    -1  
 $EndComp
 Text Notes 7770 3080 0    50   ~ 0
-A17
+A17 Only for ROM
+Text Notes 7770 2880 0    50   ~ 0
+Manual says NC, but connects to IC5 pin 66   (1)
+Text Notes 7770 2980 0    50   ~ 0
+Manual says NC, but connects to IC5 pin 67   (1)
+Text Notes 7760 4980 0    50   ~ 0
+Manual says NC, but connects to IC5 pin 68  (1)
+Wire Notes Line
+	2350 5920 2350 6870
+Text Notes 2470 7330 0    50   ~ 0
+Approx. 10 minutes memory retention while ejected.\n\nTo use: Populate all parts.\n\nTo omit: Omit all parts. Solder-bridge D1.
+$Comp
+L 0_LOCAL:D_Schottky_Small_ALT D1
+U 1 1 5F8D99B0
+P 3800 6710
+F 0 "D1" H 3800 6860 50  0000 C CNN
+F 1 "1SS389" H 3790 6790 50  0000 C CNN
+F 2 "0_LOCAL:D_SOD-523" V 3800 6710 50  0001 C CNN
+F 3 "~" V 3800 6710 50  0001 C CNN
+	1    3800 6710
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VMEM #PWR0111
+U 1 1 5F8FB9C6
+P 3820 6140
+F 0 "#PWR0111" H 3820 5990 50  0001 C CNN
+F 1 "VMEM" V 3820 6390 50  0000 C CNN
+F 2 "" H 3820 6140 50  0001 C CNN
+F 3 "" H 3820 6140 50  0001 C CNN
+	1    3820 6140
+	0    1    1    0   
+$EndComp
+Wire Notes Line
+	2350 6870 4610 6870
+Wire Notes Line
+	4610 6870 4610 5920
+Wire Notes Line
+	4610 5920 2350 5920
+Text Notes 7770 1680 0    50   ~ 0
+CE2 Not actually switched. Hard trace to VDD inside WP-2.
+$Comp
+L 0_LOCAL:Net-Tie_2 NT2
+U 1 1 5F9A2ABC
+P 3200 5490
+F 0 "NT2" H 3120 5530 50  0001 C CNN
+F 1 "Net-Tie_2" H 3210 5480 50  0001 C CNN
+F 2 "0_LOCAL:Net_Tie_2p_8mil" H 3200 5490 50  0001 C CNN
+F 3 "~" H 3200 5490 50  0001 C CNN
+	1    3200 5490
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VMEM #PWR0112
+U 1 1 5F9A5217
+P 3300 5490
+F 0 "#PWR0112" H 3300 5240 50  0001 C CNN
+F 1 "VMEM" V 3300 5740 50  0000 C CNN
+F 2 "" H 3300 5490 50  0001 C CNN
+F 3 "" H 3300 5490 50  0001 C CNN
+	1    3300 5490
+	0    1    1    0   
+$EndComp
+Entry Wire Line
+	3000 5390 3100 5490
+$Comp
+L power:VMEM #PWR?
+U 1 1 5FA2882A
+P 3800 6440
+F 0 "#PWR?" H 3800 6290 50  0001 C CNN
+F 1 "VMEM" V 3800 6690 50  0000 C CNN
+F 2 "" H 3800 6440 50  0001 C CNN
+F 3 "" H 3800 6440 50  0001 C CNN
+	1    3800 6440
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3600 6140 3820 6140
+Wire Wire Line
+	3570 6710 3630 6710
+Wire Wire Line
+	3630 6710 3630 6440
+Wire Wire Line
+	3630 6440 3800 6440
+Connection ~ 3630 6710
+Wire Wire Line
+	3630 6710 3700 6710
+Wire Bus Line
+	2000 5200 3000 5200
+Connection ~ 3000 5200
+Wire Bus Line
+	3000 5200 3800 5200
+Text Notes 3330 5890 0    50   ~ 0
+OPTIONAL
+Wire Bus Line
+	4100 5200 5900 5200
+Wire Bus Line
+	3000 5200 3000 6040
 Wire Bus Line
 	5900 2000 5900 5200
 Wire Bus Line
@@ -800,4 +869,6 @@ Wire Bus Line
 	2000 2000 2000 5200
 Wire Bus Line
 	7030 1540 7030 5200
+Text Notes 7800 5400 0    50   ~ 0
+(1) IC5 is a gate array with unknown programming.
 $EndSCHEMATC
