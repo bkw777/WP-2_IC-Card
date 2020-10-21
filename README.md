@@ -63,7 +63,7 @@ BOM
 ![](PCB/WP-2_IC_Card_v003_ROM_programming_adapter.svg)  
 
 PCB (Select 0.8mm pcb option at checkout)  
-[PCB v003_ROM_programming_adapter at OSHPark](https://oshpark.com/shared_projects/5rdprQ0J)  
+[PCB v003_ROM_programming_adapter at OSHPark](https://oshpark.com/shared_projects/X4lR8NXP)  
 
 BOM  
 [Parts for v003_ROM_programming_adapter from DigiKey](https://www.digikey.com/short/zn9rqn)
