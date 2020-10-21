@@ -4,8 +4,8 @@ EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 1
-Title "TANDY WP-2 256K ROM IC Card - Programming Adapter"
-Date "2020-10-14"
+Title "TANDY WP-2 256K ROM IC Card Programming Adapter"
+Date "2020-10-21"
 Rev ""
 Comp "Brian K. White - b.kenyon.w@gmail.com"
 Comment1 ""

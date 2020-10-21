@@ -75,10 +75,12 @@ Take 2 of the un-used pins from the 2.54mm set and solder-bridge one side to mak
 ![](WP-2_IC_Card_v004_RAM_B_1.jpg)  
 ![](WP-2_IC_Card_v004_RAM_B_2.jpg)  
 ![](WP-2_IC_Card_v004_RAM_B_3.jpg)  
+![](WP-2_IC_Card_v004_RAM_B_4.jpg)  
+![](WP-2_IC_Card_v004_RAM_B_5.jpg)  
 ![](PCB/WP-2_IC_Card_v004_RAM_B.svg)  
 
 PCB (Select 0.8mm pcb option at checkout)  
-[PCB v004_RAM_B at OSHPark](https://oshpark.com/shared_projects/1InS1yR8)  
+[PCB v004_RAM_B at OSHPark](https://oshpark.com/shared_projects/ooY1Jmux)  
 
 BOM  
 [Parts for v004_RAM_B from DigiKey](https://www.digikey.com/short/znbqq9)

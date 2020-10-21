@@ -749,7 +749,7 @@ Wire Wire Line
 Wire Wire Line
 	7530 4840 7130 4840
 Text Notes 1060 7570 0    50   ~ 0
-If the NC pins (15, 16, 36) were really NC inside the WP-2, then it would be possible to eliminate the write-enable JP1\nby connecting R~W~ to ~WE~ through pins 15 & 16, and have the programming adapter short 15 to 16 with a trace.\n\nBut 15, 16, & 36 all actually have traces going to RA5 and IC5. IC5 is a gate-array with unknown programming.\n\nIt may not be safe to drive R~W~ into one of the IC5 pins.\nIt may not be safe to let ~WE~ be driven by one of the IC5 pins.\n\nThat is why those pins are left untouched even though they are nominally NC and available.
+If the NC pins (15, 16, 36) were really NC inside the WP-2, then it would be possible to eliminate the write-enable JP1\nby connecting R~W~ to ~WE~ through pins 15 & 16, and have the programming adapter short 15 to 16 with a trace.\n\nBut 15, 16, & 36 all actually have traces going to RA5 and IC5. IC5 is a gate-array with unknown programming.
 Wire Bus Line
 	2910 5200 2910 5600
 Wire Bus Line
