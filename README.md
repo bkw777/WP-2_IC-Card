@@ -1,6 +1,6 @@
 # Expansion IC Card for TANDY WP-2
 
-Status: 2020-10-19  
+Status: 2020-10-20  
 Testing is almost done but not complete yet.  
 STILL JUST FOR REFERENCE AT THIS TIME  
 
@@ -68,7 +68,7 @@ PCB (Select 0.8mm pcb option at checkout)
 BOM  
 [Parts for v003_ROM_programming_adapter from DigiKey](https://www.digikey.com/short/zn9rqn)
 
-Take 2 of the un-used pins from the 2.54mm set and solder-bridge one side to make a "male jumper" for the WRITE pads on the IC-Card. Bend the pins apart slightly so the fit is stiff.
+Take 2 of the un-used pins from the 2.54mm set and solder-bridge one side to make a "male jumper" for the WRITE pads on the IC-Card. Bend the pins together slightly so the fit is stiff.
 
 
 ## RAM version with battery and no carrier
