@@ -80,11 +80,10 @@ Take 2 of the un-used pins from the 2.54mm set and solder-bridge one side to mak
 ![](PCB/WP-2_IC_Card_v004_RAM_B.svg)  
 
 PCB (Select 0.8mm pcb option at checkout)  
-[PCB v004_RAM_B at OSHPark](https://oshpark.com/shared_projects/ooY1Jmux)  
+[PCB v004_RAM_B at OSHPark](https://oshpark.com/shared_projects/jiwlXMji)  
 
 BOM  
-[Parts for v004_RAM_B from DigiKey](https://www.digikey.com/short/znbqq9)
-
+[Parts for v004_RAM_B at DigiKey](https://www.digikey.com/short/zn0w84)
 
 # Reference Material
 [WP-2 Manual](https://archive.org/search.php?query=Tandy%20WP-2)  
