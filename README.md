@@ -83,7 +83,7 @@ PCB (Select 0.8mm pcb option at checkout)
 [PCB v004_RAM_B at OSHPark](https://oshpark.com/shared_projects/jiwlXMji)  
 
 BOM  
-[Parts for v004_RAM_B at DigiKey](https://www.digikey.com/short/zn0w84)
+[Parts for v004_RAM_B at DigiKey](https://www.digikey.com/short/zn0wrr)
 
 # Reference Material
 [WP-2 Manual](https://archive.org/search.php?query=Tandy%20WP-2)  
