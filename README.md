@@ -16,12 +16,15 @@ The ROM programming adapter has not been tested yet.
 
 The RAM_cap_batt_no_carrier version is new. The battery circuit and physical fit of the battery holder and the alignment of the pin header without any carrier is all untested yet.  
 
+For all of these IC cards, whether the small pcbs in the 3d-printed carrier, or the big pcbs that don't use a carrier,
+the PCB must be 0.8mm thick, NOT the standard 1.6mm. On OSHPark, select "[*] 2 oz copper, 0.8mm thickness" at check-out.
+
+The programming adapter may be a standard 1.6mm pcb.
+
 ## RAM CARDS
 
 ### RAM_cap_carried
 RAM card with optional memory power capacitor, small pcb in a 3d-printed carrier.
-
-The PCB must be 0.8mm thick, NOT the standard 1.6mm. On OSHPark, select "[*] 2 oz copper, 0.8mm thickness" at check-out.
 
 You may build this two ways:  
 
