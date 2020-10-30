@@ -4,85 +4,131 @@ Status: 2020-10-20
 Testing is almost done but not complete yet.  
 STILL JUST FOR REFERENCE AT THIS TIME  
 
-An earlier v003 RAM version has been tested and verified. The basic circuit works, and all physical/mechanical aspects of the v003 carrier and pcb outline and pin header are settled.
+An earlier RAM version has been tested and verified. The basic circuit works, and all physical/mechanical aspects of the v003 carrier and pcb outline and pin header are settled.
  
 Changes from the last-tested version, which need to be proven:  
 * Added D1 between VDD from the bus and the rest of the card, to prevent C1 from draining instantly into the WP-2 when the WP-2 is turned off while the card is connected.  
-* Moved the disable-on-disconnect resistor (R2) from CE2-to-GND to /CE1-to-VMEM, and tied CE2 to VMEM. IE, use /CE1 to put the chip to sleep on disconnect instead of CE2. CE2 is tied to VDD inside the WP-2 not actually switched, so the pulldown had potential across it at all times not just when the chip was actively being used. So we may as well ignore it, and this removes an annoying trace that has to cross the entire board, and the /CE1 pullup only fights with the WP-2 briefly during actual access/use.  
-* Changed value of R1 to 470 ohms to charge C1 faster, yet still limit the max power-on current to about 1ma.  
+* Hard wire CE2 and change R2 from a pulldown on CE2 to a pullup on /CE1. CE2 is tied to VDD inside the WP-2 not actually switched.
 
-The ROM version has not been tested yet.  
+Neither ROM version has been tested yet.  
 
 The ROM programming adapter has not been tested yet.  
 
-The v004_RAM_B version is entirely new. The battery circuit and physical fit of the battery holder and the alignment of the pin header without any carrier is all untested yet.  
+The RAM_cap_batt_no_carrier version is new. The battery circuit and physical fit of the battery holder and the alignment of the pin header without any carrier is all untested yet.  
 
-PCBs are ordered for all boards and waiting for delivery.  
-* v003_RAM - JLCPCB, 0.8mm pcb, black soldermask, ENIG finish, remove batch code  
-* v003_ROM - JLCPCB, 0.8mm pcb, black soldermask, ENIG finish, remove batch code  
-* v004_RAM_B - JLCPCB, 1.2mm pcb, black soldermask, ENIG finish, remove batch code  
-* ROM programming adapter - OSHPARK, standard 1.6mm pcb  
+## RAM CARDS
 
-## RAM version
-![](WP-2_IC_Card_v003_RAM_1.jpg)  
-![](WP-2_IC_Card_v003_RAM_2.jpg)  
-![](WP-2_IC_Card_v003_RAM_3.jpg)  
+### RAM_cap_carried
+RAM card with optional memory power capacitor, small pcb in a 3d-printed carrier.
+
+The PCB must be 0.8mm thick, NOT the standard 1.6mm. On OSHPark, select "[*] 2 oz copper, 0.8mm thickness" at check-out.
+
+You may build this two ways:  
+
+Basic: Don't install any components other than the SRAM chip and pin socket. Solder-bridge the D1/SB1 footprint.
+
+Full: Install all components, including a diode on D1/SB1.
+
+Full configuration provides about 10 minutes of memory power from a capacitor while the card is ejected or the WP-2 power is off.
+
+
+![](WP-2_IC_Card_RAM_cap_carried_1.jpg)  
+![](WP-2_IC_Card_RAM_cap_carried_2.jpg)  
 ![](WP-2_IC_Card_v003_Carrier.jpg)  
-![](WP-2_IC_Card_v003_RAM_4.jpg)  
-![](WP-2_IC_Card_v003_RAM_5.jpg)  
-![](WP-2_IC_Card_v003_RAM_6.jpg)  
-![](PCB/WP-2_IC_Card_v003_RAM.svg)  
+![](WP-2_IC_Card_RAM_cap_carried_3.jpg)  
+![](WP-2_IC_Card_RAM_cap_carried_4.jpg)  
+![](WP-2_IC_Card_RAM_cap_carried_empty.jpg)  
+![](WP-2_IC_Card_RAM_cap_carried_no_cap_solder_bridge.jpg)  
+![](WP-2_IC_Card_RAM_cap_carried_full.jpg)  
+![](PCB/WP-2_IC_Card_RAM_cap_carried.svg)  
 
 CARRIER  (RAM and ROM versions both use this same carrier)  
 [Carrier v003 at Shapeways](https://shpws.me/Si2L)  
 
 PCB (Select 0.8mm pcb option at checkout)  
-[PCB v003_RAM at OSHPark](https://oshpark.com/shared_projects/7H6gMMx5)  
+[PCB RAM_cap_carried at OSHPark](https://oshpark.com/shared_projects/cFUnqK0A)  
 
 BOM  
-[Parts for v003_RAM from DigiKey](https://www.digikey.com/short/zn95q5)
+[Parts for RAM_cap_carried from DigiKey](https://www.digikey.com/short/zdp7q1)
 
 
-## ROM version
-![](WP-2_IC_Card_v003_ROM_1.jpg)  
-![](WP-2_IC_Card_v003_ROM_2.jpg)  
-![](WP-2_IC_Card_v003_ROM_3.jpg)  
-![](PCB/WP-2_IC_Card_v003_ROM.svg)  
+### RAM_cap_batt_no_carrier
+RAM version with optional battery and no 3d-printed carrier.  
+
+You may build this 4 ways:
+
+Basic: Don't install any components other than the SRAM chip and pin socket. Solder-bridge the D1/SB1 footprint.  
+Memory is lost immediately when the card is ejected or the WP-2 is turned off.
+
+With cap, no battery: Install C1, R1, R2, and diode on D1/SB1.  
+Provides about 10 minutes of memory power.
+
+With battery, no cap: Install battery holder, D2, R2, and diode on D1/SB1.  
+Provides about 10 years of memory power, but only while the battery remains connected. Memory is lost immediately if battery is removed.
+
+Full: Install all components, including diode on D1/SB1.
+Provides about 10 years of memory power, and about 10 minutes of memory power without the battery.
+
+
+![](WP-2_IC_Card_RAM_cap_batt_no_carrier_1.jpg)  
+![](WP-2_IC_Card_RAM_cap_batt_no_carrier_empty.jpg)  
+![](WP-2_IC_Card_RAM_cap_batt_no_carrier_no_cap_no_batt_solder_bridge.jpg)  
+![](WP-2_IC_Card_RAM_cap_batt_no_carrier_no_batt.jpg)  
+![](WP-2_IC_Card_RAM_cap_batt_no_carrier_no_cap.jpg)  
+![](WP-2_IC_Card_RAM_cap_batt_no_carrier_full.jpg)  
+![](PCB/WP-2_IC_Card_RAM_cap_batt_no_carrier.svg)  
 
 PCB (Select 0.8mm pcb option at checkout)  
-[PCB v003_ROM at OSHPark](https://oshpark.com/shared_projects/rLP4ZOHt)  
+[PCB RAM_cap_batt_no_carrier at OSHPark](https://oshpark.com/shared_projects/GAGxQb9r)  
 
 BOM  
-[Parts for v003_ROM from DigiKey](https://www.digikey.com/short/zn95jj)
+[Parts for RAM_cap_batt_no_carrier at DigiKey](https://www.digikey.com/short/zn0wrr)
+
+
+## ROM CARDS
+
+### ROM_carried
+"ROM" based on a flash chip, which may be written using a matching programming adapter and standard eprom burner.
+
+![](WP-2_IC_Card_ROM_carried.jpg)  
+![](PCB/WP-2_IC_Card_ROM_carried.svg)  
+
+PCB (Select 0.8mm pcb option at checkout)  
+[PCB ROM_carried at OSHPark](https://oshpark.com/shared_projects/RArbycJ8)  
+
+BOM  
+[Parts for ROM_carried from DigiKey](https://www.digikey.com/short/zn95jj)
+
+
+### ROM_no_carrier
+Same as above but on a big pcb with no carrier, instead of a small pcb in a 3d-printed carrier.
+![](WP-2_IC_Card_ROM_no_carrier.jpg)  
+![](PCB/WP-2_IC_Card_ROM_no_carrier.svg)  
+
+PCB (Select 0.8mm pcb option at checkout)  
+[PCB ROM_no_carrier at OSHPark](https://oshpark.com/shared_projects/P7FIKl3s)  
+
+BOM  
+[Parts for ROM_no_carrier at DigiKey](https://www.digikey.com/short/zn95jj)
 
 
 ## ROM Programming Adapter
-![](WP-2_IC_Card_v003_ROM_programming_adapter_1.jpg)  
-![](WP-2_IC_Card_v003_ROM_programming_adapter_2.jpg)  
-![](PCB/WP-2_IC_Card_v003_ROM_programming_adapter.svg)  
+Use with a standard eprom programmer such as TL-866, to write either of the ROM cards.
+
+![](WP-2_IC_Card_ROM_programming_adapter.jpg)  
+![](WP-2_IC_Card_ROM_programming_adapter_carried.jpg)  
+![](WP-2_IC_Card_ROM_programming_adapter_no_carrier.jpg)  
+![](PCB/WP-2_IC_Card_ROM_programming_adapter.svg)  
 
 PCB    
-[PCB v003_ROM_programming_adapter at OSHPark](https://oshpark.com/shared_projects/1beGiPHL)  
+[PCB ROM_programming_adapter at OSHPark](https://oshpark.com/shared_projects/wPsaJbVf)  
 
 BOM  
-[Parts for v003_ROM_programming_adapter from DigiKey](https://www.digikey.com/short/zn9rqn)
+[Parts for ROM_programming_adapter from DigiKey](https://www.digikey.com/short/zn9rqn)
 
-Take 2 of the un-used pins from the 2.54mm set and solder-bridge one side to make a "male jumper" for the WRITE pads on the IC-Card. Bend the pins together slightly so the fit is stiff.
+Make a write-enable jumper for the WRITE pads on the ROM IC Cards by taking 2 of the left over 2.54mm pins and solder-bridging the two pins on one side. Pinch the pins together a little to make the fit stiff when plugged into the WRITE holes on the card.
 
 
-## RAM version with battery and no carrier
-![](WP-2_IC_Card_v004_RAM_B_1.jpg)  
-![](WP-2_IC_Card_v004_RAM_B_2.jpg)  
-![](WP-2_IC_Card_v004_RAM_B_3.jpg)  
-![](WP-2_IC_Card_v004_RAM_B_4.jpg)  
-![](WP-2_IC_Card_v004_RAM_B_5.jpg)  
-![](PCB/WP-2_IC_Card_v004_RAM_B.svg)  
-
-PCB (Select 0.8mm pcb option at checkout)  
-[PCB v004_RAM_B at OSHPark](https://oshpark.com/shared_projects/jiwlXMji)  
-
-BOM  
-[Parts for v004_RAM_B at DigiKey](https://www.digikey.com/short/zn0wrr)
 
 # Reference Material
 [WP-2 Manual](https://archive.org/search.php?query=Tandy%20WP-2)  
