@@ -97,7 +97,7 @@ BOM
 ![](PCB/WP-2_IC_Card_ROM_carried.svg)  
 
 PCB (Select 0.8mm pcb option at checkout)  
-[PCB ROM_carried at OSHPark](https://oshpark.com/shared_projects/RArbycJ8)  
+[PCB ROM_carried at OSHPark](https://oshpark.com/shared_projects/v4PaRAEJ)  
 
 BOM  
 [Parts for ROM_carried from DigiKey](https://www.digikey.com/short/zn95jj)
@@ -109,7 +109,7 @@ Same as above but on a big pcb with no carrier, instead of a small pcb in a 3d-p
 ![](PCB/WP-2_IC_Card_ROM_no_carrier.svg)  
 
 PCB (Select 0.8mm pcb option at checkout)  
-[PCB ROM_no_carrier at OSHPark](https://oshpark.com/shared_projects/P7FIKl3s)  
+[PCB ROM_no_carrier at OSHPark](https://oshpark.com/shared_projects/iJiakYAE)  
 
 BOM  
 [Parts for ROM_no_carrier at DigiKey](https://www.digikey.com/short/zn95jj)
