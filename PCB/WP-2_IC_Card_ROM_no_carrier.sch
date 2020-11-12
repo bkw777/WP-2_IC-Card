@@ -451,7 +451,6 @@ F 3 "" H 5010 2000 50  0001 C CNN
 	1    5010 2000
 	1    0    0    -1  
 $EndComp
-NoConn ~ 4410 3900
 $Comp
 L 0_LOCAL:R R1
 U 1 1 5F8FDC45
@@ -687,7 +686,6 @@ F 3 "" H 2910 2000 50  0001 C CNN
 	1    2910 2000
 	1    0    0    -1  
 $EndComp
-NoConn ~ 2310 3900
 Text Label 2310 4200 2    50   ~ 0
 ~WE
 Wire Wire Line
@@ -703,8 +701,6 @@ Text Notes 4500 1610 0    50   ~ 0
 sTSOP-I-32 8x14 footprint
 Text Label 7530 4840 2    50   ~ 0
 R~W
-Wire Bus Line
-	4100 5200 5900 5200
 Text Notes 7770 1680 0    50   ~ 0
 CE2 = VDD inside WP-2. Not actually inverse of ~CE1~.
 Text Notes 7780 2870 0    50   ~ 0
@@ -753,6 +749,53 @@ If the NC pins (15, 16, 36) were really NC inside the WP-2, then it would be pos
 NoConn ~ 7530 1540
 NoConn ~ 7530 1640
 NoConn ~ 7530 5040
+Entry Wire Line
+	2000 3800 2100 3900
+Text Label 2310 3900 2    50   ~ 0
+A18
+Wire Wire Line
+	2100 3900 2310 3900
+Entry Wire Line
+	4100 3800 4200 3900
+Text Label 4410 3900 2    50   ~ 0
+A18
+Wire Wire Line
+	4200 3900 4410 3900
+Wire Bus Line
+	4100 5200 4700 5200
+Connection ~ 4700 5200
+Wire Bus Line
+	4700 5200 5900 5200
+Entry Wire Line
+	4700 5500 4800 5600
+$Comp
+L 0_LOCAL:Net-Tie_2 NT1
+U 1 1 5FA75A2A
+P 5100 5600
+F 0 "NT1" H 5100 5650 50  0000 C CNN
+F 1 "Net-Tie_2" H 5040 5550 50  0000 C CNN
+F 2 "0_LOCAL:Net_Tie_2p_8mil" H 5100 5600 50  0001 C CNN
+F 3 "~" H 5100 5600 50  0001 C CNN
+	1    5100 5600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4800 5600 5000 5600
+Wire Bus Line
+	4700 5200 4700 5500
+Text Label 4800 5600 0    50   ~ 0
+A18
+$Comp
+L power:GND #PWR0105
+U 1 1 5FAA23EE
+P 5200 5600
+F 0 "#PWR0105" H 5200 5350 50  0001 C CNN
+F 1 "GND" V 5200 5480 50  0000 R CNN
+F 2 "" H 5200 5600 50  0001 C CNN
+F 3 "" H 5200 5600 50  0001 C CNN
+	1    5200 5600
+	0    -1   -1   0   
+$EndComp
 Wire Bus Line
 	2910 5200 2910 5600
 Wire Bus Line

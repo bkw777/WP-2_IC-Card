@@ -49,7 +49,7 @@ CARRIER  (RAM and ROM versions both use this same carrier)
 [Carrier v003 at Shapeways](https://shpws.me/Si2L)  
 
 PCB (Select 0.8mm pcb option at checkout)  
-[PCB RAM_cap_carried at OSHPark](https://oshpark.com/shared_projects/cFUnqK0A)  
+[PCB RAM_cap_carried at OSHPark](https://oshpark.com/shared_projects/ElSkz5po)  
 
 BOM  
 [Parts for RAM_cap_carried from DigiKey](https://www.digikey.com/short/zdp7q1)
@@ -82,7 +82,7 @@ Provides about 10 years of memory power, and about 10 minutes of memory power wi
 ![](PCB/WP-2_IC_Card_RAM_cap_batt_no_carrier.svg)  
 
 PCB (Select 0.8mm pcb option at checkout)  
-[PCB RAM_cap_batt_no_carrier at OSHPark](https://oshpark.com/shared_projects/GAGxQb9r)  
+[PCB RAM_cap_batt_no_carrier at OSHPark](https://oshpark.com/shared_projects/eNruwuT6)  
 
 BOM  
 [Parts for RAM_cap_batt_no_carrier at DigiKey](https://www.digikey.com/short/zn0wrr)
@@ -97,7 +97,7 @@ BOM
 ![](PCB/WP-2_IC_Card_ROM_carried.svg)  
 
 PCB (Select 0.8mm pcb option at checkout)  
-[PCB ROM_carried at OSHPark](https://oshpark.com/shared_projects/v4PaRAEJ)  
+[PCB ROM_carried at OSHPark](https://oshpark.com/shared_projects/zKWT2O4v)  
 
 BOM  
 [Parts for ROM_carried from DigiKey](https://www.digikey.com/short/zn95jj)
@@ -109,7 +109,7 @@ Same as above but on a big pcb with no carrier, instead of a small pcb in a 3d-p
 ![](PCB/WP-2_IC_Card_ROM_no_carrier.svg)  
 
 PCB (Select 0.8mm pcb option at checkout)  
-[PCB ROM_no_carrier at OSHPark](https://oshpark.com/shared_projects/iJiakYAE)  
+[PCB ROM_no_carrier at OSHPark](https://oshpark.com/shared_projects/GTC2pMRm)  
 
 BOM  
 [Parts for ROM_no_carrier at DigiKey](https://www.digikey.com/short/zn95jj)
@@ -124,7 +124,7 @@ Use with a standard eprom programmer such as TL-866, to write either of the ROM 
 ![](PCB/WP-2_IC_Card_ROM_programming_adapter.svg)  
 
 PCB    
-[PCB ROM_programming_adapter at OSHPark](https://oshpark.com/shared_projects/wPsaJbVf)  
+[PCB ROM_programming_adapter at OSHPark](https://oshpark.com/shared_projects/AU1iXOKs)  
 
 BOM  
 [Parts for ROM_programming_adapter from DigiKey](https://www.digikey.com/short/zn9rqn)
