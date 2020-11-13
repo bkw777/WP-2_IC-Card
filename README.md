@@ -34,6 +34,8 @@ Full: Install all components, including a diode on D1/SB1.
 
 Full configuration provides about 10 minutes of memory power from a capacitor while the card is ejected or the WP-2 power is off.
 
+Requires a thinner PCB than normal.  
+This PCB may be up to 0.8mm thick.  
 
 ![](WP-2_IC_Card_RAM_cap_carried_1.jpg)  
 ![](WP-2_IC_Card_RAM_cap_carried_2.jpg)  
@@ -48,7 +50,7 @@ Full configuration provides about 10 minutes of memory power from a capacitor wh
 CARRIER  (RAM and ROM versions both use this same carrier)  
 [Carrier v003 at Shapeways](https://shpws.me/Si2L)  
 
-PCB (Select 0.8mm pcb option at checkout)  
+PCB (Select 0.8mm pcb thickness at checkout)  
 [PCB RAM_cap_carried at OSHPark](https://oshpark.com/shared_projects/ElSkz5po)  
 
 BOM  
@@ -72,6 +74,8 @@ Provides about 10 years of memory power, but only while the battery remains conn
 Full: Install all components, including diode on D1/SB1.
 Provides about 10 years of memory power, and about 10 minutes of memory power without the battery.
 
+Requires a thinner PCB than normal.  
+This PCB may be up to 1.0mm thick.  
 
 ![](WP-2_IC_Card_RAM_cap_batt_no_carrier_1.jpg)  
 ![](WP-2_IC_Card_RAM_cap_batt_no_carrier_empty.jpg)  
@@ -81,7 +85,7 @@ Provides about 10 years of memory power, and about 10 minutes of memory power wi
 ![](WP-2_IC_Card_RAM_cap_batt_no_carrier_full.jpg)  
 ![](PCB/WP-2_IC_Card_RAM_cap_batt_no_carrier.svg)  
 
-PCB (Select 0.8mm pcb option at checkout)  
+PCB (Select 0.8mm pcb thickness at checkout)  
 [PCB RAM_cap_batt_no_carrier at OSHPark](https://oshpark.com/shared_projects/eNruwuT6)  
 
 BOM  
@@ -93,22 +97,28 @@ BOM
 ### ROM_carried
 "ROM" based on a flash chip, which may be written using a matching programming adapter and standard eprom burner.
 
+Requires a thinner PCB than normal.  
+This PCB may be up to 0.8mm thick.  
+
 ![](WP-2_IC_Card_ROM_carried.jpg)  
 ![](PCB/WP-2_IC_Card_ROM_carried.svg)  
 
-PCB (Select 0.8mm pcb option at checkout)  
+PCB (Select 0.8mm pcb thickness at checkout)  
 [PCB ROM_carried at OSHPark](https://oshpark.com/shared_projects/zKWT2O4v)  
 
 BOM  
 [Parts for ROM_carried from DigiKey](https://www.digikey.com/short/zn95jj)
 
-
 ### ROM_no_carrier
-Same as above but on a big pcb with no carrier, instead of a small pcb in a 3d-printed carrier.
+Same as above but on a big pcb with no carrier, instead of a small pcb in a 3d-printed carrier.  
+
+Requires a thinner PCB than normal.  
+This PCB may be up to 1.2mm thick.  
+
 ![](WP-2_IC_Card_ROM_no_carrier.jpg)  
 ![](PCB/WP-2_IC_Card_ROM_no_carrier.svg)  
 
-PCB (Select 0.8mm pcb option at checkout)  
+PCB (Select 0.8mm pcb thickness at checkout)  
 [PCB ROM_no_carrier at OSHPark](https://oshpark.com/shared_projects/GTC2pMRm)  
 
 BOM  
