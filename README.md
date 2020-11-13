@@ -4,22 +4,12 @@ Status: 2020-11-13
 Testing is almost done but not complete yet.  
 STILL JUST FOR REFERENCE AT THIS TIME  
 
-An earlier RAM version has been tested and verified. The basic circuit works, and all physical/mechanical aspects of the carrier and pcb outline and pin header are settled.
- 
-Changes from the last-tested version, which need to be proven:  
-* Added D1 between VDD from the bus and the rest of the card, to prevent C1 from draining instantly into the WP-2 when the WP-2 is turned off while the card is still connected.  
-* Hard wire CE2 and change R2 from a pulldown on CE2 to a pullup on /CE1.
+An earlier simpler RAM version has been tested and verified. The basic circuit works, and all physical/mechanical aspects of the carrier and pcb outline and pin header are settled. What has not yet been tested are the ROM cards, ROM card programming adapter, and the capacitor and battery and diodes add-ons to the RAM cards.
 
-Neither ROM version has been tested yet.  
-
-The ROM programming adapter has not been tested yet.  
-
-The RAM_cap_batt_no_carrier version is new. The battery circuit and physical fit of the battery holder and the alignment of the pin header without any carrier is all untested yet.  
-
-For all of these IC cards, whether the small pcbs in the 3d-printed carrier, or the big pcbs that don't use a carrier,
-the PCB must be 0.8mm thick, NOT the standard 1.6mm. On OSHPark, select "[*] 2 oz copper, 0.8mm thickness" at check-out.
-
-The programming adapter may be a standard 1.6mm pcb.
+All but the programming adapter must be thinner PCBs than the standard 1.6mm.  
+The small cards that fit in the 3d-printed carrier must be 0.8mm thick.  
+The large RAM card with the coin cell battery holder may be up to 1.0mm thick.  
+The large ROM card may be up to 1.2mm thick.  
 
 ## RAM CARDS
 
