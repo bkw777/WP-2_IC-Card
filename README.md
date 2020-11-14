@@ -1,15 +1,19 @@
 # Expansion IC Card for TANDY WP-2
 
-Status: 2020-11-13  
-Testing is almost done but not complete yet.  
-STILL JUST FOR REFERENCE AT THIS TIME  
-
-An earlier simpler RAM version has been tested and verified. The basic circuit works, and all physical/mechanical aspects of the carrier and pcb outline and pin header are settled. What has not yet been tested are the ROM cards, ROM card programming adapter, and the capacitor and battery and diodes add-ons to the RAM cards.
+The TANDY WP-2 has an expansion slot that accepts "IC Cards" that may be either RAM or ROM, up to 128K RAM, up to 256K ROM. Here are a few different types of cards to fit that slot. So far, one RAM and one ROM in the form of a small pcb that snaps into a 3d-printed carrier, and one RAM and one ROM in the form of a large pcb with no carrier. The large RAM card includes a battery backup.
 
 All but the programming adapter must be thinner PCBs than the standard 1.6mm.  
 The small cards that fit in the 3d-printed carrier must be 0.8mm thick.  
 The large RAM card with the coin cell battery holder may be up to 1.0mm thick.  
 The large ROM card may be up to 1.2mm thick.  
+
+## Status: 2020-11-13  
+Testing is almost done but not complete yet.  
+Current designs delivered, in hand, just not built or tested yet.  
+STILL JUST FOR REFERENCE AT THIS TIME  
+I do not recommend ordering any of the PCBs until this notice is removed.
+
+An earlier simpler RAM version has been tested and verified. The basic circuit works and the concept & operation proven, and all physical/mechanical aspects of the carrier and pcb outline and pin header are settled. What has not yet been tested are the ROM cards, ROM card programming adapter, and the capacitor and battery and diodes add-ons to the RAM cards.
 
 ## RAM CARDS
 
