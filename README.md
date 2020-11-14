@@ -44,8 +44,8 @@ This PCB may be up to 0.8mm thick.
 CARRIER  (RAM and ROM versions both use this same carrier)  
 [Carrier v003 at Shapeways](https://shpws.me/Si2L)  
 
-PCB (Select 0.8mm pcb thickness at checkout)  
-[PCB RAM_cap_carried at OSHPark](https://oshpark.com/shared_projects/ElSkz5po)  
+PCB  
+[PCB RAM_cap_carried at OSHPark](https://oshpark.com/shared_projects/ElSkz5po) (Select 0.8mm pcb thickness at checkout)  
 
 BOM  
 [Parts for RAM_cap_carried from DigiKey](https://www.digikey.com/short/zdp7q1)
@@ -79,8 +79,8 @@ This PCB may be up to 1.0mm thick.
 ![](WP-2_IC_Card_RAM_cap_batt_no_carrier_full.jpg)  
 ![](PCB/WP-2_IC_Card_RAM_cap_batt_no_carrier.svg)  
 
-PCB (Select 0.8mm pcb thickness at checkout)  
-[PCB RAM_cap_batt_no_carrier at OSHPark](https://oshpark.com/shared_projects/eNruwuT6)  
+PCB  
+[PCB RAM_cap_batt_no_carrier at OSHPark](https://oshpark.com/shared_projects/eNruwuT6) (Select 0.8mm pcb thickness at checkout)  
 
 BOM  
 [Parts for RAM_cap_batt_no_carrier at DigiKey](https://www.digikey.com/short/zn0wrr)
@@ -97,9 +97,9 @@ This PCB may be up to 0.8mm thick.
 ![](WP-2_IC_Card_ROM_carried.jpg)  
 ![](PCB/WP-2_IC_Card_ROM_carried.svg)  
 
-PCB (Select 0.8mm pcb thickness at checkout)  
-[PCB ROM_carried at OSHPark](https://oshpark.com/shared_projects/zKWT2O4v)  
-[PCB ROM_carried at PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_IC_Card__256K_ROM__carried.html)
+PCB  
+[PCB ROM_carried at OSHPark](https://oshpark.com/shared_projects/zKWT2O4v) (Select 0.8mm pcb thickness at checkout)  
+[PCB ROM_carried at PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_IC_Card__256K_ROM__carried.html) (Select 0.8mm pcb thickness at checkout)  
 
 BOM  
 [Parts for ROM_carried from DigiKey](https://www.digikey.com/short/zn95jj)
@@ -113,9 +113,9 @@ This PCB may be up to 1.2mm thick.
 ![](WP-2_IC_Card_ROM_no_carrier.jpg)  
 ![](PCB/WP-2_IC_Card_ROM_no_carrier.svg)  
 
-PCB (Select 0.8mm pcb thickness at checkout)  
-[PCB ROM_no_carrier at OSHPark](https://oshpark.com/shared_projects/GTC2pMRm)  
-[PCB ROM_no_carrier at PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_IC_Card_ROM_no_carrier.html)
+PCB  
+[PCB ROM_no_carrier at OSHPark](https://oshpark.com/shared_projects/GTC2pMRm) (Select 0.8mm pcb thickness at checkout)  
+[PCB ROM_no_carrier at PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_IC_Card_ROM_no_carrier.html) (Select 1.2mm pcb thickness at checkout)  
 
 BOM  
 [Parts for ROM_no_carrier at DigiKey](https://www.digikey.com/short/zn95jj)
