@@ -99,6 +99,7 @@ This PCB may be up to 0.8mm thick.
 
 PCB (Select 0.8mm pcb thickness at checkout)  
 [PCB ROM_carried at OSHPark](https://oshpark.com/shared_projects/zKWT2O4v)  
+[PCB ROM_carried at PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_IC_Card__256K_ROM__carried.html)
 
 BOM  
 [Parts for ROM_carried from DigiKey](https://www.digikey.com/short/zn95jj)
@@ -114,6 +115,7 @@ This PCB may be up to 1.2mm thick.
 
 PCB (Select 0.8mm pcb thickness at checkout)  
 [PCB ROM_no_carrier at OSHPark](https://oshpark.com/shared_projects/GTC2pMRm)  
+[PCB ROM_no_carrier at PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_IC_Card_ROM_no_carrier.html)
 
 BOM  
 [Parts for ROM_no_carrier at DigiKey](https://www.digikey.com/short/zn95jj)
@@ -129,6 +131,7 @@ Use with a standard eprom programmer such as TL-866, to write either of the ROM 
 
 PCB    
 [PCB ROM_programming_adapter at OSHPark](https://oshpark.com/shared_projects/AU1iXOKs)  
+[PCB ROM_programming_adapter at PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_IC_Card_ROM_programming_adapter.html)
 
 BOM  
 [Parts for ROM_programming_adapter from DigiKey](https://www.digikey.com/short/zn9rqn)
