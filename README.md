@@ -9,7 +9,7 @@ The large ROM card may be up to 1.2mm thick.
 
 ## Status: 2020-11-15  
 
-* <B>The RAM cards are verified working.</B>  
+<B>The RAM cards are verified working.</B>  
 There are some notes though.
 
 The only really useful RAM card is the one with the battery. RAM that dies the instant you turn the power off or RAM that dies within 10 minutes of power-off or ejecting, is not good for much. The advertisements for the original 32K RAM cards from TANDY said they were battery-backed, so, probably it doesn't make any sense to even mess with the RAM card that uses the 3d-printed carrier that only has a capacitor for a about 10 minutes of protecttion. It saves you from bumps and accidents and brief power-off, but no more.
@@ -18,7 +18,7 @@ However the current design for that card uses diodes that are SUPER TINY. They a
 
 You CAN safely buy the parts and order the pcb for this design as of now, if you are OK with that difficulty. The electrical design is at least verified correct and working.
 
-* <B>The ROM cards are NOT verified working yet.</B>  
+<B>The ROM cards are NOT verified working yet.</B>  
 The pinout between the chip and the slot looks correct, and the programming adapter looks correct, but my initial test with the programming adapter isn't working. At this point, it might actually just be a bad flash chip or a bad soldering job, or something else and the the pcb designs might actually be good, it just isn't *proven* yet.
 
 
