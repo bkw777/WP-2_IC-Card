@@ -119,12 +119,11 @@ ROM:
 Compatible Specs: FLASH, 256Kx8, 5v, Parallel, TSOP-32 (8x20mm) or sTSOP-32 (8x14mm)  
 As with the SRAM, several parts are compatible. A few example part numbers are listed in the schematic, and the BOM links include a compatible part.  
 
-Notes about the card slot pinout & signals:  
-Some places in the Owner's Manual and Service Manual do not describe the IC Card pins accurately. The schematic on page 8-2 in the Service Manual is correct about all the following points.
+Notes about some of the card slot signals:  
 
 Pin 2, /DET Card Detect: WP-2 uses to detect the type of card. The pin has a pullup to VDD inside the WP-2. A RAM card should connect this pin to GND, which tells the WP-2 that it is a RAM card. A ROM card should leave this pin not connected, which means it will be pulled high by the pullup resistor inside the WP-2, which tells the WP-2 that it is a ROM card.
 
-Pin 3, CE2, active-high chip-enable: Some places in the Service Manual claim this is an alternative chip-enable, equivalent to and inverse of /CE1. This is not true, and some other places in the service manual are correct. CE2 is not actually the inverse of /CE1 and does not actually change state. This pin is physically hardwired directly to VDD inside the WP-2. It's even a heavy trace that could be used as an alternative power source not just a signal. Since it's not actually switched, it's not the best way to enable/disable the IC. It would work, just that the IC would be enabled 100% of the time that the card was inserted and the WP-2 was powered on. These PCBs don't connect CE2.
+Pin 3, CE2, active-high chip-enable: CE2 is not actually an inverse copy of /CE1 and does not actually change state. It's wired directly to VDD inside the WP-2. It's even a heavy trace that could be used as an alternative power source not just a signal. Since it's not actually switched, it's not the best way to enable/disable the IC, even if the SRAM chip has a CE2 pin. It would work, just that the IC would be enabled 100% of the time that the card was inserted and the WP-2 was powered on. These PCBs don't connect CE2 from the WP-2. They do hardwire the CE2 pin on the SRAM chip to VMEM right on the card.
 
 Pin 15 -> RA5 -> IC5 pin 66, "S1"  
 Pin 16 -> RA5 -> IC5 pin 67, "S2"  
