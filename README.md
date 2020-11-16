@@ -92,8 +92,8 @@ The point of all that was that now the pins are taller than they would have been
 
 # Reference Material
 [WP-2 Owner & Service Manuals](https://archive.org/search.php?query=Tandy%20WP-2)  
-Card slot signals & usage: Service Manual 8-2, C-3. (other places like 4-20, 4-25 not as accurate)  
-Executable/"RUN" files: Service Manual 4-16, D-1.  
+Card slot signals & usage: Service Manual 8-2, C-3.  
+Executable "RUN" files: Service Manual 4-16, D-1.  
 
 Pin Socket Header:  
 [Original Connectors](ref/JC20-B38S-F1.pdf)  
