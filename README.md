@@ -12,14 +12,18 @@ The large ROM card may be up to 1.2mm thick.
 <B>The RAM cards are verified working.</B>  
 There are some notes though.
 
-The only really useful RAM card is the one with the battery. RAM that dies the instant you turn the power off or RAM that dies within 10 minutes of power-off or ejecting, is not good for much. The advertisements for the original 32K RAM cards from TANDY said they were battery-backed, so, probably it doesn't make any sense to even mess with the RAM card that uses the 3d-printed carrier that only has a capacitor for a about 10 minutes of protecttion. It saves you from bumps and accidents and brief power-off, but no more.
+The only really useful RAM card is the one with the battery. RAM that dies the instant you turn the power off or RAM that dies within 10 minutes of power-off or ejecting, is not good for much.
 
-However the current design for that card uses diodes that are SUPER TINY. They are ridiculous to try to solder manually. Aside from being so tiny, the even worse problem is you can't see the polarity marking on the top, so it's very annoying to hve to actually test the diodes with a meter to get the polarity and then make sure you install them the right way by just keeping an eye on them and remembering which way you set them down. I need to find a larger package diode that still has the lowest possible forward voltage.
+Supporting this opinion, the advertisements for the original 32K RAM cards from TANDY said they were battery-backed.
 
-You CAN safely buy the parts and order the pcb for this design as of now, if you are OK with that difficulty. The electrical design is at least verified correct and working.
+So, I suggest it probably doesn't make any sense to even mess with the RAM card that uses the 3d-printed carrier, because it only has a capacitor for a about 10 minutes of protection. It saves you from bumps and accidents and brief power-off, but no more. If I can't come up with a way to get a battery into that style of card, I may just remove that version of the card just to keep things simpler. Too bad because the 3d-printed carrier is nice. :/
+
+However the current design for the battery-backed card uses diodes that are SUPER TINY. They are ridiculous to try to solder manually. Not just because they are so tiny. The even worse problem is that you can't see the polarity marking on the top, even with magnification, it's just too faint. With a lot of light and magnification you can just barely sort of maybe guess which direction is right. So it's very annoying to have to actually test the diodes with a meter to get the polarity and then make sure you install them the right way by just keeping an eye on them and remembering which way you set them down. I need to find a larger package diode that still has the lowest possible forward voltage.
+
+You CAN safely buy the parts and order the pcb for this design as of now, if you are OK with dealing with those diodes. The electrical design is at least verified and working.
 
 <B>The ROM cards are NOT verified working yet.</B>  
-The pinout between the chip and the slot looks correct, and the programming adapter looks correct, but my initial test with the programming adapter isn't working. At this point, it might actually just be a bad flash chip or a bad soldering job, or something else and the the pcb designs might actually be good, it just isn't *proven* yet.
+The pinout between the chip and the slot looks correct, and the programming adapter looks correct, but my initial test with the programming adapter isn't working. At this point, it might actually just be a bad flash chip or a bad soldering job or something else, and the the pcb design might actually be good, it just isn't *proven* yet.
 
 
 
