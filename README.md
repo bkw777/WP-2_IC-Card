@@ -1,11 +1,10 @@
 # Expansion IC Card for TANDY WP-2
 
-The TANDY WP-2 has an expansion slot that accepts "IC Cards" that may be either RAM or ROM, up to 128K RAM, up to 256K ROM. Here are a few different types of cards to fit that slot. So far, one RAM and one ROM in the form of a small pcb that snaps into a 3d-printed carrier, and one RAM and one ROM in the form of a large pcb with no carrier. The large RAM card includes a battery backup.
+The TANDY WP-2 has an expansion slot that accepts "IC Cards" that may be either RAM or ROM, up to 128K RAM, up to 256K ROM. Here are two cards to fit that slot, a RAM card and a ROM card, and a programming adapter to program the ROM card. The RAM card includes a battery backup.
 
-All but the programming adapter must be thinner PCBs than the standard 1.6mm.  
-The small cards that fit in the 3d-printed carrier must be 0.8mm thick.  
-The large RAM card with the coin cell battery holder may be up to 1.0mm thick.  
-The large ROM card may be up to 1.2mm thick.  
+Both cards must be made from a thinner PCB than the standard 1.6mm.  
+The RAM card may be up to 1.0mm thick.  
+The ROM card may be up to 1.2mm thick.  
 
 ## Status: 2020-11-15  
 
@@ -29,7 +28,7 @@ This PCB may be up to 1.0mm thick.
 ![](PCB/WP-2_IC_Card_RAM.svg)  
 
 [RAM card PCB from OSHPark](https://oshpark.com/shared_projects/eNruwuT6) (Select 0.8mm pcb thickness at checkout)  
-(link to RAM PCB from PCBWAY coming...)
+(link to RAM card PCB from PCBWAY coming...)
 
 [RAM card BOM from DigiKey](https://www.digikey.com/short/zn0wrr)
 
@@ -62,7 +61,8 @@ Use with a standard eprom programmer such as TL-866, to write to the ROM card.
 
 Build notes:
 
-Make a write-enable "male jumper" for the WRITE pads on the ROM IC Cards by taking 2 of the left over 2.54mm pins and solder-bridge the two pins on the short side. Store the jumper by just sliding onto the edge of the programming adapter pcb.
+Make a "male jumper" for the WRITE pads on the ROM card by taking 2 of the left over 2.54mm pins and solder-bridge the two pins on the short side.  
+There is a pair of holes in the programming adapter to store the write-enable jumper when not in use.
 
 The center line of 1.27mm pins isn't quite tall enough to make good contact with the socket on the ROM card.  
 
