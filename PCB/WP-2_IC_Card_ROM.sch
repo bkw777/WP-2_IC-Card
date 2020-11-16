@@ -5,8 +5,8 @@ $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 1
 Title "TANDY WP-2 256K ROM IC Card"
-Date "2020-10-14"
-Rev ""
+Date "2020-11-16"
+Rev "002"
 Comp "Brian K. White - b.kenyon.w@gmail.com"
 Comment1 ""
 Comment2 ""
@@ -220,7 +220,7 @@ $EndComp
 Text Notes 7770 1580 0    50   ~ 0
 Card Detect: GND for RAM, NC for ROM
 Text Notes 7760 5080 0    50   ~ 0
-Battery Check
+Battery Voltage Check
 Text Notes 7760 5170 0    50   ~ 0
 +5v
 Text Notes 7190 1140 0    50   ~ 0
@@ -484,7 +484,7 @@ Wire Wire Line
 Entry Wire Line
 	4100 4100 4200 4200
 Text Notes 2960 1240 0    50   ~ 0
-U1/U2: SST39SF0x0 AM29F0x0 GLS29EE0x0
+U1/U2: SST39SF020A AM29F020 GLS29EE020
 $Comp
 L 0_LOCAL:SST39SF020_TSOP U1
 U 1 1 5FA8764D
@@ -702,13 +702,13 @@ sTSOP-I-32 8x14 footprint
 Text Label 7530 4840 2    50   ~ 0
 R~W
 Text Notes 7770 1680 0    50   ~ 0
-CE2 = VDD inside WP-2. Not actually inverse of ~CE1~.
+Hard trace to VDD. Not actually inverse of ~CE1~.
 Text Notes 7780 2870 0    50   ~ 0
-Manual says NC, but connects to IC5 pin 66
+IC5 pin 66
 Text Notes 7780 2970 0    50   ~ 0
-Manual says NC, but connects to IC5 pin 67
+IC5 pin 67
 Text Notes 7760 4970 0    50   ~ 0
-Manual says NC, but connects to IC5 pin 68
+IC5 pin 68
 Entry Wire Line
 	7030 4740 7130 4840
 $Comp
@@ -749,53 +749,10 @@ If the NC pins (15, 16, 36) were really NC inside the WP-2, then it would be pos
 NoConn ~ 7530 1540
 NoConn ~ 7530 1640
 NoConn ~ 7530 5040
-Entry Wire Line
-	2000 3800 2100 3900
-Text Label 2310 3900 2    50   ~ 0
-A18
-Wire Wire Line
-	2100 3900 2310 3900
-Entry Wire Line
-	4100 3800 4200 3900
-Text Label 4410 3900 2    50   ~ 0
-A18
-Wire Wire Line
-	4200 3900 4410 3900
+NoConn ~ 2310 3900
+NoConn ~ 4410 3900
 Wire Bus Line
-	4100 5200 4700 5200
-Connection ~ 4700 5200
-Wire Bus Line
-	4700 5200 5900 5200
-Entry Wire Line
-	4700 5500 4800 5600
-$Comp
-L 0_LOCAL:Net-Tie_2 NT1
-U 1 1 5FA75A2A
-P 5100 5600
-F 0 "NT1" H 5100 5650 50  0000 C CNN
-F 1 "Net-Tie_2" H 5040 5550 50  0000 C CNN
-F 2 "0_LOCAL:Net_Tie_2p_8mil" H 5100 5600 50  0001 C CNN
-F 3 "~" H 5100 5600 50  0001 C CNN
-	1    5100 5600
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	4800 5600 5000 5600
-Wire Bus Line
-	4700 5200 4700 5500
-Text Label 4800 5600 0    50   ~ 0
-A18
-$Comp
-L power:GND #PWR0105
-U 1 1 5FAA23EE
-P 5200 5600
-F 0 "#PWR0105" H 5200 5350 50  0001 C CNN
-F 1 "GND" V 5200 5480 50  0000 R CNN
-F 2 "" H 5200 5600 50  0001 C CNN
-F 3 "" H 5200 5600 50  0001 C CNN
-	1    5200 5600
-	0    -1   -1   0   
-$EndComp
+	4100 5200 5900 5200
 Wire Bus Line
 	2910 5200 2910 5600
 Wire Bus Line

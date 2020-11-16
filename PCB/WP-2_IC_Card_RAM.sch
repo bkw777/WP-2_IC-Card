@@ -389,7 +389,7 @@ $EndComp
 Text Notes 7770 1580 0    50   ~ 0
 Card Detect: GND for RAM, NC for ROM
 Text Notes 7770 5080 0    50   ~ 0
-Battery Check
+Battery Voltage Check
 Text Notes 7770 5180 0    50   ~ 0
 +5v
 Wire Wire Line
@@ -817,8 +817,6 @@ F 3 "~" H 5390 5500 50  0001 C CNN
 	1    5390 5500
 	1    0    0    -1  
 $EndComp
-Text Notes 7770 1680 0    50   ~ 0
-CE2 = VDD inside WP-2. Not actually inverse of ~CE1~.
 Text Notes 7780 3080 0    50   ~ 0
 A17 only for ROM
 $Comp
@@ -911,21 +909,21 @@ Text Notes 6590 6080 0    50   ~ 0
 Note 2: If neither C1 nor BT1 are installed, then R2 may be omitted.
 Text Notes 880  6160 0    50   ~ 0
 10 minutes memory power from capacitor.
-Text Notes 910  7010 0    50   ~ 0
-10-20 years memory power from battery.
-Text Notes 6590 6200 0    50   ~ 0
-Note 3: IC5 is a gate array with unknown programming.
+Text Notes 1070 7010 0    50   ~ 0
+10 years memory power from battery.
 Text Notes 5540 5840 0    50   ~ 0
 (Note 2)
 Text Notes 7770 4980 0    50   ~ 0
-Manual says NC, but connects to IC5 pin 68 (Note 3)
+IC5 pin 68
 Text Notes 7770 2980 0    50   ~ 0
-Manual says NC, but connects to IC5 pin 67 (Note 3)
+IC5 pin 67
 Text Notes 7770 2880 0    50   ~ 0
-Manual says NC, but connects to IC5 pin 66 (Note 3)
+IC5 pin 66
 NoConn ~ 7530 1640
 NoConn ~ 7530 3040
 NoConn ~ 7530 5040
+Text Notes 7770 1680 0    50   ~ 0
+CE2 hard trace to VDD. Not actually inverse of ~CE1~.
 Wire Bus Line
 	5000 5200 5000 5800
 Wire Bus Line
