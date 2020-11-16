@@ -41,7 +41,7 @@ This PCB may be up to 1.2mm thick.
 ![](WP-2_IC_Card_ROM.jpg)  
 ![](PCB/WP-2_IC_Card_ROM.svg)  
 
-[ROM card PCB from OSHPark](https://oshpark.com/shared_projects/GTC2pMRm) (Select 0.8mm PCB thickness at checkout)  
+[ROM card PCB from OSHPark](https://oshpark.com/shared_projects/a1B99MTF) (Select 0.8mm PCB thickness at checkout)  
 [ROM card PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_ROM_IC_Card.html) (Select 1.2mm PCB thickness at checkout)  
 
 [ROM card BOM from DigiKey](https://www.digikey.com/short/zn95jj)
@@ -54,7 +54,7 @@ Use with a standard eprom programmer such as TL-866, to write to the ROM card.
 ![](WP-2_IC_Card_ROM_programming_adapter_2.jpg)  
 ![](PCB/WP-2_IC_Card_ROM_programming_adapter.svg)  
 
-[ROM Card programming adapter PCB from OSHPark](https://oshpark.com/shared_projects/AU1iXOKs)  
+[ROM Card programming adapter PCB from OSHPark](https://oshpark.com/shared_projects/cvuI02x3)  
 [ROM Card programming adapter PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_IC_Card_ROM_programming_adapter.html)
 
 [ROM Card programming adapter BOM from DigiKey](https://www.digikey.com/short/zn9rqn)
