@@ -126,22 +126,18 @@ Pin 2, /DET Card Detect: WP-2 uses to detect the type of card. The pin has a pul
 
 Pin 3, CE2, active-high chip-enable: Some places in the Service Manual claim this is an alternative chip-enable, equivalent to and inverse of /CE1. This is not true, and some other places in the service manual are correct. CE2 is not actually the inverse of /CE1 and does not actually change state. This pin is physically hardwired directly to VDD inside the WP-2. It's even a heavy trace that could be used as an alternative power source not just a signal. Since it's not actually switched, it's not the best way to enable/disable the IC. It would work, just that the IC would be enabled 100% of the time that the card was inserted and the WP-2 was powered on. These PCBs don't connect CE2.
 
-Pins 15, 16, 36: Some places in the service manual say these pins are all NC, but they all actually connect to RA5 and IC5.  
+Pin 15 -> RA5 -> IC5 pin 66, "S1"  
+Pin 16 -> RA5 -> IC5 pin 67, "S2"  
+Pin 36 -> RA5 -> IC5 pin 68, "S3"  
 
-Pin 15 -> RA5 -> IC5 pin 66, "S1" on IC5 on the schematic.  
-Pin 16 -> RA5 -> IC5 pin 67, "S2" on IC5 on the schematic.  
-Pin 15 -> RA5 -> IC5 pin 68, "S3" on IC5 on the schematic.  
-
-RA5 is 5 x 100k pullup resistors to VDD.  
+RA5 is 100k pullup to VDD.  
 IC5 is a gate array with unknown programming.  
 
-It's possible that the programming inside the gate array does not connect these pins to anything. But since the pins are physically connected to both the pullup resistors and the IC, it means the pins are not actually available for another use the way they would be if they were actually NC.  
-
-If the pins were really NC, then we could have used pins 15 and 16 as an automatic write-enable jumper built in to the programming adapter. The programing adapter would have a trace connecting pins 15 and 16, and the ROM card would pass the R/W line out pin 15 and connect pin 16 to the the flash chip's /WE pin. Then we wouldn't need the janky write-enable jumper. But we better not. :/
+The service manual says these pins (15, 16, 36) are NC in the original IC Cards.
 
 Pin 17, A17: Only used for ROM. RAM may only go up to 128K. ROM may go to 256K. The RAM card does not connect A17. The ROM card does.
 
-Pin 37, BCHK/Vchk, Battery Voltage Check: Unknown usage. The schematic on service manual page 8-2 doesn't show Vchk connecting to anything else. I also cannot find anything anywhere on the board that connects to the pin. I probed all over the board and could not find continuity anywhere, but I couldn't see both sides of the pcb and so could not say for sure that the pin isn't connected to anything. These PCBs don't connect Vchk.  
+Pin 37, BCHK/Vchk, Battery Voltage Check: Unknown usage. The schematic on service manual page 8-2 doesn't show Vchk connecting to anything else. I also cannot find anything anywhere on the board that connects to the pin. I probed all over the board and could not find continuity anywhere. These PCBs don't connect Vchk.  
 
 # TODO
 CamelFORTH on ROM?  
