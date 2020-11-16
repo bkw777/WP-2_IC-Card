@@ -1,0 +1,81 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP 62-65C1024_SOP32
+D 512K x 8 HIGH-SPEED CMOS STATIC RAM, 25ns, SOP-32
+K SRAM MEMORY
+F http://www.issi.com/WW/pdf/61-64C5128AL.pdf
+$ENDCMP
+#
+$CMP 62-65C1024_TSOP-I-32
+D 512K x 8 HIGH-SPEED CMOS STATIC RAM, 25ns, SOP-32
+K SRAM MEMORY
+F http://www.issi.com/WW/pdf/61-64C5128AL.pdf
+$ENDCMP
+#
+$CMP A_32-LC-TT
+D CONN IC DIP SOCKET 32POS TIN
+K AE10354-ND
+F http://www.assmann-wsw.com/fileadmin/datasheets/ASS_0810_CO.pdf
+$ENDCMP
+#
+$CMP CP1_Small
+D Polarized capacitor, small US symbol
+K cap capacitor
+F ~
+$ENDCMP
+#
+$CMP Conn_01x38_Female
+D Generic connector, single row, 01x38, script generated (kicad-library-utils/schlib/autogen/connector/)
+K connector
+F ~
+$ENDCMP
+#
+$CMP Conn_01x38_Male
+D Generic connector, single row, 01x38, script generated (kicad-library-utils/schlib/autogen/connector/)
+K connector
+F ~
+$ENDCMP
+#
+$CMP Conn_02x16_Counter_Clockwise
+D Generic connector, double row, 02x16, counter clockwise pin numbering scheme (similar to DIP packge numbering), script generated (kicad-library-utils/schlib/autogen/connector/)
+K connector
+F ~
+$ENDCMP
+#
+$CMP D_Schottky_Small_ALT
+D Schottky diode, small symbol, filled shape
+K diode Schottky
+F ~
+$ENDCMP
+#
+$CMP Jumper_NO_Small
+D Jumper, normally open, small symbol
+K jumper link bridge NO
+F ~
+$ENDCMP
+#
+$CMP Net-Tie_2
+D Net tie, 2 pins
+K net tie short
+F ~
+$ENDCMP
+#
+$CMP R
+D Resistor
+K R res resistor
+F ~
+$ENDCMP
+#
+$CMP SST39SF020
+D Silicon Storage Technology (SSF) 256k x 8 Flash ROM
+K 256k flash rom
+F http://ww1.microchip.com/downloads/en/DeviceDoc/25022B.pdf
+$ENDCMP
+#
+$CMP SST39SF020_TSOP
+D Silicon Storage Technology (SSF) 256k x 8 Flash ROM
+K 256k flash rom
+F http://ww1.microchip.com/downloads/en/DeviceDoc/25022B.pdf
+$ENDCMP
+#
+#End Doc Library
