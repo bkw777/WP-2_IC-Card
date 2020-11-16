@@ -7,13 +7,21 @@ The small cards that fit in the 3d-printed carrier must be 0.8mm thick.
 The large RAM card with the coin cell battery holder may be up to 1.0mm thick.  
 The large ROM card may be up to 1.2mm thick.  
 
-## Status: 2020-11-13  
-Testing is almost done but not complete yet.  
-Current designs delivered, in hand, just not built or tested yet.  
-STILL JUST FOR REFERENCE AT THIS TIME  
-I do not recommend ordering any of the PCBs until this notice is removed.
+## Status: 2020-11-15  
 
-An earlier simpler RAM version has been tested and verified. The basic circuit works and the concept & operation proven, and all physical/mechanical aspects of the carrier and pcb outline and pin header are settled. What has not yet been tested are the ROM cards, ROM card programming adapter, and the capacitor and battery and diodes add-ons to the RAM cards.
+* <B>The RAM cards are verified working.</B>  
+There are some notes though.
+
+The only really useful RAM card is the one with the battery. RAM that dies the instant you turn the power off or RAM that dies within 10 minutes of power-off or ejecting, is not good for much. The advertisements for the original 32K RAM cards from TANDY said they were battery-backed, so, probably it doesn't make any sense to even mess with the RAM card that uses the 3d-printed carrier that only has a capacitor for a about 10 minutes of protecttion. It saves you from bumps and accidents and brief power-off, but no more.
+
+However the current design for that card uses diodes that are SUPER TINY. They are ridiculous to try to solder manually. Aside from being so tiny, the even worse problem is you can't see the polarity marking on the top, so it's very annoying to hve to actually test the diodes with a meter to get the polarity and then make sure you install them the right way by just keeping an eye on them and remembering which way you set them down. I need to find a larger package diode that still has the lowest possible forward voltage.
+
+You CAN safely buy the parts and order the pcb for this design as of now, if you are OK with that difficulty. The electrical design is at least verified correct and working.
+
+* <B>The ROM cards are NOT verified working yet.</B>  
+The pinout between the chip and the slot looks correct, and the programming adapter looks correct, but my initial test with the programming adapter isn't working. At this point, it might actually just be a bad flash chip or a bad soldering job, or something else and the the pcb designs might actually be good, it just isn't *proven* yet.
+
+
 
 ## RAM CARDS
 
@@ -138,7 +146,17 @@ BOM
 
 Make a write-enable jumper for the WRITE pads on the ROM IC Cards by taking 2 of the left over 2.54mm pins and solder-bridging the two pins on one side. Pinch the pins together a little to make the fit stiff when plugged into the WRITE holes on the card.
 
+The center line of 1.27mm pins isn't quite tall enough to make good contact with the socket on the ROM card.  
+Make the center pins taller this way:  
+Start with the pcb you want to solder, and the pin header, and insert the pins into the top of the pcb, as expected, don't solder yet.  
+Take one of the extra pcbs (you get 3 to 5 copies of the pcb depending on who you ordered the pcb from) and slide it onto the pins, all the way down to the insulator.  
+Now you have a sandwich with two pcbs, and the pin header insulator in between.  
+Flip the stack over so that you are looking at the bottom of the main pcb, and the bottom legs of the pins are facing up as though you were about to solder them.  
+Take a small hard flat tool like the joined end of a set of tweezers or a spudger stick tool or something, lay the end of the tool flat/sideways on the ends of a few pins, and drive a few of the pins straight in, right down flush with the surface of the pcb. Support the stack by just holding on to the extra pcb, now positioned on the bottom of the stack while it's flipped upside down, and push directly on the end of the pins. The extra pcb holds the pin header insulator in place and lets you drive the pin through the insulator, until the tool hits the surface of the main pcb (the one you will be soldering). Do this for all the pins untill all the pins are pushed through and the tips of the pins are flush with the surface of the main pcb.  
+Now apply flux to the pins and solder them. Just put solder on the iron and touch it to the pads, and let the flux bring the solder down into the via, leaving a little round dome.  
+After all pins are soldered, slide the extra pcb off the pins. pull from both ends of the pcb at the same time to avoid tilting and binding and bending the pins on the way off. It really wants to do that.  
 
+The point of all that was that now the center line of pins is taller than they would have been and it's now tall enough to make good contact with the socket on the card.  
 
 # Reference Material
 [WP-2 Owner & Service Manuals](https://archive.org/search.php?query=Tandy%20WP-2)  
@@ -204,4 +222,3 @@ Document how to select the right options in JLCPCB
 Format the battery-backed SRAM version, save a few files on it, then use a temporary manually wired programming adapter (NOT the programming adapter for the ROM board), and use a programmer to dump the contents of the SRAM to examine how the WP-2 uses the RAM.  
 
 Add a 5v power output to power a [MounT](https://github.com/bkw777/MounT) ?
-
