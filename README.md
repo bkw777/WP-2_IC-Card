@@ -49,7 +49,7 @@ This PCB may be up to 1.2mm thick.
 
 
 ## ROM Programming Adapter
-Use with a standard eprom programmer such as TL-866, to write either of the ROM cards.
+Use with a standard eprom programmer such as TL-866, to write to the ROM card.
 
 ![](WP-2_IC_Card_ROM_programming_adapter.jpg)  
 ![](WP-2_IC_Card_ROM_programming_adapter_2.jpg)  
