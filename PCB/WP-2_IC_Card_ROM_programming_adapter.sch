@@ -459,6 +459,8 @@ Text Label 4680 4000 2    50   ~ 0
 A3
 Text Notes 4080 2730 0    50   ~ 0
 SST39SF020 / AM29F020 / GLS29EE020\n\nTSOP to DIL pin headers for programmer ZIF socket\n\nSame pinout as the DIP/SOIC version of the IC.
+NoConn ~ 7500 2340
+NoConn ~ 7500 2440
 Wire Bus Line
 	4370 3100 4370 6000
 Wire Bus Line
