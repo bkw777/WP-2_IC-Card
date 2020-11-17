@@ -6,19 +6,6 @@ Both cards must be made from a thinner PCB than the standard 1.6mm.
 The RAM card may be up to 1.0mm thick.  
 The ROM card may be up to 1.2mm thick.  
 
-## Status: 2020-11-15  
-
-<B>The RAM card is verified working.</B>  
-
-However the current design uses diodes that are SUPER TINY. They are ridiculous to try to solder manually. Not just because they are so tiny. The even worse problem is that you can't see the polarity marking on the top, even with magnification, it's just too faint. With a lot of light and magnification you can just barely sort of maybe guess which direction is right. You have to actually test them with a meter. I need to find a larger package diode that still has the lowest possible forward voltage.
-
-You CAN safely buy the parts and order the pcb for this design as of now, if you are OK with dealing with those diodes. The electrical design is at least verified and working.
-
-<B>The ROM card is NOT verified working yet.</B>  
-The ROM card may actually be ok but there was an error in the programming adapter.  
-The current files are updated and the new programming adapter is on the way, but it's not proven yet.  
-
-
 ## RAM CARD  
 
 Requires a thinner PCB than normal.  
@@ -139,6 +126,11 @@ Pin 17, A17: Only used for ROM. RAM may only go up to 128K. ROM may go to 256K. 
 Pin 37, BCHK/Vchk, Battery Voltage Check: Unknown usage. The schematic on service manual page 8-2 doesn't show Vchk connecting to anything else. I also cannot find anything anywhere on the board that connects to the pin. I probed all over the board and could not find continuity anywhere. These PCBs don't connect Vchk.  
 
 # TODO
+
+The diodes on the RAM card are too tiny and the polarity marking too faint for DIY hand soldering. Need to find something in a larger package yet still have the lowest possible forward voltage.
+
+The capacitor for the RAM card is out of production. Need to pick something else.
+
 CamelFORTH on ROM?  
 But how to construct rom image? Same as RAM (which requires formatting and is a filesystem with multiple files and names and metadata like a disk)? Or raw executable written starting a 0x0000?
 
