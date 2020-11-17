@@ -54,7 +54,7 @@ Use with a standard eprom programmer such as TL-866, to write to the ROM card.
 ![](WP-2_IC_Card_ROM_programming_adapter_2.jpg)  
 ![](PCB/WP-2_IC_Card_ROM_programming_adapter.svg)  
 
-[ROM Card programming adapter PCB from OSHPark](https://oshpark.com/shared_projects/mPv5TGwu)  
+[ROM Card programming adapter PCB from OSHPark](https://oshpark.com/shared_projects/r3IEDyuR)  
 [ROM Card programming adapter PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_IC_Card_ROM_programming_adapter.html)
 
 [ROM Card programming adapter BOM from DigiKey](https://www.digikey.com/short/zn9rqn)
