@@ -15,8 +15,8 @@ However the current design uses diodes that are SUPER TINY. They are ridiculous 
 You CAN safely buy the parts and order the pcb for this design as of now, if you are OK with dealing with those diodes. The electrical design is at least verified and working.
 
 <B>The ROM card is NOT verified working yet.</B>  
-The pinout between the chip and the slot looks correct, and the programming adapter looks correct, but my initial test with the programming adapter isn't working. At this point, it might actually just be a bad flash chip or a bad soldering job or something else, and the the pcb design might actually be good, it just isn't *proven* yet.
-
+The ROM card may actually be ok but there was an error in the programming adapter.  
+The current files are updated and the new programming adapter is on the way, but it's not proven yet.  
 
 
 ## RAM CARD  
@@ -54,7 +54,7 @@ Use with a standard eprom programmer such as TL-866, to write to the ROM card.
 ![](WP-2_IC_Card_ROM_programming_adapter_2.jpg)  
 ![](PCB/WP-2_IC_Card_ROM_programming_adapter.svg)  
 
-[ROM Card programming adapter PCB from OSHPark](https://oshpark.com/shared_projects/cvuI02x3)  
+[ROM Card programming adapter PCB from OSHPark](https://oshpark.com/shared_projects/mPv5TGwu)  
 [ROM Card programming adapter PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_IC_Card_ROM_programming_adapter.html)
 
 [ROM Card programming adapter BOM from DigiKey](https://www.digikey.com/short/zn9rqn)
