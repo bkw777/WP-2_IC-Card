@@ -14,10 +14,10 @@ This PCB may be up to 1.0mm thick.
 ![](WP-2_IC_Card_RAM.jpg)  
 ![](PCB/WP-2_IC_Card_RAM.svg)  
 
-[RAM card PCB from OSHPark](https://oshpark.com/shared_projects/eNruwuT6) (Select 0.8mm PCB thickness at checkout)  
+[RAM card PCB from OSHPark](https://oshpark.com/shared_projects/LdAeRCcV) (Select 0.8mm PCB thickness at checkout)  
 [RAM card PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_RAM_IC_Card.html) (Select 1.0mm PCB thickness at checkout)
 
-[RAM card BOM from DigiKey](https://www.digikey.com/short/zn0wrr)
+[RAM card BOM from DigiKey](https://www.digikey.com/short/z0bfvq)
 
 
 ## ROM CARD
@@ -82,7 +82,7 @@ The point of all that was that now the pins are taller than they would have been
 Card slot signals & usage: Service Manual 8-2, C-3.  
 Executable "RUN" files: Service Manual 4-16, D-1.  
 
-Pin Socket Header:  
+### Pin Socket Header:  
 [Original Connectors](ref/JC20-B38S-F1.pdf)  
 Datasheet for both the slot in the computer and the connector in the card.  
 
@@ -96,13 +96,13 @@ SAMTEC 8.5mm Pin Socket
 
 There are less expensive generic female 1.27mm pitch pin headers on ebay and aliexpress etc, but they don't work for this. Sorry :/
 
-RAM:  
+### RAM:  
 Compatible Specs: SRAM, 128Kx8, 5v, Parallel, TSOP-32 (8x20mm) or sTSOP-32 (8x14mm)  
 Several parts are compatible. Several examples are listed in the schematic, and the BOM links include a compatibe part.  Here are some pre-loaded searches:  
 [DigiKey](https://www.digikey.com/short/zw38nv)  
 [Mouser](https://mou.sr/2GcUWHl) (many of the pictures are wrong, so ignore the pictures)  
 
-ROM:  
+### ROM:  
 Compatible Specs: FLASH, 256Kx8, 5v, Parallel, TSOP-32 (8x20mm) or sTSOP-32 (8x14mm)  
 As with the SRAM, several parts are compatible. A few example part numbers are listed in the schematic, and the BOM links include a compatible part.  
 
@@ -125,19 +125,16 @@ Pin 17, A17: Only used for ROM. RAM may only go up to 128K. ROM may go to 256K. 
 
 Pin 37, BCHK/Vchk, Battery Voltage Check: Unknown usage. The schematic on service manual page 8-2 doesn't show Vchk connecting to anything else. I also cannot find anything anywhere on the board that connects to the pin. I probed all over the board and could not find continuity anywhere. These PCBs don't connect Vchk.  
 
+### MISC Notes:  
+You can read the RAM card with the ROM card programming adapter by just telling the programmer to ignore the chip ID and read a SST39SF020A (or any other part with the same standard parallel async pinout, AT29F020, GLS29EE020, etc). You can only read, not write this way.  
+Example for TL-866 using "minipro" util:  `minipro -y -p SST39SF020A -r ram.bin`
+
 # TODO
-
-The diodes on the RAM card are too tiny and the polarity marking too faint for DIY hand soldering. Need to find something in a larger package yet still have the lowest possible forward voltage.
-
-The capacitor for the RAM card is out of production. Need to pick something else.
-
 CamelFORTH on ROM?  
-But how to construct rom image? Same as RAM (which requires formatting and is a filesystem with multiple files and names and metadata like a disk)? Or raw executable written starting a 0x0000?
+But how to construct rom image? Same as RAM?
 
-Document how to export gerbers for JLCPCB  
+Document how to export gerbers for JLCPCB/PCBWAY/etc  
 
-Document how to select the right options in JLCPCB  
-
-Format the battery-backed SRAM version, save a few files on it, then use a temporary manually wired programming adapter (NOT the programming adapter for the ROM board), and use a programmer to dump the contents of the SRAM to examine how the WP-2 uses the RAM. If nothing else, perhaps it's possible to make a rom card that just looks like an ordinary ram filesystem with CamelFORTH or huge spellcheck & thesaurus dictionaries on it?  
+Document how to select the right options in JLCPCB/PCBWAY/etc  
 
 Add a 5v power output to power a [MounT](https://github.com/bkw777/MounT) ?
