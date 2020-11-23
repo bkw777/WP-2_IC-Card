@@ -125,9 +125,9 @@ Pin 17, A17: Only used for ROM. RAM may only go up to 128K. ROM may go to 256K. 
 
 Pin 37, BCHK/Vchk, Battery Voltage Check: Unknown usage. The schematic on service manual page 8-2 doesn't show Vchk connecting to anything else. I also cannot find anything anywhere on the board that connects to the pin. I probed all over the board and could not find continuity anywhere. These PCBs don't connect Vchk.  
 
-### MISC Notes:  
-You can read the RAM card with the ROM card programming adapter by just telling the programmer to ignore the chip ID and read a SST39SF020A (or any other part with the same standard parallel async pinout, AT29F020, GLS29EE020, etc). You can only read, not write this way.  
-Example for TL-866 using "minipro" util:  `minipro -y -p SST39SF020A -r ram.bin`
+### Reading the RAM card:  
+You can also read the RAM card with the ROM card programming adapter by just telling the programmer to ignore the chip ID and assume the device is a SST39SF010A. (128K version of the family of flash chip on the ROM card.) The ROM card has a 256K 29F020-compatible chip, and presents a 29F020 pinout on the DIP pins to the programmer. The RAM card has a 128K SRAM. So to read the RAM card just pretend it's a 128K version of 29F020, which is 29F010. Specifically an actual part number would be "SST39SF010A". You can only read, NOT write.
+Example for a TL-866 programmer using the "minipro" util:  `minipro -x -p SST39SF010A -r ram.bin`
 
 # TODO
 CamelFORTH on ROM?  
