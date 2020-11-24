@@ -26,8 +26,6 @@ F 3 "~" H 7730 3240 50  0001 C CNN
 $EndComp
 Text Label 7530 1540 2    50   ~ 0
 ~DET
-Text Label 7530 1640 2    50   ~ 0
-CE2
 Text Label 7530 1740 2    50   ~ 0
 ~CE1
 Text Label 7530 1840 2    50   ~ 0
@@ -85,8 +83,6 @@ A1
 Text Label 7530 4740 2    50   ~ 0
 A0
 NoConn ~ 7530 4940
-Text Label 7530 5040 2    50   ~ 0
-BCHK
 Entry Wire Line
 	7030 1640 7130 1740
 Wire Wire Line
@@ -220,7 +216,7 @@ $EndComp
 Text Notes 7770 1580 0    50   ~ 0
 Card Detect: GND for RAM, NC for ROM
 Text Notes 7760 5080 0    50   ~ 0
-Battery Voltage Check
+Battery Voltage Check - NC in WP-2
 Text Notes 7760 5170 0    50   ~ 0
 +5v
 Text Notes 7190 1140 0    50   ~ 0
@@ -702,13 +698,13 @@ sTSOP-I-32 8x14 footprint
 Text Label 7530 4840 2    50   ~ 0
 R~W
 Text Notes 7770 1680 0    50   ~ 0
-Hard trace to VDD. Not actually inverse of ~CE1~.
+Hard trace to VDD.
 Text Notes 7780 2870 0    50   ~ 0
-IC5 pin 66
+IC5_66
 Text Notes 7780 2970 0    50   ~ 0
-IC5 pin 67
+IC5_67
 Text Notes 7760 4970 0    50   ~ 0
-IC5 pin 68
+IC5_68
 Entry Wire Line
 	7030 4740 7130 4840
 $Comp
@@ -717,7 +713,7 @@ U 1 1 5F96166C
 P 3360 5700
 F 0 "JP1" H 3360 5760 50  0000 C CNN
 F 1 "Write-Enable" H 3360 5640 50  0000 C CNN
-F 2 "0_LOCAL:JP2" H 3360 5700 50  0001 C CNN
+F 2 "0_LOCAL:JP2_tight" H 3360 5700 50  0001 C CNN
 F 3 "~" H 3360 5700 50  0001 C CNN
 	1    3360 5700
 	1    0    0    -1  
@@ -744,8 +740,6 @@ Wire Wire Line
 	3630 5500 3680 5500
 Wire Wire Line
 	7530 4840 7130 4840
-Text Notes 1060 7570 0    50   ~ 0
-If the NC pins (15, 16, 36) were really NC inside the WP-2, then it would be possible to eliminate the write-enable JP1\nby connecting R~W~ to ~WE~ through pins 15 & 16, and have the programming adapter short 15 to 16 with a trace.\n\nBut 15, 16, & 36 all actually have traces going to RA5 and IC5, and IC5 is a gate-array with unknown programming.
 NoConn ~ 7530 1540
 NoConn ~ 7530 1640
 NoConn ~ 7530 5040
@@ -753,6 +747,16 @@ NoConn ~ 2310 3900
 NoConn ~ 4410 3900
 Wire Bus Line
 	4100 5200 5900 5200
+Text Notes 7530 1640 2    50   ~ 0
+CE2
+Text Notes 7530 5040 2    50   ~ 0
+BCHK
+Text Notes 7530 4940 2    50   ~ 0
+S3
+Text Notes 7530 2940 2    50   ~ 0
+S2
+Text Notes 7530 2840 2    50   ~ 0
+S1
 Wire Bus Line
 	2910 5200 2910 5600
 Wire Bus Line

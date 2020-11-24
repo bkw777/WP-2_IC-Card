@@ -5,7 +5,7 @@ $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 1
 Title "TANDY WP-2 128K RAM IC Card"
-Date "2020-11-18"
+Date "2020-11-23"
 Rev "002"
 Comp "Brian K. White - b.kenyon.w@gmail.com"
 Comment1 ""
@@ -85,8 +85,6 @@ A0
 Text Label 7530 4840 2    50   ~ 0
 R~W
 NoConn ~ 7530 4940
-Text Label 7530 5040 2    50   ~ 0
-BCHK
 $Comp
 L 0_LOCAL:62-65C1024_TSOP-I-32 U1
 U 1 1 5F718069
@@ -389,7 +387,7 @@ $EndComp
 Text Notes 7770 1580 0    50   ~ 0
 Card Detect: GND for RAM, NC for ROM
 Text Notes 7770 5080 0    50   ~ 0
-Battery Voltage Check
+Battery Voltage Check - NC in WP-2
 Text Notes 7770 5180 0    50   ~ 0
 +5v
 Wire Wire Line
@@ -818,7 +816,7 @@ F 3 "~" H 5390 5500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text Notes 7780 3080 0    50   ~ 0
-A17 only for ROM
+Only for ROM
 $Comp
 L Device:Battery_Cell BT1
 U 1 1 5F8E356D
@@ -886,16 +884,22 @@ Text Notes 2260 6340 0    50   ~ 0
 Text Notes 2390 7120 0    50   ~ 0
 10 years memory power from battery.
 Text Notes 7770 4980 0    50   ~ 0
-IC5 pin 68
+IC5_68
 Text Notes 7770 2980 0    50   ~ 0
-IC5 pin 67
+IC5_67
 Text Notes 7770 2880 0    50   ~ 0
-IC5 pin 66
+IC5_66
 NoConn ~ 7530 1640
 NoConn ~ 7530 3040
 NoConn ~ 7530 5040
 Text Notes 7770 1680 0    50   ~ 0
-CE2: Hard trace to VDD. Not actually inverse of ~CE1~.
+Hard trace to VDD
+Text Notes 7530 3040 2    50   ~ 0
+A17
+Text Notes 7530 2840 2    50   ~ 0
+S1
+Text Notes 7530 2940 2    50   ~ 0
+S2
 Wire Bus Line
 	5000 5200 5000 5800
 Wire Bus Line
@@ -908,4 +912,10 @@ Wire Bus Line
 	2000 2000 2000 5200
 Wire Bus Line
 	7030 1540 7030 5200
+Text Notes 7530 4940 2    50   ~ 0
+S3
+Text Notes 7530 5040 2    50   ~ 0
+BCHK
+Text Notes 7530 1640 2    50   ~ 0
+CE2
 $EndSCHEMATC
