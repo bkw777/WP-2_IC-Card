@@ -136,7 +136,7 @@ The ROM card has a 256K 29F020-compatible chip, and the programming adapter pres
 
 So to read the RAM card just pretend it's a 128K version of 29F020, which is 29F010. Specifically an actual part number would be "SST39SF010A".   You can only read, NOT write. 
 Example for a TL-866 programmer using the "minipro" util, read the ram card and save a copy to a file named ram.bin:
-    minipro -x -p SST39SF010A -r ram.bin
+`minipro -x -p SST39SF010A -r ram.bin`
 
 # TODO
 CamelFORTH on ROM?  
