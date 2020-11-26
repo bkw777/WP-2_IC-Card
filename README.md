@@ -44,42 +44,12 @@ Use with a standard eprom programmer such as TL-866, to write to the ROM card.
 [ROM Card programming adapter PCB from OSHPark](https://oshpark.com/shared_projects/tvMoYMrG)  
 [ROM Card programming adapter PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_IC_Card_ROM_programming_adapter.html)
 
-[ROM Card programming adapter BOM from DigiKey](https://www.digikey.com/short/zn9rqn)
+[ROM Card programming adapter BOM from DigiKey](https://www.digikey.com/short/zv3j4c)
 
-Build notes:
-
-Make a "male jumper" for the WRITE ENABLE pads on the ROM card by taking 2 of the left over 2.54mm pins and solder-bridge the two pins on the short side.  
-There is a pair of holes in the programming adapter to store the write-enable jumper when not in use.  
-
-The center line of 1.27mm pins isn't quite tall enough to make good contact with the socket on the ROM card.  
-
-Make the center pins taller this way:  
-
-Take 2 programming adapter PCBs, one you will solder, one you will use as a jig.
-
-Start with the pcb you want to solder, and the pin header, and insert the pins into the top of the pcb.  
-
-Take the 2nd pcb and slide it onto the pins, all the way down to the insulator.  
-
-Now you have a sandwich with two pcbs, and the pin header insulator in between.  
-
-Flip the stack over so that you are looking at the bottom of the 1st pcb, and the bottom legs of the pins are facing up as though you were about to solder them.  
-
-Support the 2nd pcb from the back and take a small hard flat tool like the joined end of a set of tweezers or a spudger stick or something, lay the end of the tool flat on the ends of a few pins, and press the pins straight in, right down flush with the surface of the pcb.
-
-The 2nd pcb holds the pin header insulator in place and lets you drive the pins through the insulator, until the tool hits the surface of the 1st pcb.
-
-Do this for all the pins untill all the pins are pushed through and the tips of the pins are flush with the surface of the pcb.  
-
-Now apply flux to the pads and solder them. Just put solder on the iron and touch it to the pads, and let the flux bring the solder down into the via, leaving a little round dome.  
-
-After all pins are soldered, slide the loose pcb off the pins.
-
-The point of all that was that now the pins are taller than they would have been and they're now tall enough to make good contact with the socket on the card.  
-
-Another option is, solder the pins normally without the above procedure, and then remove the insulator strip after the pins are soldered.
-
-The 2 rows of DIP pins on the outside edges do not need any special treatment.
+In addition to soldering the pins to the PCB, also make a male jumper for the write-enable holes.  
+Take 2 of the left over large size pins and solder-bridge the two pins on one side.  
+There is a spot to store the jumper on the programming adapter when not in use.  
+To program the ROM card, insert the jumper into the write-enable holes on the ROM card.
 
 # Reference Material
 [WP-2 Owner & Service Manuals](https://archive.org/search.php?query=Tandy%20WP-2)  
