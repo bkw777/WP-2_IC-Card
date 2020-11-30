@@ -14,7 +14,7 @@ This PCB may be up to 1.0mm thick.
 ![](WP-2_IC_Card_RAM.jpg)  
 ![](PCB/WP-2_IC_Card_RAM.svg)  
 
-[RAM card PCB from OSHPark](https://oshpark.com/shared_projects/9GL8sgML) (Select 0.8mm PCB thickness at checkout)  
+[RAM card PCB from OSHPark](https://oshpark.com/shared_projects/fk7paiqL) (Select 0.8mm PCB thickness at checkout)  
 [RAM card PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_RAM_IC_Card.html) (Select 1.0mm PCB thickness at checkout)
 
 [RAM card BOM from DigiKey](https://www.digikey.com/short/z0bfvq)
@@ -28,7 +28,7 @@ This PCB may be up to 1.2mm thick.
 ![](WP-2_IC_Card_ROM.jpg)  
 ![](PCB/WP-2_IC_Card_ROM.svg)  
 
-[ROM card PCB from OSHPark](https://oshpark.com/shared_projects/X0Se70ZD) (Select 0.8mm PCB thickness at checkout)  
+[ROM card PCB from OSHPark](https://oshpark.com/shared_projects/0Fy6IVre) (Select 0.8mm PCB thickness at checkout)  
 [ROM card PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_ROM_IC_Card.html) (Select 1.2mm PCB thickness at checkout)  
 
 [ROM card BOM from DigiKey](https://www.digikey.com/short/zn95jj)
@@ -100,13 +100,15 @@ Pin 17, A17: Only used for ROM. RAM may only go up to 128K. ROM may go to 256K. 
 Pin 37, BCHK/Vchk, Battery Voltage Check: Unknown usage. The schematic on service manual page 8-2 doesn't show Vchk connecting to anything, and I also cannot find anything anywhere on the board that connects to the pin. These PCBs don't connect this pin.  
 
 ### Reading the RAM card:  
-You can read out the contents of the RAM card with the ROM card programming adapter, by just telling the programmer to ignore the chip ID and assume the device is a SST39SF010A. (128K version of the family of flash chip on the ROM card.)
+You can read out the contents of the RAM card onto a modern pc by using the ROM card programming adapter.
 
-The ROM card has a 256K 29F020-compatible chip, and the programming adapter presents a 29F020 pinout on the DIP pins to the programmer. The RAM card has a 128K SRAM.
+Just tell the programmer to ignore the chip ID and assume the device is a 29F010 or pin-compatible. This is a 128K version of the 256K flash chip on the ROM card. An example device is SST39SF010A.  
 
-So to read the RAM card just pretend it's a 128K version of 29F020, which is 29F010. Specifically an actual part number would be "SST39SF010A".   You can only read, NOT write. 
+You can only read, NOT write.
+
 Example for a TL-866 programmer using the "minipro" util, read the ram card and save a copy to a file named ram.bin:
-`minipro -x -p SST39SF010A -r ram.bin`
+
+`minipro --skip_id --device SST39SF010A --read ram.bin`
 
 # TODO
 CamelFORTH on ROM?  

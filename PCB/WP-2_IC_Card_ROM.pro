@@ -1,4 +1,4 @@
-update=Fri 13 Nov 2020 03:11:06 AM EST
+update=Sun 29 Nov 2020 02:52:10 PM EST
 version=1
 last_client=pcbnew
 [general]
@@ -27,7 +27,7 @@ version=1
 PageLayoutDescrFile=
 LastNetListRead=
 CopperLayerCount=2
-BoardThickness=0.8
+BoardThickness=1.2
 AllowMicroVias=0
 AllowBlindVias=0
 RequireCourtyardDefinitions=0
