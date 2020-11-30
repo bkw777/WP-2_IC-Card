@@ -3,19 +3,19 @@
 The TANDY WP-2 has an expansion slot that accepts "IC Cards" that may be either RAM or ROM, up to 128K RAM, up to 256K ROM. Here are two cards to fit that slot, a RAM card and a ROM card, and a programming adapter to program the ROM card. The RAM card includes a battery backup.
 
 Both cards must be made from a thinner PCB than the standard 1.6mm.  
-The RAM card may be up to 1.0mm thick.  
-The ROM card may be up to 1.2mm thick.  
+The RAM or ROM card may be up to 1.2mm thick.  
+
 
 ## RAM CARD  
 
 Requires a thinner PCB than normal.  
-This PCB may be up to 1.0mm thick.  
+This PCB may be up to 1.2mm thick.  
 
 ![](WP-2_IC_Card_RAM.jpg)  
 ![](PCB/WP-2_IC_Card_RAM.svg)  
 
 [RAM card PCB from OSHPark](https://oshpark.com/shared_projects/fk7paiqL) (Select 0.8mm PCB thickness at checkout)  
-[RAM card PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_RAM_IC_Card.html) (Select 1.0mm PCB thickness at checkout)
+[RAM card PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_RAM_IC_Card.html) (Select 1.2mm PCB thickness at checkout)
 
 [RAM card BOM from DigiKey](https://www.digikey.com/short/z0bfvq)
 
