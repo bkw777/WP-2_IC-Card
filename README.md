@@ -28,8 +28,8 @@ PCB may be up to 1.2mm thick.
 ![](WP-2_IC_Card_ROM.jpg)  
 ![](PCB/WP-2_IC_Card_ROM.svg)  
 
-[ROM card PCB from OSHPark](https://oshpark.com/shared_projects/0Fy6IVre) (Select 0.8mm PCB thickness at checkout)  
-[ROM card PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_ROM_IC_Card.html) (Select 1.2mm PCB thickness at checkout)  
+[ROM card PCB from OSHPark](https://oshpark.com/shared_projects/0Fy6IVre) (Select 0.8mm PCB thickness)  
+[ROM card PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_ROM_IC_Card.html) (Select 1.2mm PCB thickness)  
 
 [ROM card BOM from DigiKey](https://www.digikey.com/short/zn95jj)
 
