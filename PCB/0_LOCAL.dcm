@@ -18,6 +18,12 @@ K AE10354-ND
 F http://www.assmann-wsw.com/fileadmin/datasheets/ASS_0810_CO.pdf
 $ENDCMP
 #
+$CMP BAT54C
+D dual schottky barrier diode, common cathode
+K schottky diode common cathode
+F http://www.diodes.com/_files/datasheets/ds11005.pdf
+$ENDCMP
+#
 $CMP CP1_Small
 D Polarized capacitor, small US symbol
 K cap capacitor
