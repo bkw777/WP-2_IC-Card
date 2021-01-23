@@ -14,7 +14,7 @@ PCB may be up to 1.2mm thick.
 ![](WP-2_IC_Card_RAM.jpg)  
 ![](PCB/WP-2_IC_Card_RAM.svg)  
 
-[RAM card PCB from OSHPark](https://oshpark.com/shared_projects/xIM22hR9) (Select 0.8mm PCB thickness)  
+[RAM card PCB from OSHPark](https://oshpark.com/shared_projects/MVe8vNnX) (Select 0.8mm PCB thickness)  
 [RAM card PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_RAM_IC_Card.html) (Select 1.2mm PCB thickness and ENIG surface finish)
 
 [RAM card BOM from DigiKey](https://www.digikey.com/short/477d2q)
