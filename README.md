@@ -2,14 +2,10 @@
 
 The TANDY WP-2 has an expansion slot that accepts "IC Cards" that may be either RAM or ROM, up to 128K RAM, up to 256K ROM. Here are two cards to fit that slot, a RAM card and a ROM card, and a programming adapter to program the ROM card. The RAM card includes a battery backup.
 
-Both cards must be made from a thinner PCB than the standard 1.6mm.  
-The RAM or ROM card may be up to 1.2mm thick.  
+All versions of this card must be made from PCB that is 1.2mm or thinner.
 
 
 ## RAM CARD  
-
-Requires a thinner PCB than normal.  
-PCB may be up to 1.2mm thick.
 
 ![](WP-2_IC_Card_RAM.jpg)  
 ![](PCB/WP-2_IC_Card_RAM.svg)  
@@ -21,9 +17,6 @@ PCB may be up to 1.2mm thick.
 
 
 ## ROM CARD
-
-Requires a thinner PCB than normal.  
-PCB may be up to 1.2mm thick.
 
 ![](WP-2_IC_Card_ROM.jpg)  
 ![](PCB/WP-2_IC_Card_ROM.svg)  
@@ -37,6 +30,7 @@ PCB may be up to 1.2mm thick.
 ## ROM Programming Adapter
 Use with a standard eprom programmer such as TL-866, to write to the ROM card.  
 Can also be used to read (but not write) the RAM card.
+(this may be standard 1.6mm pcb)
 
 ![](WP-2_IC_Card_ROM_programming_adapter.jpg)  
 ![](WP-2_IC_Card_ROM_programming_adapter_2.jpg)  
@@ -52,6 +46,33 @@ Take 2 of the left over large pins and solder-bridge the two pins on one side.
 There is a spot to store the jumper on the programming adapter when not in use.  
 
 To program the ROM card, insert the jumper into the write-enable holes on the ROM card.
+
+### Programming the ROM card:
+Example for a TL-866 programmer using the "minipro" util, to write a file named `rom.bin` to the ROM card:
+
+`minipro --device SST39SF020A --write rom.bin`
+
+### Reading the RAM card:  
+The ROM card programming adapter can also be used to read (read only) the contents of the RAM card.
+
+Force the programmer to ignore the chip ID and assume the device is a 29F010 or pin-compatible, Example: SST39SF010A.  
+That is, a 128K version of the same 256K flash chip that is on the ROM card. This way the pinout matches and the size matches.
+
+You can only read, NOT write this way.  
+
+Example for a TL-866 programmer using the "minipro" util, to read the ram card and save a copy to a file named `ram.bin`:
+
+`minipro --skip_id --device SST39SF010A --read ram.bin`
+
+## ROM CARD with Breakout
+
+![](WP-2_IC_Card_Breakout.jpg)  
+![](PCB/WP-2_IC_Card_Breakout.svg)  
+
+[Breakout PCB from OSHPark](https://oshpark.com/shared_projects/Wyp2pWj7) (Select 0.8mm PCB thickness)  
+[Breakout PCB from PCBWAY](https://www.pcbway.com/project/shareproject/TANDY_WP_2_IC_Card_Breakout.html) (Select 1.2mm PCB thickness)  
+
+[Breakout card BOM from DigiKey](https://www.digikey.com/short/7f55bw00)
 
 # Reference Material
 [WP-2 Owner & Service Manuals](https://archive.org/search.php?query=Tandy%20WP-2)  
@@ -70,8 +91,7 @@ SAMTEC 8.5mm Pin Socket
 <https://www.digikey.com/en/products/detail/samtec-inc/SMS-138-01-G-S/9773732>  
 <https://www.mouser.com/ProductDetail/Samtec/SMS-138-01-G-S>  
 
-There are less expensive generic female 1.27mm pitch pin headers on ebay and aliexpress etc, but they don't work for this. Sorry :/
-
+There are much less expensive generic female 1.27mm pin headers on ebay and aliexpress etc, but they don't work for this. Sorry :/
 
 ### RAM chip:  
 Compatible Specs: SRAM, 128Kx8, 5v, Parallel, TSOP-32 (8x20mm) or sTSOP-32 (8x14mm)  
@@ -101,16 +121,6 @@ Pin 17, A17: Only used for ROM. RAM may only go up to 128K. ROM may go to 256K. 
 
 Pin 37, BCHK/Vchk, Battery Voltage Check: Unknown usage. The schematic on service manual page 8-2 doesn't show Vchk connecting to anything, and I also cannot find anything anywhere on the motherboard that connects to the pin. These PCBs don't connect this pin.  
 
-### Reading the RAM card:  
-You can read out the contents of the RAM card onto a modern pc by using the ROM card programming adapter.
-
-Tell the programmer to ignore the chip ID and assume the device is a 29F010 or pin-compatible, Example: SST39SF010A. IE: a 128K version of the 256K flash chip on the ROM card.
-
-You can only read, NOT write.
-
-Example for a TL-866 programmer using the "minipro" util, to read the ram card and save a copy to a file named `ram.bin`:
-
-`minipro --skip_id --device SST39SF010A --read ram.bin`
 
 # TODO
 CamelFORTH on ROM?  
@@ -118,6 +128,8 @@ But how to construct rom image? Same as RAM?
 
 Document how to export gerbers for JLCPCB/PCBWAY/etc  
 
-Document how to select the right options in JLCPCB/PCBWAY/etc  
+Document how to select the right manufacturing options in JLCPCB/PCBWAY/etc  
+* 1.2mm pcb thickness
+* ENIG for the RAM card
 
 Add a 5v power output to power a [MounT](https://github.com/bkw777/MounT) ?

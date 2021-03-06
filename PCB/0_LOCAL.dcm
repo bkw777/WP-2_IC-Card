@@ -48,6 +48,12 @@ K connector
 F ~
 $ENDCMP
 #
+$CMP Conn_02x20_Odd_Even
+D Generic connector, double row, 02x20, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)
+K connector
+F ~
+$ENDCMP
+#
 $CMP D_Schottky_Small_ALT
 D Schottky diode, small symbol, filled shape
 K diode Schottky

@@ -5,8 +5,8 @@ $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 1
 Title "TANDY WP-2 256K ROM IC Card"
-Date "2020-11-16"
-Rev "002"
+Date "2021-03-05"
+Rev "003"
 Comp "Brian K. White - b.kenyon.w@gmail.com"
 Comment1 ""
 Comment2 ""
@@ -220,7 +220,7 @@ Battery Voltage Check - NC in WP-2
 Text Notes 7760 5170 0    50   ~ 0
 +5v
 Text Notes 7190 1140 0    50   ~ 0
-1x38 Male 1.27mm
+1x38 Female 1.27mm
 $Comp
 L 0_LOCAL:SST39SF020_TSOP U2
 U 1 1 5F906116

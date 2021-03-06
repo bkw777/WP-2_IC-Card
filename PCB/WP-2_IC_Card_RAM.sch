@@ -435,7 +435,7 @@ Wire Wire Line
 Text Notes 2420 1620 0    50   ~ 0
 TSOP-32 8x20 footprint
 Text Notes 6910 1140 0    50   ~ 0
-1x38 1.27mm pitch female
+1x38 1.27mm Female
 $Comp
 L 0_LOCAL:Net-Tie_2 NT1
 U 1 1 5F8923B3
