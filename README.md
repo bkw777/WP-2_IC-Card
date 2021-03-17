@@ -68,7 +68,7 @@ Example for a TL-866 programmer using the "minipro" util, to read the ram card a
 ![](WP-2_IC_Card_Breakout.jpg)  
 ![](PCB/WP-2_IC_Card_Breakout.svg)  
 
-[Breakout PCB from OSHPark](https://oshpark.com/shared_projects/Wyp2pWj7) (Select 0.8mm PCB thickness)  
+[Breakout PCB from OSHPark](https://oshpark.com/shared_projects/4spvX9oV) (Select 0.8mm PCB thickness)  
 [Breakout PCB from PCBWAY](https://www.pcbway.com/project/shareproject/TANDY_WP_2_IC_Card_Breakout.html) (Select 1.2mm PCB thickness)  
 
 [Breakout card BOM from DigiKey](https://www.digikey.com/short/7f55bw00)
