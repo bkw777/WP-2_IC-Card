@@ -90,4 +90,10 @@ K 256k flash rom
 F http://ww1.microchip.com/downloads/en/DeviceDoc/25022B.pdf
 $ENDCMP
 #
+$CMP SW_SPDT
+D Switch, single pole double throw
+K switch single-pole double-throw spdt ON-ON
+F ~
+$ENDCMP
+#
 #End Doc Library

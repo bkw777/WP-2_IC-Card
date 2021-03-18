@@ -709,10 +709,6 @@ F 3 "" H 3700 6000 50  0001 C CNN
 	1    3700 6000
 	0    1    1    0   
 $EndComp
-Text Notes 7770 1480 0    50   ~ 0
-GND
-Text Notes 7770 2780 0    50   ~ 0
-GND
 Wire Wire Line
 	5400 5600 5500 5600
 Entry Wire Line

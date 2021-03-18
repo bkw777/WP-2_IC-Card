@@ -5,8 +5,8 @@ $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 1
 Title "TANDY WP-2 128K RAM IC Card Programming Adapter"
-Date "2020-11-16"
-Rev ""
+Date "2021-03-18"
+Rev "002"
 Comp "Brian K. White - b.kenyon.w@gmail.com"
 Comment1 ""
 Comment2 ""
@@ -191,12 +191,6 @@ Entry Wire Line
 	3000 3700 3100 3800
 Wire Wire Line
 	3100 3800 3500 3800
-Text Notes 3740 2240 0    50   ~ 0
-Card Detect
-Text Notes 3730 5740 0    50   ~ 0
-Battery Check
-Text Notes 3730 5830 0    50   ~ 0
-+5v
 Text Notes 3180 1780 0    50   ~ 0
 1x38 Male 1.27mm\nTANDY WP-2 IC Card pinout
 Entry Wire Line
@@ -346,10 +340,6 @@ Wire Wire Line
 	3100 3700 3500 3700
 Text Label 3500 3700 2    50   ~ 0
 A17
-Text Notes 3740 2140 0    50   ~ 0
-GND
-Text Notes 3740 3440 0    50   ~ 0
-GND
 Text Label 6810 3100 0    50   ~ 0
 A15
 Text Label 3500 5500 2    50   ~ 0
@@ -369,8 +359,6 @@ F 3 "~" H 6510 3700 50  0001 C CNN
 	1    6510 3700
 	1    0    0    -1  
 $EndComp
-Text Label 6810 3000 0    50   ~ 0
-VDD
 Entry Wire Line
 	7000 3800 7100 3700
 Wire Wire Line
@@ -405,12 +393,6 @@ Wire Wire Line
 	6810 4500 7000 4500
 Wire Wire Line
 	6100 3700 6310 3700
-Wire Wire Line
-	3500 5800 3100 5800
-Entry Wire Line
-	3000 5700 3100 5800
-Text Label 3500 5800 2    50   ~ 0
-VDD
 $Comp
 L power:GND #PWR0101
 U 1 1 5FAB7ED9
@@ -433,13 +415,7 @@ F 3 "" H 3500 2100 50  0001 C CNN
 	1    3500 2100
 	0    1    1    0   
 $EndComp
-Text Notes 3740 2340 0    50   ~ 0
-CE2
 NoConn ~ 6310 3000
-Entry Wire Line
-	7000 3000 7100 2900
-Wire Wire Line
-	6810 3000 7000 3000
 Text Label 6310 3800 2    50   ~ 0
 A3
 Text Notes 5630 2360 0    50   ~ 0
@@ -448,21 +424,57 @@ NoConn ~ 3500 2200
 NoConn ~ 3500 5700
 Entry Wire Line
 	3000 2300 3100 2400
-NoConn ~ 3500 2300
-NoConn ~ 6810 3200
-Text Notes 6810 3200 0    50   ~ 0
-CE2
 Text Notes 3320 6390 0    50   ~ 0
 For TL-866: Specify device "628128" (Standard/Generic SRAM 128Kx8 5v parallel)
 Wire Bus Line
 	6000 6000 3000 6000
 Wire Bus Line
 	7100 6000 6000 6000
+Connection ~ 6000 6000
+Entry Wire Line
+	7000 3200 7100 3100
+Wire Wire Line
+	6810 3200 7000 3200
+Text Label 6810 3200 0    50   ~ 0
+CE2
+Wire Wire Line
+	3500 2300 3100 2300
+Entry Wire Line
+	3000 2200 3100 2300
+Text Label 3500 2300 2    50   ~ 0
+CE2
+Text Label 3500 3500 2    50   ~ 0
+S1
+Text Label 3500 3600 2    50   ~ 0
+S2
+Text Label 3500 5600 2    50   ~ 0
+S3
+$Comp
+L power:VDD #PWR0103
+U 1 1 60590D16
+P 6810 3000
+F 0 "#PWR0103" H 6810 2850 50  0001 C CNN
+F 1 "VDD" V 6770 3000 50  0000 L CNN
+F 2 "" H 6810 3000 50  0001 C CNN
+F 3 "" H 6810 3000 50  0001 C CNN
+	1    6810 3000
+	0    1    1    0   
+$EndComp
+$Comp
+L power:VDD #PWR0104
+U 1 1 605A1E85
+P 3500 5800
+F 0 "#PWR0104" H 3500 5650 50  0001 C CNN
+F 1 "VDD" V 3530 5800 50  0000 L CNN
+F 2 "" H 3500 5800 50  0001 C CNN
+F 3 "" H 3500 5800 50  0001 C CNN
+	1    3500 5800
+	0    -1   -1   0   
+$EndComp
 Wire Bus Line
 	6000 2900 6000 6000
 Wire Bus Line
 	7100 2900 7100 6000
 Wire Bus Line
 	3000 2000 3000 6000
-Connection ~ 6000 6000
 $EndSCHEMATC

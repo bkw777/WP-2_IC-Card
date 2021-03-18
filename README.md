@@ -15,6 +15,20 @@ All versions of this card must be made from PCB that is 1.2mm or thinner.
 
 [RAM card BOM from DigiKey](https://www.digikey.com/short/mnv7v88d)
 
+### Reading/Writing the RAM card outside of the WP-2
+No one needs this, because it only provides raw chip access not high level files/filesystem access. But, for hacking/experimenting, there is a RAM card programming adapter included which can be used to read and write the RAM card outside of the WP-2.  
+To build one, use the same BOM as the ROM card programming adapter below.  
+
+Examples using a TL-866 programmer (628128 is a generic part number for the SRAM on the card):  
+`minipro --skip_id --device 628128 --read ram.bin`
+`minipro --skip_id --device 628128 --write ram.bin`
+
+For reading only, the ROM card programing adapter can also be used.  
+To use the ROM card programming adapter to dump a RAM card, force the programmer to assume the device is a 128K ROM card, meaning a 29F010.  
+Example for a TL-866 programmer using the "minipro" util, to dump the contents of a RAM card to a file named `ram.bin`:  
+`minipro --skip_id --device SST39SF010A --read ram.bin`
+
+
 ## ROM CARD
 
 ![](WP-2_IC_Card_ROM.jpg)  
@@ -26,10 +40,8 @@ All versions of this card must be made from PCB that is 1.2mm or thinner.
 [ROM card BOM from DigiKey](https://www.digikey.com/short/zn95jj)
 
 
-## ROM Programming Adapter
+### ROM Card Programming Adapter
 Use with a standard eprom programmer such as TL-866, to write to the ROM card.  
-Can also be used to read (but not write) the RAM card.
-(this may be standard 1.6mm pcb)
 
 ![](WP-2_IC_Card_ROM_programming_adapter.jpg)  
 ![](WP-2_IC_Card_ROM_programming_adapter_2.jpg)  
@@ -38,32 +50,19 @@ Can also be used to read (but not write) the RAM card.
 [ROM Card programming adapter PCB from OSHPark](https://oshpark.com/shared_projects/tvMoYMrG)  
 [ROM Card programming adapter PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_IC_Card_ROM_programming_adapter.html)
 
-[ROM Card programming adapter BOM from DigiKey](https://www.digikey.com/short/zv3j4c)
+[Programming adapter BOM from DigiKey](https://www.digikey.com/short/tvqjhh21)
 
-In addition to soldering the pins to the PCB, also make a male jumper for the write-enable holes.  
-Take 2 of the left over large pins and solder-bridge the two pins on one side.  
-There is a spot to store the jumper on the programming adapter when not in use.  
+In addition to soldering the pins to the PCB, also make a male jumper for the write-enable contacts on the card.  
+Cut a pair of pins off the leftover 2.54mm pin header, and solder the two pins together on the short side.  
+There is a spot to stow the jumper on the programming adapter when not in use.  
 
-To program the ROM card, insert the jumper into the write-enable holes on the ROM card.
+To program the ROM card, insert the jumper into the write-enable holes on the card.
 
-### Programming the ROM card:
-Example for a TL-866 programmer using the "minipro" util, to write a file named `rom.bin` to the ROM card:
-
+Example using a TL-866 programmer to write a file named `rom.bin` to the ROM card:
 `minipro --device SST39SF020A --write rom.bin`
 
-### Reading the RAM card:  
-The ROM card programming adapter can also be used to read (read only) the contents of the RAM card.
 
-Force the programmer to ignore the chip ID and assume the device is a 29F010 or pin-compatible, Example: SST39SF010A.  
-That is, a 128K version of the same 256K flash chip that is on the ROM card. This way the pinout matches and the size matches.
-
-You can only read, NOT write this way.  
-
-Example for a TL-866 programmer using the "minipro" util, to read the ram card and save a copy to a file named `ram.bin`:
-
-`minipro --skip_id --device SST39SF010A --read ram.bin`
-
-## ROM CARD with Breakout
+## BREAKOUT CARD
 
 ![](WP-2_IC_Card_Breakout.jpg)  
 ![](PCB/WP-2_IC_Card_Breakout.svg)  
@@ -71,14 +70,49 @@ Example for a TL-866 programmer using the "minipro" util, to read the ram card a
 [Breakout PCB from OSHPark](https://oshpark.com/shared_projects/4spvX9oV) (Select 0.8mm PCB thickness)  
 [Breakout PCB from PCBWAY](https://www.pcbway.com/project/shareproject/TANDY_WP_2_IC_Card_Breakout.html) (Select 1.2mm PCB thickness)  
 
-[Breakout card BOM from DigiKey](https://www.digikey.com/short/7f55bw00)
+[Breakout card BOM from DigiKey](https://www.digikey.com/short/7f55bw00)  
+
+This card can be used a few different ways.  
+A few of the pins can be used both as connections to a breadboard or logic analyser, or with a jumper to short it to a neighboring pin.
+
+GND - /DET  : The /DET pin is a signal from the card to the WP-2. Inside the WP-2, /DET has a pullup. If the card shorts /DET to ground, this tells the WP-2 that the card is a RAM card. If the card does not connect /DET to anything, that tells the WP-2 that the card is a ROM card.  
+
+/CE1 - /CE_IC  :  /CE1 comes from the WP-2. /CE_IC goes to the /CE pin on the on-board chip. The /CE1 pin can be connected to a breadboard like all the other signals, and the on-board chip will be disabled. Or a jumper can be installed to connect these two pins and that enables the on-board chip, and the card acts like an ordinary ROM card.  
+
+R/W - /WE_IC  :  R/W comes from the WP-2. /WE_IC goes to the /WE pin on the on-board chip. A jumper can be installed to connect these two pins to write to the on-board chip using the ROM card programming adapter. The two R/W pins are the same. The R/W pin next to the /WE_IC pin is just a copy to make it possible to install a jumper to /WE on the on-board chip.  
+
+* As an ordinary ROM card using the on-board chip.  
+: /DET open. /WE_IC open. /CE_IC closed.  
+
+* As an ordinary ROM card using the on-board chip, being programmed with the ROM card programming adapter.  
+: /DET open. /WE_IC closed. /CE_IC closed.  
+
+* Breakout/emulated ROM card, with the on-board chip disabled and a rom chip or emulator attached via the breakout pins.  
+: /DET open. /WE_IC open. /CE_IC open.  
+
+* Breakout/emulated RAM card, with the on-board chip disabled and a ram chip or emulator attached via the breakout pins.
+: /DET closed. /WE_IC open. /CE_IC open.  
+
+The S1, S2, and S3 pins are not documented to do anything, but are provided because they are physically connected to something inside the WP-2.  
+They are connected to pullup resistors and to a gate array chip with unknown programming.  
+The service manual says that the original IC Cards do not connect anything to these pins.  
+
+The BCHK pin is provided because it's not 100% certain whether this pin is physically connected to anything inside the WP-2 or not.  
+The service manual clearly labels it "Battery Check" in more than one place, which is a funny way to spell "un-used". However at least one schematic seems to say that the pin isn't connected to anything, and I have not been able to find continuity with anything by physically probing. However, I can't see all parts of the PCB right near that pin, so it's possible there is a trace connected to it.  
+It's unknown even if this was intended to be a signal TO the WP-2, or FROM it. So the pin is provided to investigate exactly this.  
+
+The CE2 pin from the IC Card interface is not provided at the breakout header because that pin happens to have no behavior that needs to be either used or investigated.  
+CE2 is just a hard trace to VDD inside the WP-2. Not even a pullup that might be overriden, but a solid trace. It doesn't turn on & off under any conditions, it's just a copy of VDD.  
+This allowed that spot on the breakout pin header to be used for the /CE jumper which IS useful.  
+
+----
 
 # Reference Material
 [WP-2 Owner & Service Manuals](https://archive.org/search.php?query=Tandy%20WP-2)  
 Card slot signals & usage: Service Manual 8-2, C-3.  
 Executable "RUN" files: Service Manual 4-16, D-1.  
 
-### Pin Socket Header:  
+### Connector:  
 [Original Connectors](ref/JC20-B38S-F1.pdf)  
 Datasheet for both the slot in the computer and the connector in the card.  
 
@@ -104,9 +138,9 @@ As with the SRAM, several parts are compatible. A few example part numbers are l
 
 ### Notes about some of the card slot signals:  
 
-Pin 2, /DET Card Detect: WP-2 uses to detect the type of card. The pin has a pullup to VDD inside the WP-2. A RAM card should connect this pin to GND, which tells the WP-2 that it is a RAM card. A ROM card should leave this pin not connected, which means it will be pulled high by the pullup resistor inside the WP-2, which tells the WP-2 that it is a ROM card.
+Pin 2, /DET Card Detect: WP-2 uses to detect the type of card. The pin has a pullup to VDD inside the WP-2. A RAM card connects this pin to GND, which tells the WP-2 that it is a RAM card. A ROM card leaves this pin not connected, which means it will be pulled high by the pullup resistor inside the WP-2, which tells the WP-2 that it is a ROM card.
 
-Pin 3, CE2, active-high chip-enable: CE2 is not actually an inverse copy of /CE1 and does not actually change state. It's wired directly to VDD inside the WP-2. Since it's not actually switched, it's not the best way to enable/disable the IC, even if the SRAM chip has a CE2 pin. It would work, just that the IC would be enabled 100% of the time that the card was inserted and the WP-2 was powered on. These PCBs don't connect CE2 from the WP-2. They do hardwire the CE2 pin on the SRAM chip to VMEM right on the card.
+Pin 3, CE2, active-high chip-enable: CE2 is just wired directly to VDD inside the WP-2. The cards in this repo don't use this pin.
 
 Pin 15 -> RA5 -> IC5 pin 66, "S1"  
 Pin 16 -> RA5 -> IC5 pin 67, "S2"  
@@ -114,7 +148,7 @@ Pin 36 -> RA5 -> IC5 pin 68, "S3"
 
 RA5 is 100k pullup to VDD.  
 IC5 is a gate array with unknown programming.  
-The service manual says pins 15, 16, 36 have no connection in the original IC Cards.
+The service manual says the original IC Cards have no connections on any of these pins.
 
 Pin 17, A17: Only used for ROM. RAM may only go up to 128K. ROM may go to 256K. The RAM card does not connect A17. The ROM card does.
 

@@ -189,8 +189,6 @@ Entry Wire Line
 	3000 3700 3100 3800
 Wire Wire Line
 	3100 3800 3500 3800
-Text Notes 3730 5830 0    50   ~ 0
-+5v
 Text Notes 3010 1580 0    50   ~ 0
 1x38 1.27mm pins to IC Card
 Entry Wire Line
@@ -346,10 +344,6 @@ Wire Wire Line
 	3100 3700 3500 3700
 Text Label 3500 3700 2    50   ~ 0
 A17
-Text Notes 3740 2140 0    50   ~ 0
-GND
-Text Notes 3740 3440 0    50   ~ 0
-GND
 Text Label 6810 3200 0    50   ~ 0
 R~W
 Text Label 3500 5500 2    50   ~ 0
@@ -369,8 +363,6 @@ F 3 "~" H 6510 3800 50  0001 C CNN
 	1    6510 3800
 	1    0    0    -1  
 $EndComp
-Text Label 6810 3100 0    50   ~ 0
-VDD
 Entry Wire Line
 	7000 3900 7100 3800
 Wire Wire Line
@@ -405,12 +397,6 @@ Wire Wire Line
 	6810 4600 7000 4600
 Wire Wire Line
 	6100 3800 6310 3800
-Wire Wire Line
-	3500 5800 3100 5800
-Entry Wire Line
-	3000 5700 3100 5800
-Text Label 3500 5800 2    50   ~ 0
-VDD
 $Comp
 L power:GND #PWR0101
 U 1 1 5FAB7ED9
@@ -434,18 +420,11 @@ F 3 "" H 3500 2100 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 NoConn ~ 6310 3100
-Entry Wire Line
-	7000 3100 7100 3000
-Wire Wire Line
-	6810 3100 7000 3100
 Text Label 6310 3900 2    50   ~ 0
 A3
 Text Notes 6140 2560 0    50   ~ 0
 29F020 DIP32 pinout
 NoConn ~ 3500 2200
-NoConn ~ 3500 2300
-Text Notes 3500 2300 2    50   ~ 0
-CE2
 Text Notes 3500 5700 2    50   ~ 0
 BCHK
 NoConn ~ 3500 5700
@@ -466,6 +445,31 @@ Text Notes 3980 1710 2    50   ~ 0
 WP-2 IC Card pinout
 Text Notes 5940 2450 0    50   ~ 0
 DIL pin headers to programmer
+NoConn ~ 3500 2300
+Text Notes 3500 2300 2    50   ~ 0
+CE2
+$Comp
+L power:VDD #PWR?
+U 1 1 60564B7F
+P 6810 3100
+F 0 "#PWR?" H 6810 2950 50  0001 C CNN
+F 1 "VDD" V 6770 3100 50  0000 L CNN
+F 2 "" H 6810 3100 50  0001 C CNN
+F 3 "" H 6810 3100 50  0001 C CNN
+	1    6810 3100
+	0    1    1    0   
+$EndComp
+$Comp
+L power:VDD #PWR?
+U 1 1 6056EBF4
+P 3500 5800
+F 0 "#PWR?" H 3500 5650 50  0001 C CNN
+F 1 "VDD" V 3530 5800 50  0000 L CNN
+F 2 "" H 3500 5800 50  0001 C CNN
+F 3 "" H 3500 5800 50  0001 C CNN
+	1    3500 5800
+	0    -1   -1   0   
+$EndComp
 Wire Bus Line
 	6000 3000 6000 6000
 Wire Bus Line
