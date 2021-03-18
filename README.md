@@ -72,7 +72,7 @@ Example using a TL-866 programmer to write a file named `rom.bin` to the ROM car
 
 [Breakout card BOM from DigiKey](https://www.digikey.com/short/7f55bw00)  
 
-A few of the pins can be used both as connections to a breadboard or logic analyser, or with a jumper to short it to a neighboring pin.
+A few of the pins on the breakout pin header can be used both as connections to a breadboard or logic analyser, or with a jumper to short it to a neighboring pin.
 
 GND - /DET  : The /DET pin is a signal from the card to the WP-2. Inside the WP-2, /DET has a pullup. If the card shorts /DET to ground, this tells the WP-2 that the card is a RAM card. If the card does not connect /DET to anything, that tells the WP-2 that the card is a ROM card.  
 
@@ -81,7 +81,7 @@ GND - /DET  : The /DET pin is a signal from the card to the WP-2. Inside the WP-
 R/W - /WE_IC  :  R/W comes from the WP-2. /WE_IC goes to the /WE pin on the on-board chip. A jumper can be installed to connect these two pins to write to the on-board chip using the ROM card programming adapter. The two R/W pins are the same. The R/W pin next to the /WE_IC pin is just a copy to make it possible to install a jumper to /WE on the on-board chip.  
 
 
-This card can be used a few different ways:  
+The breakout card can be used a few different ways:  
 
 * As an ordinary ROM card using the on-board chip.  
 : /DET open. /WE_IC open. /CE_IC closed.  
