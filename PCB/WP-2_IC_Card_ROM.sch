@@ -432,10 +432,6 @@ Wire Wire Line
 	7130 3040 7530 3040
 Text Label 7530 3040 2    50   ~ 0
 A17
-Text Notes 7770 1480 0    50   ~ 0
-GND
-Text Notes 7770 2780 0    50   ~ 0
-GND
 $Comp
 L power:VDD #PWR0110
 U 1 1 5F83B4C3
