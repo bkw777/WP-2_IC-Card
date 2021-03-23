@@ -20,13 +20,13 @@ No one needs this, because it only provides raw chip access not high level files
 To build one, use the same BOM as the ROM card programming adapter below.  
 
 Examples using a TL-866 programmer (628128 is a generic part number for the SRAM on the card):  
-`minipro --skip_id --device 628128 --read ram.bin`
-`minipro --skip_id --device 628128 --write ram.bin`
+    minipro --skip_id --device 628128 --read ram.bin
+    minipro --skip_id --device 628128 --write ram.bin
 
 For reading only, the ROM card programing adapter can also be used.  
 To use the ROM card programming adapter to dump a RAM card, force the programmer to assume the device is a 128K ROM card, meaning a 29F010.  
 Example for a TL-866 programmer using the "minipro" util, to dump the contents of a RAM card to a file named `ram.bin`:  
-`minipro --skip_id --device SST39SF010A --read ram.bin`
+    minipro --skip_id --device SST39SF010A --read ram.bin
 
 
 ## ROM CARD
@@ -59,7 +59,7 @@ There is a spot to stow the jumper on the programming adapter when not in use.
 To program the ROM card, insert the jumper into the write-enable holes on the card.
 
 Example using a TL-866 programmer to write a file named `rom.bin` to the ROM card:
-`minipro --device SST39SF020A --write rom.bin`
+    minipro --device SST39SF020A --write rom.bin
 
 
 ## BREAKOUT CARD
