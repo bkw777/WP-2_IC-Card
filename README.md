@@ -126,7 +126,7 @@ SAMTEC 8.5mm Pin Socket
 <https://www.digikey.com/en/products/detail/samtec-inc/SMS-138-01-G-S/9773732>  
 <https://www.mouser.com/ProductDetail/Samtec/SMS-138-01-G-S>  
 
-There are much less expensive generic female 1.27mm pin headers on ebay and aliexpress etc, but they don't work for this. Sorry :/
+There are much less expensive generic female 1.27mm pin headers on ebay and aliexpress etc, but they don't work for this. Sorry :/ The metal parts inside the cheap connectors aren't held in place accurately enough, and the pins hit the edges of the female sockets and no amount of wiggling gets all 38 pins to line up and let the card insert. And *trying* risks damaging the pins inside the WP-2, which you really really do not want to do. So, the Samtec connector is both deep enough to take the 6 mm pins, and is manufactured to tight enough tolerances that the pins slot right into the socket with no problems. If you don't want to wait the extra shipping time to get the 38-pin connector from Samtec, DigiKey has the 40-pin version in their own inventory and ships immediately. With a little care you can buy the 40-pin connector and sand it down to 38 pins. Cut the connector right through the middle of the 39th pin with flush cutters, then lightly sand the cut end flat.
 
 ### RAM chip:  
 Compatible Specs: SRAM, 128Kx8, 5v, Parallel, TSOP-32 (8x20mm) or sTSOP-32 (8x14mm)  
