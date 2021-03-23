@@ -20,10 +20,8 @@ No one needs this, because it only provides raw chip access not high level files
 To build one, use the same BOM as the ROM card programming adapter below.  
 
 Examples using a TL-866 programmer (628128 is a generic part number for the SRAM on the card):  
-`
-minipro --skip_id --device 628128 --read ram.bin
-minipro --skip_id --device 628128 --write ram.bin
-`
+`minipro --skip_id --device 628128 --read ram.bin`  
+`minipro --skip_id --device 628128 --write ram.bin`  
 
 For reading only, the ROM card programing adapter can also be used.  
 To use the ROM card programming adapter to dump a RAM card, force the programmer to assume the device is a 128K ROM card, meaning a 29F010.  
