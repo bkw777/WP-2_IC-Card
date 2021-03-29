@@ -10,10 +10,10 @@ All versions of this card must be made from PCB that is 1.2mm or thinner.
 ![](WP-2_IC_Card_RAM.jpg)  
 ![](PCB/WP-2_IC_Card_RAM.svg)  
 
-[RAM card PCB from OSHPark](https://oshpark.com/shared_projects/6fmbmEYC) (Select 0.8mm PCB thickness)  
-[RAM card PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_RAM_IC_Card.html) (Select 1.2mm PCB thickness and ENIG surface finish)
+[RAM card PCB from OSHPark](https://oshpark.com/shared_projects/viS1JOJY) (Select 0.8mm PCB thickness)  
+[RAM card PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_RAM_IC_Card.html) (Select 1.2mm PCB thickness, ENIG surface finish, add note "Bottom solder mask full cover")
 
-[RAM card BOM from DigiKey](https://www.digikey.com/short/mnv7v88d)
+[RAM card BOM from DigiKey](https://www.digikey.com/short/hfwn58jq)
 
 ### Reading/Writing the RAM card outside of the WP-2
 No one needs this, because it only provides raw chip access not high level files/filesystem access. But, for hacking/experimenting, there is a RAM card programming adapter included which can be used to read and write the RAM card outside of the WP-2.  

@@ -5,8 +5,8 @@ $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 1
 Title "TANDY WP-2 128K RAM IC Card"
-Date "2021-03-06"
-Rev "004"
+Date "2021-03-29"
+Rev "006"
 Comp "Brian K. White - b.kenyon.w@gmail.com"
 Comment1 ""
 Comment2 ""
@@ -83,7 +83,7 @@ A1
 Text Label 7530 4740 2    50   ~ 0
 A0
 Text Label 7530 4840 2    50   ~ 0
-R~W
+~WE
 NoConn ~ 7530 4940
 $Comp
 L 0_LOCAL:62-65C1024_TSOP-I-32 U1
@@ -385,7 +385,7 @@ F 3 "" H 2910 4500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text Notes 7770 1580 0    50   ~ 0
-Card Detect: GND for RAM, NC for ROM
+Card Type Detect: GND for RAM, NC for ROM
 Text Notes 7770 5080 0    50   ~ 0
 Battery Voltage Check - NC in WP-2
 Text Notes 7770 5180 0    50   ~ 0
@@ -790,7 +790,7 @@ F 3 "~" H 5190 5400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text Notes 7780 3080 0    50   ~ 0
-Only for ROM
+Not used for RAM
 $Comp
 L Device:Battery_Cell BT1
 U 1 1 5F8E356D
@@ -869,53 +869,10 @@ Wire Wire Line
 Wire Wire Line
 	3400 6400 3400 6500
 Connection ~ 3400 6400
-$Comp
-L 0_LOCAL:EG1215 SW1
-U 1 1 6044EC04
-P 5200 6000
-F 0 "SW1" H 5200 6170 50  0000 C CNN
-F 1 "CSS-1210xC" H 5170 5800 50  0001 C CNN
-F 2 "0_LOCAL:EG1215" H 5405 5760 50  0001 C CNN
-F 3 "" H 5405 5760 50  0001 C CNN
-	1    5200 6000
-	1    0    0    -1  
-$EndComp
-Entry Wire Line
-	4800 5900 4900 6000
-Entry Wire Line
-	4800 6100 4900 6200
-Wire Wire Line
-	5400 6200 4900 6200
-Text Label 4900 6000 0    50   ~ 0
-~WE
-Text Label 4900 6200 0    50   ~ 0
-R~W
-Wire Wire Line
-	5000 6000 4900 6000
-$Comp
-L power:VMEM #PWR0111
-U 1 1 604D9880
-P 5400 5900
-F 0 "#PWR0111" H 5400 5750 50  0001 C CNN
-F 1 "VMEM" V 5400 6050 50  0000 L CNN
-F 2 "" H 5400 5900 50  0001 C CNN
-F 3 "" H 5400 5900 50  0001 C CNN
-	1    5400 5900
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	5400 6200 5400 6100
 Wire Bus Line
 	4100 5200 4800 5200
-Connection ~ 4800 5200
 Wire Bus Line
-	4800 5200 5900 5200
-Text Notes 5430 6170 0    50   ~ 0
-Write Enable
-Text Notes 5430 5860 0    50   ~ 0
-Write Protect
-Wire Bus Line
-	4800 5200 4800 6100
+	4800 5200 4800 5500
 Wire Bus Line
 	5900 2000 5900 5200
 Wire Bus Line
@@ -926,4 +883,7 @@ Wire Bus Line
 	2000 2000 2000 5200
 Wire Bus Line
 	7030 1540 7030 5200
+Connection ~ 4800 5200
+Wire Bus Line
+	4800 5200 5900 5200
 $EndSCHEMATC
