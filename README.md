@@ -126,7 +126,7 @@ SAMTEC 8.5mm Pin Socket
 <https://www.digikey.com/en/products/detail/samtec-inc/SMS-138-01-G-S/9773732>  
 <https://www.mouser.com/ProductDetail/Samtec/SMS-138-01-G-S>  
 
-There are much less expensive generic female 1.27mm pin headers on ebay and aliexpress etc, but they don't work for this. Sorry :/ The metal parts inside the cheap connectors aren't held in place accurately enough, and the pins hit the edges of the female sockets and no amount of wiggling gets all 38 pins to line up and let the card insert. And *trying* risks damaging the pins inside the WP-2, which you really really do not want to do. So, the Samtec connector is both deep enough to take the 6 mm pins, and is manufactured to tight enough tolerances that the pins slot right into the socket with no problems. If you don't want to wait the extra shipping time to get the 38-pin connector from Samtec, DigiKey has the 40-pin version in their own inventory and ships immediately. With a little care you can buy the 40-pin connector and sand it down to 38 pins. Cut the connector right through the middle of the 39th pin with flush cutters, then lightly sand the cut end flat.
+There are much less expensive generic female 1.27mm pin headers on ebay and aliexpress etc, but they don't work for this. Sorry :/ The metal parts inside the cheap connectors aren't held in place accurately enough, and the pins in the WP-2 hit the edges of the metal parts in female sockets, and no amount of wiggling gets all 38 pins to line up and let the card insert. And *trying* just risks damaging the pins inside the WP-2. So, the Samtec socket is both deep enough to take the 6 mm pins, and is manufactured to tight enough tolerances that the pins slot right into the socket with no problems.
 
 ### RAM chip:  
 Compatible Specs: SRAM, 128Kx8, 5v, Parallel, TSOP-32 (8x20mm) or sTSOP-32 (8x14mm)  
@@ -140,7 +140,7 @@ As with the SRAM, several parts are compatible. A few example part numbers are l
 
 ### Notes about some of the card slot signals:  
 
-Pin 2, /DET Card Detect: WP-2 uses to detect the type of card. The pin has a pullup to VDD inside the WP-2. A RAM card connects this pin to GND, which tells the WP-2 that it is a RAM card. A ROM card leaves this pin not connected, which means it will be pulled high by the pullup resistor inside the WP-2, which tells the WP-2 that it is a ROM card.
+Pin 2, /DET Card Detect: WP-2 uses this to detect the type of card. The pin is pulled up to VDD inside the WP-2. A RAM card connects this pin to GND, which tells the WP-2 that it is a RAM card. A ROM card leaves this pin not connected, which means it will be pulled high by the pullup resistor inside the WP-2, which tells the WP-2 that it is a ROM card.
 
 Pin 3, CE2, active-high chip-enable: CE2 is just wired directly to VDD inside the WP-2. The cards in this repo don't use this pin.
 
@@ -150,11 +150,13 @@ Pin 36 -> RA5 -> IC5 pin 68, "S3"
 
 RA5 is 100k pullup to VDD.  
 IC5 is a gate array with unknown programming.  
-The service manual says the original IC Cards have no connections on any of these pins.
+The service manual says the original IC Cards have no connections on any of these pins.  
+It is unknown if the WP-2 does anything at all with these pins.  
+The S1, S2, S3 labels come from a schematic in the service manual. They are not mentioned anywhere else.
 
-Pin 17, A17: Only used for ROM. RAM may only go up to 128K. ROM may go to 256K. The RAM card does not connect A17. The ROM card does.
+Pin 17, A17: Only used for ROM. the WP-2 only supports up to 128K in a RAM card.
 
-Pin 37, BCHK/Vchk, Battery Voltage Check: Unknown usage. The schematic on service manual page 8-2 doesn't show Vchk connecting to anything, and I also cannot find anything anywhere on the motherboard that connects to the pin. These PCBs don't connect this pin.  
+Pin 37, BCHK/Vchk, Battery Voltage Check: Unknown usage. The schematic on service manual page 8-2 doesn't show Vchk connecting to anything, and I also cannot find anything anywhere on the motherboard that has continuity with this pin. These cards don't connect this pin.  
 
 
 # TODO
