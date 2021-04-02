@@ -42,6 +42,12 @@ K connector
 F ~
 $ENDCMP
 #
+$CMP Conn_02x08_Odd_Even
+D Generic connector, double row, 02x08, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)
+K connector
+F ~
+$ENDCMP
+#
 $CMP Conn_02x16_Counter_Clockwise
 D Generic connector, double row, 02x16, counter clockwise pin numbering scheme (similar to DIP packge numbering), script generated (kicad-library-utils/schlib/autogen/connector/)
 K connector
@@ -57,6 +63,12 @@ $ENDCMP
 $CMP D_Schottky_Small_ALT
 D Schottky diode, small symbol, filled shape
 K diode Schottky
+F ~
+$ENDCMP
+#
+$CMP Jumper_3_Bridged12
+D Jumper, 3-pole, pins 1+2 closed/bridged
+K Jumper SPDT
 F ~
 $ENDCMP
 #

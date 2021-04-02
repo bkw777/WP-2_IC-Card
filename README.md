@@ -15,20 +15,6 @@ All versions of this card must be made from PCB that is 1.2mm or thinner.
 
 [RAM card BOM from DigiKey](https://www.digikey.com/short/hfwn58jq)
 
-### Reading/Writing the RAM card outside of the WP-2
-No one needs this, because it only provides raw chip access not high level files/filesystem access. But, for hacking/experimenting, there is a RAM card programming adapter included which can be used to read and write the RAM card outside of the WP-2.  
-To build one, use the same BOM as the ROM card programming adapter below.  
-
-Examples using a TL-866 programmer (628128 is a generic part number for the SRAM on the card):  
-`minipro --skip_id --device 628128 --read ram.bin`  
-`minipro --skip_id --device 628128 --write ram.bin`  
-
-For reading only, the ROM card programing adapter can also be used.  
-To use the ROM card programming adapter to dump a RAM card, force the programmer to assume the device is a 128K ROM card, meaning a 29F010.  
-Example for a TL-866 programmer using the "minipro" util, to dump the contents of a RAM card to a file named `ram.bin`:  
-`minipro --skip_id --device SST39SF010A --read ram.bin`
-
-
 ## ROM CARD
 
 ![](WP-2_IC_Card_ROM.jpg)  
@@ -40,26 +26,49 @@ Example for a TL-866 programmer using the "minipro" util, to dump the contents o
 [ROM card BOM from DigiKey](https://www.digikey.com/short/zn95jj)
 
 
-### ROM Card Programming Adapter
+## Programming Adapter
+The programming adapter supports both ROM and RAM cards.  
 Use with a standard eprom programmer such as TL-866, to write to the ROM card.  
 
-![](WP-2_IC_Card_ROM_programming_adapter.jpg)  
-![](WP-2_IC_Card_ROM_programming_adapter_2.jpg)  
-![](PCB/WP-2_IC_Card_ROM_programming_adapter.svg)  
+![](WP-2_IC_Card_programming_adapter.jpg)  
+![](WP-2_IC_Card_programming_adapter.ROM.jpg)  
+![](WP-2_IC_Card_programming_adapter.RAM.jpg)  
+![](PCB/WP-2_IC_Card_programming_adapter.svg)  
 
-[ROM Card programming adapter PCB from OSHPark](https://oshpark.com/shared_projects/tvMoYMrG)  
-[ROM Card programming adapter PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_IC_Card_ROM_programming_adapter.html)
+[Programming Adapter PCB from OSHPark](https://oshpark.com/shared_projects/TkzNwgho)  
+[Programming Adapter PCB from PCBWAY](https://www.pcbway.com/project/shareproject/TANDY_WP_2_IC_Card_Programming_Adapter.html)
 
-[Programming adapter BOM from DigiKey](https://www.digikey.com/short/tvqjhh21)
+[Programming adapter BOM from DigiKey](https://www.digikey.com/short/v2r3pqp4)
 
 In addition to soldering the pins to the PCB, also make a male jumper for the write-enable contacts on the card.  
 Cut a pair of pins off the leftover 2.54mm pin header, and solder the two pins together on the short side.  
 There is a spot to stow the jumper on the programming adapter when not in use.  
 
-To program the ROM card, insert the jumper into the write-enable holes on the card.
+
+###To program the ROM card
+
+Insert the male jumper into the write-enable holes on the card.
+
+Set all 4 jumpers on the programming adapter to ROM.
 
 Example using a TL-866 programmer to write a file named `rom.bin` to the ROM card:  
 `minipro --device SST39SF020A --write rom.bin`
+
+###To program the Breakout/ROM card
+
+Same as for ROM card except:
+
+Install a jumper on /CE1 to /CE_IC on the card.  
+Install a jumper on R/W to /WE_IC on the card.  (This one takes the place of the male jumper)  
+Remove jumper from  GND to /DET on the card.  
+
+### Reading/Writing the RAM card
+
+Set all 4 jumpers on the programming adapter to RAM.
+
+Examples using a TL-866 programmer (628128 is a generic part number for the SRAM on the card):  
+`minipro --skip_id --device 628128 --read ram.bin`  
+`minipro --skip_id --device 628128 --write ram.bin`  
 
 
 ## BREAKOUT CARD
