@@ -45,7 +45,7 @@ Cut a pair of pins off the leftover 2.54mm pin header, and solder the two pins t
 There is a spot to stow the jumper on the programming adapter when not in use.  
 
 
-###To program the ROM card
+### To program the ROM card
 
 Insert the male jumper into the write-enable holes on the card.
 
@@ -54,7 +54,7 @@ Set all 4 jumpers on the programming adapter to ROM.
 Example using a TL-866 programmer to write a file named `rom.bin` to the ROM card:  
 `minipro --device SST39SF020A --write rom.bin`
 
-###To program the Breakout/ROM card
+### To program the Breakout/ROM card
 
 Same as for ROM card except:
 
