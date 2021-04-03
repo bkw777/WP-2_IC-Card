@@ -1,4 +1,4 @@
-# Expansion IC Card for TANDY WP-2
+# Expansion IC Card for TANDY WP-2, TANDY WP-3, Citizen CBM-10WP
 
 The TANDY WP-2 has an expansion slot that accepts "IC Cards" that may be either RAM or ROM, up to 128K RAM, up to 256K ROM. Here are two cards to fit that slot, a RAM card and a ROM card, and a programming adapter to program the ROM card. The RAM card includes a battery backup.
 
@@ -110,7 +110,7 @@ The service manual says that the original IC Cards do not connect anything to th
 
 The BCHK pin is provided because it's not 100% certain whether this pin is physically connected to anything inside the WP-2 or not.  
 The service manual clearly labels it "Battery Check" in more than one place, which is a funny way to spell "un-used". However at least one schematic seems to say that the pin isn't connected to anything, and I have not been able to find continuity with anything by physically probing. However, I can't see all parts of the PCB right near that pin, so it's possible there is a trace connected to it.  
-It's unknown even if this was intended to be a signal TO the WP-2, or FROM it. So the pin is provided to investigate exactly this.  
+It's unknown even if this was intended to be a signal TO the WP-2, or FROM it. So the pin is provided to investigate exactly this.  Also see note below about the Atari Portfolio. Pin is probably meant for the WP-2 to measure the RAM cards battery level.
 
 The CE2 pin from the IC Card interface is not provided at the breakout header because that pin happens to have no behavior that needs to be either used or investigated.  
 CE2 is just a hard trace to VDD inside the WP-2. Not even a pullup that might be overriden, but a solid trace. It doesn't turn on & off under any conditions, it's just a copy of VDD.  
@@ -122,6 +122,9 @@ This allowed that spot on the breakout pin header to be used for the /CE jumper 
 [WP-2 Owner & Service Manuals](https://archive.org/search.php?query=Tandy%20WP-2)  
 Card slot signals & usage: Service Manual 8-2, C-3.  
 Executable "RUN" files: Service Manual 4-16, D-1.  
+
+
+
 
 ### Connector:  
 [Original Connectors](ref/JC20-B38S-F1.pdf)  
@@ -165,8 +168,7 @@ The S1, S2, S3 labels come from a schematic in the service manual. They are not 
 
 Pin 17, A17: Only used for ROM. the WP-2 only supports up to 128K in a RAM card.
 
-Pin 37, BCHK/Vchk, Battery Voltage Check: Unknown usage. The schematic on service manual page 8-2 doesn't show Vchk connecting to anything, and I also cannot find anything anywhere on the motherboard that has continuity with this pin. These cards don't connect this pin.  
-
+Pin 37, BCHK/Vchk, Battery Voltage Check: Unknown usage, but probably originally intended for the WP-2 (or the Citizen CBM-10WP) to detect the level of the battery in a RAM card. The schematic on service manual page 8-2 doesn't show Vchk connecting to anything, and I also cannot find anything anywhere on the motherboard that has continuity with this pin. Other similar machines had a pin that was used for the host machine to read the level of the battery on a RAM card. See the VBB pin in [Atari Portfolio Technical reference Guide, page 11](https://archive.org/details/atariportfoliotechnicalreferenceguide1989/page/n10/mode/1up)  These cards (except the breakout card) don't connect this pin.
 
 # TODO
 CamelFORTH on ROM?  
