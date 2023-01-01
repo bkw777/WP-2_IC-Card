@@ -1,0 +1,6 @@
+# ignore print output files
+*.csg
+*.stl
+*.stp
+*.step
+*.gcode

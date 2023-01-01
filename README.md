@@ -1,4 +1,4 @@
-# Expansion IC Card for TANDY WP-2, TANDY WP-3, Citizen CBM-10WP
+# Expansion IC-Card for TANDY WP-2, TANDY WP-3, Citizen CBM-10WP
 
 The TANDY WP-2 has an expansion slot that accepts "IC Cards" that may be either RAM or ROM, up to 128K RAM, up to 256K ROM. Here are two cards to fit that slot, a RAM card and a ROM card, and a programming adapter to program the ROM card. The RAM card includes a battery backup.
 
@@ -7,18 +7,24 @@ All versions of this card must be made from PCB that is 1.2mm or thinner.
 
 ## RAM CARD  
 
-![](WP-2_IC_Card_RAM.jpg)  
-![](PCB/WP-2_IC_Card_RAM.svg)  
+![](PCB/WP-2_IC-Card_RAM.jpg)  
+![](PCB/WP-2-IC_Card_RAM.svg)  
 
 [RAM card PCB from OSHPark](https://oshpark.com/shared_projects/viS1JOJY) (Select 0.8mm PCB thickness)  
 [RAM card PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_RAM_IC_Card.html) (Select 1.2mm PCB thickness, ENIG surface finish, add note "Bottom solder mask full cover")
 
 [RAM card BOM from DigiKey](https://www.digikey.com/short/hfwn58jq)
 
+3d-printable [RAM card Cover](COVER/WP-2_IC-Card_Cover_RAM.stl)
+
+![](COVER/WP-2_IC-Card_Cover_RAM.png)  
+![](COVER/WP-2_IC-Card_RAM.covered.jpg)  
+
+
 ## ROM CARD
 
-![](WP-2_IC_Card_ROM.jpg)  
-![](PCB/WP-2_IC_Card_ROM.svg)  
+![](PCB/WP-2_IC-Card_ROM.jpg)  
+![](PCB/WP-2_IC-Card_ROM.svg)  
 
 [ROM card PCB from OSHPark](https://oshpark.com/shared_projects/F9gte3be) (Select 0.8mm PCB thickness)  
 [ROM card PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_ROM_IC_Card.html) (Select 1.2mm PCB thickness)  
@@ -30,10 +36,10 @@ All versions of this card must be made from PCB that is 1.2mm or thinner.
 The programming adapter supports both ROM and RAM cards.  
 Use with a standard eprom programmer such as TL-866, to write to the ROM card.  
 
-![](WP-2_IC_Card_programming_adapter.jpg)  
-![](WP-2_IC_Card_programming_adapter.ROM.jpg)  
-![](WP-2_IC_Card_programming_adapter.RAM.jpg)  
-![](PCB/WP-2_IC_Card_programming_adapter.svg)  
+![](WP-2_IC-Card_programming_adapter.jpg)  
+![](WP-2_IC-Card_programming_adapter.ROM.jpg)  
+![](WP-2_IC-Card_programming_adapter.RAM.jpg)  
+![](PCB/WP-2_IC-Card_programming_adapter.svg)  
 
 [Programming Adapter PCB from OSHPark](https://oshpark.com/shared_projects/TkzNwgho)  
 [Programming Adapter PCB from PCBWAY](https://www.pcbway.com/project/shareproject/TANDY_WP_2_IC_Card_Programming_Adapter.html)
@@ -73,48 +79,13 @@ Examples using a TL-866 programmer (628128 is a generic part number for the SRAM
 
 ## BREAKOUT CARD
 
-![](WP-2_IC_Card_Breakout.jpg)  
-![](PCB/WP-2_IC_Card_Breakout.svg)  
+![](PCB/WP-2_IC-Card_Breakout.jpg)  
+![](PCB/WP-2_IC-Card_Breakout.svg)  
 
 [Breakout PCB from OSHPark](https://oshpark.com/shared_projects/4spvX9oV) (Select 0.8mm PCB thickness)  
 [Breakout PCB from PCBWAY](https://www.pcbway.com/project/shareproject/TANDY_WP_2_IC_Card_Breakout.html) (Select 1.2mm PCB thickness)  
 
 [Breakout card BOM from DigiKey](https://www.digikey.com/short/7f55bw00)  
-
-A few of the pins on the breakout pin header can be used both as connections to a breadboard or logic analyser, or with a jumper to short it to a neighboring pin.
-
-GND - /DET  : The /DET pin is a signal from the card to the WP-2. Inside the WP-2, /DET has a pullup. If the card shorts /DET to ground, this tells the WP-2 that the card is a RAM card. If the card does not connect /DET to anything, that tells the WP-2 that the card is a ROM card.  
-
-/CE1 - /CE_IC  :  /CE1 comes from the WP-2. /CE_IC goes to the /CE pin on the on-board chip. The /CE1 pin can be connected to a breadboard like all the other signals, and the on-board chip will be disabled. Or a jumper can be installed to connect these two pins and that enables the on-board chip, and the card acts like an ordinary ROM card.  
-
-R/W - /WE_IC  :  R/W comes from the WP-2. /WE_IC goes to the /WE pin on the on-board chip. A jumper can be installed to connect these two pins to write to the on-board chip using the ROM card programming adapter. The two R/W pins are the same. The R/W pin next to the /WE_IC pin is just a copy to make it possible to install a jumper to /WE on the on-board chip.  
-
-
-The breakout card can be used a few different ways:  
-
-* As an ordinary ROM card using the on-board chip.  
-: /DET open. /WE_IC open. /CE_IC closed.  
-
-* As an ordinary ROM card using the on-board chip, being programmed with the ROM card programming adapter.  
-: /DET open. /WE_IC closed. /CE_IC closed.  
-
-* Breakout/emulated ROM card, with the on-board chip disabled and a rom chip or emulator attached via the breakout pins.  
-: /DET open. /WE_IC open. /CE_IC open.  
-
-* Breakout/emulated RAM card, with the on-board chip disabled and a ram chip or emulator attached via the breakout pins.
-: /DET closed. /WE_IC open. /CE_IC open.  
-
-The S1, S2, and S3 pins are not documented to do anything, but are provided because they are physically connected to something inside the WP-2.  
-They are connected to pullup resistors and to a gate array chip with unknown programming.  
-The service manual says that the original IC Cards do not connect anything to these pins.  
-
-The BCHK pin is provided because it's not 100% certain whether this pin is physically connected to anything inside the WP-2 or not.  
-The service manual clearly labels it "Battery Check" in more than one place, which is a funny way to spell "un-used". However at least one schematic seems to say that the pin isn't connected to anything, and I have not been able to find continuity with anything by physically probing. However, I can't see all parts of the PCB right near that pin, so it's possible there is a trace connected to it.  
-It's unknown even if this was intended to be a signal TO the WP-2, or FROM it. So the pin is provided to investigate exactly this.  Also see note below about the Atari Portfolio. Pin is probably meant for the WP-2 to measure the RAM cards battery level.
-
-The CE2 pin from the IC Card interface is not provided at the breakout header because that pin happens to have no behavior that needs to be either used or investigated.  
-CE2 is just a hard trace to VDD inside the WP-2. Not even a pullup that might be overriden, but a solid trace. It doesn't turn on & off under any conditions, it's just a copy of VDD.  
-This allowed that spot on the breakout pin header to be used for the /CE jumper which IS useful.  
 
 ----
 
