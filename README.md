@@ -6,7 +6,7 @@ All versions of this card must be made from PCB that is 1.2mm or thinner.
 
 There is an optional cover you can 3d-print and glue to the card to protect the components and fill out the 3mm slot.
 
-Gerbersfor PCB manufacturing and STL files for 3d printing are all in [releases](../../releases/latest)
+Gerbers for PCB manufacturing and STL files for 3d printing are all in [releases](../../releases/latest)
 
 ## RAM CARD  
 
@@ -22,8 +22,6 @@ If you get taller caps, then you can still use the cover but must generate a dif
 Set components_height to whatever your tallest part is (not counting the battery holder). Most likely, it will be caps at around 1.5mm.  
 All else being equal, this will result in a new cover model with an open window for the components with no thin wall/roof covering them.  
 You may also look at adjusting thin_wall_minimum to allow the wall to be thinner if you think you can print it, or you can increase card_thickness if you don't mind the front connector looking slightly off vertical center.
-
-STL for 3d-printable cover is in [releases](../..releases/latest/)
 
 ![](COVER/WP-2_IC-Card_Cover_RAM.png)  
 ![](PCB/WP-2_IC-Card_RAM.covered.jpg)  
