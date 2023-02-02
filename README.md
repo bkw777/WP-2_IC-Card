@@ -94,6 +94,7 @@ Examples using a TL-866 programmer (628128 is a generic part number for the SRAM
 ## BREAKOUT CARD
 
 ![](PCB/WP-2_IC-Card_Breakout.jpg)  
+![](PCB/WP-2_IC-Card_Breakout.covered.jpg)  
 ![](PCB/WP-2_IC-Card_Breakout.svg)  
 
 [Breakout PCB from OSHPark](https://oshpark.com/shared_projects/4spvX9oV) (Select 0.8mm PCB thickness)  
