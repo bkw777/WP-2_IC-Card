@@ -7,7 +7,7 @@
   (paper "USLetter")
   (title_block
     (title "WP-2_IC-Card")
-    (date "2023-01-03")
+    (date "2023-02-02")
     (rev "RAM_015")
     (company "Brian K. White - b.kenyon.w@gmail.com")
     (comment 1 "CC-BY-SA")
@@ -55,7 +55,7 @@
     (solder_mask_min_width 0.2)
     (grid_origin 135.95 95.245)
     (pcbplotparams
-      (layerselection 0x00010f0_ffffffff)
+      (layerselection 0x00010fc_ffffffff)
       (disableapertmacros false)
       (usegerberextensions true)
       (usegerberattributes false)

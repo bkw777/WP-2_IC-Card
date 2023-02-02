@@ -1363,6 +1363,11 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 3fc178bd-7b57-4f58-886b-d5ae3ece1f7c)
   )
+  (text "The CE2 and BCHK circuits are included here even though they are no-op in the WP-2.\nMaybe the card might also work in other machines like the Citizen,\nand maybe some other machine actually uses those pins."
+    (at 44.45 198.12 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 47f19602-41dc-4e32-869b-08c0b02d36b7)
+  )
   (text "1x38 1.27mm Female" (at 96.52 44.45 180)
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 483df8f3-bf9f-4799-a013-a476a5cbb4ae)
@@ -1371,8 +1376,8 @@
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 6428ca09-71e4-4375-9272-0cc31e464442)
   )
-  (text "Minimum 15 seconds to change the battery,\nassuming starting at 3.0v, 5uA load,\nand data retention to 2.0v\n\nAS6C1008 actually has 1uA load,\ndata retention to 1.5v, resulting\nin 130 seconds."
-    (at 107.95 107.95 0)
+  (text "Minimum 15 seconds to change the battery,\nassuming starting at 3.0v, 5uA load,\nand data retention to 2.0v\n\nAS6C1008 actually has 1uA load,\ndata retention to 1.5v, resulting\nin 130 seconds.\n\nActually tested over 10 minutes with no battery."
+    (at 107.95 104.14 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 686eb839-d501-480f-aeb4-0f624d83deb0)
   )
@@ -1389,7 +1394,7 @@
     (uuid 9d522c2f-7ff1-4e30-9634-2b949b94a6e6)
   )
   (text "Use caps that are 1.2mm thick max\nto be compatible with 3d printed cover\nwith closed/covered component area.\n\nOtherwise, set the components_height parameter\nin the scad file, and it will generate a\nmodel with an open window for the components.\n"
-    (at 87.63 186.69 0)
+    (at 44.45 185.42 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid b3d9dce3-16cf-4a2c-b638-3e36b57bda12)
   )
