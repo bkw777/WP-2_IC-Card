@@ -9,7 +9,7 @@ There is an optional cover you can 3d-print and glue to the card to protect the 
 ## RAM CARD  
 
 ![](PCB/WP-2_IC-Card_RAM.jpg)  
-![](PCB/WP-2-IC-Card_RAM.svg)  
+![](PCB/WP-2_IC-Card_RAM.svg)  
 
 <!-- [RAM card PCB from OSHPark]() (Select 0.8mm PCB thickness)  -->
 [RAM card PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_RAM_IC_Card.html) (Select 1.2mm PCB thickness, ENIG surface finish, Add this note: "Bottom solder mask full cover." because there are no holes in the soldermask on the bottom and the automatic gerber checker thinks the layer is missing.)
