@@ -355,7 +355,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "WP-2_IC_Card_ROM.kicad_pro",
+    "filename": "WP-2_IC-Card_ROM.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -389,7 +389,7 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "",
-      "step": "WP-2_IC_Card_ROM.step",
+      "step": "WP-2_IC-Card_ROM.step",
       "vrml": ""
     },
     "page_layout_descr_file": ""

@@ -56,8 +56,8 @@
         }
       ],
       "drc_exclusions": [
-        "hole_clearance|112255000|113520000|af769c09-446a-4aa1-b778-9b3053a81d7e|01874310-324b-4237-91a4-aa3479d2070c",
-        "hole_clearance|159645000|113520000|0cb049d1-f7dd-476e-a175-9ed98780bb45|3c3f621a-7440-467d-a503-5b97a2148469",
+        "hole_clearance|112255000|113520000|9580d5f6-c121-41e9-a533-955ea78aea1e|01874310-324b-4237-91a4-aa3479d2070c",
+        "hole_clearance|159645000|113520000|effd9992-53b2-4645-ae1f-782665d41d3e|3c3f621a-7440-467d-a503-5b97a2148469",
         "via_dangling|122950000|83745000|61b1a23b-7f33-4e0e-a527-91f0acf31429|00000000-0000-0000-0000-000000000000",
         "via_dangling|148950000|83745000|2733b71d-472a-4a76-8fce-30cf4ad69bb1|00000000-0000-0000-0000-000000000000"
       ],
@@ -115,7 +115,7 @@
         "min_copper_edge_clearance": 0.19999999999999998,
         "min_hole_clearance": 0.19999999999999998,
         "min_hole_to_hole": 0.25,
-        "min_microvia_diameter": 0.45999999999999996,
+        "min_microvia_diameter": 0.5,
         "min_microvia_drill": 0.3,
         "min_silk_clearance": 0.0,
         "min_through_hole_diameter": 0.3,
@@ -364,7 +364,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "WP-2_IC_Card_RAM.kicad_pro",
+    "filename": "WP-2_IC-Card_RAM.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -398,7 +398,7 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "",
-      "step": "WP-2_IC_Card_RAM.step",
+      "step": "WP-2_IC-Card_RAM.step",
       "vrml": ""
     },
     "page_layout_descr_file": ""

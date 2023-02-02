@@ -1,6 +1,3 @@
-"Index","Quantity","Part Number","Manufacturer Part Number","Description","Customer Reference","Available","Backorder","Unit Price","Extended Price USD"
-"1","1","SMS-138-01-G-S-ND","SMS-138-01-G-S","CONN SKT .050"" 38POS","","1","0","6.96000","6.96"
-"2","2","311-47.0KCRCT-ND","RC0805FR-0747KL","RES SMD 47K OHM 1% 1/8W 0805","","2","0","0.10000","0.20"
-"3","1","SST39SF020A-70-4C-WHE-ND","SST39SF020A-70-4C-WHE","IC FLASH 2MBIT PARALLEL 32TSOP","","1","0","1.34000","1.34"
-"4","1","S2011EC-20-ND","PRPC020DAAN-RC","CONN HEADER VERT 40POS 2.54MM","","1","0","0.90000","0.90"
-"5","3","2553-2006-BBB-ND","2006-BBB","MINI JUMPERS, 2.54MM PITCH, BLAC","","3","0","0.06000","0.18"
+Index,Quantity,Part Number,Manufacturer Part Number,Description,Customer Reference,Available,Backorder,Unit Price,Extended Price USD
+1,1,SMS-138-01-G-S-ND,SMS-138-01-G-S,"CONN SKT .050"" 38POS",,1,0,6.96,6.96
+2,1,S2011EC-20-ND,PRPC020DAAN-RC,CONN HEADER VERT 40POS 2.54MM,,1,0,0.9,0.9

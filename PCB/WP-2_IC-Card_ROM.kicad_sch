@@ -1645,7 +1645,7 @@
     (property "Value" "0.1uF" (id 1) (at 158.75 85.0835 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "0_LOCAL:C_0805" (id 2) (at 156.21 83.82 0)
+    (property "Footprint" "0_LOCAL:C_0805_1mm" (id 2) (at 156.21 83.82 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 156.21 83.82 0)
@@ -1688,7 +1688,7 @@
       (reference "#PWR0111") (unit 1) (value "VDD") (footprint "")
     )
     (path "/88c296fd-6a63-4a6a-9782-aecf28e084f1"
-      (reference "C1") (unit 1) (value "0.1uF") (footprint "0_LOCAL:C_0805")
+      (reference "C1") (unit 1) (value "0.1uF") (footprint "0_LOCAL:C_0805_1mm")
     )
     (path "/00000000-0000-0000-0000-00005f6ef0a3"
       (reference "J1") (unit 1) (value "Conn_01x38_Female") (footprint "0_LOCAL:SMS-138-01-x-x_edge")

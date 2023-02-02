@@ -1,6 +1,6 @@
 {
   "board": {
-    "active_layer": 0,
+    "active_layer": 38,
     "active_layer_preset": "",
     "auto_track_width": true,
     "hidden_nets": [],
@@ -66,7 +66,7 @@
     "zone_display_mode": 0
   },
   "meta": {
-    "filename": "WP-2_IC_Card_RAM.kicad_prl",
+    "filename": "WP-2_IC-Card_RAM.kicad_prl",
     "version": 3
   },
   "project": {
