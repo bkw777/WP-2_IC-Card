@@ -110,13 +110,16 @@ Examples using a TL-866 programmer (628128 is a generic part number for the SRAM
 ![](PCB/WP-2-IC_Card_FRAM.svg)  
 
 BOM: https://www.digikey.com/short/hzpzbwz3  
+-->
 
 ## MRAM 512K
+WIP - WIP - WIP  
+NOT TESTED
+
 RAM card without a battery!
 
 This card is expensive. The MRAM chip is $34 by itself, and the 38 pin connector is $10, plus all the rest.  
-But this provides 4 128K banks in a single card, and preserves the data without a battery to leak, die, corrode, get shorted from scratched traces on the pcb, etc.  
-The card is unpowered when not in the WP-2, so the bare PCB getting scratched and shorted in contact with random items doesn't matter.
+But this provides 4 128K banks in a single card, and preserves the data without a battery to leak, die, corrode, get shorted from scratched traces on the pcb bottom, etc.  
 
 ![](PCB/WP-2_IC-Card_MRAM_512.jpg)  
 ![](PCB/WP-2_IC-Card_MRAM_512.slider.jpg)  
@@ -141,7 +144,6 @@ There are two versions of 3d-printable cover available, with different ways to h
 The default version has a separate moving part to move the switch, but it's tiny and a little finnicky to print and clean up and make fit.  
 The "dish" version just has a dish shaped concave opening around the switch so you can finger it directly the same as with no cover. But this can be difficult to print cleanly because of the overhang.
 
--->
 
 ----
 
