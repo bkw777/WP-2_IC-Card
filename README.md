@@ -4,9 +4,9 @@ The TANDY WP-2 has an expansion slot that accepts "IC Cards" that may be either 
 
 All versions of this card must be made from PCB that is 1.2mm or thinner.
 
-There is an optional cover you can 3d-print and glue to the card to protect the components and fill out the 3mm slot.
+There is an optional cover you can 3d-print and glue to the card to protect the components and fill the slot so the card doesn't move.
 
-Gerbers for PCB manufacturing and STL files for 3d printing are all in [releases](../../releases/latest)
+Gerbers and STLs are in [releases](../../releases/)
 
 ## RAM CARD  
 
@@ -14,7 +14,11 @@ Gerbers for PCB manufacturing and STL files for 3d printing are all in [releases
 ![](PCB/WP-2_IC-Card_RAM.svg)  
 
 <!-- [RAM card PCB from OSHPark]() (Select 0.8mm PCB thickness)  -->
-[RAM card PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_RAM_IC_Card.html) (Select 1.2mm PCB thickness, ENIG surface finish, Add this note: "Bottom solder mask full cover." because there are no holes in the soldermask on the bottom and the automatic gerber checker thinks the layer is missing.)
+[RAM card PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_RAM_IC_Card.html)  
+IMPORTANT:  
+* Select **1.2mm** PCB thickness  
+* Select **ENIG** copper finish  
+* Add this note: "**Bottom solder mask full cover.**"
 
 [RAM card BOM from DigiKey](https://www.digikey.com/short/5wtbz75z)  
 If you want to source parts elsewhere, and you want to use the 3d-printed cover, try to get caps that are 1.2mm tall or less.  
@@ -33,14 +37,12 @@ You may also look at adjusting thin_wall_minimum to allow the wall to be thinner
 ![](PCB/WP-2_IC-Card_ROM.jpg)  
 ![](PCB/WP-2_IC-Card_ROM.svg)  
 
-There are no known rom images for any rom cards. Don't bother building one of these unless you are trying to actually create a rom from scratch!
+There are no known rom images for any rom cards. Don't bother building one of these unless you are trying to create a rom from scratch.
 
 <!-- [ROM card PCB from OSHPark](https://oshpark.com/shared_projects/F9gte3be) (Select 0.8mm PCB thickness)  -->
 [ROM card PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_ROM_IC_Card.html) (Select 1.2mm PCB thickness)  
 
 [ROM card BOM from DigiKey](https://www.digikey.com/short/zn95jj)
-
-3d-printable [ROM card Cover](COVER/WP-2_IC-Card_Cover_ROM.stl)
 
 https://github.com/bkw777/WP-2_IC-Card/releases/download/v015/WP-2_IC-Card_Cover_RAM.stl
 
