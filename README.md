@@ -8,35 +8,27 @@ There is an optional cover you can 3d-print and glue to the card to protect the 
 
 Gerbers and STLs are in [releases](../../releases/)
 
+----
+
 ## RAM CARD  
-
-![](PCB/WP-2_IC-Card_RAM.jpg)  
-![](PCB/WP-2_IC-Card_RAM.svg)  
-
 <!-- [RAM card PCB from OSHPark]() (Select 0.8mm PCB thickness)  -->
 [RAM card PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_RAM_IC_Card.html)  
-IMPORTANT:  
+IMPORTANT, when ordering the PCB:  
 * Select **1.2mm** PCB thickness  
 * Select **ENIG** copper finish  
 * Add this note: "**Bottom solder mask full cover.**"
 
 [RAM card BOM from DigiKey](https://www.digikey.com/short/5wtbz75z)  
-If you want to source parts elsewhere, and you want to use the 3d-printed cover, try to get caps that are 1.2mm tall or less.  
-If you get taller caps, then you can still use the cover but must generate a different version of it by changing some of the parameters in the .scad file and exporting a new stl.  
-Set components_height to whatever your tallest part is (not counting the battery holder). Most likely, it will be caps at around 1.5mm.  
-All else being equal, this will result in a new cover model with an open window for the components with no thin wall/roof covering them.  
-You may also look at adjusting thin_wall_minimum to allow the wall to be thinner if you think you can print it, or you can increase card_thickness if you don't mind the front connector looking slightly off vertical center.
 
+![](PCB/WP-2_IC-Card_RAM.jpg)  
+![](PCB/WP-2_IC-Card_RAM.svg)  
 ![](COVER/WP-2_IC-Card_Cover_RAM.png)  
 ![](PCB/WP-2_IC-Card_RAM.covered.jpg)  
 ![](PCB/WP-2_IC-Card_RAM.rear.jpg)  
 
+----
 
-## ROM CARD
-
-![](PCB/WP-2_IC-Card_ROM.jpg)  
-![](PCB/WP-2_IC-Card_ROM.svg)  
-
+## ROM CARD  
 There are no known rom images for any rom cards. Don't bother building one of these unless you are trying to create a rom from scratch.
 
 <!-- [ROM card PCB from OSHPark](https://oshpark.com/shared_projects/F9gte3be) (Select 0.8mm PCB thickness)  -->
@@ -44,16 +36,14 @@ There are no known rom images for any rom cards. Don't bother building one of th
 
 [ROM card BOM from DigiKey](https://www.digikey.com/short/zn95jj)
 
-https://github.com/bkw777/WP-2_IC-Card/releases/download/v015/WP-2_IC-Card_Cover_RAM.stl
+![](PCB/WP-2_IC-Card_ROM.jpg)  
+![](PCB/WP-2_IC-Card_ROM.svg)  
+
+----
 
 ## Programming Adapter
 The programming adapter supports both ROM and RAM cards.  
 Use with a standard eprom programmer such as TL-866.  
-
-![](WP-2_IC-Card_programming_adapter.jpg)  
-![](WP-2_IC-Card_programming_adapter.ROM.jpg)  
-![](WP-2_IC-Card_programming_adapter.RAM.jpg)  
-![](PCB/WP-2_IC-Card_programming_adapter.svg)  
 
 [Programming Adapter PCB from OSHPark](https://oshpark.com/shared_projects/TkzNwgho)  
 [Programming Adapter PCB from PCBWAY](https://www.pcbway.com/project/shareproject/TANDY_WP_2_IC_Card_Programming_Adapter.html)
@@ -64,6 +54,10 @@ In addition to soldering the pins to the PCB, also make a male jumper for the wr
 Cut a pair of pins off the leftover 2.54mm pin header, and solder-blob the two pins together on the short side.  
 There is a spot to stow the jumper on the programming adapter when not in use.  
 
+![](WP-2_IC-Card_programming_adapter.jpg)  
+![](WP-2_IC-Card_programming_adapter.ROM.jpg)  
+![](WP-2_IC-Card_programming_adapter.RAM.jpg)  
+![](PCB/WP-2_IC-Card_programming_adapter.svg)  
 
 ### To program the ROM card
 
@@ -94,17 +88,19 @@ Examples using a TL-866 programmer (628128 is a generic part number for the SRAM
 `minipro --skip_id --device 628128 --read ram.bin`  
 `minipro --skip_id --device 628128 --write ram.bin`  
 
+----
 
 ## BREAKOUT CARD
-
-![](PCB/WP-2_IC-Card_Breakout.jpg)  
-![](PCB/WP-2_IC-Card_Breakout.covered.jpg)  
-![](PCB/WP-2_IC-Card_Breakout.svg)  
 
 [Breakout PCB from OSHPark](https://oshpark.com/shared_projects/4spvX9oV) (Select 0.8mm PCB thickness)  
 [Breakout PCB from PCBWAY](https://www.pcbway.com/project/shareproject/TANDY_WP_2_IC_Card_Breakout.html) (Select 1.2mm PCB thickness)  
 
 [Breakout card BOM from DigiKey](https://www.digikey.com/short/7f55bw00)  
+
+![](PCB/WP-2_IC-Card_Breakout.jpg)  
+![](PCB/WP-2_IC-Card_Breakout.covered.jpg)  
+![](PCB/WP-2_IC-Card_Breakout.svg)  
+
 
 <!--   NOT VERIFIED
 ## FRAM CARD
@@ -116,6 +112,8 @@ Examples using a TL-866 programmer (628128 is a generic part number for the SRAM
 BOM: https://www.digikey.com/short/hzpzbwz3  
 -->
 
+----
+
 ## MRAM 512K
 WIP - WIP - WIP  
 NOT TESTED
@@ -125,13 +123,8 @@ RAM card without a battery!
 This card is expensive. The MRAM chip is $34 by itself, and the 38 pin connector is $10, plus all the rest.  
 But this provides 4 128K banks in a single card, and preserves the data without a battery to leak, die, corrode, get shorted from scratched traces on the pcb bottom, etc.  
 
-![](PCB/WP-2_IC-Card_MRAM_512.jpg)  
-![](PCB/WP-2_IC-Card_MRAM_512.slider.jpg)  
-![](PCB/WP-2_IC-Card_MRAM_512.dish.jpg)  
-![](PCB/WP-2-IC_Card_MRAM_512.svg)  
-
 The parts are not all available from any single supplier.  
-The closest is, Mouser has everything but the 38-pin connector, and they do have 39, 43, 50-pin versions in stock which you could cut and sand down.
+The closest is, Mouser has everything but the 38-pin connector, but they do have 39, 43, 50-pin versions in stock which you could cut and sand down.
 
 DigiKey has the exact 38-pin connector in stock, but does not have the 20-bit level-shifter in single quantities.
 
@@ -142,12 +135,16 @@ You will have to cut the excess pins off the connector, and the connector is not
 Cut right in the middle of the 39th pin, don't try to cut between 38 and 39. And then very carefully and lightly sand down the rough end just until the little half-walls are almost gone, without touching the thin wall between the pins.  
 The wall between pins is PAPER THIN, and the connector is $10 for a single one. Stop sanding as soon as the connector can fit into the PCB.
 
-BOM: https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=CDF549B87B
+BOM from Mouser: https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=CDF549B87B
 
 There are two versions of 3d-printable cover available, with different ways to handle the bank-select switch.  
 The default version has a separate moving part to move the switch, but it's tiny and a little finnicky to print and clean up and make fit.  
 The "dish" version just has a dish shaped concave opening around the switch so you can finger it directly the same as with no cover. But this can be difficult to print cleanly because of the overhang.
 
+![](PCB/WP-2_IC-Card_MRAM_512.jpg)  
+![](PCB/WP-2_IC-Card_MRAM_512.slider.jpg)  
+![](PCB/WP-2_IC-Card_MRAM_512.dish.jpg)  
+![](PCB/WP-2-IC_Card_MRAM_512.svg)  
 
 ----
 
