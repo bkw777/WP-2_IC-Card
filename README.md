@@ -2,7 +2,8 @@
 
 The TANDY WP-2 has an expansion slot that accepts "IC Cards" that may be either RAM up to 128K or ROM up to 256K. Here are cards to fit that slot, a RAM card and a ROM card, a programming adapter to program the ROM card, and a breakout card to allow connecting the bus to a breadboard.
 
-All versions of this card must be made from PCB that is 1.2mm or thinner.
+**This card must be made with 1.2mm thick PCB or less**  
+NOT standard 1.6mm.
 
 There is an optional cover you can 3d-print and glue to the card to protect the components and fill the slot so the card doesn't move.
 
@@ -14,9 +15,13 @@ Gerbers and STLs are in [releases](../../releases/)
 <!-- [RAM card PCB from OSHPark]() (Select 0.8mm PCB thickness)  -->
 [RAM card PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_RAM_IC_Card.html)  
 IMPORTANT, when ordering the PCB:  
-* Select **1.2mm** PCB thickness  
-* Select **ENIG** copper finish  
-* Add this note: "**Bottom solder mask full cover.**"
+* **Thickness: 1.2** <-- MOST IMPORTANT - DO NOT MISS  
+* **Min Track/Spacing: 6/6mil**  
+6mil is the default quality level that they can manufacture, but finer detail is available for higher cost. The site tries to automatically scan the design and select the necessary quality level automatically, but it gets this wrong sometimes. All traces and spaces on this board are 0.2mm minimum, almost 7.9mil, so the board only needs the default 6mil quality level. Just manually change it to 6/6 if it isn't already.
+* **Surface Finish: Immersion gold(ENIG)**  
+Makes it expensive, but you want the battery terminal to be gold.
+* **Other Special request: Bottom solder mask full cover.**  
+There are no openings in the bottom soldermask layer, so you have to tell them that you want 100% coverage rather than 0% coverage.
 
 [RAM card BOM from DigiKey](https://www.digikey.com/short/5wtbz75z)  
 
@@ -115,7 +120,7 @@ BOM: https://www.digikey.com/short/hzpzbwz3
 ----
 
 ## MRAM 512K
-WIP - WIP - WIP  
+WORK IN PROGRESS  
 NOT TESTED
 
 RAM card without a battery!
