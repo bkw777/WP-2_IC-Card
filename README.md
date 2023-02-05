@@ -110,7 +110,6 @@ Examples using a TL-866 programmer (628128 is a generic part number for the SRAM
 <!--   NOT VERIFIED
 ## FRAM CARD
 
-
 ![](PCB/WP-2_IC-Card_FRAM.jpg)  
 ![](PCB/WP-2-IC_Card_FRAM.svg)  
 
@@ -189,30 +188,36 @@ As with the SRAM, several parts are compatible. A few example part numbers are l
 
 Pin 2, /DET Card Detect: WP-2 uses this to detect the type of card. The pin is pulled up to VDD inside the WP-2. A RAM card connects this pin to GND, which tells the WP-2 that it is a RAM card. A ROM card leaves this pin not connected, which means it will be pulled high by the pullup resistor inside the WP-2, which tells the WP-2 that it is a ROM card.
 
-Pin 3, CE2, active-high chip-enable: CE2 is just wired directly to VDD inside the WP-2. The cards in this repo don't use this pin.
+Pin 3, CE2, active-high chip-enable: This is not a real CE2 signal from the WP-2, it's just connected directly to VDD inside the WP-2. The card is only enabled/disabled by /CE1. Some of these designs connect the pin anyway as long as the card is based on a chip that actually has a CE2 pin anyway, because it's possible there is some other machines besides WP-2 that use the same card standard, and possibly one of those might actually use the signal. But for instance the 512K MRAM chip does not have a CE2 pin, and that card does not bother to add logic to impliment it, so the pin is NC on that card.
+
+Pin 15, 16, & 36:
 
 Pin 15 -> RA5 -> IC5 pin 66, "S1"  
 Pin 16 -> RA5 -> IC5 pin 67, "S2"  
 Pin 36 -> RA5 -> IC5 pin 68, "S3"  
 
 RA5 is 100k pullup to VDD.  
+
 IC5 is a gate array with unknown programming.  
-The service manual says the original IC Cards have no connections on any of these pins.  
-It is unknown if the WP-2 does anything at all with these pins.  
-The S1, S2, S3 labels come from a schematic in the service manual. They are not mentioned anywhere else.
+
+The S1, S2, S3 labels come from a schematic in the service manual. They are not mentioned anywhere else.  
+
+The service manual says the original IC Cards have no connections on any of these pins (that's in the cards, not in the WP-2).  
+
+It is unknown if the WP-2 does anything at all with these pins. They are connected to a chip, and the chip is a gate array that could be programmed to do anything. The only clues are that the pins are actually connected to anything at all instead of NC, and that they are pulled up rather than down or floating. It suggests there was a possible reserved usage, and that it was an active-low signal, and that possibly software could do it on the existing hardware.
+One guess for pins 15 & 16 might be made purely from their position on the connector. Possibly the spec for the "Toshiba IC-Card" interface includes pins for A18 and A19 that the WP-2 just doesn't happen to use. But the pullups hint against that. Address lines are active high, and so if these pins were un-used or reserved future-use address lines, they should be pulled *down* not up.
 
 Pin 17, A17: Only used for ROM. the WP-2 only supports up to 128K in a RAM card.
 
-Pin 37, BCHK/Vchk, Battery Voltage Check: Unknown usage, but probably originally intended for the WP-2 (or the Citizen CBM-10WP) to detect the level of the battery in a RAM card. The schematic on service manual page 8-2 doesn't show Vchk connecting to anything, and I also cannot find anything anywhere on the motherboard that has continuity with this pin. Other similar machines had a pin that was used for the host machine to read the level of the battery on a RAM card. See the VBB pin in [Atari Portfolio Technical reference Guide, page 11](https://archive.org/details/atariportfoliotechnicalreferenceguide1989/page/n10/mode/1up)  These cards (except the breakout card) don't connect this pin.
+Pin 37, BCHK/Vchk, Battery Voltage Check: Unknown usage, but probably originally intended for the WP-2 (or the Citizen CBM-10WP) to detect the level of the battery in a RAM card. The schematic on service manual page 8-2 doesn't show Vchk connecting to anything, and I also cannot find anything anywhere on the motherboard that has continuity with this pin. Other similar machines had a pin that was used for the host machine to read the level of the battery on a RAM card. See the VBB pin in [Atari Portfolio Technical reference Guide, page 11](https://archive.org/details/atariportfoliotechnicalreferenceguide1989/page/n10/mode/1up).
 
 # TODO
 CamelFORTH on ROM?  
-But how to construct rom image? Same as RAM?
+But how to construct rom image?  
+Try to deduce how a rom is supposed to work by recording the bus while trying to load a dictionary while the breakout board has the /DET pin not connected to GND.
 
-Document how to export gerbers for JLCPCB/PCBWAY/etc  
+Document how to create a RUN file like CamelFORTH. I don't know myself, but John Hogerhuis did it to make CamelFORTH based on the available info in the service manual, and someone else ported Zork the same way. Figure that out and write some sort of reproduceable toolchain & Makefile template hello world project to create new executables.
 
-Document how to select the right manufacturing options in JLCPCB/PCBWAY/etc  
-* 1.2mm pcb thickness
-* ENIG for the RAM card
+Use the programming adapter to dump ram card images and reverse engineer the file format. Possibly eventually add an mcu to the card that can read & write the sram and present a standard usb mass storage interface to a pc.
 
 Add a 5v power output to power a [MounT](https://github.com/bkw777/MounT)?
