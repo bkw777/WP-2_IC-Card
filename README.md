@@ -2,8 +2,8 @@
 
 The TANDY WP-2 has an expansion slot that accepts "IC Cards" that may be either RAM up to 128K or ROM up to 256K. Here are cards to fit that slot, a RAM card and a ROM card, a programming adapter to program the ROM card, and a breakout card to allow connecting the bus to a breadboard.
 
-**This card must be made with 1.2mm thick PCB or less**  
-NOT standard 1.6mm.
+**This card must be made with 1.2mm PCB**  
+Or less. NOT standard 1.6mm.
 
 There is an optional cover you can 3d-print and glue to the card to protect the components and fill the slot so the card doesn't move.
 
