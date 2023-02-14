@@ -9,19 +9,12 @@
 // FDM printing with 1.2mm PCB and no bottom cover.
 
 // Which part to generate?
-// valid values:
-// rom_top : same as "ram_top" without the battery
-// ram_top : for the battery-backed 128K SRAM card
-// mram_512_top : for the 512K MRAM card - includes both the main top cover and the seperate slide switch actuator
-// breakout_top : an unnecessary part just to fill up the slot so the breakout card doesn't move within the slot
-// bottom : Not applicable for 1.2mm PCB. Use with pcb_thickness 0.8 or less and card_thickness 3.2
-// slider : just the bank switch actuator slider part alone
-//part = "rom_top";
-part = "ram_top";
-//part = "mram_512_top";
-//part = "breakout_top";
-//part = "bottom";
-//part = "slider";
+part = "ram_top"; // top cover for the battery-backed 128K SRAM card
+//part = "rom_top"; // same as ram_top without the battery
+//part = "mram_512_top"; // top cover for the 512K MRAM card - includes both the main top cover and the seperate slide switch actuator
+//part = "breakout_top"; // top cover for the breakout card - not critical but fills out the slot so the breakout card doesn't wobble within the slot
+//part = "bottom"; // bottom cover - not applicable for 1.2mm PCB. Use with pcb_thickness 0.8 or less and card_thickness 3.2
+//part = "slider"; // just the bank switch actuator slider part alone
 
 // card_thickness is the total stackup thickness
 // of the pcb and printed parts above and below.
@@ -32,11 +25,11 @@ part = "ram_top";
 // You could increase this to 3.1, and add a layer of protective film
 // on the bottom. End result is still only 3.2, with the connector
 // still centered, and the bottom pcb traces protected from scratches and shorting.
-//card_thickness = 2.8; // 2.8, 2.9, make the top cover thinner to leave room to apply a sheet layer like tape or cut vinyl to cover over the openings
+//card_thickness = 2.8; // 2.8, 2.9, make the top cover thinner to leave room to apply a sheet layer like tape or cut vinyl to cover over the openings, or to allow for the thickness of using double-stick tape instead of glue to attach the cover to the pcb.
 //card_thickness = 2.9; // 
-card_thickness = 3.0; // default
-//card_thickness = 3.1; // 3.1, 3.2 make the top slightly thicker to allow the 0.7 thin_wall_minimum
-//card_thickness = 3.2; // it's ok but not perfect because adding thickness only to the top cover just makes the top cover stick out above the top of the connector, and pushes the connector slightly out of alignment with the pins in the slot in the WP-2
+//card_thickness = 3.0; // default - use this for 1.2mm PCB thickness and no bottom cover
+card_thickness = 3.1; // 3.1, 3.2 make the top slightly thicker to allow the 0.7 thin_wall_minimum
+//card_thickness = 3.2; // only use in concert with a thin pcb and a bottom cover
 
 // If pcb_thickness is less than 1.2, then generate a bottom cover too.
 // If you put 0.8 here to generate a bottom cover,
@@ -62,6 +55,8 @@ pcb_thickness = 1.2;
 // printing method can do it. Having no roof over the components
 // is still fine, it still protects the components and fills the card slot.
 components_height = 1.2;
+//components_height = 1.15; // fudge it down from 1.2 just enought to allow printing a 0.7mm roof over the components
+//components_height = 1.2;
 
 // If card_thickness-pcb_thickness-components_height
 // comes out less than thin_wall_minimum, then don't
@@ -88,6 +83,16 @@ thin_wall_minimum = 0.2; // FDM printing, mram_512_top has small bit of 0.3mm th
 //thin_wall_minimum = 0.6; // FDM printing (home)
 //thin_wall_minimum = 0.7; // SLS printing (shapeways)
 
+// Thickness of adhesive tape between the pcb and the bottom and top covers.
+// A cut is applied to the bottom of the top cover, and the top of the bottom cover
+// after all other modelling is done, so that both parts get this much thinner,
+// but none of the other geometry changes. For instance, the roof of the component
+// pockets remains the same height relative to the top of the pcb,
+// but the pockets get shallower relative to the bottom of the top cover.
+// For liquid glue, use 0.
+// For thin double-sided tape, use about 0.2
+adhesive_thickness = 0.1;
+
 //// Some other useful combinations of above:
 
 // SLS (Shapeways)
@@ -97,12 +102,11 @@ thin_wall_minimum = 0.2; // FDM printing, mram_512_top has small bit of 0.3mm th
 //pcb_thickness = 1.2;
 //thin_wall_minimum = 0.7;
 
-// FANCY 3 LAYER
-// Order a 0.8mm PCB
-// print both parts: part="<any>_top" and part="bottom"
+// FANCY 3 LAYER SANDWICH - top cover, pcb, bottom cover
+// Order 0.8mm PCB thickness
+// print both parts: part="foo_top" and part="bottom"
 //card_thickness = 3.2;
 //pcb_thickness = 0.8;
-//thin_wall_minimum = 0.2;
 
 // Which style of battery surround?
 // only affects the battery-backed ram card top
@@ -128,33 +132,29 @@ slide_switch_type = "slider";
 show_slider_position = 3;
 //show_slider_position = 4;
 
-/////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+// below here is stuff you mostly don't change
+///////////////////////////////////////////////////////////////////////////////
 
 // To generate these models, export STEP from KiCAD,
 // open STEP in FreeCAD, export STL.
-rom_pcb = "../PCB/WP-2_IC-Card_ROM.stl";
-ram_pcb = "../PCB/WP-2_IC-Card_RAM.stl";
-mram_512_pcb = "../PCB/WP-2_IC-Card_MRAM_512.stl";
-//mram_512x_pcb = "../PCB/WP-2_IC-Card_MRAM_512x.stl";
-breakout_pcb = "../PCB/WP-2_IC-Card_Breakout.stl";
+pcb_stl =
+ part == "rom_top" ? "../PCB/WP-2_IC-Card_ROM.stl" :
+ part == "ram_top" ? "../PCB/WP-2_IC-Card_RAM.stl" :
+ part == "mram_512_top" ? "../PCB/WP-2_IC-Card_MRAM_512.stl" :
+ part == "breakout_top" ? "../PCB/WP-2_IC-Card_Breakout.stl" :
+ false ;
 
 bw = 54;    // main body width (X)
 bl = 54;    // main body length (Y)
 
-max_pcb_thickness = 1.2; // side of connector to side of pins is 1.27, max orderable pcb thickness is 1.2
+max_pcb_thickness = 1.2; // side of connector to side of pins is 1.27, max orderable pcb thickness that doesn't exceed is 1.2
 connector_post_thickness = 0.51; // the solder posts on the main connector
 
-// This is ever so slightly technically wrong, because
-// the pcb is 1.2mm thick, but is soldered to one side
-// of the connector posts, which is actually
-// 1.27mm from the side of the connector body.
-// But this allows a roof to be printed over the
-// components without really being wrong either.
-top_thickness = card_thickness - max_pcb_thickness; // body height = total thickness minus pcb thickness
-// for reference, the strictly correct math would be
-//top_thickness = card_thickness/2 + connector_post_thickness/2;
+// top cover - don't apply adhesive thickness cut here
+top_thickness = card_thickness/2 + connector_post_thickness/2;
 
-// bottom cover
+// bottom cover - don't apply adhesive thickness cut here
 bottom_thickness = card_thickness/2 - connector_post_thickness/2 - pcb_thickness;
 
 cr = 2;     // large corner radius
@@ -162,22 +162,27 @@ sr = 0.5;   // small corner radius & fillets
 
 // finger grips
 gl = 18;  // grip length
+
+// Whatever degree of arcs you draw in kicad for the S curves in edge.cuts
+// just put that number in here too.
 grip_depth_angle = 45;  // bigger -> deeper finger grips
 gda = // grip_depth_angle limited to 0-90
  grip_depth_angle < 0 ? 0:
  grip_depth_angle > 90 ? 90:
  grip_depth_angle;
 
-// components common
+// components common values
 // components height, factoring thin_wall_minimum and card thickness
 // if it can fit, use requested components_height
 // if it can't fit, use double the top_thickness
 // to make a hole instead
-ch = top_thickness-components_height >= thin_wall_minimum ? components_height : top_thickness*2 ;
+ch =
+ top_thickness-components_height >= thin_wall_minimum ? components_height :
+ top_thickness*2 ;
 
-// for the component pockets
-// X position is relative to the board center
-// Y position is relative to the front edge of the board
+// for the component pockets,
+// fooxp : X position is relative to the board center
+// fooyp : Y position is relative to the front edge of the board
 
 // ram & rom components
 rcxs = 40;    // X size
@@ -203,6 +208,7 @@ sbw = sbu * spn + stow + sbu * spn; // slider base width
 sbh = 0.8; // slider base height (thickness)
 says = 7; // slider actuator Y size
 syo = says/2 + swys/2 - 0.45; // slider position Y offset relative to swyp
+sxo = sbu/2+sbu-sbu*(show_slider_position-1); // slider position X offset relative to swxp
 // figure out the actual slide switch pocket height
 // based on top_thickness and thin_wall_minumum
 swh = top_thickness-slide_switch_thickness >= thin_wall_minimum ? slide_switch_thickness : top_thickness*2 ;
@@ -256,6 +262,12 @@ include <handy.scad>;
 ////////////////////////////////////////////////////////////////////////////////////
 // CUT-SHAPES
 ////////////////////////////////////////////////////////////////////////////////////
+
+// shave the bottom of any top cover
+module adhesive () {
+ translate([0,0,adhesive_thickness/2-o])
+  cube([bw+o,bl+o,o+adhesive_thickness+o],center=true);
+}
 
 // rounded_cube with translation:
 // Y translated relative to the front edge of the pcb
@@ -385,18 +397,24 @@ module connector (s="top") {
  }
 }
 
-// shallow chamfered window around the slide switch actuator
+module bank_switch_common () {
+   // body
+   component_pocket(w=swxs,l=swys,x=swxp,y=swyp,h=top_thickness+o);
+   // pins
+   translate([0,-swpl/2,0])
+    component_pocket(w=swxs+swpl,l=swys+swpl,x=swxp,y=swyp,h=swph);
+}
+
+// cavity for slide switch with chamfered window around the actuator
 module bank_switch_dish_opening () {
    swh = top_thickness+o;
    awr = cr; // access window corner radius
    awl = swys*2; // access window length (Y)
    aww = swxs+4; // access window width (X)
    aws = 0.48; // access window chamfer slope 1.0=45deg
-   // body
-   component_pocket(w=swxs,l=swys,x=swxp,y=swyp,h=swh);
-   // pins
-   translate([0,-swpl/2,0])
-    component_pocket(w=swxs+swpl,l=swys+swpl,x=swxp,y=swyp,h=swph);
+
+   // body & pins
+   bank_switch_common();
    // access window
    translate([swxp,-bl/2+swyp+swys/4+awl/2,swh/2-xo])
     hull() {
@@ -408,13 +426,10 @@ module bank_switch_dish_opening () {
     }
 }
 
-// cavity & slot slider for slide switch actuator
+// cavity & slot for slide switch with sliding actuator
 module bank_switch_slider_opening () {
-   // body
-   component_pocket(w=swxs,l=swys,x=swxp,y=swyp,h=swh);
-   // pins
-   translate([0,-swpl/2,0])
-    component_pocket(w=swxs+swpl,l=swys+swpl,x=swxp,y=swyp,h=swph);
+   // body & pins
+   bank_switch_common();
    // slider base
    component_pocket(w=fc+sbw+fc,l=fc+says+fc,x=swxp,y=swyp+syo+fc-xo,h=sbh+fc);
    // slider slot
@@ -471,6 +486,9 @@ module top_common () {
 
    // finger-pull dimples on the exposed half of the card
    finger_grips();
+   
+   // shave the bottom by the thickness of the adhesive
+   adhesive();
 
   }
  }
@@ -504,12 +522,8 @@ module mram_512_top_common () {
   // bank-select slide switch
   if (slide_switch_type == "dish") {
    bank_switch_dish_opening ();
-  }
-  else {  
+  } else {
    bank_switch_slider_opening ();
-    translate([+sbu/2+sbu-sbu*(show_slider_position-1),0,0])
-     translate([swxp,-bl/2+swyp+syo+fc,0])
-      bank_switch_slider();
   }
    
   }
@@ -517,20 +531,13 @@ module mram_512_top_common () {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// COMPLETE / SEPARATE SHAPES
+// COMPLETE OBJECTS
 ////////////////////////////////////////////////////////////////////////////////
 
 module PCB () {
- m =
-  part == "rom_top" ? rom_pcb :
-  part == "ram_top" ? ram_pcb :
-  part == "mram_512_top" ? mram_512_pcb :
-  //part == "mram_512x_top" ? mram_512x_pcb :
-  part == "breakout_top" ? breakout_pcb :
-  false;
- if (m)
+ if (pcb_stl)
   translate([0,0,-max_pcb_thickness-xo])
-   import(m);
+   import(pcb_stl);
 }
 
 module rom_top () {
@@ -556,43 +563,22 @@ module mram_512_top () {
  difference () {
   mram_512_top_common ();
   
+  // these are just the level-shift components, which can vary
   group() {
    // U2
-   component_pocket(w=15.5,l=9.5,x=-7,y=22);
+   component_pocket(w=15.5, l=9.5, x=-7,    y=22);
    // C3 C4
-   component_pocket(w=3.5,l=17,x=-11.5,y=22);
+   component_pocket(w=3.5,  l=17,  x=-11.5, y=22);
    // C5 C6
-   component_pocket(w=3.5,l=17,x=-2.5,y=22);
+   component_pocket(w=3.5,  l=17,  x=-2.5,  y=22);
    // U3
-   component_pocket(w=9,l=8,x=13.7,y=22);
+   component_pocket(w=9,    l=8,   x=13.7,  y=22);
    // C7 C8
-   component_pocket(w=2.5,l=16,x=16.95,y=22);
+   component_pocket(w=2.5,  l=16,  x=16.95, y=22);
   }
 
  }
 }
-
-/*
-module mram_512x_top () {
- difference () {
-  mram_512_top_common ();
-
-  group() {
-   // U2
-   component_pocket(w=15.5,l=9.5,x=-7,y=22);
-   // C3 C4
-   component_pocket(w=3.5,l=17,x=-11.5,y=22);
-   // C5 C6
-   component_pocket(w=3.5,l=17,x=-2.5,y=22);
-   // U3
-   component_pocket(w=9,l=8,x=13.7,y=22);
-   // C7 C8
-   component_pocket(w=2.5,l=16,x=16.95,y=22);
-  }
-
- }
-}
-*/
 
 module breakout_top () {
  difference() {
@@ -600,13 +586,14 @@ module breakout_top () {
   group() {
    connector("top");
    polarity_notch();
+   adhesive();
   }
  }
 }
 
 module bottom () {
  difference() {
-  blank(t=bottom_thickness);
+  blank(t=bottom_thickness-adhesive_thickness);
   group() {
    connector("bottom");
    finger_grips();
@@ -655,7 +642,6 @@ if($preview) {
     translate([swxp+stow/2-stw/2-sbu*(show_slider_position-1),-bl/2+swyp+syo+fc,0])
      bank_switch_slider();
  }
- //if (part == "mram_512x_top") mram_512x_top();
  if (part == "breakout_top") breakout_top();
 
  if (part == "slider") bank_switch_slider ();
@@ -683,7 +669,6 @@ if($preview) {
     if (part == "rom_top") rom_top();
     if (part == "ram_top") ram_top();
     if (part == "mram_512_top") mram_512_top();
-    //if (part == "mram_512x_top") mram_512x_top();
     if (part == "breakout_top") breakout_top();
    }
   if (part == "mram_512_top")
