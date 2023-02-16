@@ -6,7 +6,8 @@
 // set part="..." to select which part to output.
 //
 // The default settings below are all set for
-// FDM printing with 1.2mm PCB and no bottom cover.
+// the battery-backed RAM card with 1.2mm PCB
+// and no bottom cover, printed by FDM.
 
 // Which part to generate?
 part = "ram_top"; // top cover for the battery-backed 128K SRAM card
@@ -27,8 +28,8 @@ part = "ram_top"; // top cover for the battery-backed 128K SRAM card
 // still centered, and the bottom pcb traces protected from scratches and shorting.
 //card_thickness = 2.8; // 2.8, 2.9, make the top cover thinner to leave room to apply a sheet layer like tape or cut vinyl to cover over the openings, or to allow for the thickness of using double-stick tape instead of glue to attach the cover to the pcb.
 //card_thickness = 2.9; // 
-//card_thickness = 3.0; // default - use this for 1.2mm PCB thickness and no bottom cover
-card_thickness = 3.1; // 3.1, 3.2 make the top slightly thicker to allow the 0.7 thin_wall_minimum
+card_thickness = 3.0; // default - use this for 1.2mm PCB thickness and no bottom cover
+//card_thickness = 3.1; // 3.1, 3.2 make the top slightly thicker to allow the 0.7 thin_wall_minimum
 //card_thickness = 3.2; // only use in concert with a thin pcb and a bottom cover
 
 // If pcb_thickness is less than 1.2, then generate a bottom cover too.
@@ -39,24 +40,19 @@ card_thickness = 3.1; // 3.1, 3.2 make the top slightly thicker to allow the 0.7
 // 0.8 or 1.2 are the only really useful values, even though pcb can be ordered in other thicknesses.
 // You can order a 1.0mm pcb, and that could be useful because you could cover the bottom with tape or cut vinyl,
 // but it's not useful *here* because a bottom cover generated from here will be too thin to be printed.
+//pcb_thickness = 0.6;
 //pcb_thickness = 0.8;
 pcb_thickness = 1.2;
 
-// How tall is the tallest component? (not counting the battery holder)
+// How tall is the tallest component? (not counting the battery holder or slide switch)
 // If this is any greater than 1.2, then there will be no roof over the components.
+// It still protects the components and fills the slot so the card doesn't wobble,
+// it's just cosmetically nicer to have a solid top surface.
 // The sram and diode array are 1.2mm, and the resistors are usually under 1.0,
 // The only question is the caps. When sourcing components you have to specifically
-// filter for caps that are 1.2mm or less, most will be a little taller.
-// If you want to use larger 47uF caps for more battery-change grace period,
-// or can't get exactly the parts in the DigiKey BOM,
-// then just set this to the height of your caps.
-// You'll either get no roof over the components, or you can increase
-// card_thickness up to 3.2, or reduce thin_wall_minimum if your
-// printing method can do it. Having no roof over the components
-// is still fine, it still protects the components and fills the card slot.
-components_height = 1.2;
+// select caps that are 1.2mm or less, most will be a little taller.
 //components_height = 1.15; // fudge it down from 1.2 just enought to allow printing a 0.7mm roof over the components
-//components_height = 1.2;
+components_height = 1.2;
 
 // If card_thickness-pcb_thickness-components_height
 // comes out less than thin_wall_minimum, then don't
@@ -65,9 +61,8 @@ components_height = 1.2;
 // is allowed to get. Unlike the components cover, it will
 // always print the feature, but won't let the other
 // constraints make it any thinner than this.
-// Does not affect the bottom cover part.
-// That part is always thin.
-// FDM can theoretically print a thin as a single layer. 0.12mm or even less,
+// Does not affect the bottom cover part. That part is always thin.
+// FDM can theoretically print as thin as a single layer. 0.12mm or even less,
 // at least for the first layers right on the bed.
 // Commercial SLS services usually specify a minimum allowed wall thickness of 0.7mm
 // With card_thickness = 3.0,
@@ -90,7 +85,7 @@ thin_wall_minimum = 0.2; // FDM printing, mram_512_top has small bit of 0.3mm th
 // pockets remains the same height relative to the top of the pcb,
 // but the pockets get shallower relative to the bottom of the top cover.
 // For liquid glue, use 0.
-// For thin double-sided tape, use about 0.2
+// For thin double-sided tape, use 0 to 0.2
 adhesive_thickness = 0.1;
 
 //// Some other useful combinations of above:
@@ -109,31 +104,30 @@ adhesive_thickness = 0.1;
 //pcb_thickness = 0.8;
 
 // Which style of battery surround?
-// only affects the battery-backed ram card top
+// only affects ram_top
 // "trapped" = simpler shape, easier to print, cleaner looking, but the battery is not removable except by removing the entire cover. Cover should only be affixed with removable adhesive or glue. (For instance common hot-glue can be released by alcohol or by freezing.)
 // "removable" = extra cutouts to allow the battery to be inserted and removed without removing the cover, so the cover could be permanently glued to the PCB.
 //battery_type = "trapped";
 battery_type = "removable";
 
 // Which style of slide switch surround?
-// only affects the MRAM_512 card tops
+// only affects mram_512_top
 // "slider" = trapped sliding actuator
 // "dish" = a simple concave opening around the switch
 slide_switch_type = "slider";
 //slide_switch_type = "dish";
 
 // preview display option
-// the slide switch has 4 positions
-// this moves the slider part to any of the
-// possible positions to see the full range
-// of motion
+// only affects mram_512_top
+// places the slider in any of the 4 possible
+// positions to see the full range of motion
 //show_slider_position = 1;
 //show_slider_position = 2;
-show_slider_position = 3;
+show_slider_position = 3; // switch ships in position 3, and pcb model shows position 3
 //show_slider_position = 4;
 
 ///////////////////////////////////////////////////////////////////////////////
-// below here is stuff you mostly don't change
+// END OF USER CONFIG
 ///////////////////////////////////////////////////////////////////////////////
 
 // To generate these models, export STEP from KiCAD,
@@ -151,10 +145,10 @@ bl = 54;    // main body length (Y)
 max_pcb_thickness = 1.2; // side of connector to side of pins is 1.27, max orderable pcb thickness that doesn't exceed is 1.2
 connector_post_thickness = 0.51; // the solder posts on the main connector
 
-// top cover - don't apply adhesive thickness cut here
+// top cover - the full thickness with no adhesive_thickness subtracted
 top_thickness = card_thickness/2 + connector_post_thickness/2;
 
-// bottom cover - don't apply adhesive thickness cut here
+// bottom cover - the full thickness with no adhesive_thickness subtracted
 bottom_thickness = card_thickness/2 - connector_post_thickness/2 - pcb_thickness;
 
 cr = 2;     // large corner radius
@@ -162,7 +156,6 @@ sr = 0.5;   // small corner radius & fillets
 
 // finger grips
 gl = 18;  // grip length
-
 // Whatever degree of arcs you draw in kicad for the S curves in edge.cuts
 // just put that number in here too.
 grip_depth_angle = 45;  // bigger -> deeper finger grips
@@ -171,18 +164,30 @@ gda = // grip_depth_angle limited to 0-90
  grip_depth_angle > 90 ? 90:
  grip_depth_angle;
 
+// connector - the main front connector
+cnw = 48.6;  // connector width
+cnl = 8.525; // connector depth
+cnp = 3;     // connector post length
+cnpt = 0.8;  // post thickness
+
+// polarity notch - front corner by pin 38
+nl = 9.5;   // polarity notch length
+nd = 0.8;   // polarity notch depth
+
 // components common values
-// components height, factoring thin_wall_minimum and card thickness
-// if it can fit, use requested components_height
-// if it can't fit, use double the top_thickness
-// to make a hole instead
+// Components height, factoring thin_wall_minimum and card thickness.
+// If it can fit, use requested components_height.
+// If it can't fit, use double the top_thickness
+// to make a clean hole instead.
 ch =
  top_thickness-components_height >= thin_wall_minimum ? components_height :
  top_thickness*2 ;
 
 // for the component pockets,
-// fooxp : X position is relative to the board center
-// fooyp : Y position is relative to the front edge of the board
+// fooxs : X size
+// fooys : Y size
+// fooxp : X position, relative to the board center
+// fooyp : Y position, relative to the front edge of the board
 
 // ram & rom components
 rcxs = 40;    // X size
@@ -213,10 +218,6 @@ sxo = sbu/2+sbu-sbu*(show_slider_position-1); // slider position X offset relati
 // based on top_thickness and thin_wall_minumum
 swh = top_thickness-slide_switch_thickness >= thin_wall_minimum ? slide_switch_thickness : top_thickness*2 ;
 
-// polarity notch
-nl = 9.5;   // polarity notch length
-nd = 0.8;   // polarity notch depth
-
 // battery holder
 battery_tunnel_height = 1.6; // CR2012 = 1.2mm, CR2016 = 1.6mm  This is an ideal wish that will not be granted. Instead the code will come as close as other constraints allow. The end result will be a tunnel that is less than the ideal 1.6mm tall, but will be as tall as card_thickness and other constraints allow, and the tunnel roof will simply be thin and flexable enough to pass the battery through anyway.
 // do not allow the battery tunnel roof
@@ -241,15 +242,9 @@ boh = battery_tunnel_height <= top_thickness-btroofmin ? battery_tunnel_height :
 // gap regardles what the tunnel height worked out to.
 brh = boh-battery_retainer_gap;  // batt retainer height , wedge thickness
 
-// connector
-cnw = 48.6;  // connector width
-cnl = 8.525; // connector depth
-cnp = 3;     // connector post length
-cnpt = 0.8;  // post thickness
-
 // these are used to make clean joins & cuts
 o = 1;       // normal overlap/overhang, easily visible with # or %, for things that won't show in the final shape
-xo = 0.002;  // small as possible overlap/overhang for things that would show in the final shape
+xo = 0.002;  // very small overlap/overhang for things that would show in the final shape
 
 fc = 0.1; // fitment clearance
 
@@ -333,13 +328,13 @@ module polarity_notch () {
 }
 
 module battery_holder () {
-  t = o+top_thickness+o;
-  c = bbw/2;
-  a = c * tan(45/2); // side of triangle to make octagon
+ t = o+top_thickness+o;
+ c = bbw/2;
+ a = c * tan(45/2); // side of triangle to make an octagon
 
-  // solder tabs and the coin cell are
-  // centered on on bcyp
-  translate([0,bcyp,0]) {
+ // solder tabs and the coin cell are
+ // centered on on bcyp
+ translate([0,bcyp,0]) {
   
   // solder tabs
   rounded_cube(w=btw,d=btd,h=btt*2,rh=sr,rv=sr,t=0);
@@ -348,42 +343,38 @@ module battery_holder () {
   // shifted a little by bby
   translate([0,bby,0]) {
 
-  // main holder body - half square half octagon
+   // main holder body - half square half octagon
    translate([0,0,-o])
-   hull() {
-    translate([-a,-c,0]) cylinder(h=t,r=sr);
-    translate([-c,-a,0]) cylinder(h=t,r=sr);
-    translate([-c,c,0]) cylinder(h=t,r=sr);
-    translate([c,c,0]) cylinder(h=t,r=sr);
-    translate([c,-a,0]) cylinder(h=t,r=sr);
-    translate([a,-c,0]) cylinder(h=t,r=sr);
+    hull() {
+     translate([-a,-c,0]) cylinder(h=t,r=sr);
+     translate([-c,-a,0]) cylinder(h=t,r=sr);
+     translate([-c,c,0]) cylinder(h=t,r=sr);
+     translate([c,c,0]) cylinder(h=t,r=sr);
+     translate([c,-a,0]) cylinder(h=t,r=sr);
+     translate([a,-c,0]) cylinder(h=t,r=sr);
+    }
+
+   if(battery_type == "removable") {
+    // battery insertion/removal tunnel
+    bw = sr+bbw+sr;
+    translate([0,c,0])
+     rounded_cube(w=bw,d=bw,h=boh*2,rh=sr,rv=sr,t=0);
+    // poker way
+    eww = sr+a*2+sr;
+    ewl = bl;
+    rotate([0,0,45])
+     translate([0,-c-sr,0])
+      rotate([bewa,0,0])
+       translate([0,eww/2,ewl/2-sr-o])
+        rounded_cube(w=eww,d=eww,h=ewl,rh=sr,rv=sr,t=0);
    }
 
- if(battery_type == "removable") {
-   // extractor/poker way
-   eww = sr+a*2+sr;
-   ewl = bl;
-   rotate([0,0,45])
-    translate([0,-c-sr,0])
-     rotate([bewa,0,0])
-      translate([0,eww/2,ewl/2-sr-o])
-       rounded_cube(w=eww,d=eww,h=ewl,rh=sr,rv=sr,t=0);
-
-  // battery insertion/removal tunnel
-  bw = sr+bbw+sr;
-  translate([0,c,0])
-   rounded_cube(w=bw,d=bw,h=boh*2,rh=sr,rv=sr,t=0);
- }
-
-   }
   }
+ }
 }
 
-
 // the front 38-pin connector
-// "top" = cut-out for above the PCB includes a cavity for the solder legs
-// "bottom" = cut-out for below the PCB, no legs
-module connector (s="top") {
+module connector (top=true) {
  t = o+card_thickness+o;
  translate([0,-bl/2-xo,0]) {
   translate([-cnw/2,0,-o])
@@ -391,7 +382,7 @@ module connector (s="top") {
   mirror_copy([1,0,0])
    translate([-cnw/2+sr/2,cnl-sr/2,-o])
     cylinder(h=t,r=sr);
-  if (s == "top")
+  if (top)
    translate([0,cnp/2+cnl-cnpt/2,0])
     rounded_cube(w=cnw,d=cnp+sr,h=cnpt*2,rh=sr,rv=sr,t=0);
  }
@@ -584,7 +575,7 @@ module breakout_top () {
  difference() {
   blank(l=bl-gl,t=top_thickness);
   group() {
-   connector("top");
+   connector();
    polarity_notch();
    adhesive();
   }
@@ -592,10 +583,13 @@ module breakout_top () {
 }
 
 module bottom () {
+ // like the top except
+ // no polarity notch on the pin 38 corner
+ // no cavities for soldered components
  difference() {
   blank(t=bottom_thickness-adhesive_thickness);
   group() {
-   connector("bottom");
+   connector(top=false);
    finger_grips();
   }
  }
@@ -643,9 +637,6 @@ if($preview) {
      bank_switch_slider();
  }
  if (part == "breakout_top") breakout_top();
-
- if (part == "slider") bank_switch_slider ();
-  else %PCB();
  
  if (pcb_thickness < max_pcb_thickness)
   translate([0,0,-bottom_thickness-pcb_thickness])
@@ -653,6 +644,8 @@ if($preview) {
  else
   assert(part != "bottom","no bottom cover with this pcb_thickness");
 
+ if (part == "slider") bank_switch_slider ();
+ else %PCB();
 
 } else {
 /////////////////////////////////////////////////////////
