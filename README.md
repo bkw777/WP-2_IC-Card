@@ -148,7 +148,7 @@ The "dish" version just has a dish shaped concave opening around the switch so y
 ![](PCB/WP-2_IC-Card_MRAM_512.jpg)  
 ![](PCB/WP-2_IC-Card_MRAM_512.slider.jpg)  
 ![](PCB/WP-2_IC-Card_MRAM_512.dish.jpg)  
-![](PCB/WP-2-IC_Card_MRAM_512.svg)  
+![](PCB/WP-2_IC-Card_MRAM_512.svg)  
 
 ----
 
