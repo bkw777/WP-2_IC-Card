@@ -128,7 +128,7 @@ This card is expensive. The MRAM chip is over $33 by itself. The total BOM cost 
 
 But (if it works) it provides 4 128K banks in a single card, and preserves the data without a battery to leak, die, corrode, or get shorted from scratched traces, etc.  
 
-[BOM](WP-2_IC-Card_MRAM_512.BOM.xls) from Mouser because DigiKey doesn't have the 16827 in single quantities.
+[BOM](WP-2_IC-Card_MRAM_512.Mouser.BOM.xls?raw=true) from Mouser because DigiKey doesn't have the 16827 in single quantities.
 
 There are two versions of 3d-printable cover available, with different ways to handle the bank-select switch.  
 The default version has a separate moving part to move the switch, but it's tiny and a little finnicky to print and clean up and make fit.  
