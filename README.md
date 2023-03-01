@@ -124,22 +124,11 @@ NOT TESTED
 
 RAM card without a battery!
 
-This card is expensive. The MRAM chip is $34 by itself, and the 38 pin connector is $10, plus all the rest.  
-But this provides 4 128K banks in a single card, and preserves the data without a battery to leak, die, corrode, get shorted from scratched traces on the pcb bottom, etc.  
+This card is expensive. The MRAM chip is over $33 by itself. The total BOM cost is over $50 before tax or shipping and not including the PCB. The total including PCBs, tax, & shipping is over $90! Oh wait, add another $10-$15 for the 3d-printed cover if you don't print it yourself.
 
-The parts are not all available from any single supplier.  
-The closest is, Mouser has everything but the 38-pin connector, but they do have 39, 43, 50-pin versions in stock which you could cut and sand down.
+But (if it works) it provides 4 128K banks in a single card, and preserves the data without a battery to leak, die, corrode, or get shorted from scratched traces, etc.  
 
-DigiKey has the exact 38-pin connector in stock, but does not have the 20-bit level-shifter in single quantities.
-
-To get everything in one shot from Mouser, copy the 38-pin connector part number from the cart below ("SMS-138-01-G-S")  
-and change "138" to "139", and search that. If that is available, just get one of those instead.  
-If that is not available, try "140" and so on up to 150. Some odd numbers like 139 and 143 are actually in stock while the more intuitive "140" (40-pin) is not, so that's why you start at 139 and try each individual count up from there even though they are unusual numbers.
-You will have to cut the excess pins off the connector, and the connector is not designed to break away cleanly like that, and the space between the pins is tiny, so it requires some care.
-Cut right in the middle of the 39th pin, don't try to cut between 38 and 39. And then very carefully and lightly sand down the rough end just until the little half-walls are almost gone, without touching the thin wall between the pins.  
-The wall between pins is PAPER THIN, and the connector is $10 for a single one. Stop sanding as soon as the connector can fit into the PCB.
-
-BOM from Mouser: https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=CDF549B87B
+[BOM](WP-2_IC-Card_MRAM_512.BOM.xls) from Mouser because DigiKey doesn't have the 16827 in single quantities.
 
 There are two versions of 3d-printable cover available, with different ways to handle the bank-select switch.  
 The default version has a separate moving part to move the switch, but it's tiny and a little finnicky to print and clean up and make fit.  
