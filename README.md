@@ -11,7 +11,7 @@ Gerbers and STLs are in [releases](../../releases/)
 
 ----
 
-## RAM CARD  
+## Battery-backed SRAM CARD  
 <!-- [RAM card PCB from OSHPark]() (Select 0.8mm PCB thickness)  -->
 [RAM card PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_RAM_IC_Card.html)  
 IMPORTANT, when ordering the PCB:  
@@ -30,6 +30,28 @@ There are no openings in the bottom soldermask layer, so you have to tell them t
 ![](COVER/WP-2_IC-Card_Cover_RAM.png)  
 ![](PCB/WP-2_IC-Card_RAM.covered.jpg)  
 ![](PCB/WP-2_IC-Card_RAM.rear.jpg)  
+
+----
+
+## M-RAM 512K Card
+
+RAM card without a battery!
+
+First, warning, this card is expensive. The MRAM chip is over $33 by itself. The 38-pin connector is over $9. The total BOM cost is over $50 before tax or shipping and not including the PCB or the 3d-printed top cover. The total including PCBs, cover, tax, & shipping is over $100!
+
+But it provides 4 128K banks in a single card, and preserves the data without a battery to leak, die, corrode, or get shorted from scratched traces, etc.  
+
+[MRAM-512 card PCB from PCBWAY](https://www.pcbway.com/project/shareproject/512k_MRAM_IC_Card_for_TANDY_WP_2_30f542a7.html)  
+[MRAM-512 BOM.xls](WP-2_IC-Card_MRAM_512.Mouser.BOM.xls?raw=true) from Mouser because DigiKey doesn't have the 16827 in single quantities
+
+There are two versions of 3d-printable cover available, with different ways to handle the bank-select switch.  
+The default version has a separate moving part to move the switch, but it's tiny and a little finnicky to print and clean up and make fit.  
+The "dish" version just has a dish shaped concave opening around the switch so you can finger it directly the same as with no cover. But this can be difficult to print cleanly because of the overhang.
+
+![](PCB/WP-2_IC-Card_MRAM_512.jpg)  
+![](PCB/WP-2_IC-Card_MRAM_512.slider.jpg)  
+![](PCB/WP-2_IC-Card_MRAM_512.dish.jpg)  
+![](PCB/WP-2_IC-Card_MRAM_512.svg)  
 
 ----
 
@@ -106,47 +128,12 @@ Examples using a TL-866 programmer (628128 is a generic part number for the SRAM
 ![](PCB/WP-2_IC-Card_Breakout.covered.jpg)  
 ![](PCB/WP-2_IC-Card_Breakout.svg)  
 
-
-<!--   NOT VERIFIED
-## FRAM CARD
-
-![](PCB/WP-2_IC-Card_FRAM.jpg)  
-![](PCB/WP-2-IC_Card_FRAM.svg)  
-
-BOM: https://www.digikey.com/short/hzpzbwz3  
--->
-
-----
-
-## MRAM 512K
-WORK IN PROGRESS  
-NOT TESTED
-
-RAM card without a battery!
-
-This card is expensive. The MRAM chip is over $33 by itself. The total BOM cost is over $50 before tax or shipping and not including the PCB. The total including PCBs, tax, & shipping is over $90! Oh wait, add another $10-$15 for the 3d-printed cover if you don't print it yourself.
-
-But (if it works) it provides 4 128K banks in a single card, and preserves the data without a battery to leak, die, corrode, or get shorted from scratched traces, etc.  
-
-[BOM](WP-2_IC-Card_MRAM_512.Mouser.BOM.xls?raw=true) from Mouser because DigiKey doesn't have the 16827 in single quantities.
-
-There are two versions of 3d-printable cover available, with different ways to handle the bank-select switch.  
-The default version has a separate moving part to move the switch, but it's tiny and a little finnicky to print and clean up and make fit.  
-The "dish" version just has a dish shaped concave opening around the switch so you can finger it directly the same as with no cover. But this can be difficult to print cleanly because of the overhang.
-
-![](PCB/WP-2_IC-Card_MRAM_512.jpg)  
-![](PCB/WP-2_IC-Card_MRAM_512.slider.jpg)  
-![](PCB/WP-2_IC-Card_MRAM_512.dish.jpg)  
-![](PCB/WP-2_IC-Card_MRAM_512.svg)  
-
 ----
 
 # Reference Material
 [WP-2 Owner & Service Manuals](https://archive.org/search.php?query=Tandy%20WP-2)  
 Card slot signals & usage: Service Manual 8-2, C-3.  
 Executable "RUN" files: Service Manual 4-16, D-1.  
-
-
 
 
 ### Connector:  

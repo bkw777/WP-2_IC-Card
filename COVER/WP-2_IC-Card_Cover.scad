@@ -508,7 +508,7 @@ module mram_512_top_common () {
 
    // bank-select logic
    // U5 RA1
-   component_pocket(w=4.5,l=9.5,x=5.1,y=22);
+   component_pocket(w=5.2,l=9.5,x=5.7,y=22);
 
   // bank-select slide switch
   if (slide_switch_type == "dish") {
@@ -564,8 +564,8 @@ module mram_512_top () {
    component_pocket(w=3.5,  l=17,  x=-2.5,  y=22);
    // U3
    component_pocket(w=9,    l=8,   x=13.7,  y=22);
-   // C7 C8
-   component_pocket(w=2.5,  l=16,  x=16.95, y=22);
+   // C7 C8 C11
+   component_pocket(w=2.5,  l=11.5,  x=18.95, y=21);
   }
 
  }
