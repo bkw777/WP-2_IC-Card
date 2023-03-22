@@ -9,6 +9,8 @@ There is an optional cover you can 3d-print and glue to the card to protect the 
 
 Gerbers and STLs are in [releases](../../releases/)
 
+[pictures](https://photos.app.goo.gl/M8KbMLbY8BXGH7LL8)
+
 ----
 
 ## Battery-backed SRAM CARD  
