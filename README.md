@@ -3,7 +3,7 @@
 The TANDY WP-2 and other clones of the Citizen CBM-10WP have an expansion slot that accepts ["IC Cards"](#reference-material).
 
 Here are a few different cards to fit that slot.  
-* A [battery-backed RAM card](#battery-backed-sram-card) (same as the original cards)  
+* A [battery-backed RAM card](#battery-backed-sram-card) (like the original cards)  
 * A [non-volatile RAM card](#m-ram-512k-card) that needs no battery  
 * A [ROM card](#rom-card) (of only academic value, since there are no known ROM card images)  
 * A [programming adapter](#programming-adapter) that can read and write both the RAM and ROM cards  
