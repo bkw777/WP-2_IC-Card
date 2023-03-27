@@ -28,7 +28,7 @@ part = "ram_top"; // top cover for the battery-backed 128K SRAM card
 // still centered, and the bottom pcb traces protected from scratches and shorting.
 //card_thickness = 2.8; // 2.8, 2.9, make the top cover thinner to leave room to apply a sheet layer like tape or cut vinyl to cover over the openings, or to allow for the thickness of using double-stick tape instead of glue to attach the cover to the pcb.
 //card_thickness = 2.9; // 
-card_thickness = 3.0; // default - use this for 1.2mm PCB thickness and no bottom cover
+card_thickness = 3.0; // 3.0 default - use this for 1.2mm PCB thickness and no bottom cover
 //card_thickness = 3.1; // 3.1, 3.2 make the top slightly thicker to allow the 0.7 thin_wall_minimum
 //card_thickness = 3.2; // only use in concert with a thin pcb and a bottom cover
 
@@ -74,9 +74,9 @@ components_height = 1.2;
 // Set this to 0.6 or less to generate a model
 // that allows an FDM or SLA printer to print the
 // thin sheet over the components.
-thin_wall_minimum = 0.2; // FDM printing, mram_512_top has small bit of 0.3mm thin roof just over the slide switch
-//thin_wall_minimum = 0.6; // FDM printing (home)
-//thin_wall_minimum = 0.7; // SLS printing (shapeways)
+thin_wall_minimum = 0.3; // 0.3 FDM printing, mram_512_top has small bit of 0.3mm thin roof just over the slide switch
+//thin_wall_minimum = 0.6; // 0.6 FDM printing (home)
+//thin_wall_minimum = 0.7; // 0.7 SLS printing (shapeways)
 
 // Thickness of adhesive tape between the pcb and the bottom and top covers.
 // A cut is applied to the bottom of the top cover, and the top of the bottom cover
@@ -86,7 +86,7 @@ thin_wall_minimum = 0.2; // FDM printing, mram_512_top has small bit of 0.3mm th
 // but the pockets get shallower relative to the bottom of the top cover.
 // For liquid glue, use 0.
 // For thin double-sided tape, use 0 to 0.2
-adhesive_thickness = 0.1;
+adhesive_thickness = 0.15;
 
 //// Some other useful combinations of above:
 
@@ -216,7 +216,12 @@ syo = says/2 + swys/2 - 0.45; // slider position Y offset relative to swyp
 sxo = sbu/2+sbu-sbu*(show_slider_position-1); // slider position X offset relative to swxp
 // figure out the actual slide switch pocket height
 // based on top_thickness and thin_wall_minumum
+echo("top_thickness",top_thickness);
+echo("slide_switch_thickness",slide_switch_thickness);
+echo("top_thickness-slide_switch_thickness",top_thickness-slide_switch_thickness);
+echo("thin_wall_minimum",thin_wall_minimum);
 swh = top_thickness-slide_switch_thickness >= thin_wall_minimum ? slide_switch_thickness : top_thickness*2 ;
+echo("swh",swh);
 
 // battery holder
 battery_tunnel_height = 1.6; // CR2012 = 1.2mm, CR2016 = 1.6mm  This is an ideal wish that will not be granted. Instead the code will come as close as other constraints allow. The end result will be a tunnel that is less than the ideal 1.6mm tall, but will be as tall as card_thickness and other constraints allow, and the tunnel roof will simply be thin and flexable enough to pass the battery through anyway.
@@ -390,7 +395,7 @@ module connector (top=true) {
 
 module bank_switch_common () {
    // body
-   component_pocket(w=swxs,l=swys,x=swxp,y=swyp,h=top_thickness+o);
+   #component_pocket(w=swxs,l=swys,x=swxp,y=swyp,h=swh);
    // pins
    translate([0,-swpl/2,0])
     component_pocket(w=swxs+swpl,l=swys+swpl,x=swxp,y=swyp,h=swph);
@@ -432,7 +437,7 @@ module bank_switch_slider_opening () {
 ////////////////////////////////////////////////////////////////////////////////////
 
 // the basic full card shape before any cuts
-module blank (l=bl,w=bw,t=bh) {
+module blank (l=bl,w=bw,t=card_thickness) {
  translate([0,-(bl/2-l/2),0])
   hull () {
    mirror_copy([1,0,0])
