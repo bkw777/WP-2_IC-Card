@@ -5,12 +5,12 @@
 // This scad file generates several different possible parts.
 // set part="..." to select which part to output.
 //
-// The default settings below are all set for
+// The "***" default settings below are all set for
 // the battery-backed RAM card with 1.2mm PCB
 // and no bottom cover, printed by FDM.
 
 // Which part to generate?
-part = "ram_top"; // top cover for the battery-backed 128K SRAM card
+part = "ram_top"; // *** - top cover for the battery-backed 128K SRAM card
 //part = "rom_top"; // same as ram_top without the battery
 //part = "mram_512_top"; // top cover for the 512K MRAM card - includes both the main top cover and the seperate slide switch actuator
 //part = "breakout_top"; // top cover for the breakout card - not critical but fills out the slot so the breakout card doesn't wobble within the slot
@@ -28,9 +28,9 @@ part = "ram_top"; // top cover for the battery-backed 128K SRAM card
 // still centered, and the bottom pcb traces protected from scratches and shorting.
 //card_thickness = 2.8; // 2.8, 2.9, make the top cover thinner to leave room to apply a sheet layer like tape or cut vinyl to cover over the openings, or to allow for the thickness of using double-stick tape instead of glue to attach the cover to the pcb.
 //card_thickness = 2.9; // 
-card_thickness = 3.0; // 3.0 default - use this for 1.2mm PCB thickness and no bottom cover
-//card_thickness = 3.1; // 3.1, 3.2 make the top slightly thicker to allow the 0.7 thin_wall_minimum
-//card_thickness = 3.2; // only use in concert with a thin pcb and a bottom cover
+//card_thickness = 3.0; // 3.0 default - use this for 1.2mm PCB thickness and no bottom cover
+//card_thickness = 3.1; // *** 3.1, 3.2 make the top slightly thicker to allow the 0.7 thin_wall_minimum
+card_thickness = 3.2; // only use in concert with a thin pcb and a bottom cover
 
 // If pcb_thickness is less than 1.2, then generate a bottom cover too.
 // If you put 0.8 here to generate a bottom cover,
@@ -42,7 +42,7 @@ card_thickness = 3.0; // 3.0 default - use this for 1.2mm PCB thickness and no b
 // but it's not useful *here* because a bottom cover generated from here will be too thin to be printed.
 //pcb_thickness = 0.6;
 //pcb_thickness = 0.8;
-pcb_thickness = 1.2;
+pcb_thickness = 1.2; // ***
 
 // How tall is the tallest component? (not counting the battery holder or slide switch)
 // If this is any greater than 1.2, then there will be no roof over the components.
@@ -51,8 +51,8 @@ pcb_thickness = 1.2;
 // The sram and diode array are 1.2mm, and the resistors are usually under 1.0,
 // The only question is the caps. When sourcing components you have to specifically
 // select caps that are 1.2mm or less, most will be a little taller.
-//components_height = 1.15; // fudge it down from 1.2 just enought to allow printing a 0.7mm roof over the components
-components_height = 1.2;
+components_height = 1.15; // fudge it down from 1.2 just enought to allow printing a 0.7mm roof over the components
+//components_height = 1.2; // ***
 
 // If card_thickness-pcb_thickness-components_height
 // comes out less than thin_wall_minimum, then don't
@@ -74,9 +74,9 @@ components_height = 1.2;
 // Set this to 0.6 or less to generate a model
 // that allows an FDM or SLA printer to print the
 // thin sheet over the components.
-thin_wall_minimum = 0.3; // 0.3 FDM printing, mram_512_top has small bit of 0.3mm thin roof just over the slide switch
-//thin_wall_minimum = 0.6; // 0.6 FDM printing (home)
-//thin_wall_minimum = 0.7; // 0.7 SLS printing (shapeways)
+//thin_wall_minimum = 0.3; // 0.3 FDM printing, mram_512_top has small bit of 0.3mm thin roof just over the slide switch
+//thin_wall_minimum = 0.6; // *** 0.6 FDM printing (home)
+thin_wall_minimum = 0.7; // 0.7 SLS printing (shapeways)
 
 // Thickness of adhesive tape between the pcb and the bottom and top covers.
 // A cut is applied to the bottom of the top cover, and the top of the bottom cover
@@ -86,7 +86,8 @@ thin_wall_minimum = 0.3; // 0.3 FDM printing, mram_512_top has small bit of 0.3m
 // but the pockets get shallower relative to the bottom of the top cover.
 // For liquid glue, use 0.
 // For thin double-sided tape, use 0 to 0.2
-adhesive_thickness = 0.15;
+//adhesive_thickness = 0.15; // ***
+adhesive_thickness = 0; // ***
 
 //// Some other useful combinations of above:
 
@@ -108,7 +109,7 @@ adhesive_thickness = 0.15;
 // "trapped" = simpler shape, easier to print, cleaner looking, but the battery is not removable except by removing the entire cover. Cover should only be affixed with removable adhesive or glue. (For instance common hot-glue can be released by alcohol or by freezing.)
 // "removable" = extra cutouts to allow the battery to be inserted and removed without removing the cover, so the cover could be permanently glued to the PCB.
 //battery_type = "trapped";
-battery_type = "removable";
+battery_type = "removable"; // ***
 
 // Which style of slide switch surround?
 // only affects mram_512_top
@@ -133,10 +134,10 @@ show_slider_position = 3; // switch ships in position 3, and pcb model shows pos
 // To generate these models, export STEP from KiCAD,
 // open STEP in FreeCAD, export STL.
 pcb_stl =
- part == "rom_top" ? "../PCB/WP-2_IC-Card_ROM.stl" :
- part == "ram_top" ? "../PCB/WP-2_IC-Card_RAM.stl" :
- part == "mram_512_top" ? "../PCB/WP-2_IC-Card_MRAM_512.stl" :
- part == "breakout_top" ? "../PCB/WP-2_IC-Card_Breakout.stl" :
+ part == "rom_top"      ? "../PCB/out/WP-2_IC-Card_ROM.stl"          :
+ part == "ram_top"      ? "../PCB/out/WP-2_IC-Card_RAM.pcb.stl"      :
+ part == "mram_512_top" ? "../PCB/out/WP-2_IC-Card_MRAM_512.pcb.stl" :
+ part == "breakout_top" ? "../PCB/out/WP-2_IC-Card_Breakout.stl"     :
  false ;
 
 bw = 54;    // main body width (X)
@@ -395,7 +396,7 @@ module connector (top=true) {
 
 module bank_switch_common () {
    // body
-   #component_pocket(w=swxs,l=swys,x=swxp,y=swyp,h=swh);
+   component_pocket(w=swxs,l=swys,x=swxp,y=swyp,h=swh);
    // pins
    translate([0,-swpl/2,0])
     component_pocket(w=swxs+swpl,l=swys+swpl,x=swxp,y=swyp,h=swph);
@@ -490,42 +491,6 @@ module top_common () {
  }
 }
 
-module mram_512_top_common () {
- difference() {
-  top_common();
-
-  // cut-outs
-  group() {
-
-   // one big pocket for most of the components
-   // makes a very large thin wall
-   //component_pocket(w=38,l=17,x=0,y=22);
-
-   // MRAM
-   // U1
-   component_pocket(w=13,l=20,x=-10,y=41.6);
-   // C9 C10
-   component_pocket(w=18.6,l=4,x=-10,y=41.6);
-
-   // 3.3v power
-   // U4 C1 C2
-   component_pocket(w=4,l=9.5,x=-18.5,y=22);
-
-   // bank-select logic
-   // U5 RA1
-   component_pocket(w=5.2,l=9.5,x=5.7,y=22);
-
-  // bank-select slide switch
-  if (slide_switch_type == "dish") {
-   bank_switch_dish_opening ();
-  } else {
-   bank_switch_slider_opening ();
-  }
-   
-  }
- }
-}
-
 ////////////////////////////////////////////////////////////////////////////////
 // COMPLETE OBJECTS
 ////////////////////////////////////////////////////////////////////////////////
@@ -556,23 +521,29 @@ module ram_top () {
 }
 
 module mram_512_top () {
- difference () {
-  mram_512_top_common ();
-  
-  // these are just the level-shift components, which can vary
-  group() {
-   // U2
-   component_pocket(w=15.5, l=9.5, x=-7,    y=22);
-   // C3 C4
-   component_pocket(w=3.5,  l=17,  x=-11.5, y=22);
-   // C5 C6
-   component_pocket(w=3.5,  l=17,  x=-2.5,  y=22);
-   // U3
-   component_pocket(w=9,    l=8,   x=13.7,  y=22);
-   // C7 C8 C11
-   component_pocket(w=2.5,  l=11.5,  x=18.95, y=21);
-  }
+ difference() {
+  top_common();
 
+  // cut-outs
+  group() {
+
+   // ldo, 4245s, 2g32, caps, resistors
+   component_pocket(w=45,l=13,x=0,y=22);
+
+   // MRAM
+   // ic
+   component_pocket(w=13,l=20,x=-10,y=41.6);
+   // caps
+   component_pocket(w=18.6,l=4,x=-10,y=41.6);
+
+  // bank-select slide switch
+  if (slide_switch_type == "dish") {
+   bank_switch_dish_opening ();
+  } else {
+   bank_switch_slider_opening ();
+  }
+   
+  }
  }
 }
 

@@ -47,11 +47,11 @@ So, it is recommended to cover the bottom pcb with a piece of shipping or packin
 
 [RAM card BOM from DigiKey](https://www.digikey.com/short/5wtbz75z)  
 
-![](PCB/WP-2_IC-Card_RAM.jpg)  
-![](PCB/WP-2_IC-Card_RAM.svg)  
-![](COVER/WP-2_IC-Card_Cover_RAM.png)  
-![](PCB/WP-2_IC-Card_RAM.covered.jpg)  
-![](PCB/WP-2_IC-Card_RAM.rear.jpg)  
+![](PCB/out/WP-2_IC-Card_RAM.jpg)  
+![](PCB/out/WP-2_IC-Card_RAM.svg)  
+![](COVER/out/WP-2_IC-Card_Cover_RAM.png)  
+![](PCB/out/WP-2_IC-Card_RAM.covered.jpg)  
+![](PCB/out/WP-2_IC-Card_RAM.rear.jpg)  
 
 ----
 
@@ -59,22 +59,23 @@ So, it is recommended to cover the bottom pcb with a piece of shipping or packin
 
 RAM card without a battery!
 
-First, warning, this card is expensive. The MRAM chip is over $33 by itself. The 38-pin connector is over $9. The total BOM cost is over $50 before tax or shipping and not including the PCB or the 3d-printed top cover. The total including PCBs, cover, tax, & shipping is over $100!
+First, warning, this card is expensive. The BOM cost is over $50 before tax or shipping and not including the PCB or the 3d-printed top cover. The total including PCB, BOM, printed cover, tax, & shipping is over $100.
 
-But it provides 4 128K banks in a single card, and preserves the data without a battery.  
-Having no battery is not merely more convenient. The data is also safer, since there is no risk of losing data from a short from scratched up soldermask and touching metal objects while the card is kicking around in a pocket outside of the WP-2.
+However it does provide 4 128K cards in a single card, without any battery.  
 
 [MRAM-512 card PCB from PCBWAY](https://www.pcbway.com/project/shareproject/512k_MRAM_IC_Card_for_TANDY_WP_2_30f542a7.html)  
-[MRAM-512 BOM.xls](WP-2_IC-Card_MRAM_512.Mouser.BOM.xls?raw=true) from Mouser because DigiKey doesn't have the 16827 in single quantities
+[MRAM-512 BOM from DigiKey](https://www.digikey.com/short/3m2nczbw) , [Mouser](https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=f6eb946163)
 
 There are two versions of 3d-printable cover available, with different ways to handle the bank-select switch.  
 The default version has a separate moving part to move the switch, but it's tiny and a little finnicky to print and clean up and make fit.  
-The "dish" version just has a dish shaped concave opening around the switch so you can finger it directly the same as with no cover. But this can be difficult to print cleanly because of the overhang.
+The "dish" version is a single piece with no moving parts that just has a concave "dish" opening around the switch so you can finger it directly the same as with no cover. But this can be difficult to print cleanly because the dish shape forms a steep overhang when printing.
 
-![](PCB/WP-2_IC-Card_MRAM_512.jpg)  
-![](PCB/WP-2_IC-Card_MRAM_512.slider.jpg)  
-![](PCB/WP-2_IC-Card_MRAM_512.dish.jpg)  
-![](PCB/WP-2_IC-Card_MRAM_512.svg)  
+The slider version does work well if printed commercially in nylon SLS or tough resin SLA.
+
+![](PCB/out/WP-2_IC-Card_MRAM_512.jpg)  
+![](PCB/out/WP-2_IC-Card_MRAM_512.slider.jpg)  
+![](PCB/out/WP-2_IC-Card_MRAM_512.dish.jpg)  
+![](PCB/out/WP-2_IC-Card_MRAM_512.svg)  
 
 ----
 
@@ -86,8 +87,8 @@ There are no known rom images for any rom cards. Don't bother building one of th
 
 [ROM card BOM from DigiKey](https://www.digikey.com/short/zn95jj)
 
-![](PCB/WP-2_IC-Card_ROM.jpg)  
-![](PCB/WP-2_IC-Card_ROM.svg)  
+![](PCB/out/WP-2_IC-Card_ROM.jpg)  
+![](PCB/out/WP-2_IC-Card_ROM.svg)  
 
 ----
 
@@ -107,7 +108,7 @@ There is a spot to stow the jumper on the programming adapter when not in use.
 ![](WP-2_IC-Card_programming_adapter.jpg)  
 ![](WP-2_IC-Card_programming_adapter.ROM.jpg)  
 ![](WP-2_IC-Card_programming_adapter.RAM.jpg)  
-![](PCB/WP-2_IC-Card_programming_adapter.svg)  
+![](PCB/out/WP-2_IC-Card_programming_adapter.svg)  
 
 ### To program the ROM card
 
@@ -147,9 +148,9 @@ Examples using a TL-866 programmer (628128 is a generic part number for the SRAM
 
 [Breakout card BOM from DigiKey](https://www.digikey.com/short/323npm39)  
 
-![](PCB/WP-2_IC-Card_Breakout.jpg)  
-![](PCB/WP-2_IC-Card_Breakout.covered.jpg)  
-![](PCB/WP-2_IC-Card_Breakout.svg)  
+![](PCB/out/WP-2_IC-Card_Breakout.jpg)  
+![](PCB/out/WP-2_IC-Card_Breakout.covered.jpg)  
+![](PCB/out/WP-2_IC-Card_Breakout.svg)  
 
 ----
 
@@ -203,7 +204,7 @@ The S1, S2, S3 labels come from a schematic in the service manual. They are not 
 The service manual says the original IC Cards have no connections on any of these pins (that's in the cards, not in the WP-2).  
 
 It is unknown if the WP-2 does anything at all with these pins. They are connected to a chip, and the chip is a gate array that could be programmed to do anything. The only clues are that the pins are actually connected to anything at all instead of NC, and that they are pulled up rather than down or floating. It suggests there was a possible reserved usage, and that it was an active-low signal, and that possibly software could do it on the existing hardware.
-One guess for pins 15 & 16 might be made purely from their position on the connector. Possibly the spec for the "Toshiba IC-Card" interface includes pins for A18 and A19 that the WP-2 just doesn't happen to use. But the pullups hint against that. Address lines are active high, and so if these pins were un-used or reserved future-use address lines, they should be pulled *down* not up.
+One guess for pins 15 & 16 might be made purely from their position on the connector. Possibly the spec for the "Toshiba IC-Card" interface includes pins for A18 and A19 that the WP-2 just doesn't happen to use.
 
 Pin 17, A17: Only used for ROM. the WP-2 only supports up to 128K in a RAM card.
 

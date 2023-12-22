@@ -34,9 +34,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.6,
-          "height": 0.6,
-          "width": 0.6
+          "drill": 0.9,
+          "height": 1.1,
+          "width": 1.1
         },
         "silk_line_width": 0.09999999999999999,
         "silk_text_italic": false,
@@ -58,7 +58,9 @@
       ],
       "drc_exclusions": [
         "hole_clearance|112255000|113520000|52004041-1197-41d6-9a1d-f11f24cddca1|01874310-324b-4237-91a4-aa3479d2070c",
-        "hole_clearance|159645000|113520000|fbfd35a5-27e2-4084-b01d-881154f194e4|3c3f621a-7440-467d-a503-5b97a2148469"
+        "hole_clearance|159645000|113520000|fbfd35a5-27e2-4084-b01d-881154f194e4|3c3f621a-7440-467d-a503-5b97a2148469",
+        "lib_footprint_mismatch|111950000|114020000|b886c698-a34b-4ed9-858d-8a89b638f9a6|00000000-0000-0000-0000-000000000000",
+        "lib_footprint_mismatch|159950000|114020000|1153ecd0-5719-4c4b-9bba-16dea11b9715|00000000-0000-0000-0000-000000000000"
       ],
       "meta": {
         "filename": "board_design_settings.json",
@@ -145,13 +147,13 @@
           "td_on_pad_in_zone": false,
           "td_onpadsmd": true,
           "td_onroundshapesonly": false,
-          "td_ontrackend": false,
+          "td_ontrackend": true,
           "td_onviapad": true
         }
       ],
       "teardrop_parameters": [
         {
-          "td_curve_segcount": 0,
+          "td_curve_segcount": 5,
           "td_height_ratio": 1.0,
           "td_length_ratio": 0.5,
           "td_maxheight": 2.0,
@@ -160,7 +162,7 @@
           "td_width_to_size_filter_ratio": 0.9
         },
         {
-          "td_curve_segcount": 0,
+          "td_curve_segcount": 5,
           "td_height_ratio": 1.0,
           "td_length_ratio": 0.5,
           "td_maxheight": 2.0,
@@ -169,7 +171,7 @@
           "td_width_to_size_filter_ratio": 0.9
         },
         {
-          "td_curve_segcount": 0,
+          "td_curve_segcount": 5,
           "td_height_ratio": 1.0,
           "td_length_ratio": 0.5,
           "td_maxheight": 2.0,
@@ -197,6 +199,10 @@
         {
           "diameter": 0.6,
           "drill": 0.4
+        },
+        {
+          "diameter": 1.0,
+          "drill": 0.6
         },
         {
           "diameter": 1.5,
@@ -465,7 +471,7 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "",
-      "step": "WP-2_IC-Card_MRAM_512.step",
+      "step": "out/WP-2_IC-Card_MRAM_512.pcb.step",
       "vrml": ""
     },
     "page_layout_descr_file": ""
@@ -504,7 +510,7 @@
       "workbook_filename": ""
     },
     "page_layout_descr_file": "",
-    "plot_directory": "",
+    "plot_directory": "out/",
     "spice_adjust_passive_values": false,
     "spice_current_sheet_as_root": false,
     "spice_external_command": "spice \"%I\"",
