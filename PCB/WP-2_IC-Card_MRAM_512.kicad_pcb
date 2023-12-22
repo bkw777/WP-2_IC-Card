@@ -1329,17 +1329,17 @@
     )
     (fp_rect (start -27 -27) (end 27 27)
       (stroke (width 0.1) (type solid)) (fill none) (layer "Dwgs.User") (tstamp ddc334a9-0a83-472b-8229-a34484f065eb))
-    (model "${KIPRJMOD}/3d/WP_2_IC_Card_Cover_MRAM_512.step"
+    (model "${KIPRJMOD}/3d/WP_2_IC_Card_Cover_MRAM_512.step" hide
       (offset (xyz 0 0 1.8))
       (scale (xyz 1 1 1))
       (rotate (xyz 180 0 180))
     )
-    (model "${KIPRJMOD}/3d/WP_2_IC_Card_Cover_MRAM_512_slider.step"
+    (model "${KIPRJMOD}/3d/WP_2_IC_Card_Cover_MRAM_512_slider.step" hide
       (offset (xyz 10.25 42.5 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model "${KIPRJMOD}/3d/WP_2_IC_Card_Cover_MRAM_512_dish.step" hide
+    (model "${KIPRJMOD}/3d/WP_2_IC_Card_Cover_MRAM_512_dish.step"
       (offset (xyz 0 0 1.8))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 180 0))
