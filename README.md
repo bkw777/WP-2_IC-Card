@@ -65,10 +65,10 @@ The "window" version is a single piece with no moving parts that just has a conc
 
 The slider version does work well if printed commercially in nylon SLS or tough resin SLA.
 
-![](ref/IMG_0049.jpg)  
-![](ref/IMG_0050.jpg)  
-![](ref/IMG_0053.jpg)  
-![](ref/IMG_0058.jpg)  
+![](ref/IMG_0049.JPG)  
+![](ref/IMG_0050.JPG)  
+![](ref/IMG_0053.JPG)  
+![](ref/IMG_0058.JPG)  
 ![](PCB/out/WP-2_IC-Card_MRAM_512.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM_512.slider.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM_512.dish.jpg)  
