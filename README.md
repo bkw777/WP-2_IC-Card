@@ -3,8 +3,8 @@
 The TANDY WP-2 and other clones of the Citizen CBM-10WP have an expansion slot that accepts ["IC Cards"](#reference-material).
 
 Here are a few different cards to fit that slot.  
-* A [battery-backed RAM card](#battery-backed-sram-card) (like the original cards)  
-* A [non-volatile RAM card](#m-ram-512k-card) that needs no battery  
+* A [battery-backed 128k RAM card](#battery-backed-sram-card) (like the original cards)  
+* A [non-volatile 512k RAM card](#m-ram-512k-card) that needs no battery  
 * A [ROM card](#rom-card) (of only academic value, since there are no known ROM card images)  
 * A [programming adapter](#programming-adapter) that can read and write both the RAM and ROM cards  
 * A [breakout card](#breakout-card) to allow connecting the bus to a breadboard
@@ -16,7 +16,7 @@ OSHPark does not offer exactly 1.2mm, but they do have a 0.8mm option, and you m
 The programming adapter is not included in this rule and may be standard 1.6mm.
 
 There is an optional top cover that you can 3d-print to protect the components and fill out the slot so the card doesn't wiggle in the slot.  
-Attach the cover with thin adhesive tape or glue. I used https://amazon.com/dp/B06Y34587N It's a gummy acrylic adhesive with no tape layer, just a single layer of adhesive. It's thin, but just thick enough to make good contact with the imperfect 3d-printed part, and gummy enough to stick to nylon SLS printed parts, and should not dry out quickly. Yet it's weak enough to be peeled back off without damaging either part if needed. Since there is no tape layer in the middle, you can lay it right over components without having to carefully cut little pieces that fit only in the flat surface areas. When you press the top cover on, the adhesive squishes around the parts and cavities like glue.  
+Attach the cover with thin adhesive tape or glue. I used https://amazon.com/dp/B06Y34587N It's a gummy acrylic adhesive with no tape layer, just a single layer of adhesive. It's thin, but just thick enough to make good contact with the imperfect 3d-printed part, and gummy enough to stick to nylon SLS printed parts, and should not dry out quickly. Yet it's weak enough to be peeled back off without damaging either part if needed. Since there is no tape layer in the middle, you can lay it right over components without having to carefully cut little pieces that fit only in the flat surface areas. When you press the top cover on, the adhesive squishes around the parts and cavities like glue.
 
 Gerbers and STLs are in [releases](../../releases/)
 
@@ -36,14 +36,7 @@ Makes it expensive, but you want the battery terminal to be gold.
 * **Other Special request: Bottom solder mask full cover.**  
 There are no openings in the bottom soldermask layer, so you have to tell them that you want 100% coverage rather than 0% coverage.
 
-The pcb **is** designed to minimized the risk of shorting as much as possible, to minimize the risk of losing the data while the card is loose outside of the WP-2, where the soldermask can get scratched up and metal objects can touch it.  
-* There are no VBAT or VBUS traces on the bottom surface.
-  There are on the top surface, but the top surface is more protected from direct contact by the various components soldered to it.  
-  And the top surface is especially protected if you add the 3d-printed top cover of course.  
-* There are two plated vias with VBAT exposed on the bottom, but their exposure is minimized as much as possible.  
-  They are drawn with no anular rings at all, and there is extra empty space around them in the ground pour.  
-But the chance is still there since the soldermask can't fully tent the hole, and even if it could, the soldermask is still easily scratched, and the bottom surface will naturally suffer the most wear. Plus the entire top of the battery holder is the positive terminal.
-So, it is recommended to cover the bottom pcb with a piece of shipping or packing tape. Just lay a single 2-inch piece right across the middle and don't worry about the small bit of uncovered pcb on either side. It will cover all traces and both of the vias in the battery holder solder pads, and the exposed bits are all just ground pour.
+It's a good idea to cover the bottom of the pcb with a piece of shipping or packing tape. Just lay a single 2-inch piece right across the middle and don't worry about the small bit of uncovered pcb on either side.
 
 [RAM card BOM from DigiKey](https://www.digikey.com/short/5wtbz75z)  
 
@@ -59,23 +52,27 @@ So, it is recommended to cover the bottom pcb with a piece of shipping or packin
 
 RAM card without a battery!
 
-First, warning, this card is expensive. The BOM cost is over $50 before tax or shipping and not including the PCB or the 3d-printed top cover. The total including PCB, BOM, printed cover, tax, & shipping is over $100.
+This card is expensive. The BOM cost is over $50 before tax or shipping and not including the PCB or the 3d-printed top cover. The total including PCB, BOM, printed cover, tax, & shipping is over $100.
 
-However it does provide 4 128K cards in a single card, without any battery.  
+However it does provide **4** 128k cards in a single card, without any battery.  
 
 [MRAM-512 card PCB from PCBWAY](https://www.pcbway.com/project/shareproject/512k_MRAM_IC_Card_for_TANDY_WP_2_30f542a7.html)  
 [MRAM-512 BOM from DigiKey](https://www.digikey.com/short/3m2nczbw) , [Mouser](https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=f6eb946163)
 
 There are two versions of 3d-printable cover available, with different ways to handle the bank-select switch.  
-The default version has a separate moving part to move the switch, but it's tiny and a little finnicky to print and clean up and make fit.  
-The "dish" version is a single piece with no moving parts that just has a concave "dish" opening around the switch so you can finger it directly the same as with no cover. But this can be difficult to print cleanly because the dish shape forms a steep overhang when printing.
+The "slider" version has a separate moving part to move the switch, but it's tiny and a little finnicky to print and clean up and make fit.  
+The "window" version is a single piece with no moving parts that just has a concave opening around the switch so you can move it with a finger or fingernail the same as with no cover. But this can be difficult to print cleanly too because the dish shape around the switch forms a steep overhang when printing.
 
 The slider version does work well if printed commercially in nylon SLS or tough resin SLA.
 
+![](ref/IMG_0049.jpg)  
+![](ref/IMG_0050.jpg)  
+![](ref/IMG_0053.jpg)  
+![](ref/IMG_0058.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM_512.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM_512.slider.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM_512.dish.jpg)  
-![](PCB/out/WP-2_IC-Card_MRAM_512.svg)  
+![](PCB/out/WP-2_IC-Card_MRAM_512.svg)
 
 ----
 
@@ -120,7 +117,7 @@ Example using a TL-866 programmer to write a file named `rom.bin` to the ROM car
 `minipro --device SST39SF020A --write rom.bin`
 
 <!-- old version of the breakout card also had a footprint for the rom chip and some extra pins to enable/disable it -->
-<!-- current breakout card no longer has that, this is just for reference -->
+<!-- current breakout card no longer has that, this is just for reference for TechTangents who has one.-->
 <!-- 
 ### To program the Breakout/ROM card
 
@@ -172,16 +169,6 @@ SAMTEC 8.5mm Pin Socket
 <https://www.mouser.com/ProductDetail/Samtec/SMS-138-01-G-S>  
 
 There are much less expensive generic female 1.27mm pin headers on ebay and aliexpress, but they don't work for this. Sorry :/ The metal parts inside the cheap connectors aren't held in place accurately enough, and the pins in the WP-2 hit the edges of the metal parts in female sockets, and no amount of wiggling gets all 38 pins to line up and let the card insert. And trying just risks damaging the pins inside the WP-2. So, the Samtec socket is both deep enough to take the 6mm-long pins, and is manufactured to tight enough tolerances that the pins slot right into the socket with no problems.
-
-### RAM chip:  
-Compatible Specs: SRAM, 128Kx8, 5v, Parallel, TSOP-32 (8x20mm) or sTSOP-32 (8x14mm)  
-Several parts are compatible. Several examples are listed in the schematic, and the BOM links include a compatibe part.  Here are some pre-loaded searches:  
-[DigiKey](https://www.digikey.com/short/zw38nv)  
-[Mouser](https://mou.sr/2GcUWHl) (many of the pictures are wrong, so ignore the pictures)  
-
-### ROM chip:  
-Compatible Specs: FLASH, 256Kx8, 5v, Parallel, TSOP-32 (8x20mm) or sTSOP-32 (8x14mm)  
-As with the SRAM, several parts are compatible. A few example part numbers are listed in the schematic, and the BOM links include a compatible part.  
 
 ### Notes about some of the card slot signals:  
 

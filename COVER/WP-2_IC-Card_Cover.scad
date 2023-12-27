@@ -114,9 +114,9 @@ battery_type = "removable"; // ***
 // Which style of slide switch surround?
 // only affects mram_512_top
 // "slider" = trapped sliding actuator
-// "dish" = a simple concave opening around the switch
-slide_switch_type = "slider";
-//slide_switch_type = "dish";
+// "window" = a simple concave opening around the switch
+//slide_switch_type = "slider";
+slide_switch_type = "window";
 
 // preview display option
 // only affects mram_512_top
@@ -403,7 +403,7 @@ module bank_switch_common () {
 }
 
 // cavity for slide switch with chamfered window around the actuator
-module bank_switch_dish_opening () {
+module bank_switch_window_opening () {
    swh = top_thickness+o;
    awr = cr; // access window corner radius
    awl = swys*2; // access window length (Y)
@@ -537,8 +537,8 @@ module mram_512_top () {
    component_pocket(w=18.6,l=4,x=-10,y=41.6);
 
   // bank-select slide switch
-  if (slide_switch_type == "dish") {
-   bank_switch_dish_opening ();
+  if (slide_switch_type == "window") {
+   bank_switch_window_opening ();
   } else {
    bank_switch_slider_opening ();
   }
