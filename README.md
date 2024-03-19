@@ -57,11 +57,12 @@ This card is expensive. The BOM cost is over $50 before tax or shipping and not 
 However it does provide **4** 128k cards in a single card, without any battery.  
 
 [MRAM-512 card PCB from PCBWAY](https://www.pcbway.com/project/shareproject/512k_MRAM_IC_Card_for_TANDY_WP_2_30f542a7.html)  
-[MRAM-512 BOM from DigiKey](https://www.digikey.com/short/3m2nczbw) , [Mouser](https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=f6eb946163)
+[MRAM-512 BOM from DigiKey](https://www.digikey.com/short/3m2nczbw) , [Mouser](https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=f6eb946163)  
+[MRAM-512 cover from Shpeways](http://shpws.me/TIyf)
 
 There are two versions of 3d-printable cover available, with different ways to handle the bank-select switch.  
 The "slider" version has a separate moving part to move the switch, but it's tiny and a little finnicky to print and clean up and make fit.  
-The "window" version is a single piece with no moving parts that just has a concave opening around the switch so you can move it with a finger or fingernail the same as with no cover. But this can be difficult to print cleanly too because the dish shape around the switch forms a steep overhang when printing.
+The "window" version is a single piece with no moving parts that just has a concave opening around the switch so you can move the switch with a finger or fingernail the same as with no cover. But this can be difficult to print cleanly too because the dish shape around the switch forms a steep overhang when printing.
 
 The slider version does work well if printed commercially in nylon SLS or tough resin SLA.
 
