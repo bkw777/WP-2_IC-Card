@@ -463,7 +463,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "WP-2_IC-Card_RAM.kicad_pro",
+    "filename": "WP-2_IC-Card_SRAM_128K.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -509,7 +509,7 @@
   },
   "schematic": {
     "annotate_start_num": 0,
-    "bom_export_filename": "out/WP-2_IC-Card_RAM.fab_bom.csv",
+    "bom_export_filename": "out/${TITLE}.fab_bom.csv",
     "bom_fmt_presets": [],
     "bom_fmt_settings": {
       "field_delimiter": ",",

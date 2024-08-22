@@ -8,9 +8,9 @@
 	)
 	(paper "USLetter")
 	(title_block
-		(title "WP-2_IC-Card")
+		(title "WP-2_IC-Card_SRAM_128K")
 		(date "2024-08-22")
-		(rev "RAM_019")
+		(rev "019")
 		(company "Brian K. White - b.kenyon.w@gmail.com")
 		(comment 1 "CC-BY-SA")
 		(comment 2 "github.com/bkw777/WP-2_IC_Card")

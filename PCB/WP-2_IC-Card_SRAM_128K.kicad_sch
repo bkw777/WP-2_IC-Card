@@ -5,9 +5,9 @@
 	(uuid "61a4a6ea-f14c-4701-87bd-6399392c074d")
 	(paper "USLetter")
 	(title_block
-		(title "WP-2_IC-Card_RAM_128K")
-		(date "2023-12-12")
-		(rev "012")
+		(title "WP-2_IC-Card_SRAM_128K")
+		(date "2024-08-22")
+		(rev "013")
 		(company "Brian K. White - b.kenyon.w@gmail.com")
 	)
 	(lib_symbols
