@@ -67,6 +67,12 @@
     "visible_layers": "00093fa_80000001",
     "zone_display_mode": 0
   },
+  "git": {
+    "repo_password": "",
+    "repo_type": "",
+    "repo_username": "",
+    "ssh_key": ""
+  },
   "meta": {
     "filename": "WP-2_IC-Card_ROM.kicad_prl",
     "version": 3

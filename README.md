@@ -41,7 +41,7 @@ It's a good idea to cover the bottom of the pcb with a piece of shipping or pack
 [RAM card BOM from DigiKey](https://www.digikey.com/short/5wtbz75z)  
 
 ![](PCB/out/WP-2_IC-Card_RAM.jpg)  
-![](PCB/out/WP-2_IC-Card_RAM.svg)  
+![](PCB/out/WP-2_IC-Card_SRAM_128K.svg)  
 ![](COVER/out/WP-2_IC-Card_Cover_RAM.png)  
 ![](PCB/out/WP-2_IC-Card_RAM.covered.jpg)  
 ![](PCB/out/WP-2_IC-Card_RAM.rear.jpg)  
@@ -73,7 +73,7 @@ The slider version does work well if printed commercially in nylon SLS or tough 
 ![](PCB/out/WP-2_IC-Card_MRAM_512.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM_512.slider.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM_512.dish.jpg)  
-![](PCB/out/WP-2_IC-Card_MRAM_512.svg)
+![](PCB/out/WP-2_IC-Card_MRAM_512K.svg)
 
 ----
 
