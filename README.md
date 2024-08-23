@@ -70,7 +70,7 @@ The slider version does work well if printed commercially in nylon SLS or tough 
 ![](ref/IMG_0050.JPG)  
 ![](ref/IMG_0053.JPG)  
 ![](ref/IMG_0058.JPG)  
-![](PCB/out/WP-2_IC-Card_MRAM_512.jpg)  
+![](PCB/out/WP-2_IC-Card_MRAM_512K.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM_512.slider.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM_512.dish.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM_512K.svg)
