@@ -150,7 +150,15 @@ Examples using a TL-866 programmer (628128 is a generic part number for the SRAM
 ![](PCB/out/WP-2_IC-Card_Breakout.covered.jpg)  
 ![](PCB/out/WP-2_IC-Card_Breakout.svg)  
 
-----
+
+# Moving files between a card and a PC
+
+Connect the WP-2 to a PC via [9 pin female-female rs-232 null-modem cable](https://amazon.com/dp/B00QM8ZP5E) and [usb-serial adapter](https://amazon.com/dp/B074VN9ZG4)(usb-c example), 
+or a one-piece [usb-null-modem cable](https://amazon.com/dp/B07DRHB264).
+
+Run [DL2](https://github.com/bkw777/dl2) or [LaddieAlpha](https://bitchin100.com/wiki/index.php?title=LaddieCon#LaddieAlpha) on the pc.
+
+Then use the WP-2 (press `F2`+`=`) to copy files between `MEMORY CARD` and `DISKETTE`.
 
 # Reference Material
 [WP-2 Owner & Service Manuals](https://archive.org/search.php?query=Tandy%20WP-2)  
@@ -207,4 +215,6 @@ Document how to create a RUN file like CamelFORTH. I don't know myself, but John
 
 Use the programming adapter to dump ram card images and reverse engineer the file format. Possibly eventually add an mcu to the card that can read & write the sram and present a standard usb mass storage interface to a pc.
 
-Add a 5v power output to power a [MounT](https://github.com/bkw777/MounT)?
+Add a 5v power output for a [MounT](https://github.com/bkw777/MounT)?
+
+Some way to access the card directly from a pc. IE, add a microcontroller to provide a usb interface.
