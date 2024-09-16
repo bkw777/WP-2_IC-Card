@@ -212,13 +212,14 @@ The "Toshiba IC-Card" appears to have been almost a standard, maybe, before PCMC
 
 The following are NOT the same and NOT compatible.
 
-* Amstrad NC100 and clones & derivatives like NTS DreamWriter 325. They look very similar but the memory card in those is PCMCIA Type 1, which is totally different from this.
+* Amstrad NC100 and clones & derivatives like NTS DreamWriter 325.  
+  They look very similar but the memory card in those is PCMCIA Type 1, which is totally different from this.
 
-* ITT Canon Star Card
+* ITT Canon Star Card  
   single row 38 pins (or maybe 39 or 40, references say 38-pin, but you can count 39 holes plus another smaller hole)
   but no polarity notch on the pin-38 side.
 
-* Yamaha MCD32 / MCD64
+* Yamaha MCD32 / MCD64  
   MCD in particular really looks perfect, just upside-down, with the same single-row 38-pin connector and a keying notch on one side. But the key notch is on the on the wrong side, and it's not merely the same card but updside down. The pinout is different. Just for starters, MCD has GND on both pin 1 and pin 38, and vcc on pin 20, while the WP-2 has GND on pin 1 and VCC on pin 38. No matter which direction the pin numbers count, whether the Yamaha counts in the other direction or not, whether inserting the card upside-down changes that or not, no matter what either way if you managed to insert the card it would short the WP-2's power rail directly to GND.
 
 # TODO
