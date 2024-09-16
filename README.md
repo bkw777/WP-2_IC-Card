@@ -1,7 +1,5 @@
 # Expansion IC-Card for [TANDY WP-2](tandy.wiki/WP-2), [TANDY WP-3](https://www.retrocoding.uk/tandy-wp-3-word-processor/), [Citizen CBM-10WP](http://mo5.com/musee-machines-cbm10wp.html), [NTS WP-10C](https://munk.org/typecast/2020/09/09/tandy-wp-2-user-manual-happy-septandy/)  
 
-...and NOT Amstrad NC100 or any other NC100 clones & derivatives like NTS DreamWriter 325. They look very similar but the memory card in those is PCMCIA Type 1, which is totally different from this.
-
 The TANDY WP-2 and other clones of the Citizen CBM-10WP have an expansion slot that accepts ["IC Cards"](#reference-material).
 
 Here are a few different cards to fit that slot.  
@@ -207,6 +205,21 @@ One guess for pins 15 & 16 might be made purely from their position on the conne
 Pin 17, A17: Only used for ROM. the WP-2 only supports up to 128K in a RAM card.
 
 Pin 37, BCHK/Vchk, Battery Voltage Check: Unknown usage, but probably originally intended for the WP-2 (or the Citizen CBM-10WP) to detect the level of the battery in a RAM card. The schematic on service manual page 8-2 doesn't show Vchk connecting to anything, and I also cannot find anything anywhere on the motherboard that has continuity with this pin. Other similar machines had a pin that was used for the host machine to read the level of the battery on a RAM card. See the VBB pin in [Atari Portfolio Technical reference Guide, page 11](https://archive.org/details/atariportfoliotechnicalreferenceguide1989/page/n10/mode/1up).
+
+### Other similar machines and card standards that are NOT the same and NOT compatible
+
+The "Toshiba IC-Card" appears to have been almost a standard, maybe, before PCMCIA type 1 was formalized. And so it's tempting to try to find other possible cards that might be compatible besides the ones sold by Tandy. There might be some but I have not found any yet.
+
+The following are NOT the same and NOT compatible.
+
+* Amstrad NC100 and clones & derivatives like NTS DreamWriter 325. They look very similar but the memory card in those is PCMCIA Type 1, which is totally different from this.
+
+* ITT Canon Star Card
+  single row 38 pins (or maybe 39 or 40, references say 38-pin, but you can count 39 holes plus another smaller hole)
+  but no polarity notch on the pin-38 side.
+
+* Yamaha MCD32 / MCD64
+  MCD in particular really looks perfect, just upside-down, with the same single-row 38-pin connector and a keying notch on one side. But the key notch is on the on the wrong side, and it's not merely the same card but updside down. The pinout is different. Just for starters, MCD has GND on both pin 1 and pin 38, and vcc on pin 20, while the WP-2 has GND on pin 1 and VCC on pin 38. No matter which direction the pin numbers count, whether the Yamaha counts in the other direction or not, whether inserting the card upside-down changes that or not, no matter what either way if you managed to insert the card it would short the WP-2's power rail directly to GND.
 
 # TODO
 CamelFORTH on ROM?  
