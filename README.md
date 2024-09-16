@@ -1,4 +1,6 @@
-# Expansion IC-Card for [TANDY WP-2](tandy.wiki/WP-2), [TANDY WP-3](https://www.retrocoding.uk/tandy-wp-3-word-processor/), [Citizen CBM-10WP](http://mo5.com/musee-machines-cbm10wp.html), [NTS WP-10C](https://munk.org/typecast/2020/09/09/tandy-wp-2-user-manual-happy-septandy/)
+# Expansion IC-Card for [TANDY WP-2](tandy.wiki/WP-2), [TANDY WP-3](https://www.retrocoding.uk/tandy-wp-3-word-processor/), [Citizen CBM-10WP](http://mo5.com/musee-machines-cbm10wp.html), [NTS WP-10C](https://munk.org/typecast/2020/09/09/tandy-wp-2-user-manual-happy-septandy/)  
+
+...and NOT Amstrad NC100 or any other NC100 clones & derivatives like NTS DreamWriter 325. They look very similar but the memory card in those is PCMCIA Type 1, which is totally different from this.
 
 The TANDY WP-2 and other clones of the Citizen CBM-10WP have an expansion slot that accepts ["IC Cards"](#reference-material).
 
