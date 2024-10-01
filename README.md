@@ -15,8 +15,7 @@ PCBWay and JLCPCB and others have options for exactly 1.2mm pcb thickness.
 OSHPark does not offer exactly 1.2mm, but they do have a 0.8mm option, and you may use that. It's a little trickier to solder the connector on the 0.8mm pcb bacause the pcb and connector do not rest flush on a table surface, but it's still possible, and the board is still perfectly strong enough.  
 The programming adapter is not included in this rule and may be standard 1.6mm.
 
-There is an optional top cover that you can 3d-print to protect the components and fill out the slot so the card doesn't wiggle in the slot.  
-Attach the cover with thin adhesive tape or glue. I used https://amazon.com/dp/B06Y34587N It's a gummy acrylic adhesive with no tape layer, just a single layer of adhesive. It's thin, but just thick enough to make good contact with the imperfect 3d-printed part, and gummy enough to stick to nylon SLS printed parts, and should not dry out quickly. Yet it's weak enough to be peeled back off without damaging either part if needed. Since there is no tape layer in the middle, you can lay it right over components without having to carefully cut little pieces that fit only in the flat surface areas. When you press the top cover on, the adhesive squishes around the parts and cavities like glue.
+Attach the cover with thin [adhesive tape](https://amazon.com/dp/B06Y34587N) or glue.  
 
 Gerbers and STLs are in [releases](../../releases/)
 
@@ -56,17 +55,19 @@ This card is expensive. The BOM cost is over $50 before tax or shipping and not 
 
 However it does provide **4** 128k cards in a single card, without any battery.  
 
-NOTE: MRAM is permanently damaged by exposure to magnetic fields. The particular part used here [claims to be internally shielded](PCB/datasheets/EST02880_Magnetic_Immunity_for_Everspin_MRAM_073115.pdf) so it should be ok. However you probably should still generally avoid exposure to magnetic fields. This is probably the best reason to just use the normal battery powered SRAM card.
+NOTE: MRAM is permanently damaged by exposure to magnetic fields.  
+The particular part used here is [internally shielded](PCB/datasheets/EST02880_Magnetic_Immunity_for_Everspin_MRAM_073115.pdf) and specifically the Industrial version claims to be safe to 125 gauss.  
+The Commercial and Automotive versions are only safe to 25 gauss. A fridge magnet is 100 gauss.  
+The BOM specifies the Industrial part so it should be reasonably safe, however you should still generally avoid exposure to magnetic fields.  
+This is probably the best reason to just use the normal battery powered SRAM card.
 
-[MRAM-512 card PCB from PCBWAY](https://www.pcbway.com/project/shareproject/512k_MRAM_IC_Card_for_TANDY_WP_2_30f542a7.html)  
-[MRAM-512 BOM from DigiKey](https://www.digikey.com/short/3m2nczbw) , [Mouser](https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=f6eb946163)  
-[MRAM-512 cover from Shapeways](http://shpws.me/TIyf)
+[MRAM-512 PCB and COVER from PCBWAY](https://www.pcbway.com/project/shareproject/512k_MRAM_IC_Card_for_TANDY_WP_2_30f542a7.html)  
+[MRAM-512 BOM from DigiKey](https://www.digikey.com/short/nqjddjf5)  <!-- , [Mouser](https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=f6eb946163)  -->
+<!-- RIP Shapeways... [MRAM-512 cover from Shapeways](http://shpws.me/TIyf)  -->
 
 There are two versions of 3d-printable cover available, with different ways to handle the bank-select switch.  
-The "slider" version has a separate moving part to move the switch, but it's tiny and a little finnicky to print and clean up and make fit.  
-The "window" version is a single piece with no moving parts that just has a concave opening around the switch so you can move the switch with a finger or fingernail the same as with no cover. But this can be difficult to print cleanly too because the dish shape around the switch forms a steep overhang when printing.
-
-The slider version does work well if printed commercially in nylon SLS or tough resin SLA.
+The "slider" version has a separate moving part to move the switch.  
+The "window" version is a single piece with no moving parts and a little easier to print.
 
 ![](ref/IMG_0049.JPG)  
 ![](ref/IMG_0050.JPG)  
