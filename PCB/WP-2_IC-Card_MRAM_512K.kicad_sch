@@ -12053,7 +12053,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "datasheets/MIC5365.pdf"
+		(property "Datasheet" "datasheets/MIC5317.pdf"
 			(at 224.79 144.78 0)
 			(effects
 				(font
