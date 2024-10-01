@@ -9,13 +9,13 @@ Here are a few different cards to fit that slot.
 * A [programming adapter](#programming-adapter) that can read and write both the RAM and ROM cards  
 * A [breakout card](#breakout-card) to allow connecting the bus to a breadboard
 
-**These cards must be made with 1.2mm PCB or thinner**  
-Standard / default PCB thickness is 1.6mm. This does not fit. Don't miss this step when ordering. I can't create a purchase link that pre-loads this setting. The default will always be 1.6mm and you must remember to manually change it yourself.  
-PCBWay and JLCPCB and others have options for exactly 1.2mm pcb thickness.  
-OSHPark does not offer exactly 1.2mm, but they do have a 0.8mm option, and you may use that. It's a little trickier to solder the connector on the 0.8mm pcb bacause the pcb and connector do not rest flush on a table surface, but it's still possible, and the board is still perfectly strong enough.  
-The programming adapter is not included in this rule and may be standard 1.6mm.
+**These cards must be made with 1.2mm PCB or thinner**
 
-Attach the cover with thin [adhesive tape](https://amazon.com/dp/B06Y34587N) or glue.  
+Standard 1.6mm PCB thickness is too thick. You have to change this option when ordering or you'll get 1.6mm by default.
+
+Attach the printable covers with thin [adhesive tape](https://amazon.com/dp/B06Y34587N) or glue.  
+
+It's a good idea to cover the bottom of the pcb with a piece of shipping or packing tape. Just lay a single 2-inch piece right across the middle and don't worry about the small bit of uncovered pcb on either side.
 
 Gerbers and STLs are in [releases](../../releases/)
 
@@ -25,19 +25,18 @@ Gerbers and STLs are in [releases](../../releases/)
 
 ## Battery-backed SRAM CARD  
 <!-- [RAM card PCB from OSHPark]() (Select 0.8mm PCB thickness)  -->
-[RAM card PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_RAM_IC_Card.html)  
+[128K SRAM BOM from DigiKey](https://www.digikey.com/short/5wtbz75z)  
+[128K SRAM PCB and COVER from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_RAM_IC_Card.html)  
 IMPORTANT, when ordering the PCB:  
 * **Thickness: 1.2** <-- MOST IMPORTANT - DO NOT MISS  
 * **Min Track/Spacing: 6/6mil**  
-6mil is the default quality level that they can manufacture, but finer detail is available for higher cost. The site tries to automatically scan the design and select the necessary quality level automatically, but it gets this wrong sometimes. All traces and spaces on this board are 0.2mm minimum, almost 7.9mil, so the board only needs the default 6mil quality level. Just manually change it to 6/6 if it isn't already.
+The PCBWAY ordering page may auto-select thinner minimum traces which is expensive, but thise pcb actually has all traces at least 0.2mm (7.8mil), so you should manually change the option to 6mil.  
 * **Surface Finish: Immersion gold(ENIG)**  
-Makes it expensive, but you want the battery terminal to be gold.
+Makes it expensive, but you want the battery terminal to be gold.  
 * **Other Special request: Bottom solder mask full cover.**  
-There are no openings in the bottom soldermask layer, so you have to tell them that you want 100% coverage rather than 0% coverage.
+There are no openings in the bottom soldermask layer, so you have to tell them that you want 100% soldermask coverage rather than 0% coverage.
 
-It's a good idea to cover the bottom of the pcb with a piece of shipping or packing tape. Just lay a single 2-inch piece right across the middle and don't worry about the small bit of uncovered pcb on either side.
-
-[RAM card BOM from DigiKey](https://www.digikey.com/short/5wtbz75z)  
+Hint, instead of PCBWAY, you can upload the same gerber zip and cover stl to Elecrow and the cost including ENIG is less.
 
 ![](PCB/out/WP-2_IC-Card_RAM.jpg)  
 ![](PCB/out/WP-2_IC-Card_SRAM_128K.svg)  
@@ -59,10 +58,9 @@ NOTE: MRAM is permanently damaged by exposure to magnetic fields.
 The particular part used here is [internally shielded](PCB/datasheets/EST02880_Magnetic_Immunity_for_Everspin_MRAM_073115.pdf) and specifically the Industrial version claims to be safe to 125 gauss.  
 The Commercial and Automotive versions are only safe to 25 gauss. A fridge magnet is 100 gauss.  
 The BOM specifies the Industrial part so it should be reasonably safe, however you should still generally avoid exposure to magnetic fields.  
-This is probably the best reason to just use the normal battery powered SRAM card.
 
-[MRAM-512 PCB and COVER from PCBWAY](https://www.pcbway.com/project/shareproject/512k_MRAM_IC_Card_for_TANDY_WP_2_30f542a7.html)  
-[MRAM-512 BOM from DigiKey](https://www.digikey.com/short/nqjddjf5)  <!-- , [Mouser](https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=f6eb946163)  -->
+[512K MRAM PCB and COVER from PCBWAY](https://www.pcbway.com/project/shareproject/512k_MRAM_IC_Card_for_TANDY_WP_2_30f542a7.html)  
+[512K MRAM BOM from DigiKey](https://www.digikey.com/short/nqjddjf5)  <!-- , [Mouser](https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=f6eb946163)  -->
 <!-- RIP Shapeways... [MRAM-512 cover from Shapeways](http://shpws.me/TIyf)  -->
 
 There are two versions of 3d-printable cover available, with different ways to handle the bank-select switch.  
@@ -84,9 +82,8 @@ The "window" version is a single piece with no moving parts and a little easier 
 There are no known rom images for any rom cards. Don't bother building one of these unless you are trying to create a rom from scratch.
 
 <!-- [ROM card PCB from OSHPark](https://oshpark.com/shared_projects/F9gte3be) (Select 0.8mm PCB thickness)  -->
-[ROM card PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_ROM_IC_Card.html) (Select 1.2mm PCB thickness)  
-
-[ROM card BOM from DigiKey](https://www.digikey.com/short/zn95jj)
+[ROM PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_ROM_IC_Card.html) (Select 1.2mm PCB thickness)  
+[ROM BOM from DigiKey](https://www.digikey.com/short/zn95jj)
 
 ![](PCB/out/WP-2_IC-Card_ROM.jpg)  
 ![](PCB/out/WP-2_IC-Card_ROM.svg)  
@@ -147,7 +144,7 @@ Examples using a TL-866 programmer (628128 is a generic part number for the SRAM
 [Breakout PCB from OSHPark](https://oshpark.com/shared_projects/4spvX9oV) (Select 0.8mm PCB thickness)  
 [Breakout PCB from PCBWAY](https://www.pcbway.com/project/shareproject/TANDY_WP_2_IC_Card_Breakout.html) (Select 1.2mm PCB thickness)  
 
-[Breakout card BOM from DigiKey](https://www.digikey.com/short/323npm39)  
+[Breakout BOM from DigiKey](https://www.digikey.com/short/323npm39)  
 
 ![](PCB/out/WP-2_IC-Card_Breakout.jpg)  
 ![](PCB/out/WP-2_IC-Card_Breakout.covered.jpg)  
