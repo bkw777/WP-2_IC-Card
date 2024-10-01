@@ -56,6 +56,8 @@ This card is expensive. The BOM cost is over $50 before tax or shipping and not 
 
 However it does provide **4** 128k cards in a single card, without any battery.  
 
+NOTE: MRAM is permanently damaged by exposure to magnetic fields. The particular part used here [claims to be internally shielded](PCB/datasheets/EST02880_Magnetic_Immunity_for_Everspin_MRAM_073115.pdf) so it should be ok. However you probably should still generally avoid exposure to magnetic fields. This is probably the best reason to just use the normal battery powered SRAM card.
+
 [MRAM-512 card PCB from PCBWAY](https://www.pcbway.com/project/shareproject/512k_MRAM_IC_Card_for_TANDY_WP_2_30f542a7.html)  
 [MRAM-512 BOM from DigiKey](https://www.digikey.com/short/3m2nczbw) , [Mouser](https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=f6eb946163)  
 [MRAM-512 cover from Shapeways](http://shpws.me/TIyf)
