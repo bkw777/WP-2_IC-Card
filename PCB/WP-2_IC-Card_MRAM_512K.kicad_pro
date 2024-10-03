@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.9,
-          "height": 1.1,
-          "width": 1.1
+          "drill": 0.0,
+          "height": 0.8,
+          "width": 2.0
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -60,17 +60,13 @@
         }
       ],
       "drc_exclusions": [
-        "hole_clearance|112255000|113520000|52004041-1197-41d6-9a1d-f11f24cddca1|01874310-324b-4237-91a4-aa3479d2070c",
-        "hole_clearance|159645000|113520000|fbfd35a5-27e2-4084-b01d-881154f194e4|3c3f621a-7440-467d-a503-5b97a2148469",
-        "lib_footprint_mismatch|111950000|114020000|b886c698-a34b-4ed9-858d-8a89b638f9a6|00000000-0000-0000-0000-000000000000",
         "lib_footprint_mismatch|121850000|100245000|f230582e-d143-4d79-a125-de33d9a416ab|00000000-0000-0000-0000-000000000000",
         "lib_footprint_mismatch|126100000|76245000|cf35aa85-90ea-43e3-8578-c5ac501d3620|00000000-0000-0000-0000-000000000000",
         "lib_footprint_mismatch|126100000|81245000|b2e32fb2-7ad1-457b-b086-bb2be879dc14|00000000-0000-0000-0000-000000000000",
         "lib_footprint_mismatch|126100000|86245000|fa2f6c01-b057-4e25-86df-e4819b22cebd|00000000-0000-0000-0000-000000000000",
         "lib_footprint_mismatch|130850000|100245000|07c38783-f9a9-44da-8ebd-61e7c14051f7|00000000-0000-0000-0000-000000000000",
         "lib_footprint_mismatch|139850000|100245000|89f15255-d868-4688-ad67-6e0ad3563d14|00000000-0000-0000-0000-000000000000",
-        "lib_footprint_mismatch|148850000|100245000|7b12e544-5003-4e71-803b-ebfdc0f060da|00000000-0000-0000-0000-000000000000",
-        "lib_footprint_mismatch|159950000|114020000|1153ecd0-5719-4c4b-9bba-16dea11b9715|00000000-0000-0000-0000-000000000000"
+        "lib_footprint_mismatch|148850000|100245000|7b12e544-5003-4e71-803b-ebfdc0f060da|00000000-0000-0000-0000-000000000000"
       ],
       "meta": {
         "filename": "board_design_settings.json",
@@ -134,8 +130,8 @@
         "allow_blind_buried_vias": false,
         "allow_microvias": false,
         "max_error": 0.005,
-        "min_clearance": 0.0,
-        "min_connection": 0.0,
+        "min_clearance": 0.2,
+        "min_connection": 0.2,
         "min_copper_edge_clearance": 0.2,
         "min_hole_clearance": 0.2,
         "min_hole_to_hole": 0.25,
@@ -521,7 +517,7 @@
       "plot": "GERBER_${TITLE}_${REVISION}",
       "pos_files": "GERBER_${TITLE}_${REVISION}",
       "specctra_dsn": "",
-      "step": "out/WP-2_IC-Card_MRAM_512.pcb.step",
+      "step": "../COVER/inc/WP-2_IC-Card_MRAM_512.pcb.step",
       "svg": "",
       "vrml": ""
     },

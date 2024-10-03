@@ -11,7 +11,7 @@
 		(company "Brian K. White - b.kenyon.w@gmail.com")
 	)
 	(lib_symbols
-		(symbol "0_LOCAL:62-65C1024_TSOP-I-32"
+		(symbol "000_LOCAL:62-65C1024_TSOP-I-32"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -31,7 +31,7 @@
 					)
 				)
 			)
-			(property "Footprint" "0_LOCAL:TSOP32-dual"
+			(property "Footprint" "000_LOCAL:TSOP32-dual"
 				(at 0 -2.54 0)
 				(effects
 					(font
@@ -668,7 +668,7 @@
 				)
 			)
 		)
-		(symbol "0_LOCAL:BAV170"
+		(symbol "000_LOCAL:BAV170"
 			(pin_names hide)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -690,7 +690,7 @@
 					)
 				)
 			)
-			(property "Footprint" "0_LOCAL:SOT-23"
+			(property "Footprint" "000_LOCAL:SOT-23"
 				(at 0 0 0)
 				(effects
 					(font
@@ -875,7 +875,7 @@
 				)
 			)
 		)
-		(symbol "0_LOCAL:C_Small"
+		(symbol "000_LOCAL:C_Small"
 			(pin_numbers hide)
 			(pin_names
 				(offset 0.254) hide)
@@ -1010,7 +1010,7 @@
 				)
 			)
 		)
-		(symbol "0_LOCAL:Conn_01x38_Female"
+		(symbol "000_LOCAL:Conn_01x38_Female"
 			(pin_names
 				(offset 1.016) hide)
 			(exclude_from_sim no)
@@ -2676,7 +2676,402 @@
 				)
 			)
 		)
-		(symbol "0_LOCAL:R"
+		(symbol "000_LOCAL:Housing"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim yes)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "N"
+				(at 3.81 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "Housing"
+				(at 3.81 -1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 1.27 1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 1.27 1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Housing"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "housing enclosure"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Enclosure* Housing*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Housing_0_1"
+				(rectangle
+					(start -5.08 -0.635)
+					(end -1.27 -1.905)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center -4.445 -3.175)
+					(radius 0.635)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center -1.905 -3.175)
+					(radius 0.635)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy -4.5212 -1.5748) (xy -4.4704 -1.3716)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -4.4196 -1.6764) (xy -4.064 -1.6764)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -4.4196 -1.2192) (xy -4.3688 -0.9652)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -4.318 -1.3208) (xy -4.0132 -1.3208)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -4.2164 -0.9144) (xy -3.9116 -0.9144)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.9116 -1.6256) (xy -3.8608 -1.3716)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.81 -1.2192) (xy -3.7592 -0.9652)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.6068 -1.5748) (xy -3.556 -1.3716)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.5052 -1.6764) (xy -3.1496 -1.6764)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.5052 -1.2192) (xy -3.4544 -0.9652)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.4036 -1.3208) (xy -3.0988 -1.3208)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.302 -0.9144) (xy -2.9972 -0.9144)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.9972 -1.6256) (xy -2.9464 -1.3716)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.8956 -1.2192) (xy -2.8448 -0.9652)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.6924 -1.5748) (xy -2.6416 -1.3716)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.5908 -1.6764) (xy -2.2352 -1.6764)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.5908 -1.2192) (xy -2.54 -0.9652)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.4892 -1.3208) (xy -2.1844 -1.3208)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.3876 -0.9144) (xy -2.0828 -0.9144)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.0828 -1.6256) (xy -2.032 -1.3716)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.9812 -1.2192) (xy -1.9304 -0.9652)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.635 0) (xy -0.635 -4.445)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -5.715 0) (xy -0.635 0) (xy 3.175 3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -5.715 0) (xy -5.715 -4.445) (xy -0.635 -4.445) (xy 3.175 -0.635) (xy 3.175 3.81) (xy -1.905 3.81)
+						(xy -5.715 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+		)
+		(symbol "000_LOCAL:R"
 			(pin_numbers hide)
 			(pin_names
 				(offset 0)
@@ -4445,7 +4840,7 @@
 		(uuid "f80f1144-a706-46fa-82d4-1641624373ab")
 	)
 	(symbol
-		(lib_id "0_LOCAL:Conn_01x38_Female")
+		(lib_id "000_LOCAL:Conn_01x38_Female")
 		(at 83.82 99.06 0)
 		(mirror y)
 		(unit 1)
@@ -4472,7 +4867,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "0_LOCAL:SMS-138-01-x-x_edge"
+		(property "Footprint" "000_LOCAL:SMS-138-01-x-x_pcb_edge"
 			(at 83.82 99.06 0)
 			(effects
 				(font
@@ -4857,7 +5252,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0_LOCAL:2016_battery_holder_smt"
+		(property "Footprint" "000_LOCAL:2016_battery_holder_smt"
 			(at 128.524 139.7 90)
 			(effects
 				(font
@@ -4909,7 +5304,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:R")
+		(lib_id "000_LOCAL:R")
 		(at 163.83 109.22 90)
 		(mirror x)
 		(unit 1)
@@ -4934,7 +5329,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0_LOCAL:R_0805"
+		(property "Footprint" "000_LOCAL:R_0805"
 			(at 163.83 107.442 90)
 			(effects
 				(font
@@ -4986,7 +5381,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:C_Small")
+		(lib_id "000_LOCAL:C_Small")
 		(at 120.65 120.65 0)
 		(mirror y)
 		(unit 1)
@@ -5011,7 +5406,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0_LOCAL:C_0805_1mm"
+		(property "Footprint" "000_LOCAL:C_0805_1mm"
 			(at 120.65 120.65 0)
 			(effects
 				(font
@@ -5063,7 +5458,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:C_Small")
+		(lib_id "000_LOCAL:C_Small")
 		(at 186.69 53.34 270)
 		(mirror x)
 		(unit 1)
@@ -5088,7 +5483,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0_LOCAL:C_0805_1mm"
+		(property "Footprint" "000_LOCAL:C_0805_1mm"
 			(at 186.69 53.34 0)
 			(effects
 				(font
@@ -5274,7 +5669,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:R")
+		(lib_id "000_LOCAL:R")
 		(at 134.62 118.11 90)
 		(mirror x)
 		(unit 1)
@@ -5299,7 +5694,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0_LOCAL:R_0805"
+		(property "Footprint" "000_LOCAL:R_0805"
 			(at 134.62 116.332 90)
 			(effects
 				(font
@@ -5351,7 +5746,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:C_Small")
+		(lib_id "000_LOCAL:C_Small")
 		(at 128.27 120.65 0)
 		(mirror y)
 		(unit 1)
@@ -5376,7 +5771,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0_LOCAL:C_0805_1mm"
+		(property "Footprint" "000_LOCAL:C_0805_1mm"
 			(at 128.27 120.65 0)
 			(effects
 				(font
@@ -5489,6 +5884,70 @@
 			(project "WP-2_IC-Card_RAM"
 				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
 					(reference "#PWR01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "000_LOCAL:Housing")
+		(at 127 177.8 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "626239e4-bf64-4e4f-80d2-4cf2e3444f17")
+		(property "Reference" "N1"
+			(at 130.81 176.8474 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "WP-2_IC-Card_Cover_SRAM"
+			(at 130.81 179.3874 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "000_LOCAL:WP-2_IC_Card_Cover_RAM"
+			(at 128.27 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 128.27 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Housing"
+			(at 127 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project ""
+				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
+					(reference "N1")
 					(unit 1)
 				)
 			)
@@ -5891,7 +6350,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:BAV170")
+		(lib_id "000_LOCAL:BAV170")
 		(at 139.7 139.7 0)
 		(mirror x)
 		(unit 1)
@@ -5916,7 +6375,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0_LOCAL:SOT-23"
+		(property "Footprint" "000_LOCAL:SOT-23"
 			(at 139.7 139.7 0)
 			(effects
 				(font
@@ -6039,7 +6498,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:C_Small")
+		(lib_id "000_LOCAL:C_Small")
 		(at 124.46 120.65 0)
 		(mirror y)
 		(unit 1)
@@ -6064,7 +6523,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0_LOCAL:C_0805_1mm"
+		(property "Footprint" "000_LOCAL:C_0805_1mm"
 			(at 124.46 120.65 0)
 			(effects
 				(font
@@ -6116,7 +6575,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:62-65C1024_TSOP-I-32")
+		(lib_id "000_LOCAL:62-65C1024_TSOP-I-32")
 		(at 193.04 88.9 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6142,7 +6601,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "0_LOCAL:TSOP32-dual"
+		(property "Footprint" "000_LOCAL:TSOP32-dual"
 			(at 193.04 91.44 0)
 			(effects
 				(font

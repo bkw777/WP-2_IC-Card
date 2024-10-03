@@ -10,9 +10,10 @@
 // and no bottom cover, printed by FDM.
 
 // Which part to generate?
-part = "ram_top"; // *** - top cover for the battery-backed 128K SRAM card
-//part = "rom_top"; // same as ram_top without the battery
+part = "sram_top"; // *** - top cover for the battery-backed 128K SRAM card
+//part = "rom_top"; // same as sram_top without the battery
 //part = "mram_512_top"; // top cover for the 512K MRAM card - includes both the main top cover and the seperate slide switch actuator
+//part = "mram_shielded_top"; // top cover for the 512K MRAM card with steel can over mram - includes both the main top cover and the seperate slide switch actuator
 //part = "breakout_top"; // top cover for the breakout card - not critical but fills out the slot so the breakout card doesn't wobble within the slot
 //part = "bottom"; // bottom cover - not applicable for 1.2mm PCB. Use with pcb_thickness 0.8 or less and card_thickness 3.2
 //part = "slider"; // just the bank switch actuator slider part alone
@@ -76,22 +77,18 @@ components_height = 1.15; // fudge it down from 1.2 just enought to allow printi
 // thin sheet over the components.
 //thin_wall_minimum = 0.3; // 0.3 FDM printing, mram_512_top has small bit of 0.3mm thin roof just over the slide switch
 //thin_wall_minimum = 0.6; // *** 0.6 FDM printing (home)
-thin_wall_minimum = 0.7; // 0.7 SLS printing (shapeways)
+thin_wall_minimum = 0.7; // 0.7 commercial SLS/MJF printing
 
-// Thickness of adhesive tape between the pcb and the bottom and top covers.
-// A cut is applied to the bottom of the top cover, and the top of the bottom cover
-// after all other modelling is done, so that both parts get this much thinner,
-// but none of the other geometry changes. For instance, the roof of the component
-// pockets remains the same height relative to the top of the pcb,
-// but the pockets get shallower relative to the bottom of the top cover.
+// Shaves the bottom of the top cover
+// to make room for adhesive without making the card thicker.
 // For liquid glue, use 0.
-// For thin double-sided tape, use 0 to 0.2
-//adhesive_thickness = 0.15; // ***
-adhesive_thickness = 0; // ***
+// For thin adhesive tape, use 0 to 0.2
+// amazon.com/dp/B06Y34587N 3M 468MP 5.2mil = 0.13mm
+adhesive_thickness = 0.15; // *** good enough for most cases
 
-//// Some other useful combinations of above:
+//// Some useful combinations:
 
-// SLS (Shapeways)
+// SLS
 // Add a layer of packing tape to cover the bottom of the PCB
 // Total card thickness with the tape is 3.2mm
 //card_thickness = 3.1;
@@ -105,9 +102,12 @@ adhesive_thickness = 0; // ***
 //pcb_thickness = 0.8;
 
 // Which style of battery surround?
-// only affects ram_top
-// "trapped" = simpler shape, easier to print, cleaner looking, but the battery is not removable except by removing the entire cover. Cover should only be affixed with removable adhesive or glue. (For instance common hot-glue can be released by alcohol or by freezing.)
-// "removable" = extra cutouts to allow the battery to be inserted and removed without removing the cover, so the cover could be permanently glued to the PCB.
+// only affects sram_top
+// "trapped" = simpler shape, easier to print, cleaner looking,
+// but the battery is not removable except by removing the entire cover. Cover should only be affixed with removable adhesive or glue. (For instance common hot-glue can be released by alcohol or by freezing.)
+// "removable" = extra cutouts to allow the battery to be inserted
+// and removed without removing the cover,
+// so the cover could be permanently glued to the PCB.
 //battery_type = "trapped";
 battery_type = "removable"; // ***
 
@@ -115,8 +115,8 @@ battery_type = "removable"; // ***
 // only affects mram_512_top
 // "slider" = trapped sliding actuator
 // "window" = a simple concave opening around the switch
-//slide_switch_type = "slider";
 slide_switch_type = "window";
+//slide_switch_type = "slider";
 
 // preview display option
 // only affects mram_512_top
@@ -134,10 +134,11 @@ show_slider_position = 3; // switch ships in position 3, and pcb model shows pos
 // To generate these models, export STEP from KiCAD,
 // open STEP in FreeCAD, export STL.
 pcb_stl =
- part == "rom_top"      ? "../PCB/out/WP-2_IC-Card_ROM.stl"          :
- part == "ram_top"      ? "../PCB/out/WP-2_IC-Card_RAM.pcb.stl"      :
- part == "mram_512_top" ? "../PCB/out/WP-2_IC-Card_MRAM_512.pcb.stl" :
- part == "breakout_top" ? "../PCB/out/WP-2_IC-Card_Breakout.stl"     :
+ part == "rom_top"      ? "inc/rom.pcb.stl"      :
+ part == "sram_top"     ? "inc/sram.pcb.stl"     :
+ part == "mram_512_top" ? "inc/mram.pcb.stl"     :
+ part == "mram_shielded_top" ? "inc/mram-shielded.pcb.stl"     :
+ part == "breakout_top" ? "inc/breakout.pcb.stl" :
  false ;
 
 bw = 54;    // main body width (X)
@@ -258,7 +259,7 @@ fc = 0.1; // fitment clearance
 $fa = 6;
 $fs = 0.2;
 
-include <handy.scad>;
+include <inc/handy.scad>;
 
 ////////////////////////////////////////////////////////////////////////////////////
 // CUT-SHAPES
@@ -508,7 +509,7 @@ module rom_top () {
  }
 }
 
-module ram_top () {
+module sram_top () {
  difference() {
   top_common();
   group() {
@@ -531,10 +532,15 @@ module mram_512_top () {
    component_pocket(w=45,l=13,x=0,y=22);
 
    // MRAM
-   // ic
-   component_pocket(w=13,l=20,x=-10,y=41.6);
-   // caps
-   component_pocket(w=18.6,l=4,x=-10,y=41.6);
+   if (part == "mram_shielded_top") {
+     // shield can
+     component_pocket(w=20+fc*2,l=20+fc*2,x=-10,y=41.6,h=3);
+   } else {
+     // ic
+     component_pocket(w=13,l=20,x=-10,y=41.6);
+     // caps
+     component_pocket(w=18.6,l=4,x=-10,y=41.6);
+   }
 
   // bank-select slide switch
   if (slide_switch_type == "window") {
@@ -605,8 +611,8 @@ if($preview) {
 // * orient the parts as they would be used
 
  if (part == "rom_top") rom_top();
- if (part == "ram_top") ram_top();
- if (part == "mram_512_top") {
+ if (part == "sram_top") sram_top();
+ if (part == "mram_512_top" || part == "mram_shielded_top") {
   mram_512_top();
   if (slide_switch_type == "slider")
     translate([swxp+stow/2-stw/2-sbu*(show_slider_position-1),-bl/2+swyp+syo+fc,0])
@@ -636,11 +642,11 @@ if($preview) {
   translate([0,0,top_thickness])
    rotate([0,180,0]) {
     if (part == "rom_top") rom_top();
-    if (part == "ram_top") ram_top();
-    if (part == "mram_512_top") mram_512_top();
+    if (part == "sram_top") sram_top();
+    if (part == "mram_512_top" || part == "mram_shielded_top") mram_512_top();
     if (part == "breakout_top") breakout_top();
    }
-  if (part == "mram_512_top")
+  if (part == "mram_512_top" || part == "mram_shielded_top")
    if (slide_switch_type == "slider")
     translate([0,-bl/2+says/2,0])
      bank_switch_slider();

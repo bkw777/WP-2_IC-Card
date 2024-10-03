@@ -6,12 +6,12 @@
 	(paper "USLetter")
 	(title_block
 		(title "WP-2_IC-Card_MRAM_512K")
-		(date "2024-08-22")
+		(date "2024-10-02")
 		(rev "015")
 		(company "Brian K. White - b.kenyon.w@gmail.com")
 	)
 	(lib_symbols
-		(symbol "0_LOCAL:4245"
+		(symbol "000_LOCAL:4245"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -31,7 +31,7 @@
 					)
 				)
 			)
-			(property "Footprint" "0_LOCAL:TSSOP-24_4.4x7.8mm_P0.65mm"
+			(property "Footprint" "000_LOCAL:TSSOP-24_4.4x7.8mm_P0.65mm"
 				(at 0 0 0)
 				(effects
 					(font
@@ -524,7 +524,7 @@
 				)
 			)
 		)
-		(symbol "0_LOCAL:BAT54CDW"
+		(symbol "000_LOCAL:BAT54CDW"
 			(pin_names
 				(offset 1.016) hide)
 			(exclude_from_sim no)
@@ -548,7 +548,7 @@
 					(justify left)
 				)
 			)
-			(property "Footprint" "0_LOCAL:TSSOP-6-symmetric"
+			(property "Footprint" "000_LOCAL:TSSOP-6-symmetric"
 				(at 1.905 3.175 0)
 				(effects
 					(font
@@ -891,7 +891,7 @@
 				)
 			)
 		)
-		(symbol "0_LOCAL:Conn_01x38_Female"
+		(symbol "000_LOCAL:Conn_01x38_Female"
 			(pin_names
 				(offset 1.016) hide)
 			(exclude_from_sim no)
@@ -2557,7 +2557,7 @@
 				)
 			)
 		)
-		(symbol "0_LOCAL:GND"
+		(symbol "000_LOCAL:GND"
 			(power)
 			(pin_names
 				(offset 0)
@@ -2653,7 +2653,402 @@
 				)
 			)
 		)
-		(symbol "0_LOCAL:MIC5365-3.3YD5"
+		(symbol "000_LOCAL:Housing"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim yes)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "N"
+				(at 3.81 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "Housing"
+				(at 3.81 -1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 1.27 1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 1.27 1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Housing"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "housing enclosure"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Enclosure* Housing*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Housing_0_1"
+				(rectangle
+					(start -5.08 -0.635)
+					(end -1.27 -1.905)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center -4.445 -3.175)
+					(radius 0.635)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center -1.905 -3.175)
+					(radius 0.635)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy -4.5212 -1.5748) (xy -4.4704 -1.3716)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -4.4196 -1.6764) (xy -4.064 -1.6764)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -4.4196 -1.2192) (xy -4.3688 -0.9652)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -4.318 -1.3208) (xy -4.0132 -1.3208)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -4.2164 -0.9144) (xy -3.9116 -0.9144)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.9116 -1.6256) (xy -3.8608 -1.3716)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.81 -1.2192) (xy -3.7592 -0.9652)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.6068 -1.5748) (xy -3.556 -1.3716)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.5052 -1.6764) (xy -3.1496 -1.6764)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.5052 -1.2192) (xy -3.4544 -0.9652)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.4036 -1.3208) (xy -3.0988 -1.3208)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.302 -0.9144) (xy -2.9972 -0.9144)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.9972 -1.6256) (xy -2.9464 -1.3716)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.8956 -1.2192) (xy -2.8448 -0.9652)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.6924 -1.5748) (xy -2.6416 -1.3716)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.5908 -1.6764) (xy -2.2352 -1.6764)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.5908 -1.2192) (xy -2.54 -0.9652)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.4892 -1.3208) (xy -2.1844 -1.3208)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.3876 -0.9144) (xy -2.0828 -0.9144)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.0828 -1.6256) (xy -2.032 -1.3716)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.9812 -1.2192) (xy -1.9304 -0.9652)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.635 0) (xy -0.635 -4.445)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -5.715 0) (xy -0.635 0) (xy 3.175 3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -5.715 0) (xy -5.715 -4.445) (xy -0.635 -4.445) (xy 3.175 -0.635) (xy 3.175 3.81) (xy -1.905 3.81)
+						(xy -5.715 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+		)
+		(symbol "000_LOCAL:MIC5365-3.3YD5"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -2675,7 +3070,7 @@
 					(justify left)
 				)
 			)
-			(property "Footprint" "0_LOCAL:TSOT-23-5"
+			(property "Footprint" "000_LOCAL:TSOT-23-5"
 				(at 0 8.89 0)
 				(effects
 					(font
@@ -2826,7 +3221,7 @@
 				)
 			)
 		)
-		(symbol "0_LOCAL:MR2A08xxYSxxx"
+		(symbol "000_LOCAL:MR2A08xxYSxxx"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -2847,7 +3242,7 @@
 					(justify left)
 				)
 			)
-			(property "Footprint" "0_LOCAL:TSOP-II-44_10.16x18.41mm_P0.8mm"
+			(property "Footprint" "000_LOCAL:TSOP-II-44_10.16x18.41mm_P0.8mm"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3700,7 +4095,7 @@
 				)
 			)
 		)
-		(symbol "0_LOCAL:PWR_FLAG"
+		(symbol "000_LOCAL:PWR_FLAG"
 			(power)
 			(pin_numbers hide)
 			(pin_names
@@ -3796,7 +4191,7 @@
 				)
 			)
 		)
-		(symbol "0_LOCAL:R"
+		(symbol "000_LOCAL:R"
 			(pin_numbers hide)
 			(pin_names
 				(offset 0)
@@ -3820,7 +4215,7 @@
 					)
 				)
 			)
-			(property "Footprint" "0_LOCAL:R_0805"
+			(property "Footprint" "000_LOCAL:R_0805"
 				(at -1.778 0 90)
 				(effects
 					(font
@@ -3917,7 +4312,7 @@
 				)
 			)
 		)
-		(symbol "0_LOCAL:SW_1P4T_CUS-14B"
+		(symbol "000_LOCAL:SW_1P4T_CUS-14B"
 			(pin_names
 				(offset 0) hide)
 			(exclude_from_sim no)
@@ -3939,7 +4334,7 @@
 					)
 				)
 			)
-			(property "Footprint" "0_LOCAL:SW_SP4T_CUS-14B"
+			(property "Footprint" "000_LOCAL:SW_SP4T_CUS-14B"
 				(at -15.875 4.445 0)
 				(effects
 					(font
@@ -4251,7 +4646,7 @@
 				)
 			)
 		)
-		(symbol "0_LOCAL:VBUS"
+		(symbol "000_LOCAL:VBUS"
 			(power)
 			(pin_names
 				(offset 0)
@@ -4371,7 +4766,7 @@
 				)
 			)
 		)
-		(symbol "0_LOCAL:VMEM"
+		(symbol "000_LOCAL:VMEM"
 			(power)
 			(pin_names
 				(offset 0)
@@ -4515,7 +4910,7 @@
 					(justify left)
 				)
 			)
-			(property "Footprint" "0_LOCAL:TSSOP-6-symmetric"
+			(property "Footprint" "000_LOCAL:TSSOP-6-symmetric"
 				(at 1.905 3.175 0)
 				(effects
 					(font
@@ -4883,7 +5278,7 @@
 					(justify left)
 				)
 			)
-			(property "Footprint" "0_LOCAL:C_0805"
+			(property "Footprint" "000_LOCAL:C_0805"
 				(at 0 0 0)
 				(effects
 					(font
@@ -5018,7 +5413,7 @@
 					(justify left)
 				)
 			)
-			(property "Footprint" "0_LOCAL:C_0805"
+			(property "Footprint" "000_LOCAL:C_0805"
 				(at 0 0 0)
 				(effects
 					(font
@@ -5153,7 +5548,7 @@
 					(justify left)
 				)
 			)
-			(property "Footprint" "0_LOCAL:C_0805"
+			(property "Footprint" "000_LOCAL:C_0805"
 				(at 0 0 0)
 				(effects
 					(font
@@ -5288,7 +5683,7 @@
 					(justify left)
 				)
 			)
-			(property "Footprint" "0_LOCAL:C_0805"
+			(property "Footprint" "000_LOCAL:C_0805"
 				(at 0 0 0)
 				(effects
 					(font
@@ -10939,7 +11334,7 @@
 		(uuid "fc22b730-11c8-4a9a-b2d5-a241bd033e1d")
 	)
 	(symbol
-		(lib_id "0_LOCAL:Conn_01x38_Female")
+		(lib_id "000_LOCAL:Conn_01x38_Female")
 		(at 26.67 93.98 0)
 		(mirror y)
 		(unit 1)
@@ -10966,7 +11361,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "0_LOCAL:SMS-138-01-x-x_edge"
+		(property "Footprint" "000_LOCAL:SMS-138-01-x-x_pcb_edge"
 			(at 26.67 93.98 0)
 			(effects
 				(font
@@ -11126,7 +11521,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:GND")
+		(lib_id "000_LOCAL:GND")
 		(at 165.1 115.57 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11192,7 +11587,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:GND")
+		(lib_id "000_LOCAL:GND")
 		(at 38.1 81.28 0)
 		(mirror y)
 		(unit 1)
@@ -11260,7 +11655,7 @@
 	)
 	(symbol
 		(lib_name "C_Small_5")
-		(lib_id "0_LOCAL:C_Small")
+		(lib_id "000_LOCAL:C_Small")
 		(at 86.36 31.75 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11286,7 +11681,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "0_LOCAL:C_0805_1mm"
+		(property "Footprint" "000_LOCAL:C_0805_1mm"
 			(at 86.36 31.75 0)
 			(effects
 				(font
@@ -11339,7 +11734,7 @@
 	)
 	(symbol
 		(lib_name "BAT54CDW_1")
-		(lib_id "0_LOCAL:BAT54CDW")
+		(lib_id "000_LOCAL:BAT54CDW")
 		(at 90.17 182.88 0)
 		(mirror x)
 		(unit 2)
@@ -11364,7 +11759,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0_LOCAL:TSSOP-6-symmetric"
+		(property "Footprint" "000_LOCAL:TSSOP-6-symmetric"
 			(at 92.075 186.055 0)
 			(effects
 				(font
@@ -11429,7 +11824,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:VBUS")
+		(lib_id "000_LOCAL:VBUS")
 		(at 88.9 153.67 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11494,7 +11889,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:GND")
+		(lib_id "000_LOCAL:GND")
 		(at 99.06 67.31 0)
 		(mirror y)
 		(unit 1)
@@ -11561,7 +11956,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:VMEM")
+		(lib_id "000_LOCAL:VMEM")
 		(at 101.6 125.73 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11626,7 +12021,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:4245")
+		(lib_id "000_LOCAL:4245")
 		(at 99.06 96.52 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11650,7 +12045,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0_LOCAL:TSSOP-24_4.4x7.8mm_P0.65mm"
+		(property "Footprint" "000_LOCAL:TSSOP-24_4.4x7.8mm_P0.65mm"
 			(at 99.06 96.52 0)
 			(effects
 				(font
@@ -11768,7 +12163,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:VBUS")
+		(lib_id "000_LOCAL:VBUS")
 		(at 88.9 106.68 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11833,7 +12228,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:VMEM")
+		(lib_id "000_LOCAL:VMEM")
 		(at 224.79 49.53 0)
 		(mirror y)
 		(unit 1)
@@ -11899,7 +12294,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:GND")
+		(lib_id "000_LOCAL:GND")
 		(at 83.82 31.75 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11965,7 +12360,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:GND")
+		(lib_id "000_LOCAL:GND")
 		(at 212.09 49.53 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12031,7 +12426,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:MIC5365-3.3YD5")
+		(lib_id "000_LOCAL:MIC5365-3.3YD5")
 		(at 231.14 151.13 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12055,7 +12450,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0_LOCAL:TSOT-23-5"
+		(property "Footprint" "000_LOCAL:TSOT-23-5"
 			(at 231.14 142.24 0)
 			(effects
 				(font
@@ -12116,7 +12511,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:GND")
+		(lib_id "000_LOCAL:GND")
 		(at 172.72 44.45 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12183,7 +12578,7 @@
 	)
 	(symbol
 		(lib_name "C_Small_5")
-		(lib_id "0_LOCAL:C_Small")
+		(lib_id "000_LOCAL:C_Small")
 		(at 240.03 49.53 90)
 		(mirror x)
 		(unit 1)
@@ -12210,7 +12605,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "0_LOCAL:C_0805_1mm"
+		(property "Footprint" "000_LOCAL:C_0805_1mm"
 			(at 240.03 49.53 0)
 			(effects
 				(font
@@ -12263,7 +12658,7 @@
 	)
 	(symbol
 		(lib_name "C_Small_5")
-		(lib_id "0_LOCAL:C_Small")
+		(lib_id "000_LOCAL:C_Small")
 		(at 214.63 49.53 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12289,7 +12684,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "0_LOCAL:C_0805_1mm"
+		(property "Footprint" "000_LOCAL:C_0805_1mm"
 			(at 214.63 49.53 0)
 			(effects
 				(font
@@ -12341,7 +12736,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:BAT54CDW")
+		(lib_id "000_LOCAL:BAT54CDW")
 		(at 106.68 185.42 0)
 		(mirror x)
 		(unit 1)
@@ -12366,7 +12761,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0_LOCAL:TSSOP-6-symmetric"
+		(property "Footprint" "000_LOCAL:TSSOP-6-symmetric"
 			(at 108.585 188.595 0)
 			(effects
 				(font
@@ -12431,7 +12826,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:VMEM")
+		(lib_id "000_LOCAL:VMEM")
 		(at 60.96 180.34 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12496,7 +12891,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:VMEM")
+		(lib_id "000_LOCAL:VMEM")
 		(at 101.6 31.75 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12561,7 +12956,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:4245")
+		(lib_id "000_LOCAL:4245")
 		(at 227.33 67.31 0)
 		(mirror y)
 		(unit 1)
@@ -12586,7 +12981,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0_LOCAL:TSSOP-24_4.4x7.8mm_P0.65mm"
+		(property "Footprint" "000_LOCAL:TSSOP-24_4.4x7.8mm_P0.65mm"
 			(at 227.33 67.31 0)
 			(effects
 				(font
@@ -12704,7 +13099,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:R")
+		(lib_id "000_LOCAL:R")
 		(at 86.36 176.53 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12729,7 +13124,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0_LOCAL:R_0805"
+		(property "Footprint" "000_LOCAL:R_0805"
 			(at 86.36 178.308 90)
 			(effects
 				(font
@@ -12781,7 +13176,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:GND")
+		(lib_id "000_LOCAL:GND")
 		(at 114.3 78.74 0)
 		(mirror y)
 		(unit 1)
@@ -12848,7 +13243,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:R")
+		(lib_id "000_LOCAL:R")
 		(at 130.81 101.6 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12874,7 +13269,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "0_LOCAL:R_0805"
+		(property "Footprint" "000_LOCAL:R_0805"
 			(at 132.588 101.6 90)
 			(effects
 				(font
@@ -12926,7 +13321,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:VBUS")
+		(lib_id "000_LOCAL:VBUS")
 		(at 88.9 59.69 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12991,7 +13386,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:GND")
+		(lib_id "000_LOCAL:GND")
 		(at 157.48 44.45 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13057,7 +13452,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:GND")
+		(lib_id "000_LOCAL:GND")
 		(at 227.33 85.09 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13124,7 +13519,7 @@
 	)
 	(symbol
 		(lib_name "C_Small_5")
-		(lib_id "0_LOCAL:C_Small")
+		(lib_id "000_LOCAL:C_Small")
 		(at 86.36 125.73 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13150,7 +13545,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "0_LOCAL:C_0805_1mm"
+		(property "Footprint" "000_LOCAL:C_0805_1mm"
 			(at 86.36 125.73 0)
 			(effects
 				(font
@@ -13203,7 +13598,7 @@
 	)
 	(symbol
 		(lib_name "C_Small_5")
-		(lib_id "0_LOCAL:C_Small")
+		(lib_id "000_LOCAL:C_Small")
 		(at 86.36 78.74 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13229,7 +13624,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "0_LOCAL:C_0805_1mm"
+		(property "Footprint" "000_LOCAL:C_0805_1mm"
 			(at 86.36 78.74 0)
 			(effects
 				(font
@@ -13281,7 +13676,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:SW_1P4T_CUS-14B")
+		(lib_id "000_LOCAL:SW_1P4T_CUS-14B")
 		(at 66.04 184.15 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13305,7 +13700,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0_LOCAL:SW_SP4T_CUS-14B pth"
+		(property "Footprint" "000_LOCAL:SW_SP4T_CUS-14B pth"
 			(at 50.165 179.705 0)
 			(effects
 				(font
@@ -13372,7 +13767,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:PWR_FLAG")
+		(lib_id "000_LOCAL:PWR_FLAG")
 		(at 31.75 142.24 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13438,7 +13833,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:VBUS")
+		(lib_id "000_LOCAL:VBUS")
 		(at 214.63 148.59 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13503,7 +13898,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:VBUS")
+		(lib_id "000_LOCAL:VBUS")
 		(at 229.87 49.53 0)
 		(mirror y)
 		(unit 1)
@@ -13569,7 +13964,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:VBUS")
+		(lib_id "000_LOCAL:VBUS")
 		(at 96.52 125.73 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13634,7 +14029,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:GND")
+		(lib_id "000_LOCAL:GND")
 		(at 99.06 161.29 0)
 		(mirror y)
 		(unit 1)
@@ -13701,7 +14096,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:GND")
+		(lib_id "000_LOCAL:GND")
 		(at 83.82 125.73 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13768,7 +14163,7 @@
 	)
 	(symbol
 		(lib_name "C_Small_5")
-		(lib_id "0_LOCAL:C_Small")
+		(lib_id "000_LOCAL:C_Small")
 		(at 111.76 31.75 90)
 		(mirror x)
 		(unit 1)
@@ -13795,7 +14190,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "0_LOCAL:C_0805_1mm"
+		(property "Footprint" "000_LOCAL:C_0805_1mm"
 			(at 111.76 31.75 0)
 			(effects
 				(font
@@ -13847,7 +14242,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:GND")
+		(lib_id "000_LOCAL:GND")
 		(at 242.57 49.53 0)
 		(mirror y)
 		(unit 1)
@@ -13914,7 +14309,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:R")
+		(lib_id "000_LOCAL:R")
 		(at 102.87 179.07 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13939,7 +14334,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0_LOCAL:R_0805"
+		(property "Footprint" "000_LOCAL:R_0805"
 			(at 102.87 180.848 90)
 			(effects
 				(font
@@ -13991,7 +14386,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:GND")
+		(lib_id "000_LOCAL:GND")
 		(at 231.14 158.75 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14058,7 +14453,7 @@
 	)
 	(symbol
 		(lib_name "C_Small_5")
-		(lib_id "0_LOCAL:C_Small")
+		(lib_id "000_LOCAL:C_Small")
 		(at 111.76 125.73 90)
 		(mirror x)
 		(unit 1)
@@ -14085,7 +14480,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "0_LOCAL:C_0805_1mm"
+		(property "Footprint" "000_LOCAL:C_0805_1mm"
 			(at 111.76 125.73 0)
 			(effects
 				(font
@@ -14137,7 +14532,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:4245")
+		(lib_id "000_LOCAL:4245")
 		(at 99.06 143.51 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14161,7 +14556,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0_LOCAL:TSSOP-24_4.4x7.8mm_P0.65mm"
+		(property "Footprint" "000_LOCAL:TSSOP-24_4.4x7.8mm_P0.65mm"
 			(at 99.06 143.51 0)
 			(effects
 				(font
@@ -14279,7 +14674,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:GND")
+		(lib_id "000_LOCAL:GND")
 		(at 66.04 190.5 0)
 		(mirror y)
 		(unit 1)
@@ -14346,7 +14741,69 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:GND")
+		(lib_id "000_LOCAL:Housing")
+		(at 31.75 184.15 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "895c2aaf-447c-4c5c-aee0-cd527bb93b5e")
+		(property "Reference" "N1"
+			(at 33.528 188.976 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "WP-2_IC-Card_Cover_MRAM_512"
+			(at 31.75 191.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "000_LOCAL:WP-2_IC_Card_Cover_MRAM_512"
+			(at 33.02 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 33.02 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Housing"
+			(at 31.75 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "WP-2_IC-Card_MRAM_512K"
+				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
+					(reference "N1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "000_LOCAL:GND")
 		(at 114.3 125.73 0)
 		(mirror y)
 		(unit 1)
@@ -14413,7 +14870,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:VBUS")
+		(lib_id "000_LOCAL:VBUS")
 		(at 96.52 78.74 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14478,7 +14935,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:VBUS")
+		(lib_id "000_LOCAL:VBUS")
 		(at 96.52 31.75 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14543,7 +15000,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:4245")
+		(lib_id "000_LOCAL:4245")
 		(at 99.06 49.53 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14567,7 +15024,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0_LOCAL:TSSOP-24_4.4x7.8mm_P0.65mm"
+		(property "Footprint" "000_LOCAL:TSSOP-24_4.4x7.8mm_P0.65mm"
 			(at 99.06 49.53 0)
 			(effects
 				(font
@@ -14685,7 +15142,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:GND")
+		(lib_id "000_LOCAL:GND")
 		(at 114.3 31.75 0)
 		(mirror y)
 		(unit 1)
@@ -14752,7 +15209,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:GND")
+		(lib_id "000_LOCAL:GND")
 		(at 99.06 179.07 0)
 		(mirror y)
 		(unit 1)
@@ -14819,7 +15276,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:GND")
+		(lib_id "000_LOCAL:GND")
 		(at 99.06 114.3 0)
 		(mirror y)
 		(unit 1)
@@ -14887,7 +15344,7 @@
 	)
 	(symbol
 		(lib_name "C_Small_2")
-		(lib_id "0_LOCAL:C_Small")
+		(lib_id "000_LOCAL:C_Small")
 		(at 247.65 151.13 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14913,7 +15370,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "0_LOCAL:C_0805_1mm"
+		(property "Footprint" "000_LOCAL:C_0805_1mm"
 			(at 247.65 151.13 0)
 			(effects
 				(font
@@ -14965,7 +15422,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:VMEM")
+		(lib_id "000_LOCAL:VMEM")
 		(at 247.65 148.59 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15030,7 +15487,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:VMEM")
+		(lib_id "000_LOCAL:VMEM")
 		(at 165.1 44.45 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15096,7 +15553,7 @@
 	)
 	(symbol
 		(lib_name "C_Small_5")
-		(lib_id "0_LOCAL:C_Small")
+		(lib_id "000_LOCAL:C_Small")
 		(at 111.76 78.74 90)
 		(mirror x)
 		(unit 1)
@@ -15123,7 +15580,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "0_LOCAL:C_0805_1mm"
+		(property "Footprint" "000_LOCAL:C_0805_1mm"
 			(at 111.76 78.74 0)
 			(effects
 				(font
@@ -15175,7 +15632,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:GND")
+		(lib_id "000_LOCAL:GND")
 		(at 83.82 78.74 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15241,7 +15698,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:GND")
+		(lib_id "000_LOCAL:GND")
 		(at 82.55 176.53 0)
 		(mirror y)
 		(unit 1)
@@ -15308,7 +15765,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:VMEM")
+		(lib_id "000_LOCAL:VMEM")
 		(at 130.81 97.79 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15373,7 +15830,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:GND")
+		(lib_id "000_LOCAL:GND")
 		(at 38.1 48.26 0)
 		(mirror y)
 		(unit 1)
@@ -15440,7 +15897,7 @@
 	)
 	(symbol
 		(lib_name "C_Small_1")
-		(lib_id "0_LOCAL:C_Small")
+		(lib_id "000_LOCAL:C_Small")
 		(at 214.63 151.13 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15466,7 +15923,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "0_LOCAL:C_0805_1mm"
+		(property "Footprint" "000_LOCAL:C_0805_1mm"
 			(at 214.63 151.13 0)
 			(effects
 				(font
@@ -15518,7 +15975,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:R")
+		(lib_id "000_LOCAL:R")
 		(at 135.89 101.6 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15544,7 +16001,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "0_LOCAL:R_0805"
+		(property "Footprint" "000_LOCAL:R_0805"
 			(at 137.668 101.6 90)
 			(effects
 				(font
@@ -15596,7 +16053,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:MR2A08xxYSxxx")
+		(lib_id "000_LOCAL:MR2A08xxYSxxx")
 		(at 165.1 82.55 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15622,7 +16079,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "0_LOCAL:TSOP-II-44_10.16x18.41mm_P0.8mm"
+		(property "Footprint" "000_LOCAL:TSOP-II-44_10.16x18.41mm_P0.8mm"
 			(at 165.1 82.55 0)
 			(effects
 				(font
@@ -15801,7 +16258,7 @@
 	)
 	(symbol
 		(lib_name "C_Small_9")
-		(lib_id "0_LOCAL:C_Small")
+		(lib_id "000_LOCAL:C_Small")
 		(at 160.02 44.45 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15825,7 +16282,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0_LOCAL:C_0805_1mm"
+		(property "Footprint" "000_LOCAL:C_0805_1mm"
 			(at 160.02 44.45 0)
 			(effects
 				(font
@@ -15878,7 +16335,7 @@
 	)
 	(symbol
 		(lib_name "C_Small_9")
-		(lib_id "0_LOCAL:C_Small")
+		(lib_id "000_LOCAL:C_Small")
 		(at 170.18 44.45 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15902,7 +16359,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0_LOCAL:C_0805_1mm"
+		(property "Footprint" "000_LOCAL:C_0805_1mm"
 			(at 170.18 44.45 0)
 			(effects
 				(font
@@ -15954,7 +16411,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:VMEM")
+		(lib_id "000_LOCAL:VMEM")
 		(at 101.6 78.74 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16019,7 +16476,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:PWR_FLAG")
+		(lib_id "000_LOCAL:PWR_FLAG")
 		(at 31.75 48.26 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16085,7 +16542,7 @@
 		)
 	)
 	(symbol
-		(lib_id "0_LOCAL:VBUS")
+		(lib_id "000_LOCAL:VBUS")
 		(at 31.75 142.24 270)
 		(unit 1)
 		(exclude_from_sim no)

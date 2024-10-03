@@ -498,7 +498,7 @@
       "plot": "GERBER_${TITLE}_${REVISION}",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "WP-2_IC-Card_ROM.step",
+      "step": "../COVER/inc/WP-2_IC-Card_ROM.step",
       "svg": "",
       "vrml": ""
     },

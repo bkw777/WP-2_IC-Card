@@ -9,11 +9,11 @@ Here are a few different cards to fit that slot.
 * A [programming adapter](#programming-adapter) that can read and write both the RAM and ROM cards  
 * A [breakout card](#breakout-card) to allow connecting the bus to a breadboard
 
-**These cards must be made with 1.2mm PCB or thinner**
+**These cards must be made with 1.2mm PCB or thinner**  
+Standard 1.6mm PCB thickness is too thick.  
+You have to change this option when ordering a PCB or you'll get 1.6mm by default.
 
-Standard 1.6mm PCB thickness is too thick. You have to change this option when ordering or you'll get 1.6mm by default.
-
-Attach the printable covers with thin [adhesive tape](https://amazon.com/dp/B06Y34587N) or glue.  
+Attach the printable covers with thin [adhesive transfer tape](https://amazon.com/dp/B06Y34587N) or glue.
 
 It's a good idea to cover the bottom of the pcb with a piece of shipping or packing tape. Just lay a single 2-inch piece right across the middle and don't worry about the small bit of uncovered pcb on either side.
 
@@ -60,12 +60,12 @@ The Commercial and Automotive versions are only safe to 25 gauss. A fridge magne
 The BOM specifies the Industrial part so it should be reasonably safe, however you should still generally avoid exposure to magnetic fields.  
 
 [512K MRAM PCB and COVER from PCBWAY](https://www.pcbway.com/project/shareproject/512k_MRAM_IC_Card_for_TANDY_WP_2_30f542a7.html)  
-[512K MRAM BOM from DigiKey](https://www.digikey.com/short/nqjddjf5)  <!-- , [Mouser](https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=f6eb946163)  -->
+[512K MRAM BOM from DigiKey](https://www.digikey.com/short/nqjddjf5)  , [Mouser](https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=f6eb946163)  
 <!-- RIP Shapeways... [MRAM-512 cover from Shapeways](http://shpws.me/TIyf)  -->
 
 There are two versions of 3d-printable cover available, with different ways to handle the bank-select switch.  
-The "slider" version has a separate moving part to move the switch.  
-The "window" version is a single piece with no moving parts and a little easier to print.
+The "slider" version has a fancy separate moving part switch actuator.  
+The "window" version is a single piece and simpler to print.
 
 ![](ref/IMG_0049.JPG)  
 ![](ref/IMG_0050.JPG)  
@@ -73,7 +73,7 @@ The "window" version is a single piece with no moving parts and a little easier 
 ![](ref/IMG_0058.JPG)  
 ![](PCB/out/WP-2_IC-Card_MRAM_512K.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM_512.slider.jpg)  
-![](PCB/out/WP-2_IC-Card_MRAM_512.dish.jpg)  
+![](PCB/out/WP-2_IC-Card_MRAM_512.window.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM_512K.svg)
 
 ----
@@ -147,7 +147,8 @@ Examples using a TL-866 programmer (628128 is a generic part number for the SRAM
 [Breakout BOM from DigiKey](https://www.digikey.com/short/323npm39)  
 
 ![](PCB/out/WP-2_IC-Card_Breakout.jpg)  
-![](PCB/out/WP-2_IC-Card_Breakout.covered.jpg)  
+![](PCB/out/WP-2_IC-Card_Breakout.top.jpg)  
+![](PCB/out/WP-2_IC-Card_Breakout.bottom.jpg)  
 ![](PCB/out/WP-2_IC-Card_Breakout.svg)  
 
 
