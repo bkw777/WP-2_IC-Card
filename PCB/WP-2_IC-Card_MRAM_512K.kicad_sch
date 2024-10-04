@@ -14745,7 +14745,7 @@
 		(at 31.75 184.15 0)
 		(unit 1)
 		(exclude_from_sim yes)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "895c2aaf-447c-4c5c-aee0-cd527bb93b5e")
@@ -14766,7 +14766,7 @@
 				)
 			)
 		)
-		(property "Footprint" "000_LOCAL:WP-2_IC_Card_Cover_MRAM_512"
+		(property "Footprint" "000_LOCAL:WP-2_IC-Card_Cover_MRAM_512"
 			(at 33.02 182.88 0)
 			(effects
 				(font

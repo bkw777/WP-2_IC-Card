@@ -12363,7 +12363,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "000_LOCAL:WP-2_IC_Card_Cover_MRAM_512"
+		(property "Footprint" "000_LOCAL:WP-2_IC-Card_Cover_MRAM_512"
 			(at 166.37 157.48 0)
 			(effects
 				(font

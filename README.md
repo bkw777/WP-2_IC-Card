@@ -36,13 +36,13 @@ Makes it expensive, but you want the battery terminal to be gold.
 * **Other Special request: Bottom solder mask full cover.**  
 There are no openings in the bottom soldermask layer, so you have to tell them that you want 100% soldermask coverage rather than 0% coverage.
 
-Hint, instead of PCBWAY, you can upload the same gerber zip and cover stl to Elecrow and the cost including ENIG is less.
+You can save some money on the ENIG by using Elecrow instead of PCBWAY.
 
-![](PCB/out/WP-2_IC-Card_RAM.jpg)  
+![](PCB/out/WP-2_IC-Card_SRAM.jpg)  
 ![](PCB/out/WP-2_IC-Card_SRAM_128K.svg)  
-![](COVER/out/WP-2_IC-Card_Cover_RAM.png)  
-![](PCB/out/WP-2_IC-Card_RAM.covered.jpg)  
-![](PCB/out/WP-2_IC-Card_RAM.rear.jpg)  
+![](COVER/out/WP-2_IC-Card_Cover_SRAM.png)  
+![](PCB/out/WP-2_IC-Card_SRAM.covered.jpg)  
+![](PCB/out/WP-2_IC-Card_SRAM.rear.jpg)  
 
 ----
 
@@ -72,8 +72,8 @@ The "window" version is a single piece and simpler to print.
 ![](ref/IMG_0053.JPG)  
 ![](ref/IMG_0058.JPG)  
 ![](PCB/out/WP-2_IC-Card_MRAM_512K.jpg)  
-![](PCB/out/WP-2_IC-Card_MRAM_512.slider.jpg)  
-![](PCB/out/WP-2_IC-Card_MRAM_512.window.jpg)  
+![](PCB/out/WP-2_IC-Card_MRAM_512K.slider.jpg)  
+![](PCB/out/WP-2_IC-Card_MRAM_512K.window.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM_512K.svg)
 
 ----

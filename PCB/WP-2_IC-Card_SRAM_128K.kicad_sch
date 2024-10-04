@@ -3761,6 +3761,16 @@
 	)
 	(wire
 		(pts
+			(xy 168.91 109.22) (xy 177.8 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "01e19874-4768-4f5c-a7d6-1dce031b0534")
+	)
+	(wire
+		(pts
 			(xy 147.32 147.32) (xy 147.32 139.7)
 		)
 		(stroke
@@ -3808,6 +3818,16 @@
 			(type default)
 		)
 		(uuid "5f6a2b03-c805-4507-9aa6-fffbe5069077")
+	)
+	(wire
+		(pts
+			(xy 165.1 106.68) (xy 177.8 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "693204fb-a1b3-4b3e-89b8-fef3604a4b3d")
 	)
 	(wire
 		(pts
@@ -3938,16 +3958,6 @@
 			(type default)
 		)
 		(uuid "da59d6ba-fd63-4a28-a76e-cce8d09c3e4e")
-	)
-	(wire
-		(pts
-			(xy 167.64 109.22) (xy 177.8 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "df383f92-76a5-43a0-9f84-bce31e006430")
 	)
 	(wire
 		(pts
@@ -5305,7 +5315,7 @@
 	)
 	(symbol
 		(lib_id "000_LOCAL:R")
-		(at 163.83 109.22 90)
+		(at 168.91 113.03 0)
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
@@ -5314,23 +5324,25 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005f9fa366")
 		(property "Reference" "R1"
-			(at 161.29 106.68 90)
+			(at 167.132 114.554 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify right)
 			)
 		)
 		(property "Value" "200K"
-			(at 166.37 106.68 90)
+			(at 167.132 111.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify right)
 			)
 		)
 		(property "Footprint" "000_LOCAL:R_0805"
-			(at 163.83 107.442 90)
+			(at 167.132 113.03 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5339,7 +5351,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 163.83 109.22 0)
+			(at 168.91 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5348,7 +5360,7 @@
 			)
 		)
 		(property "Description" "RES SMD 200K OHM 1% 1/8W 0805"
-			(at 163.83 109.22 0)
+			(at 168.91 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5357,7 +5369,7 @@
 			)
 		)
 		(property "MPN" "CRCW0805200KFKEA"
-			(at 163.83 109.22 90)
+			(at 168.91 113.03 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5890,11 +5902,77 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 165.1 106.68 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "60af46a0-3577-486f-9ea3-03ec07105b4a")
+		(property "Reference" "#PWR05"
+			(at 165.1 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 165.1 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 165.1 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 165.1 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 165.1 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "390e7f5e-66ba-489d-bfd3-02264517fe62")
+		)
+		(instances
+			(project "WP-2_IC-Card_SRAM_128K"
+				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
+					(reference "#PWR05")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "000_LOCAL:Housing")
 		(at 127 177.8 0)
 		(unit 1)
 		(exclude_from_sim yes)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
@@ -5917,7 +5995,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "000_LOCAL:WP-2_IC_Card_Cover_RAM"
+		(property "Footprint" "000_LOCAL:WP-2_IC-Card_Cover_SRAM"
 			(at 128.27 176.53 0)
 			(effects
 				(font
@@ -5955,15 +6033,15 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 177.8 106.68 270)
+		(at 168.91 116.84 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "9bdd2f4d-e591-4abb-a918-5bd637f5f715")
-		(property "Reference" "#PWR0103"
-			(at 171.45 106.68 0)
+		(uuid "9ae0ac02-9414-4ceb-9fbf-c4e02978149c")
+		(property "Reference" "#PWR04"
+			(at 168.91 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5972,16 +6050,16 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 175.26 106.68 90)
+			(at 168.91 120.65 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
-			(at 177.8 106.68 0)
+			(at 168.91 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5990,7 +6068,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 177.8 106.68 0)
+			(at 168.91 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5999,7 +6077,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 177.8 106.68 0)
+			(at 168.91 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6008,12 +6086,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "1769825b-dfc0-413f-acd8-59856865effe")
+			(uuid "59505adb-db26-4e48-b31f-eb03f607801c")
 		)
 		(instances
-			(project "WP-2_IC-Card_RAM"
+			(project "WP-2_IC-Card_SRAM_128K"
 				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "#PWR0103")
+					(reference "#PWR04")
 					(unit 1)
 				)
 			)
@@ -6081,72 +6159,6 @@
 			(project "WP-2_IC-Card_RAM"
 				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
 					(reference "#PWR02")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 160.02 109.22 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "a8cd672e-4ed3-49f6-a1d9-b5a2781a99fb")
-		(property "Reference" "#PWR0109"
-			(at 153.67 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 157.48 109.22 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 160.02 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 160.02 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 160.02 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "d3a6e1a9-e50f-45e7-a9f1-1644b577b700")
-		)
-		(instances
-			(project "WP-2_IC-Card_RAM"
-				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "#PWR0109")
 					(unit 1)
 				)
 			)

@@ -355,20 +355,9 @@
 			"ebddb375-0f08-4727-bd61-2b2372cd75ef" "fbcc27b8-264e-41c7-91bc-9a477e073a41"
 		)
 	)
-	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/WP_2_IC_Card_Cover_MRAM_512.step"
+	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/WP-2_IC-Card_Cover_MRAM_512_slider.step"
 		(offset
-			(xyz 0 0 1.8)
-		)
-		(scale
-			(xyz 1 1 1)
-		)
-		(rotate
-			(xyz 180 0 180)
-		)
-	)
-	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/WP_2_IC_Card_Cover_MRAM_512_slider.step"
-		(offset
-			(xyz 10.25 42.5 0)
+			(xyz 0 0 0)
 		)
 		(scale
 			(xyz 1 1 1)
@@ -377,16 +366,16 @@
 			(xyz 0 0 0)
 		)
 	)
-	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/WP_2_IC_Card_Cover_MRAM_512_dish.step"
+	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/WP-2_IC-Card_Cover_MRAM_512_window.step"
 		(hide yes)
 		(offset
-			(xyz 0 0 1.8)
+			(xyz 0 0 0)
 		)
 		(scale
 			(xyz 1 1 1)
 		)
 		(rotate
-			(xyz 0 180 0)
+			(xyz 0 0 0)
 		)
 	)
 )

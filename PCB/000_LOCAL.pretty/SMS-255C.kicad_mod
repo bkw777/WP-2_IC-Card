@@ -6,25 +6,29 @@
 	(descr "WE-SHC Shielding Cabinet SMD 20x20mm")
 	(tags "Shielding Cabinet")
 	(property "Reference" "REF**"
-		(at 0 -11.75 0)
+		(at -10.414 -12.065 0)
+		(unlocked yes)
 		(layer "F.SilkS")
 		(uuid "a0f02a37-715f-4427-a94e-ca017d169ef2")
 		(effects
 			(font
-				(size 1 1)
-				(thickness 0.15)
+				(size 0.8 0.8)
+				(thickness 0.1)
 			)
+			(justify left)
 		)
 	)
 	(property "Value" "SMS-255C"
-		(at 0 11.75 0)
-		(layer "F.Fab")
+		(at -10.414 -10.922 0)
+		(unlocked yes)
+		(layer "F.SilkS")
 		(uuid "037b2c9c-5976-4838-be5e-c1d10ca22041")
 		(effects
 			(font
-				(size 1 1)
-				(thickness 0.15)
+				(size 0.8 0.8)
+				(thickness 0.1)
 			)
+			(justify left)
 		)
 	)
 	(property "Footprint" ""
@@ -271,7 +275,7 @@
 			(xyz 1 1 1)
 		)
 		(rotate
-			(xyz -90 0 0)
+			(xyz -90 0 -90)
 		)
 	)
 )

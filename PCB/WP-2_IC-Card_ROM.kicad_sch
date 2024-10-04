@@ -5,10 +5,11 @@
 	(uuid "f291f000-461a-4127-8876-c8e21ea67ede")
 	(paper "USLetter")
 	(title_block
-		(title "TANDY WP-2 256K ROM IC Card")
-		(date "2023-01-01")
-		(rev "005")
+		(title "TANDY WP-2 IC-Card ROM")
+		(date "2024-10-04")
+		(rev "006")
 		(company "Brian K. White - b.kenyon.w@gmail.com")
+		(comment 1 "github.com/bkw777/WP-2_IC-Card")
 	)
 	(lib_symbols
 		(symbol "000_LOCAL:C_Small"
@@ -3517,12 +3518,11 @@
 	)
 	(text "1x38 Female 1.27mm"
 		(exclude_from_sim no)
-		(at 97.79 45.72 0)
+		(at 83.82 43.18 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right bottom)
 		)
 		(uuid "caafa9ee-830d-4960-a6b2-336b2ec07730")
 	)
@@ -3560,7 +3560,7 @@
 		(uuid "fcd2ce10-0fef-4995-9460-3c5b1fba3d4b")
 	)
 	(label "A14"
-		(at 177.8 121.92 180)
+		(at 177.8 86.36 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3604,7 +3604,7 @@
 		(uuid "16051749-420a-42f5-9ef3-71151d59e351")
 	)
 	(label "A16"
-		(at 177.8 127 180)
+		(at 177.8 91.44 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3637,7 +3637,7 @@
 		(uuid "2109d176-3cab-4790-a40f-fc5efb686d2c")
 	)
 	(label "D5"
-		(at 208.28 99.06 0)
+		(at 208.28 91.44 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3681,7 +3681,7 @@
 		(uuid "24f838e7-6a7e-4e76-97d9-92fb744e8ac1")
 	)
 	(label "D3"
-		(at 208.28 93.98 0)
+		(at 208.28 96.52 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3714,7 +3714,7 @@
 		(uuid "2be3d8eb-27bd-44f5-b0d1-3e14cd753018")
 	)
 	(label "A8"
-		(at 177.8 106.68 180)
+		(at 177.8 121.92 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3725,7 +3725,7 @@
 		(uuid "2c213cf0-5c5d-48d1-bc52-d2b94c6b61e2")
 	)
 	(label "D2"
-		(at 208.28 91.44 0)
+		(at 208.28 99.06 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3736,7 +3736,7 @@
 		(uuid "2cdd9e26-467a-4032-b73c-0048ed7a2ed3")
 	)
 	(label "A6"
-		(at 177.8 101.6 180)
+		(at 177.8 96.52 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3791,7 +3791,7 @@
 		(uuid "4a89efb1-f5ef-43fe-bb77-743d1154dd15")
 	)
 	(label "A7"
-		(at 177.8 104.14 180)
+		(at 177.8 129.54 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3802,7 +3802,7 @@
 		(uuid "4da91bb5-b78a-4365-ba57-5f1775dd3afe")
 	)
 	(label "A15"
-		(at 177.8 124.46 180)
+		(at 177.8 88.9 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3813,7 +3813,7 @@
 		(uuid "518fccc8-cbe4-4660-9184-9759bce8a100")
 	)
 	(label "A10"
-		(at 177.8 111.76 180)
+		(at 177.8 106.68 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3824,7 +3824,7 @@
 		(uuid "53b9a231-81e4-48f0-90b3-d400b918d87a")
 	)
 	(label "A17"
-		(at 177.8 129.54 180)
+		(at 177.8 93.98 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3868,7 +3868,7 @@
 		(uuid "6a401a66-57a5-4311-b535-cbdd8833baf9")
 	)
 	(label "D0"
-		(at 208.28 86.36 0)
+		(at 208.28 104.14 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3879,7 +3879,7 @@
 		(uuid "6cf24198-4a63-4f93-8b17-09f49ba077f8")
 	)
 	(label "A3"
-		(at 177.8 93.98 180)
+		(at 177.8 104.14 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3890,7 +3890,7 @@
 		(uuid "6e35ce00-d1e8-419f-b66e-422bccccaffc")
 	)
 	(label "A13"
-		(at 177.8 119.38 180)
+		(at 177.8 111.76 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3912,7 +3912,7 @@
 		(uuid "83b1575b-3f60-4d73-8922-374961f1c18f")
 	)
 	(label "D6"
-		(at 208.28 101.6 0)
+		(at 208.28 88.9 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3934,7 +3934,7 @@
 		(uuid "8f349a2e-2e80-4351-972e-dd39c0797cd1")
 	)
 	(label "A0"
-		(at 177.8 86.36 180)
+		(at 177.8 127 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3945,7 +3945,7 @@
 		(uuid "926cc79c-131a-472c-bd95-259a6913092e")
 	)
 	(label "D7"
-		(at 208.28 104.14 0)
+		(at 208.28 86.36 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3967,7 +3967,7 @@
 		(uuid "a15ef81e-eec0-4108-a9a4-40a8a36e4616")
 	)
 	(label "D4"
-		(at 208.28 96.52 0)
+		(at 208.28 93.98 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3978,7 +3978,7 @@
 		(uuid "a2bfc1ea-ad48-4713-9e30-1a0914d49054")
 	)
 	(label "A12"
-		(at 177.8 116.84 180)
+		(at 177.8 114.3 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4022,7 +4022,7 @@
 		(uuid "adde84cd-85d0-43f3-a71c-7e60d7c39ccc")
 	)
 	(label "A2"
-		(at 177.8 91.44 180)
+		(at 177.8 116.84 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4077,7 +4077,7 @@
 		(uuid "c28b9351-aaf6-4c13-8377-c4aa93fb93a1")
 	)
 	(label "D1"
-		(at 208.28 88.9 0)
+		(at 208.28 101.6 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4088,7 +4088,7 @@
 		(uuid "c751f2c1-079f-4f3f-b451-44c60bc8c59d")
 	)
 	(label "A11"
-		(at 177.8 114.3 180)
+		(at 177.8 109.22 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4099,7 +4099,7 @@
 		(uuid "d168b254-f099-48bd-b195-807c37824b14")
 	)
 	(label "A4"
-		(at 177.8 96.52 180)
+		(at 177.8 101.6 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4143,7 +4143,7 @@
 		(uuid "e6e32bd5-6e6b-4d94-8ab7-7413bacb3c9a")
 	)
 	(label "A1"
-		(at 177.8 88.9 180)
+		(at 177.8 124.46 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4176,7 +4176,7 @@
 		(uuid "ea5815d4-a0ea-4f7f-9714-ec1ce81004a9")
 	)
 	(label "A9"
-		(at 177.8 109.22 180)
+		(at 177.8 119.38 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4208,24 +4208,22 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005f6ef0a3")
 		(property "Reference" "J1"
-			(at 95.25 49.53 0)
+			(at 83.82 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
-		(property "Value" "Conn_01x38_Female"
-			(at 91.44 49.53 0)
+		(property "Value" "SMS-138-01-G-S"
+			(at 83.82 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
-		(property "Footprint" "000_LOCAL:SMS-138-01-x-x_edge"
+		(property "Footprint" "000_LOCAL:SMS-138-01-x-x_pcb_edge"
 			(at 83.82 99.06 0)
 			(effects
 				(font
@@ -4244,6 +4242,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 83.82 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "SMS-138-01-G-S"
 			(at 83.82 99.06 0)
 			(effects
 				(font
@@ -5288,7 +5295,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "000_LOCAL:WP-2_IC_Card_Cover_ROM"
+		(property "Footprint" "000_LOCAL:WP-2_IC-Card_Cover_ROM"
 			(at 90.17 176.53 0)
 			(effects
 				(font

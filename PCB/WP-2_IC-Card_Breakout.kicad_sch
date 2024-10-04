@@ -3532,12 +3532,11 @@
 	)
 	(text "1x38 Female 1.27mm"
 		(exclude_from_sim no)
-		(at 122.936 48.26 0)
+		(at 109.22 46.99 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right bottom)
 		)
 		(uuid "b35903c8-c879-4014-84c8-730031203700")
 	)
@@ -4355,21 +4354,19 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005f6ef0a3")
 		(property "Reference" "J1"
-			(at 121.92 51.562 0)
+			(at 109.22 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
-		(property "Value" "Conn_01x38_Female"
-			(at 118.11 51.562 0)
+		(property "Value" "SMS-138-01-G-S"
+			(at 109.22 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" "000_LOCAL:SMS-138-01-x-x_pcb_edge"
@@ -4391,6 +4388,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 109.22 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "SMS-138-01-G-S"
 			(at 109.22 101.6 0)
 			(effects
 				(font
@@ -4667,7 +4673,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000060471143")
 		(property "Reference" "J2"
-			(at 177.8 128.27 0)
+			(at 177.8 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4675,7 +4681,7 @@
 			)
 		)
 		(property "Value" "Conn_02x19_Odd_Even_PCB_Edge"
-			(at 177.8 74.93 0)
+			(at 177.8 73.406 0)
 			(effects
 				(font
 					(size 1.27 1.27)
