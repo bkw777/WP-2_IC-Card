@@ -8,8 +8,8 @@
 	)
 	(paper "USLetter")
 	(title_block
-		(title "TANDY WP-2 IC-Card Breakout")
-		(date "2024-10-03")
+		(title "WP-2_IC-Card_Breakout")
+		(date "2024-10-04")
 		(rev "008")
 		(company "Brian K. White - b.kenyon.w@gmail.com")
 		(comment 1 "github.com/bkw777/WP-2_IC-Card")
@@ -2620,7 +2620,7 @@
 		)
 		(fp_arc
 			(start 25.828427 -22.171574)
-			(mid 25.980661 -22.936945)
+			(mid 25.980667 -22.936939)
 			(end 26.414213 -23.585788)
 			(stroke
 				(width 0.05)
@@ -2631,7 +2631,7 @@
 		)
 		(fp_arc
 			(start 26.414214 -8.414214)
-			(mid 25.98066 -9.063061)
+			(mid 25.98065 -9.063055)
 			(end 25.828427 -9.828428)
 			(stroke
 				(width 0.05)

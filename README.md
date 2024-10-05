@@ -98,7 +98,7 @@ There are no known rom images for any rom cards. Don't bother building one of th
 The programming adapter supports both ROM and RAM cards.  
 Use with a standard eprom programmer such as TL-866.  
 
-[Programming Adapter PCB from OSHPark](https://oshpark.com/shared_projects/TkzNwgho)  
+<!-- [Programming Adapter PCB from OSHPark](https://oshpark.com/shared_projects/TkzNwgho)  -->
 [Programming Adapter PCB from PCBWAY](https://www.pcbway.com/project/shareproject/TANDY_WP_2_IC_Card_Programming_Adapter.html)
 
 [Programming adapter BOM from DigiKey](https://www.digikey.com/short/v2r3pqp4)
@@ -145,14 +145,12 @@ Examples using a TL-866 programmer (628128 is a generic part number for the SRAM
 
 ## BREAKOUT CARD
 
-[Breakout PCB from OSHPark](https://oshpark.com/shared_projects/4spvX9oV) (Select 0.8mm PCB thickness)  
+<!-- [Breakout PCB from OSHPark](https://oshpark.com/shared_projects/4spvX9oV) (Select 0.8mm PCB thickness)  -->
 [Breakout PCB from PCBWAY](https://www.pcbway.com/project/shareproject/TANDY_WP_2_IC_Card_Breakout.html) (Select 1.2mm PCB thickness)  
 
 [Breakout BOM from DigiKey](https://www.digikey.com/short/323npm39)  
 
 ![](PCB/out/WP-2_IC-Card_Breakout.jpg)  
-![](PCB/out/WP-2_IC-Card_Breakout.top.jpg)  
-![](PCB/out/WP-2_IC-Card_Breakout.bottom.jpg)  
 ![](PCB/out/WP-2_IC-Card_Breakout.svg)  
 
 
