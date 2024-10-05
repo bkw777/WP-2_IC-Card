@@ -39,10 +39,12 @@ There are no openings in the bottom soldermask layer, so you have to tell them t
 You can save some money on the ENIG by using Elecrow instead of PCBWAY.
 
 ![](PCB/out/WP-2_IC-Card_SRAM.jpg)  
-![](PCB/out/WP-2_IC-Card_SRAM_128K.svg)  
 ![](COVER/out/WP-2_IC-Card_Cover_SRAM.png)  
 ![](PCB/out/WP-2_IC-Card_SRAM.covered.jpg)  
 ![](PCB/out/WP-2_IC-Card_SRAM.rear.jpg)  
+![](PCB/out/WP-2_IC-Card_SRAM.top.jpg)  
+![](PCB/out/WP-2_IC-Card_SRAM.bottom.jpg)  
+![](PCB/out/WP-2_IC-Card_SRAM_128K.svg)  
 
 ----
 
@@ -74,6 +76,8 @@ The "window" version is a single piece and simpler to print.
 ![](PCB/out/WP-2_IC-Card_MRAM_512K.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM_512K.slider.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM_512K.window.jpg)  
+![](PCB/out/WP-2_IC-Card_MRAM_512K.top.jpg)  
+![](PCB/out/WP-2_IC-Card_MRAM_512K.bottom.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM_512K.svg)
 
 ----
