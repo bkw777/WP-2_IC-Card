@@ -15466,7 +15466,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "SMS-255C"
+		(property "Value" "MS226-10S"
 			(at 181.61 134.6199 0)
 			(effects
 				(font
@@ -15475,7 +15475,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "000_LOCAL:SMS-255C"
+		(property "Footprint" "000_LOCAL:MS226-10S"
 			(at 165.1 135.89 0)
 			(effects
 				(font
@@ -15484,7 +15484,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "datasheets/MS226-10.pdf"
 			(at 165.1 135.89 0)
 			(effects
 				(font
@@ -15502,7 +15502,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "SMS-255C"
+		(property "MPN" "MS226-10S"
 			(at 165.1 133.35 0)
 			(effects
 				(font

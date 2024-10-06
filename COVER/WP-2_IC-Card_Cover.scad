@@ -34,7 +34,7 @@ attach_slider = true;
 //
 // steel rf shield over the mram
 // used for magnetic shielding not rf
-mram_shield = true;
+mram_shield = false;
 
 // card_thickness is the total stack thickness
 // of the pcb, printed parts, and adhesives, above and below.
@@ -548,8 +548,13 @@ module mram_512_top () {
 
    // MRAM
    if (mram_shield) {
-     // shield
-     component_pocket(w=20+fc*2,l=20+fc*2,x=-10,y=41.6,h=3);
+     // ic (shield)
+     translate([-10,-bl/2+41.6,0])
+       rounded_cube(w=17.6,d=23,h=card_thickness*2+sr*2,rh=1.8,rv=sr,t=0);
+     // caps
+     component_pocket(w=23,l=3.5,x=-10,y=41.6);
+     // 20x20 square shield
+     //component_pocket(w=20+fc*2,l=20+fc*2,x=-10,y=41.6,h=3);
    } else {
      // ic
      component_pocket(w=13,l=20,x=-10,y=41.6);
