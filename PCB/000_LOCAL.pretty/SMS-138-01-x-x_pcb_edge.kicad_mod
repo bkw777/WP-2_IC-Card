@@ -69,35 +69,24 @@
 	)
 	(attr smd)
 	(fp_line
-		(start -3.048 -23.114)
+		(start -3.048 -23.2)
 		(end -3.048 -24.13)
 		(stroke
-			(width 0.15)
+			(width 0.2)
 			(type solid)
 		)
 		(layer "F.SilkS")
 		(uuid "4ca8b3c6-1587-48a4-85d9-c4413fb68629")
 	)
 	(fp_line
-		(start -0.254 -24.13)
+		(start -0.35 -24.13)
 		(end -3.048 -24.13)
 		(stroke
-			(width 0.15)
+			(width 0.2)
 			(type solid)
 		)
 		(layer "F.SilkS")
 		(uuid "45280e2e-142f-434d-9598-541bdcf4115d")
-	)
-	(fp_rect
-		(start 0 -24.25)
-		(end 8.51 24.25)
-		(stroke
-			(width 0.05)
-			(type solid)
-		)
-		(fill none)
-		(layer "Dwgs.User")
-		(uuid "c24a3c4a-58f6-4915-8538-467bb758611b")
 	)
 	(fp_rect
 		(start 8.51 -23.25)
@@ -110,6 +99,17 @@
 		(layer "Dwgs.User")
 		(uuid "355af800-61da-469d-8488-cf4522af94ff")
 	)
+	(fp_rect
+		(start 0 -24.25)
+		(end 8.51 24.25)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill none)
+		(layer "F.Fab")
+		(uuid "c24a3c4a-58f6-4915-8538-467bb758611b")
+	)
 	(fp_text user "8.51mm"
 		(at 4.14 -24.79 0)
 		(unlocked yes)
@@ -117,8 +117,8 @@
 		(uuid "0793226a-b7e7-48cf-ae77-a0ad3ce31a2e")
 		(effects
 			(font
-				(size 0.6 0.6)
-				(thickness 0.06)
+				(size 0.5 0.5)
+				(thickness 0.05)
 			)
 		)
 	)
@@ -143,6 +143,18 @@
 			(font
 				(size 1 1)
 				(thickness 0.15)
+			)
+		)
+	)
+	(fp_text user "pcb edge"
+		(at 0.75 0 90)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "fd2c8784-10e2-4114-8d25-9fe202bc5288")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.1)
 			)
 		)
 	)
