@@ -25,7 +25,7 @@ Gerbers and STLs are in [releases](../../releases/)
 
 ## Battery-backed SRAM CARD  
 <!-- [RAM card PCB from OSHPark]() (Select 0.8mm PCB thickness)  -->
-[128K SRAM BOM from DigiKey](https://www.digikey.com/short/5wtbz75z)  
+[128K SRAM BOM from DigiKey](https://www.digikey.com/short/fdjd3j85)  
 [128K SRAM PCB and COVER from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_RAM_IC_Card.html)  
 IMPORTANT, when ordering the PCB:  
 * **Thickness: 1.2** <-- MOST IMPORTANT - DO NOT MISS  
