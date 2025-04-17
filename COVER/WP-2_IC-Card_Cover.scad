@@ -19,21 +19,42 @@ part = "sram_top"; // *** - top cover for the battery-backed 128K SRAM card
 //part = "mram_512_top"; // top cover for the 512K MRAM card
 //part = "breakout_top"; // top cover for the breakout card
 //part = "bottom"; // bottom cover - not applicable for 1.2mm PCB. Use with pcb_thickness 0.8 or less and card_thickness 3.2
-//part = "slider"; // just the bank switch actuator slider part by itself
+//part = "bank_slider"; // just the bank switch actuator slider part by itself
+//part = "wren_slider"; // just the write-enable switch actuator slider part by itself
 
-// MRAM variations:
-//
-// Which style of slide switch surround?
-// true = trapped sliding actuator
-// false = simple concave opening around the switch
-switch_slider = true;
-//
+// number of banks (number of slide switch positions)
+nbanks = 4;
+
+// Which style of slide switch actuator?
+// "slider" = trapped sliding actuator
+// "finger" = large concave opening for a finger
+// "pen"    = minimal slot opening for a pen
+bank_switch_style = "slider";
+wren_switch_style = "slider";
+
+// "pen" switch style slot width
+pen_slot_width = 2;
+
+bank_slider_width = 7;
+bank_finger_width = 6; // wide enough to display the switch position labels
+
+wren_slider_width = 3;
+wren_finger_width = 4;
+
+finger_window_chamfer_slope = 0.5; // 1.0 = 45deg
+
+
 // attach the slider to the main body
 // so it prints as one piece
 attach_slider = true;
-//
-// steel rf shield over the mram
-// used for magnetic shielding not rf
+sprue_len = 1;
+
+// preview display option
+// show the switch slider in all possible positions
+bank_switch_slider_position = 3;
+wren_switch_slider_position = 2;
+
+// steel can over the mram
 mram_shield = false;
 
 // card_thickness is the total stack thickness
@@ -133,13 +154,6 @@ adhesive_thickness = 0.15; // *** good enough for most cases
 //card_thickness = 3.2;
 //pcb_thickness = 0.8;
 
-// preview display option
-// places the slider in any of the 4 possible
-// positions to see the full range of motion
-//show_slider_position = 1;
-//show_slider_position = 2;
-show_slider_position = 3; // switch ships in position 3, and pcb model shows position 3
-//show_slider_position = 4;
 
 ///////////////////////////////////////////////////////////////////////////////
 // END OF USER CONFIG
@@ -206,31 +220,42 @@ ch =
 // fooxp : X position, relative to the board center
 // fooyp : Y position, relative to the front edge of the board
 
-// ram & rom components
+// ram or rom components
 rcxs = 40;    // X size
 rcys = 10;    // Y size
 rcxp = 0;     // X placement, relative to board center
 rcyp = 18.5;  // Y placement, relative to board front edge
 
-// mram_512 components
 // bank switch
+swxp = 11;     // x position
+swyp = 14.125; // y position
+swa = 0;       // angle
+
+// write-enable switch
+wexp = -18.75; // x position
+weyp = -8.5;   // y position
+wea = 90;      // angle
+
+// slide switch 
+swys = 3.5;  // switch Y size (switch body is 2.6)
 slide_switch_thickness = 1.5; // switch component height
-swxs = 12; // switch X size
-swys = 3.5; // switch Y size (switch body is 2.6)
-swxp = 11; // switch X position
-swyp = 41.1; // switch Y position
 swpl = 1; // switch pins lenghth
 swph = 0.5; // switch pins thickness
 // slider
-sbu = 1.5; // base unit - 1.5mm travel per position, actuator is 1.3mm
-spn = 4; // number of positions - 1P4T = 4
-stw = sbu + sbu + sbu; // slider top width
-stow = sbu + sbu * spn + sbu; // slider top opening width
-sbw = sbu * spn + stow + sbu * spn; // slider base width
+sth = 1.5; // switch throw - 1.5mm travel per position, actuator is 1.3mm
+stw = sth + sth + sth; // slider top width
 sbh = 0.8; // slider base height (thickness)
-says = 7; // slider actuator Y size
-syo = says/2 + swys/2 - 0.45; // slider position Y offset relative to swyp
-sxo = sbu/2+sbu-sbu*(show_slider_position-1); // slider position X offset relative to swxp
+
+// switch actuator Y size
+says =
+  (part == "wren_slider") ? wren_slider_width :
+  (part == "rom_top" && wren_switch_style == "slider") ? wren_slider_width :
+  (part == "rom_top" && wren_switch_style == "finger") ? wren_finger_width :
+  (part == "mram_512_top" && bank_switch_style == "finger") ? bank_finger_width :
+  bank_slider_width ;
+
+syo = says/2 + swys/2 - 0.45; // slider position Y offset
+
 // figure out the actual slide switch pocket height
 // based on top_thickness and thin_wall_minumum
 echo("top_thickness",top_thickness);
@@ -290,7 +315,7 @@ module adhesive () {
 // Y translated relative to the front edge of the pcb
 // X translated relative to the center of the pcb
 // H is doubled to make the top half be the desired pocket height relative to the pcb top surface
-module component_pocket (w,l,x,y,h=ch,z=0) {
+module component_pocket (w=2,l=4,x=0,y=bl/2,h=ch,z=0) {
  translate([x,-bl/2+y,z])
   rounded_cube(w=w,d=l,h=h*2,rh=sr,rv=sr,t=0);
 }
@@ -411,43 +436,46 @@ module connector (top=true) {
  }
 }
 
-module bank_switch_common () {
+module slide_switch_opening (t="slider",n=2) {
+   stow = stw + sth * (n-1); // slider top opening width
+   sbw = sth * n + stow + sth * n; // slider base width
+   // switch body len is  throw * nthrows + X
+   // X is different for 2-throw vs >2-throw
+   w = sth * n + (n<3?4.5:6); // switch X size
+
    // body
-   component_pocket(w=swxs,l=swys,x=swxp,y=swyp,h=swh);
+   if (t=="pen") {
+    translate([0,pen_slot_width/2,0])
+    component_pocket(w=w,l=swys+pen_slot_width,h=swh);
+   } else {
+    component_pocket(w=w,l=swys,h=swh);
+   }
    // pins
    translate([0,-swpl/2,0])
-    component_pocket(w=swxs+swpl,l=swys+swpl,x=swxp,y=swyp,h=swph);
-}
+    component_pocket(w=w+swpl,l=swys+swpl,h=swph);
 
-// cavity for slide switch with chamfered window around the actuator
-module bank_switch_window_opening () {
-   swh = top_thickness+o;
-   awr = cr; // access window corner radius
-   awl = swys*2; // access window length (Y)
-   aww = swxs+4; // access window width (X)
-   aws = 0.48; // access window chamfer slope 1.0=45deg
+   if (t=="slider") {
 
-   // body & pins
-   bank_switch_common();
-   // access window
-   translate([swxp,-bl/2+swyp+swys/4+awl/2,swh/2-xo])
-    hull() {
-     mirror_copy([0,1,0])
-      translate([0,awl/2-awr,0])
-       mirror_copy([1,0,0])
-        translate([aww/2-awr,0,0])
-         cylinder(h=swh,r1=awr,r2=awr+swh/aws,center=true);
+    translate([0,syo+fc-xo,0]) {
+     // slider base
+     component_pocket(w=fc+sbw+fc,l=fc+says+fc,h=sbh+fc);
+     // slider slot
+     component_pocket(w=fc+stow+fc,l=fc+says+fc,h=card_thickness);
     }
-}
 
-// cavity & slot for slide switch with sliding actuator
-module bank_switch_slider_opening () {
-   // body & pins
-   bank_switch_common();
-   // slider base
-   component_pocket(w=fc+sbw+fc,l=fc+says+fc,x=swxp,y=swyp+syo+fc-xo,h=sbh+fc);
-   // slider slot
-   component_pocket(w=fc+stow+fc,l=fc+says+fc,x=swxp,y=swyp+syo+fc-xo,h=card_thickness);
+   } else if (t=="finger") {
+
+    swh = top_thickness+o;
+    aww = w+4; // access window width (X)
+    translate([0,swys/4+says/2,swh/2-xo])
+     hull() {
+      mirror_copy([0,1,0])
+       translate([0,says/2-cr,0])
+        mirror_copy([1,0,0])
+         translate([aww/2-cr,0,0])
+          cylinder(h=swh,r1=cr,r2=cr+swh/finger_window_chamfer_slope,center=true);
+     }
+   }
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -521,7 +549,12 @@ module PCB () {
 module rom_top () {
  difference(){
   top_common();
-  component_pocket(w=rcxs,l=rcys,x=rcxp,y=rcyp);
+  group() {
+   component_pocket(w=rcxs,l=rcys,x=rcxp,y=rcyp);
+   translate([wexp,weyp,0])
+    rotate([0,0,wea])
+     slide_switch_opening(t=wren_switch_style);
+  }
  }
 }
 
@@ -563,11 +596,8 @@ module mram_512_top () {
    }
 
   // bank-select slide switch
-  if (switch_slider) {
-   bank_switch_slider_opening ();
-  } else {
-   bank_switch_window_opening ();
-  }
+  translate([swxp,swyp,0])
+   slide_switch_opening(t=bank_switch_style,n=nbanks);
    
   }
  }
@@ -597,10 +627,12 @@ module bottom () {
  }
 }
 
-module bank_switch_slider () {
+module switch_slider (n=2) {
  $fs = 0.05;
+ stow = stw + sth * (n-1); // slider top opening width
+ sbw = sth * n + stow + sth * n; // slider base width
+ bw = sbw - sth * (n-1); // base width
  abh = top_thickness; // actuator block height
- bw = sbw - sbu * (spn-1); // base width
  difference () {
   union () {
    // actuator block
@@ -612,12 +644,22 @@ module bank_switch_slider () {
   union () {
   // cut actuator slot
   translate([0,0,abh/2+sbh+xo])
-   cube([sbu,says+o,abh],center=true);
+   cube([sth,says+o,abh],center=true);
   // cut flat bottom
   translate([0,0,-(sbh+o)/2])
    cube([xo+bw+xo,xo+says+xo,sbh+o],center=true);
   }
  }
+}
+
+module slider_sprues (l=1) {
+     if (attach_slider) {
+      r = 0.4;
+      mirror_copy([1,0,0])
+        translate([r+sth/2+0.1,-bl/2+cnl+o,r])
+          rotate([90,0,0])
+            cylinder(r=r,h=o+l+o);
+    }
 }
 
 /////////////////////////////////////////////////////////
@@ -630,13 +672,22 @@ if($preview || render_preview_for_kicad) {
 // * include the PCB
 // * orient the parts as they would be used
 
- if (part == "rom_top") rom_top();
+ if (part == "rom_top") {
+  rom_top();
+  if (wren_switch_style == "slider")
+   translate([wexp,weyp,0])
+    rotate([0,0,wea])
+     translate([sth/2-sth*(wren_switch_slider_position-1),syo+fc,0])
+      switch_slider();
+  }
  if (part == "sram_top") sram_top();
  if (part == "mram_512_top") {
   mram_512_top();
-  if (switch_slider)
-    translate([swxp+stow/2-stw/2-sbu*(show_slider_position-1),-bl/2+swyp+syo+fc,0])
-     bank_switch_slider();
+  if (bank_switch_style == "slider")
+   translate([swxp,swyp,0])
+    rotate([0,0,swa]) 
+     translate([sth*(nbanks-1)/2-sth*(bank_switch_slider_position-1),syo+fc,0])
+      switch_slider(n=nbanks);
  }
  if (part == "breakout_top") breakout_top();
 
@@ -645,7 +696,8 @@ if($preview || render_preview_for_kicad) {
   translate([0,0,-bottom_thickness-pcb_thickness])
    bottom();
 
- if (part == "slider") bank_switch_slider ();
+ if (part == "bank_slider") switch_slider(n=nbanks);
+ else if (part == "wren_slider") switch_slider();
  else %PCB();
 
 } else {
@@ -655,7 +707,8 @@ if($preview || render_preview_for_kicad) {
 // * orient the parts for printing
 
  if (part == "bottom") bottom();
- else if (part == "slider") bank_switch_slider ();
+ else if (part == "bank_slider") switch_slider(n=nbanks);
+ else if (part == "wren_slider") switch_slider();
  else {
   // if any of the top covers, flip over for FDM printing
   translate([0,0,top_thickness])
@@ -665,21 +718,24 @@ if($preview || render_preview_for_kicad) {
     if (part == "mram_512_top") mram_512_top();
     if (part == "breakout_top") breakout_top();
    }
-  // don't flip this part over
-  if (part == "mram_512_top" && switch_slider) {
-    // slider
-    translate([0,-bl/2+says/2,0])
-     bank_switch_slider();
-    if (attach_slider) {
-      // attachment posts
-      r = 0.4;
-      l = o + cnl - says + o ;
-      mirror_copy([1,0,0])
-        translate([r+sbu/2+0.1,-bl/2+cnl+o,r])
-          rotate([90,0,0])
-            cylinder(r=r,h=l);
-    }
+  // don't flip the slider over
+  if (says+sprue_len > cnl) {
+   echo("***************************************************");
+   echo("slider is wider than space in front connector");
+   echo("***************************************************");
   }
+  
+  if (part == "mram_512_top" && bank_switch_style == "slider") {
+    translate([0,-bl/2+cnl-sprue_len-says/2,0])
+     switch_slider(n=nbanks);
+    slider_sprues(l=sprue_len);
+  }
+  if (part == "rom_top" && wren_switch_style == "slider") {
+    translate([0,-bl/2+cnl-sprue_len-says/2,0])
+     switch_slider();
+    slider_sprues(l=sprue_len);
+  }
+
  }
 
 }

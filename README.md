@@ -86,7 +86,7 @@ There are no known rom images for any rom cards. Don't bother building one of th
 
 <!-- [ROM card PCB from OSHPark](https://oshpark.com/shared_projects/F9gte3be) (Select 0.8mm PCB thickness)  -->
 [ROM PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_ROM_IC_Card.html) (Select 1.2mm PCB thickness)  
-[ROM BOM from DigiKey](https://www.digikey.com/short/zn95jj)
+[ROM BOM from DigiKey](https://www.digikey.com/short/qfr21p8h)
 
 ![](PCB/out/WP-2_IC-Card_ROM.jpg)  
 ![](PCB/out/WP-2_IC-Card_ROM.svg)  
@@ -136,7 +136,7 @@ Remove jumper from  GND to /DET on the card.
 
 Set all 4 jumpers on the programming adapter to RAM.
 
-Examples using a TL-866 programmer (628128 is a generic part number for the SRAM on the card):  
+Examples using a TL-866 programmer (628128 is the generic part number compatible with the SRAM on the card):  
 `minipro --skip_id --device 628128 --read ram.bin`  
 `minipro --skip_id --device 628128 --write ram.bin`  
 

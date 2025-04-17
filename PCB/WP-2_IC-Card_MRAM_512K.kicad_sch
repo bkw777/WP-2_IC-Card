@@ -5388,411 +5388,6 @@
 				)
 			)
 		)
-		(symbol "C_Small_2"
-			(pin_numbers hide)
-			(pin_names
-				(offset 0.254) hide)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "C"
-				(at 0.254 1.778 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "C_Small_2"
-				(at 0.254 -2.032 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" "000_LOCAL:C_0805"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Unpolarized capacitor, small symbol"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "capacitor cap"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "C_*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "C_Small_2_0_1"
-				(polyline
-					(pts
-						(xy -1.524 -0.508) (xy 1.524 -0.508)
-					)
-					(stroke
-						(width 0.3302)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.524 0.508) (xy 1.524 0.508)
-					)
-					(stroke
-						(width 0.3048)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "C_Small_2_1_1"
-				(pin passive line
-					(at 0 2.54 270)
-					(length 2.032)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -2.54 90)
-					(length 2.032)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
-		(symbol "C_Small_5"
-			(pin_numbers hide)
-			(pin_names
-				(offset 0.254) hide)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "C"
-				(at 0.254 1.778 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "C_Small_5"
-				(at 0.254 -2.032 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" "000_LOCAL:C_0805"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Unpolarized capacitor, small symbol"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "capacitor cap"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "C_*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "C_Small_5_0_1"
-				(polyline
-					(pts
-						(xy -1.524 -0.508) (xy 1.524 -0.508)
-					)
-					(stroke
-						(width 0.3302)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.524 0.508) (xy 1.524 0.508)
-					)
-					(stroke
-						(width 0.3048)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "C_Small_5_1_1"
-				(pin passive line
-					(at 0 2.54 270)
-					(length 2.032)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -2.54 90)
-					(length 2.032)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
-		(symbol "C_Small_9"
-			(pin_numbers hide)
-			(pin_names
-				(offset 0.254) hide)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "C"
-				(at 0.254 1.778 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "C_Small_9"
-				(at 0.254 -2.032 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" "000_LOCAL:C_0805"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Unpolarized capacitor, small symbol"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "capacitor cap"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "C_*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "C_Small_9_0_1"
-				(polyline
-					(pts
-						(xy -1.524 -0.508) (xy 1.524 -0.508)
-					)
-					(stroke
-						(width 0.3302)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.524 0.508) (xy 1.524 0.508)
-					)
-					(stroke
-						(width 0.3048)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "C_Small_9_1_1"
-				(pin passive line
-					(at 0 2.54 270)
-					(length 2.032)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -2.54 90)
-					(length 2.032)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
 	)
 	(junction
 		(at 69.85 62.23)
@@ -5841,12 +5436,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "57b32b1b-9613-4953-9f27-c7a8dfd966e9")
-	)
-	(junction
-		(at 247.65 148.59)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "620d34a1-30fb-4c5b-ad15-b504b8ada67a")
 	)
 	(junction
 		(at 229.87 49.53)
@@ -5937,6 +5526,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ea21e64d-9f8e-4596-848f-e635ef39c28b")
+	)
+	(junction
+		(at 247.65 148.59)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "eab2988f-d7fa-4074-97a6-9e880428bead")
 	)
 	(junction
 		(at 96.52 31.75)
@@ -8584,7 +8179,7 @@
 	)
 	(wire
 		(pts
-			(xy 162.56 44.45) (xy 165.1 44.45)
+			(xy 160.02 44.45) (xy 165.1 44.45)
 		)
 		(stroke
 			(width 0)
@@ -9584,7 +9179,7 @@
 	)
 	(wire
 		(pts
-			(xy 167.64 44.45) (xy 165.1 44.45)
+			(xy 170.18 44.45) (xy 165.1 44.45)
 		)
 		(stroke
 			(width 0)
@@ -11654,17 +11249,17 @@
 		)
 	)
 	(symbol
-		(lib_name "C_Small_5")
+		(lib_name "C_Small_1")
 		(lib_id "000_LOCAL:C_Small")
-		(at 86.36 31.75 270)
+		(at 111.76 125.73 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "02d24b79-6a9d-4b67-aa30-0ca359fe8b4d")
-		(property "Reference" "C3"
-			(at 87.63 30.48 90)
+		(uuid "0f8c5967-548b-492c-9d6f-fc666559a94d")
+		(property "Reference" "C9"
+			(at 110.744 124.206 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11673,7 +11268,7 @@
 			)
 		)
 		(property "Value" "1u"
-			(at 87.63 33.02 90)
+			(at 110.744 127.254 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11681,8 +11276,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "000_LOCAL:C_0805_1mm"
-			(at 86.36 31.75 0)
+		(property "Footprint" "000_LOCAL:C_0805"
+			(at 111.76 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11690,8 +11285,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
-			(at 86.36 31.75 0)
+		(property "Datasheet" "datasheets/CL21A105KBCLNNC.pdf"
+			(at 111.76 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11699,8 +11294,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "CAP CER 1UF 50V X7R 0805"
-			(at 86.36 31.75 0)
+		(property "Description" "CAP CER 1UF 50V X5R 0805 low profile"
+			(at 111.76 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11708,8 +11303,8 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "CL21B105KBFNFNE"
-			(at 86.36 31.75 90)
+		(property "MPN" "CL21A105KBCLNNC"
+			(at 111.76 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11718,15 +11313,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "01e2063d-ca0b-44a9-a149-afcfe18a9a42")
+			(uuid "1157db6a-c6b8-4a32-b12d-44f79685f29d")
 		)
 		(pin "2"
-			(uuid "81020381-be1c-478a-b149-462ce0963ab5")
+			(uuid "7d169990-e8f2-4755-95a8-d1ca21950e01")
 		)
 		(instances
-			(project "WP-2_IC-Card_MRAM_512"
+			(project "WP-2_IC-Card_MRAM_512K"
 				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "C3")
+					(reference "C9")
 					(unit 1)
 				)
 			)
@@ -11883,6 +11478,85 @@
 			(project "WP-2_IC-Card_MRAM_512"
 				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
 					(reference "#PWR012")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_name "C_Small_1")
+		(lib_id "000_LOCAL:C_Small")
+		(at 111.76 31.75 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "17c5cdfd-0f7f-4c1b-9f29-a6ea6387fb07")
+		(property "Reference" "C7"
+			(at 110.744 30.226 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1u"
+			(at 110.744 33.274 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "000_LOCAL:C_0805"
+			(at 111.76 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "datasheets/CL21A105KBCLNNC.pdf"
+			(at 111.76 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "CAP CER 1UF 50V X5R 0805 low profile"
+			(at 111.76 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CL21A105KBCLNNC"
+			(at 111.76 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6e5e6d97-ae07-4b42-b3a5-8bd04b05ec50")
+		)
+		(pin "2"
+			(uuid "057f977a-b692-464c-8b1c-fd1064bbb9b4")
+		)
+		(instances
+			(project "WP-2_IC-Card_MRAM_512K"
+				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
+					(reference "C7")
 					(unit 1)
 				)
 			)
@@ -12512,7 +12186,7 @@
 	)
 	(symbol
 		(lib_id "000_LOCAL:GND")
-		(at 172.72 44.45 0)
+		(at 175.26 44.45 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12520,7 +12194,7 @@
 		(dnp no)
 		(uuid "3c5583e3-110b-4bb7-b520-f10a9d16d5dc")
 		(property "Reference" "#PWR029"
-			(at 172.72 50.8 0)
+			(at 175.26 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12529,7 +12203,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 172.72 48.26 0)
+			(at 175.26 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12538,7 +12212,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 172.72 44.45 0)
+			(at 175.26 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12547,7 +12221,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 172.72 44.45 0)
+			(at 175.26 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12556,7 +12230,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 172.72 44.45 0)
+			(at 175.26 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12571,165 +12245,6 @@
 			(project "WP-2_IC-Card_MRAM_512"
 				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
 					(reference "#PWR029")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_name "C_Small_5")
-		(lib_id "000_LOCAL:C_Small")
-		(at 240.03 49.53 90)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "3e1a9a32-1c52-4b8b-98d0-91961740afc8")
-		(property "Reference" "C6"
-			(at 238.76 48.26 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "1u"
-			(at 238.76 50.8 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "000_LOCAL:C_0805_1mm"
-			(at 240.03 49.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 240.03 49.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "CAP CER 1UF 50V X7R 0805"
-			(at 240.03 49.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "CL21B105KBFNFNE"
-			(at 240.03 49.53 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "00d0fcc7-ed21-4af2-afee-04617e5bcaa9")
-		)
-		(pin "2"
-			(uuid "536ddeca-170f-4667-9cfe-c01c2879f891")
-		)
-		(instances
-			(project "WP-2_IC-Card_MRAM_512"
-				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "C6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_name "C_Small_5")
-		(lib_id "000_LOCAL:C_Small")
-		(at 214.63 49.53 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "3e7f4793-b7d8-4e0f-94cf-5b0e4ff03377")
-		(property "Reference" "C10"
-			(at 215.9 48.26 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "1u"
-			(at 215.9 50.8 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "000_LOCAL:C_0805_1mm"
-			(at 214.63 49.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 214.63 49.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "CAP CER 1UF 50V X7R 0805"
-			(at 214.63 49.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "CL21B105KBFNFNE"
-			(at 214.63 49.53 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "680f8023-343c-436b-b632-4422fe4c8f85")
-		)
-		(pin "2"
-			(uuid "3dadef4c-4874-4b66-819e-0fee2463d653")
-		)
-		(instances
-			(project "WP-2_IC-Card_MRAM_512"
-				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "C10")
 					(unit 1)
 				)
 			)
@@ -13099,6 +12614,85 @@
 		)
 	)
 	(symbol
+		(lib_name "C_Small_1")
+		(lib_id "000_LOCAL:C_Small")
+		(at 111.76 78.74 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4a459994-7cea-492a-8eb9-e60e6c134175")
+		(property "Reference" "C8"
+			(at 110.744 77.216 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1u"
+			(at 110.744 80.264 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "000_LOCAL:C_0805"
+			(at 111.76 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "datasheets/CL21A105KBCLNNC.pdf"
+			(at 111.76 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "CAP CER 1UF 50V X5R 0805 low profile"
+			(at 111.76 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CL21A105KBCLNNC"
+			(at 111.76 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "32624957-5b48-485c-b5bb-5385a7c0a427")
+		)
+		(pin "2"
+			(uuid "1910f58c-66dd-4f16-a28e-ccdb1861ace7")
+		)
+		(instances
+			(project "WP-2_IC-Card_MRAM_512K"
+				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
+					(reference "C8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "000_LOCAL:R")
 		(at 86.36 176.53 90)
 		(unit 1)
@@ -13387,7 +12981,7 @@
 	)
 	(symbol
 		(lib_id "000_LOCAL:GND")
-		(at 157.48 44.45 0)
+		(at 154.94 44.45 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -13395,7 +12989,7 @@
 		(dnp no)
 		(uuid "53f1698e-6ec0-4fa1-9035-af165742b2cd")
 		(property "Reference" "#PWR0145"
-			(at 157.48 50.8 0)
+			(at 154.94 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13404,7 +12998,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 157.48 48.26 0)
+			(at 154.94 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13413,7 +13007,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 157.48 44.45 0)
+			(at 154.94 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13422,7 +13016,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 157.48 44.45 0)
+			(at 154.94 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13431,7 +13025,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 157.48 44.45 0)
+			(at 154.94 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13518,17 +13112,18 @@
 		)
 	)
 	(symbol
-		(lib_name "C_Small_5")
+		(lib_name "C_Small_1")
 		(lib_id "000_LOCAL:C_Small")
-		(at 86.36 125.73 270)
+		(at 157.48 44.45 270)
+		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "5944f2c2-0ffd-4e58-af0f-cf8577525e78")
-		(property "Reference" "C5"
-			(at 87.63 124.46 90)
+		(uuid "5dd0af59-a1e0-4078-8db7-d76da315a3d1")
+		(property "Reference" "C11"
+			(at 158.496 42.926 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13537,7 +13132,7 @@
 			)
 		)
 		(property "Value" "1u"
-			(at 87.63 127 90)
+			(at 158.496 45.974 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13545,8 +13140,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "000_LOCAL:C_0805_1mm"
-			(at 86.36 125.73 0)
+		(property "Footprint" "000_LOCAL:C_0805"
+			(at 157.48 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13554,8 +13149,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
-			(at 86.36 125.73 0)
+		(property "Datasheet" "datasheets/CL21A105KBCLNNC.pdf"
+			(at 157.48 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13563,8 +13158,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "CAP CER 1UF 50V X7R 0805"
-			(at 86.36 125.73 0)
+		(property "Description" "CAP CER 1UF 50V X5R 0805 low profile"
+			(at 157.48 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13572,8 +13167,8 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "CL21B105KBFNFNE"
-			(at 86.36 125.73 90)
+		(property "MPN" "CL21A105KBCLNNC"
+			(at 157.48 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13582,94 +13177,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "516ff36b-76ac-4bab-909b-06e840142ab0")
+			(uuid "06f9f345-c491-431c-b239-f7a1066eb859")
 		)
 		(pin "2"
-			(uuid "6a5cdf94-04c1-4479-a8c4-1bd2ad2657a8")
+			(uuid "81ccf725-84de-4c28-93ff-5c4717234f60")
 		)
 		(instances
-			(project "WP-2_IC-Card_MRAM_512"
+			(project "WP-2_IC-Card_MRAM_512K"
 				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "C5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_name "C_Small_5")
-		(lib_id "000_LOCAL:C_Small")
-		(at 86.36 78.74 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "59c79186-4f03-4fe3-84c7-af521f71a1ce")
-		(property "Reference" "C4"
-			(at 87.63 77.47 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "1u"
-			(at 87.63 80.01 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "000_LOCAL:C_0805_1mm"
-			(at 86.36 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 86.36 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "CAP CER 1UF 50V X7R 0805"
-			(at 86.36 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "CL21B105KBFNFNE"
-			(at 86.36 78.74 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "da1b0e52-c55f-41ae-81e0-b5d317d2e31e")
-		)
-		(pin "2"
-			(uuid "46568919-9192-4f1c-8ef2-d0250d09eae7")
-		)
-		(instances
-			(project "WP-2_IC-Card_MRAM_512"
-				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "C4")
+					(reference "C11")
 					(unit 1)
 				)
 			)
@@ -14029,6 +13545,85 @@
 		)
 	)
 	(symbol
+		(lib_name "C_Small_1")
+		(lib_id "000_LOCAL:C_Small")
+		(at 240.03 49.53 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "69f3cdd4-58fa-416a-82a3-19e7118b9a87")
+		(property "Reference" "C6"
+			(at 239.014 48.006 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1u"
+			(at 239.014 51.054 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "000_LOCAL:C_0805"
+			(at 240.03 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "datasheets/CL21A105KBCLNNC.pdf"
+			(at 240.03 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "CAP CER 1UF 50V X5R 0805 low profile"
+			(at 240.03 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CL21A105KBCLNNC"
+			(at 240.03 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "71473504-1e5b-4958-ba8c-0835c26f6615")
+		)
+		(pin "2"
+			(uuid "4f2a6562-e68d-4c0b-9400-694080d30fd3")
+		)
+		(instances
+			(project "WP-2_IC-Card_MRAM_512K"
+				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
+					(reference "C6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "000_LOCAL:GND")
 		(at 99.06 161.29 0)
 		(mirror y)
@@ -14156,86 +13751,6 @@
 			(project "WP-2_IC-Card_MRAM_512"
 				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
 					(reference "#PWR032")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_name "C_Small_5")
-		(lib_id "000_LOCAL:C_Small")
-		(at 111.76 31.75 90)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "743d7ac2-3388-477d-88d5-db4daf0e8fa0")
-		(property "Reference" "C7"
-			(at 110.49 30.48 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "1u"
-			(at 110.49 33.02 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "000_LOCAL:C_0805_1mm"
-			(at 111.76 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 111.76 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "CAP CER 1UF 50V X7R 0805"
-			(at 111.76 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "CL21B105KBFNFNE"
-			(at 111.76 31.75 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ffd74639-7d6b-4bcb-8c52-4edc8a69a921")
-		)
-		(pin "2"
-			(uuid "97ed015a-ebbc-4b04-a28c-1bef3a4d2cb1")
-		)
-		(instances
-			(project "WP-2_IC-Card_MRAM_512"
-				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "C7")
 					(unit 1)
 				)
 			)
@@ -14386,6 +13901,86 @@
 		)
 	)
 	(symbol
+		(lib_name "C_Small_1")
+		(lib_id "000_LOCAL:C_Small")
+		(at 86.36 31.75 270)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "84c70f78-dd0e-4fb3-903d-e9b43cab9e75")
+		(property "Reference" "C3"
+			(at 87.376 30.226 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1u"
+			(at 87.376 33.274 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "000_LOCAL:C_0805"
+			(at 86.36 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "datasheets/CL21A105KBCLNNC.pdf"
+			(at 86.36 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "CAP CER 1UF 50V X5R 0805 low profile"
+			(at 86.36 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CL21A105KBCLNNC"
+			(at 86.36 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b7f9a335-ff83-4ebd-a1cd-bd117c2f81e6")
+		)
+		(pin "2"
+			(uuid "6b9d2a0e-ecba-4b53-bd61-3cb8c126977d")
+		)
+		(instances
+			(project "WP-2_IC-Card_MRAM_512K"
+				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
+					(reference "C3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "000_LOCAL:GND")
 		(at 231.14 158.75 0)
 		(unit 1)
@@ -14446,86 +14041,6 @@
 			(project "WP-2_IC-Card_MRAM_512"
 				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
 					(reference "#PWR0112")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_name "C_Small_5")
-		(lib_id "000_LOCAL:C_Small")
-		(at 111.76 125.73 90)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "86322976-4660-404d-8faa-9ca12db10a8a")
-		(property "Reference" "C9"
-			(at 110.49 124.46 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "1u"
-			(at 110.49 127 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "000_LOCAL:C_0805_1mm"
-			(at 111.76 125.73 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 111.76 125.73 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "CAP CER 1UF 50V X7R 0805"
-			(at 111.76 125.73 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "CL21B105KBFNFNE"
-			(at 111.76 125.73 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "a3be7520-9708-4b8e-9ab2-b54a4ae4bcc8")
-		)
-		(pin "2"
-			(uuid "229b99df-46e3-44d5-a903-c9b67edd6b4b")
-		)
-		(instances
-			(project "WP-2_IC-Card_MRAM_512"
-				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "C9")
 					(unit 1)
 				)
 			)
@@ -14797,6 +14312,85 @@
 			(project "WP-2_IC-Card_MRAM_512K"
 				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
 					(reference "N1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_name "C_Small_1")
+		(lib_id "000_LOCAL:C_Small")
+		(at 172.72 44.45 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8acb628c-67d8-41de-b211-1b9a784ed0eb")
+		(property "Reference" "C12"
+			(at 171.704 42.926 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1u"
+			(at 171.704 45.974 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "000_LOCAL:C_0805"
+			(at 172.72 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "datasheets/CL21A105KBCLNNC.pdf"
+			(at 172.72 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "CAP CER 1UF 50V X5R 0805 low profile"
+			(at 172.72 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CL21A105KBCLNNC"
+			(at 172.72 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4545b677-38d7-41de-a24f-91344f186048")
+		)
+		(pin "2"
+			(uuid "8f325575-bcb6-44b3-91f6-b246a59237ac")
+		)
+		(instances
+			(project "WP-2_IC-Card_MRAM_512K"
+				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
+					(reference "C12")
 					(unit 1)
 				)
 			)
@@ -15343,44 +14937,36 @@
 		)
 	)
 	(symbol
-		(lib_name "C_Small_2")
+		(lib_name "C_Small_1")
 		(lib_id "000_LOCAL:C_Small")
-		(at 247.65 151.13 180)
+		(at 214.63 49.53 270)
+		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "ad69b6aa-62b8-4353-a18c-cdc786c5a7af")
-		(property "Reference" "C2"
-			(at 250.19 149.86 0)
+		(uuid "b277343e-5078-4167-98d7-28dc8a8e1b38")
+		(property "Reference" "C10"
+			(at 215.646 48.006 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 			)
 		)
 		(property "Value" "1u"
-			(at 250.19 152.4 0)
+			(at 215.646 51.054 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 			)
 		)
-		(property "Footprint" "000_LOCAL:C_0805_1mm"
-			(at 247.65 151.13 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 247.65 151.13 0)
+		(property "Footprint" "000_LOCAL:C_0805"
+			(at 214.63 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15388,8 +14974,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "CAP CER 1UF 50V X7R 0805"
-			(at 247.65 151.13 0)
+		(property "Datasheet" "datasheets/CL21A105KBCLNNC.pdf"
+			(at 214.63 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15397,8 +14983,17 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "CL21B105KBFNFNE"
-			(at 247.65 151.13 0)
+		(property "Description" "CAP CER 1UF 50V X5R 0805 low profile"
+			(at 214.63 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CL21A105KBCLNNC"
+			(at 214.63 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15407,15 +15002,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "0ab11e54-ffb7-48be-a54a-71c5d348162f")
+			(uuid "eaa75b3f-d81d-4ef6-9f86-9c979b5e87c5")
 		)
 		(pin "2"
-			(uuid "0524ba1a-74ec-4757-b299-23be139fbd6e")
+			(uuid "38eac150-b2f3-411a-9186-d00f0c322fcc")
 		)
 		(instances
-			(project "WP-2_IC-Card_MRAM_512"
+			(project "WP-2_IC-Card_MRAM_512K"
 				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "C2")
+					(reference "C10")
 					(unit 1)
 				)
 			)
@@ -15552,86 +15147,6 @@
 		)
 	)
 	(symbol
-		(lib_name "C_Small_5")
-		(lib_id "000_LOCAL:C_Small")
-		(at 111.76 78.74 90)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "c8d535b7-162b-4617-9167-025bcf33b2bc")
-		(property "Reference" "C8"
-			(at 110.49 77.47 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "1u"
-			(at 110.49 80.01 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "000_LOCAL:C_0805_1mm"
-			(at 111.76 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 111.76 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "CAP CER 1UF 50V X7R 0805"
-			(at 111.76 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "CL21B105KBFNFNE"
-			(at 111.76 78.74 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "46554f02-9cf2-4b4d-8cf2-d884c9e3a4f6")
-		)
-		(pin "2"
-			(uuid "3cd58e50-93f2-4bf0-aac6-d51f4eae2e63")
-		)
-		(instances
-			(project "WP-2_IC-Card_MRAM_512"
-				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "C8")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "000_LOCAL:GND")
 		(at 83.82 78.74 0)
 		(unit 1)
@@ -15759,6 +15274,86 @@
 			(project "WP-2_IC-Card_MRAM_512"
 				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
 					(reference "#PWR021")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_name "C_Small_1")
+		(lib_id "000_LOCAL:C_Small")
+		(at 247.65 151.13 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d3c8acd9-925c-4da6-ad97-5b32bb40c74f")
+		(property "Reference" "C2"
+			(at 250.19 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1u"
+			(at 250.19 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "000_LOCAL:C_0805"
+			(at 247.65 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "datasheets/CL21A105KBCLNNC.pdf"
+			(at 247.65 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "CAP CER 1UF 50V X5R 0805 low profile"
+			(at 247.65 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CL21A105KBCLNNC"
+			(at 247.65 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a13774a8-94f1-4d3a-9411-de16198d273f")
+		)
+		(pin "2"
+			(uuid "ce805be2-c237-40fd-8d8d-0c2c445d84d4")
+		)
+		(instances
+			(project "WP-2_IC-Card_MRAM_512K"
+				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
+					(reference "C2")
 					(unit 1)
 				)
 			)
@@ -15923,7 +15518,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "000_LOCAL:C_0805_1mm"
+		(property "Footprint" "000_LOCAL:C_0805"
 			(at 214.63 151.13 0)
 			(effects
 				(font
@@ -15932,7 +15527,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "datasheets/CL21A105KBCLNNC.pdf"
 			(at 214.63 151.13 0)
 			(effects
 				(font
@@ -15941,7 +15536,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "CAP CER 1UF 50V X7R 0805"
+		(property "Description" "CAP CER 1UF 50V X5R 0805 low profile"
 			(at 214.63 151.13 0)
 			(effects
 				(font
@@ -15950,7 +15545,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "CL21B105KBFNFNE"
+		(property "MPN" "CL21A105KBCLNNC"
 			(at 214.63 151.13 0)
 			(effects
 				(font
@@ -15969,6 +15564,86 @@
 			(project "WP-2_IC-Card_MRAM_512"
 				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
 					(reference "C1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_name "C_Small_1")
+		(lib_id "000_LOCAL:C_Small")
+		(at 86.36 78.74 270)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e37162db-8b6b-4d25-b655-6f511c7ae4db")
+		(property "Reference" "C4"
+			(at 87.376 77.216 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1u"
+			(at 87.376 80.264 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "000_LOCAL:C_0805"
+			(at 86.36 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "datasheets/CL21A105KBCLNNC.pdf"
+			(at 86.36 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "CAP CER 1UF 50V X5R 0805 low profile"
+			(at 86.36 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CL21A105KBCLNNC"
+			(at 86.36 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "528e63b3-d730-47cf-b078-2f88f800f69f")
+		)
+		(pin "2"
+			(uuid "924aebe1-67ca-46ff-8ecc-9d778c7b5f0a")
+		)
+		(instances
+			(project "WP-2_IC-Card_MRAM_512K"
+				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
+					(reference "C4")
 					(unit 1)
 				)
 			)
@@ -16257,160 +15932,6 @@
 		)
 	)
 	(symbol
-		(lib_name "C_Small_9")
-		(lib_id "000_LOCAL:C_Small")
-		(at 160.02 44.45 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "f188f416-7623-41b0-a03a-a35a0fa059da")
-		(property "Reference" "C11"
-			(at 157.48 40.64 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1u"
-			(at 157.48 43.18 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "000_LOCAL:C_0805_1mm"
-			(at 160.02 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 160.02 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "CAP CER 1UF 50V X7R 0805"
-			(at 160.02 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "CL21B105KBFNFNE"
-			(at 160.02 44.45 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "023a6138-05c7-4eaa-a64f-5167f2211c89")
-		)
-		(pin "2"
-			(uuid "b12a2f16-3a6d-491d-bf19-1a2d17a1fd31")
-		)
-		(instances
-			(project "WP-2_IC-Card_MRAM_512"
-				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "C11")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_name "C_Small_9")
-		(lib_id "000_LOCAL:C_Small")
-		(at 170.18 44.45 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "f22f5585-3b31-4dcf-99b1-0a6846d02e53")
-		(property "Reference" "C12"
-			(at 172.72 40.64 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1u"
-			(at 172.72 43.18 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "000_LOCAL:C_0805_1mm"
-			(at 170.18 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 170.18 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "CAP CER 1UF 50V X7R 0805"
-			(at 170.18 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "CL21B105KBFNFNE"
-			(at 170.18 44.45 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "4daccdf1-8f52-4b9b-a901-984ba7157d94")
-		)
-		(pin "2"
-			(uuid "7d3251e8-23ba-49ae-a5d4-b7baaa5685d1")
-		)
-		(instances
-			(project "WP-2_IC-Card_MRAM_512"
-				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "C12")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "000_LOCAL:VMEM")
 		(at 101.6 78.74 0)
 		(unit 1)
@@ -16602,6 +16123,86 @@
 			(project "WP-2_IC-Card_MRAM_512"
 				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
 					(reference "#PWR02")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_name "C_Small_1")
+		(lib_id "000_LOCAL:C_Small")
+		(at 86.36 125.73 270)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "fe94a929-f123-4172-a9f7-66c5f64d92ef")
+		(property "Reference" "C5"
+			(at 87.376 124.206 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1u"
+			(at 87.376 127.254 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "000_LOCAL:C_0805"
+			(at 86.36 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "datasheets/CL21A105KBCLNNC.pdf"
+			(at 86.36 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "CAP CER 1UF 50V X5R 0805 low profile"
+			(at 86.36 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CL21A105KBCLNNC"
+			(at 86.36 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "01c65d18-6c6a-4f0c-8e7b-88ee387b4b85")
+		)
+		(pin "2"
+			(uuid "8021f4a0-4171-4a6d-bae8-c1d386aebae0")
+		)
+		(instances
+			(project "WP-2_IC-Card_MRAM_512K"
+				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
+					(reference "C5")
 					(unit 1)
 				)
 			)

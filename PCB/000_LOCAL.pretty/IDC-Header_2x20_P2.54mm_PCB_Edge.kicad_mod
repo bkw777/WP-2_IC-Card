@@ -402,7 +402,7 @@
 	)
 	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/IDC-Header_2x20_P2.54mm_Vertical.step"
 		(offset
-			(xyz 0 24.13 0)
+			(xyz 0 24.13 0.508)
 		)
 		(scale
 			(xyz 1 1 1)

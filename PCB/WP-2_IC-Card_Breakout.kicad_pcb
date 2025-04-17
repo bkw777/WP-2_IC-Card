@@ -2632,7 +2632,7 @@
 		)
 		(fp_arc
 			(start 25.828427 -22.171574)
-			(mid 25.980661 -22.936945)
+			(mid 25.980667 -22.936939)
 			(end 26.414213 -23.585788)
 			(stroke
 				(width 0.05)
@@ -2643,7 +2643,7 @@
 		)
 		(fp_arc
 			(start 26.414214 -8.414214)
-			(mid 25.980662 -9.063056)
+			(mid 25.98065 -9.063055)
 			(end 25.828427 -9.828428)
 			(stroke
 				(width 0.05)
@@ -3809,6 +3809,17 @@
 			(font
 				(size 0.25 0.25)
 				(thickness 0.01)
+			)
+		)
+	)
+	(gr_text "Max PCB Thickness: 1.2mm"
+		(at 169.7 101.045 270)
+		(layer "Eco1.User")
+		(uuid "21354bb9-4a84-48cb-b063-160f451d02ad")
+		(effects
+			(font
+				(size 2 2)
+				(thickness 0.2)
 			)
 		)
 	)

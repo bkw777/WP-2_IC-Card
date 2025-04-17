@@ -6,8 +6,8 @@
 	(paper "USLetter")
 	(title_block
 		(title "WP-2_IC-Card_SRAM_128K")
-		(date "2024-08-22")
-		(rev "013")
+		(date "2024-12-11")
+		(rev "014")
 		(company "Brian K. White - b.kenyon.w@gmail.com")
 	)
 	(lib_symbols
@@ -3678,34 +3678,16 @@
 		)
 	)
 	(junction
-		(at 124.46 118.11)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "10778c0c-0b18-48d5-8601-3fc6a80f2bf8")
-	)
-	(junction
-		(at 128.27 123.19)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "12eba217-72a4-420a-aa27-7ffb2a0ae7ac")
-	)
-	(junction
-		(at 124.46 123.19)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "2ffe8842-593b-4f9b-84b8-49eb97a0409d")
-	)
-	(junction
 		(at 95.25 53.34)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "3ec91850-93f4-4ff3-bdc4-59a9306bbf5f")
 	)
 	(junction
-		(at 128.27 118.11)
+		(at 127 118.11)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "709b05a5-bb98-4355-9277-6c6d63507c05")
+		(uuid "4378df8d-dbdb-4c50-a77b-adcfdefbc087")
 	)
 	(junction
 		(at 139.7 118.11)
@@ -3736,6 +3718,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "bdc3e083-d6ca-425c-8c92-d72be068f1ee")
+	)
+	(junction
+		(at 127 123.19)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "bf74cd2c-182a-480d-a64c-ef9a9a2dccfa")
 	)
 	(junction
 		(at 193.04 53.34)
@@ -3771,6 +3759,16 @@
 	)
 	(wire
 		(pts
+			(xy 127 118.11) (xy 139.7 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "27dfd163-e16b-4134-8424-6787ce2cb2fa")
+	)
+	(wire
+		(pts
 			(xy 147.32 147.32) (xy 147.32 139.7)
 		)
 		(stroke
@@ -3781,23 +3779,13 @@
 	)
 	(wire
 		(pts
-			(xy 120.65 123.19) (xy 124.46 123.19)
+			(xy 120.65 118.11) (xy 127 118.11)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "421b2820-f446-4e24-8263-cddde75a4191")
-	)
-	(wire
-		(pts
-			(xy 138.43 118.11) (xy 139.7 118.11)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "587854aa-1aff-4523-bdcd-1e15cdc7713b")
+		(uuid "3c3f14a4-f501-451e-bddb-8c9fdb10d54f")
 	)
 	(wire
 		(pts
@@ -3808,16 +3796,6 @@
 			(type default)
 		)
 		(uuid "5f042e47-a379-41f8-8cb2-a93a0b1510b6")
-	)
-	(wire
-		(pts
-			(xy 124.46 123.19) (xy 128.27 123.19)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5f6a2b03-c805-4507-9aa6-fffbe5069077")
 	)
 	(wire
 		(pts
@@ -3841,13 +3819,13 @@
 	)
 	(wire
 		(pts
-			(xy 128.27 118.11) (xy 130.81 118.11)
+			(xy 120.65 123.19) (xy 127 123.19)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "757d2250-cf41-4658-b572-ffd61b536e78")
+		(uuid "7c2c4ff3-5137-4828-9e92-83fd1c81a050")
 	)
 	(wire
 		(pts
@@ -3891,16 +3869,6 @@
 	)
 	(wire
 		(pts
-			(xy 120.65 118.11) (xy 124.46 118.11)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a2aa8f32-a0a4-4cc9-ac81-40f460dc39af")
-	)
-	(wire
-		(pts
 			(xy 95.25 53.34) (xy 101.6 53.34)
 		)
 		(stroke
@@ -3908,16 +3876,6 @@
 			(type default)
 		)
 		(uuid "abe70851-6909-48f8-9d47-29c019018e05")
-	)
-	(wire
-		(pts
-			(xy 124.46 118.11) (xy 128.27 118.11)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b2f112af-b26a-47fd-b035-3dacd824c19c")
 	)
 	(wire
 		(pts
@@ -4886,7 +4844,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "datasheets/sms_th.pdf"
+		(property "Datasheet" "datasheets/sms.pdf"
 			(at 83.82 99.06 0)
 			(effects
 				(font
@@ -5172,7 +5130,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 128.27 123.19 0)
+		(at 127 123.19 0)
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
@@ -5181,7 +5139,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005f7efb1f")
 		(property "Reference" "#PWR0101"
-			(at 128.27 129.54 0)
+			(at 127 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5190,7 +5148,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 127 127 0)
+			(at 125.73 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5199,7 +5157,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 128.27 123.19 0)
+			(at 127 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5208,7 +5166,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 128.27 123.19 0)
+			(at 127 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5217,7 +5175,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 128.27 123.19 0)
+			(at 127 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5247,15 +5205,15 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005f8e356d")
 		(property "Reference" "BT1"
-			(at 125.73 138.43 90)
+			(at 128.016 132.842 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "CR2016 3v"
-			(at 127 135.89 90)
+		(property "Value" "CR2016"
+			(at 128.016 135.382 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5394,83 +5352,6 @@
 	)
 	(symbol
 		(lib_id "000_LOCAL:C_Small")
-		(at 120.65 120.65 0)
-		(mirror y)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "05cc7f67-5839-4ffc-a632-18c602eb27cd")
-		(property "Reference" "C4"
-			(at 120.65 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "22u"
-			(at 120.65 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "000_LOCAL:C_0805_1mm"
-			(at 120.65 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 120.65 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "CAP CER 22UF 16V X5R 0805 low profile"
-			(at 120.65 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "CL21A226MOCLRNC"
-			(at 120.65 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "8c637441-4320-4783-b467-e301a9fc03fe")
-		)
-		(pin "2"
-			(uuid "38a1f2b9-6aee-469b-a990-e1e51652f392")
-		)
-		(instances
-			(project "WP-2_IC-Card_RAM"
-				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "C4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "000_LOCAL:C_Small")
 		(at 186.69 53.34 270)
 		(mirror x)
 		(unit 1)
@@ -5495,7 +5376,7 @@
 				)
 			)
 		)
-		(property "Footprint" "000_LOCAL:C_0805_1mm"
+		(property "Footprint" "000_LOCAL:C_0805"
 			(at 186.69 53.34 0)
 			(effects
 				(font
@@ -5504,7 +5385,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "datasheets/CL21A105KBCLNNC.pdf"
 			(at 186.69 53.34 0)
 			(effects
 				(font
@@ -5681,85 +5562,8 @@
 		)
 	)
 	(symbol
-		(lib_id "000_LOCAL:R")
-		(at 134.62 118.11 90)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "174d9fbd-7b9f-4462-9d92-3287abb6c4d7")
-		(property "Reference" "R2"
-			(at 134.62 115.57 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "1K"
-			(at 134.62 120.65 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "000_LOCAL:R_0805"
-			(at 134.62 116.332 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 134.62 118.11 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "RES SMD 1K OHM 1% 1/8W 0805"
-			(at 134.62 118.11 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "CRCW08051K00FKEA"
-			(at 134.62 118.11 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "f821c5ec-6ccb-4a10-ad5e-469f253ed76c")
-		)
-		(pin "2"
-			(uuid "aa441eca-63c1-4d51-b8e6-4f7a172c7aeb")
-		)
-		(instances
-			(project "WP-2_IC-Card_RAM"
-				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "R2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "000_LOCAL:C_Small")
-		(at 128.27 120.65 0)
+		(at 127 120.65 0)
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
@@ -5768,7 +5572,7 @@
 		(dnp no)
 		(uuid "306e3fba-35dc-4a61-9d71-b962f336b736")
 		(property "Reference" "C2"
-			(at 128.27 114.3 0)
+			(at 127 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5776,24 +5580,15 @@
 			)
 		)
 		(property "Value" "22u"
-			(at 128.27 116.84 0)
+			(at 127 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "000_LOCAL:C_0805_1mm"
-			(at 128.27 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 128.27 120.65 0)
+		(property "Footprint" "000_LOCAL:C_1206"
+			(at 127 120.65 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5801,8 +5596,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "CAP CER 22UF 16V X5R 0805 low profile"
-			(at 128.27 120.65 0)
+		(property "Datasheet" "datasheets/CL31A226MOCLNNC.pdf"
+			(at 127 120.65 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5810,8 +5605,17 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "CL21A226MOCLRNC"
-			(at 128.27 120.65 0)
+		(property "Description" "CAP CER 22UF 16V X5R 1206 low profile"
+			(at 127 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CL31A226MOCLNNC"
+			(at 127 120.65 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6297,6 +6101,83 @@
 		)
 	)
 	(symbol
+		(lib_id "000_LOCAL:C_Small")
+		(at 120.65 120.65 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ce4cd403-9e63-46fc-bb43-678b0fa61ead")
+		(property "Reference" "C3"
+			(at 120.65 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "22u"
+			(at 120.65 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "000_LOCAL:C_1206"
+			(at 120.65 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "datasheets/CL31A226MOCLNNC.pdf"
+			(at 120.65 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "CAP CER 22UF 16V X5R 1206 low profile"
+			(at 120.65 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CL31A226MOCLNNC"
+			(at 120.65 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4d61c313-9592-4f3c-bbd9-4bf7fd162b4c")
+		)
+		(pin "2"
+			(uuid "4d653fcb-b092-4900-8b68-2d8246643100")
+		)
+		(instances
+			(project "WP-2_IC-Card_SRAM_128K"
+				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
+					(reference "C3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:VMEM")
 		(at 139.7 116.84 0)
 		(unit 1)
@@ -6504,83 +6385,6 @@
 			(project "WP-2_IC-Card_RAM"
 				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
 					(reference "#PWR03")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "000_LOCAL:C_Small")
-		(at 124.46 120.65 0)
-		(mirror y)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "e1ef62fa-c054-4cfd-9273-d271eb5edea0")
-		(property "Reference" "C3"
-			(at 124.46 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "22u"
-			(at 124.46 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "000_LOCAL:C_0805_1mm"
-			(at 124.46 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 124.46 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "CAP CER 22UF 16V X5R 0805 low profile"
-			(at 124.46 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "CL21A226MOCLRNC"
-			(at 124.46 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "e9181c91-4de1-48ce-a90d-664ed7be2642")
-		)
-		(pin "2"
-			(uuid "703faf4d-a82f-447d-b4c9-eae173167a9d")
-		)
-		(instances
-			(project "WP-2_IC-Card_RAM"
-				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "C3")
 					(unit 1)
 				)
 			)

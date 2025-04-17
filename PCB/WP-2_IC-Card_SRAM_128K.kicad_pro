@@ -61,9 +61,7 @@
       ],
       "drc_exclusions": [
         "lib_footprint_mismatch|122950000|83745000|55565a7b-ee36-47e4-8234-536d91c0e785|00000000-0000-0000-0000-000000000000",
-        "lib_footprint_mismatch|148950000|83745000|851f3122-71af-4b74-b1c1-e94d1f2c2534|00000000-0000-0000-0000-000000000000",
-        "silk_overlap|119600000|105395000|3e916af2-1da9-47c6-8134-e86ab8daa2b1|ccfa4fa6-c11f-48d3-86a5-219a2d787095",
-        "silk_overlap|121300000|106395000|e7da7892-38eb-405e-9c57-f360c3ac20d3|0e54e649-7f38-4ace-8fa5-7078db16a733"
+        "lib_footprint_mismatch|148950000|83745000|851f3122-71af-4b74-b1c1-e94d1f2c2534|00000000-0000-0000-0000-000000000000"
       ],
       "meta": {
         "filename": "board_design_settings.json",
@@ -506,7 +504,7 @@
       "plot": "GERBER_${TITLE}_${REVISION}",
       "pos_files": "GERBER_${TITLE}_${REVISION}",
       "specctra_dsn": "",
-      "step": "WP-2_IC-Card_RAM.step",
+      "step": "../COVER/inc/WP-2_IC-Card_RAM.step",
       "svg": "",
       "vrml": ""
     },
@@ -514,7 +512,7 @@
   },
   "schematic": {
     "annotate_start_num": 0,
-    "bom_export_filename": "out/${TITLE}.fab_bom.csv",
+    "bom_export_filename": "out/${TITLE}.bom.csv",
     "bom_fmt_presets": [],
     "bom_fmt_settings": {
       "field_delimiter": ",",

@@ -67,8 +67,7 @@
         "lib_footprint_mismatch|126100000|86245000|fa2f6c01-b057-4e25-86df-e4819b22cebd|00000000-0000-0000-0000-000000000000",
         "lib_footprint_mismatch|130850000|100245000|07c38783-f9a9-44da-8ebd-61e7c14051f7|00000000-0000-0000-0000-000000000000",
         "lib_footprint_mismatch|139850000|100245000|89f15255-d868-4688-ad67-6e0ad3563d14|00000000-0000-0000-0000-000000000000",
-        "lib_footprint_mismatch|148850000|100245000|7b12e544-5003-4e71-803b-ebfdc0f060da|00000000-0000-0000-0000-000000000000",
-        "starved_thermal|158175000|112196000|91600da4-f91a-45ed-97b5-9c655ebbea6d|0355031e-9228-4c96-bb34-94ea1ceaf3a8|F.Cu"
+        "lib_footprint_mismatch|148850000|100245000|7b12e544-5003-4e71-803b-ebfdc0f060da|00000000-0000-0000-0000-000000000000"
       ],
       "meta": {
         "filename": "board_design_settings.json",
@@ -527,7 +526,7 @@
   },
   "schematic": {
     "annotate_start_num": 0,
-    "bom_export_filename": "out/${TITLE}.fab_bom.csv",
+    "bom_export_filename": "out/${TITLE}.bom.csv",
     "bom_fmt_presets": [],
     "bom_fmt_settings": {
       "field_delimiter": ",",
