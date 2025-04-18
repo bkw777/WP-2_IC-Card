@@ -6351,7 +6351,7 @@
 		(uuid "4855ae46-b23c-4ab6-b009-00a0edb7e5e1")
 	)
 	(bus_entry
-		(at 143.51 167.64)
+		(at 143.51 165.1)
 		(size 2.54 -2.54)
 		(stroke
 			(width 0)
@@ -7079,7 +7079,7 @@
 	)
 	(wire
 		(pts
-			(xy 46.99 135.89) (xy 53.34 135.89)
+			(xy 45.72 135.89) (xy 53.34 135.89)
 		)
 		(stroke
 			(width 0)
@@ -7129,7 +7129,7 @@
 	)
 	(wire
 		(pts
-			(xy 129.54 176.53) (xy 129.54 172.72)
+			(xy 129.54 176.53) (xy 129.54 170.18)
 		)
 		(stroke
 			(width 0)
@@ -7259,7 +7259,7 @@
 	)
 	(wire
 		(pts
-			(xy 31.75 58.42) (xy 46.99 58.42)
+			(xy 31.75 58.42) (xy 45.72 58.42)
 		)
 		(stroke
 			(width 0)
@@ -7999,7 +7999,7 @@
 	)
 	(wire
 		(pts
-			(xy 46.99 134.62) (xy 46.99 135.89)
+			(xy 45.72 134.62) (xy 45.72 135.89)
 		)
 		(stroke
 			(width 0)
@@ -8289,7 +8289,7 @@
 	)
 	(wire
 		(pts
-			(xy 115.57 135.89) (xy 109.22 135.89)
+			(xy 114.3 135.89) (xy 109.22 135.89)
 		)
 		(stroke
 			(width 0)
@@ -8549,7 +8549,7 @@
 	)
 	(wire
 		(pts
-			(xy 46.99 57.15) (xy 72.39 57.15)
+			(xy 45.72 57.15) (xy 72.39 57.15)
 		)
 		(stroke
 			(width 0)
@@ -8819,7 +8819,7 @@
 	)
 	(wire
 		(pts
-			(xy 129.54 138.43) (xy 129.54 162.56)
+			(xy 129.54 137.16) (xy 129.54 160.02)
 		)
 		(stroke
 			(width 0)
@@ -8959,7 +8959,7 @@
 	)
 	(wire
 		(pts
-			(xy 46.99 57.15) (xy 46.99 58.42)
+			(xy 45.72 57.15) (xy 45.72 58.42)
 		)
 		(stroke
 			(width 0)
@@ -9109,7 +9109,7 @@
 	)
 	(bus
 		(pts
-			(xy 146.05 102.87) (xy 146.05 165.1)
+			(xy 146.05 102.87) (xy 146.05 162.56)
 		)
 		(stroke
 			(width 0)
@@ -9249,7 +9249,7 @@
 	)
 	(wire
 		(pts
-			(xy 129.54 138.43) (xy 115.57 138.43)
+			(xy 129.54 137.16) (xy 114.3 137.16)
 		)
 		(stroke
 			(width 0)
@@ -9299,7 +9299,7 @@
 	)
 	(wire
 		(pts
-			(xy 133.35 167.64) (xy 143.51 167.64)
+			(xy 133.35 165.1) (xy 143.51 165.1)
 		)
 		(stroke
 			(width 0)
@@ -9379,7 +9379,7 @@
 	)
 	(wire
 		(pts
-			(xy 115.57 138.43) (xy 115.57 135.89)
+			(xy 114.3 137.16) (xy 114.3 135.89)
 		)
 		(stroke
 			(width 0)
@@ -9449,7 +9449,7 @@
 	)
 	(wire
 		(pts
-			(xy 46.99 134.62) (xy 31.75 134.62)
+			(xy 45.72 134.62) (xy 31.75 134.62)
 		)
 		(stroke
 			(width 0)
@@ -9529,7 +9529,7 @@
 	)
 	(bus
 		(pts
-			(xy 146.05 165.1) (xy 146.05 184.15)
+			(xy 146.05 162.56) (xy 146.05 184.15)
 		)
 		(stroke
 			(width 0)
@@ -9949,9 +9949,9 @@
 		)
 		(uuid 69bcf6ec-d5f6-466a-94f2-53ec12e59438)
 	)
-	(text "Use the Industrial part (the C in MRxA08xCYSxx) for max magnetic protection.\n\nMRAM is *permanently* damaged by exposure to magnetic fields.\n\nCommercial or Automotive can tolerate 25 gauss.\nIndustrial can tolerate 125 gauss.\nA fridge magnet is 100 gauss.\n"
+	(text "Use the Industrial rated part, the C in MRxA08xCYSxx\nfor max magnetic protection.\n\nMRAM is physically and permanently damaged by magnetic fields.\n\nCommercial or Automotive can tolerate 25 gauss.\nIndustrial can tolerate 125 gauss.\nA fridge magnet is 100 gauss.\n"
 		(exclude_from_sim no)
-		(at 152.146 121.666 0)
+		(at 151.892 123.444 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10024,17 +10024,6 @@
 			(justify bottom)
 		)
 		(uuid "4196dabb-24a3-43ae-9194-7eb375642f38")
-	)
-	(text "For 128K use\nWP-2_IC-Card_Cover_MRAM_128"
-		(exclude_from_sim no)
-		(at 16.002 193.802 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left top)
-		)
-		(uuid "4653c10d-02ec-4875-94e8-7ae65b74e319")
 	)
 	(text "1x38 1.27mm Female"
 		(exclude_from_sim no)
@@ -11235,7 +11224,7 @@
 		(uuid "b9f5eb98-1d12-42af-96b4-d1e94a9fd2db")
 	)
 	(label "3A17a"
-		(at 129.54 162.56 180)
+		(at 129.54 160.02 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -11378,7 +11367,7 @@
 		(uuid "cf0fcb5a-df8a-4758-abb7-04b3f8e6b453")
 	)
 	(label "3A17"
-		(at 133.35 167.64 0)
+		(at 133.35 165.1 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12422,7 +12411,7 @@
 	)
 	(symbol
 		(lib_id "000_LOCAL:SolderJumper_3_Bridged12")
-		(at 129.54 167.64 90)
+		(at 129.54 165.1 90)
 		(unit 1)
 		(exclude_from_sim yes)
 		(in_bom no)
@@ -12430,7 +12419,7 @@
 		(dnp no)
 		(uuid "1edfec81-5a7e-4c66-9e16-edd395c49aaa")
 		(property "Reference" "JP2"
-			(at 125.222 166.37 90)
+			(at 125.222 163.83 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12438,7 +12427,7 @@
 			)
 		)
 		(property "Value" "A17"
-			(at 125.222 168.91 90)
+			(at 125.222 166.37 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12446,7 +12435,7 @@
 			)
 		)
 		(property "Footprint" "000_LOCAL:SolderJumper-3_P1.3mm_Bridged12_RoundedPad1.0x1.5mm"
-			(at 129.54 167.64 0)
+			(at 129.54 165.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12455,7 +12444,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 129.54 167.64 0)
+			(at 129.54 165.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12464,7 +12453,7 @@
 			)
 		)
 		(property "Description" "3-pole Solder Jumper, pins 1+2 closed/bridged"
-			(at 129.54 167.64 0)
+			(at 129.54 165.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12707,15 +12696,15 @@
 		(dnp no)
 		(uuid "312f46bc-03a4-4285-b5b2-9b43015dab30")
 		(property "Reference" "JP1"
-			(at 39.624 49.53 0)
+			(at 43.18 44.196 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "~{RAM}/ROM"
-			(at 42.672 53.34 0)
+		(property "Value" "~{DET}"
+			(at 43.18 46.736 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14143,7 +14132,7 @@
 				)
 			)
 		)
-		(property "Footprint" "000_LOCAL:SW_SP4T_CUS-14B pth"
+		(property "Footprint" "000_LOCAL:CUS-14TB pth"
 			(at 50.165 179.705 0)
 			(effects
 				(font

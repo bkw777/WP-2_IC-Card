@@ -71,7 +71,7 @@
 	(net_tie_pad_groups "1, 2")
 	(fp_poly
 		(pts
-			(xy 0.25 -0.3) (xy -0.25 -0.3) (xy -0.25 0.3) (xy 0.25 0.3)
+			(xy 0.2 -0.2) (xy -0.2 -0.2) (xy -0.2 0.2) (xy 0.2 0.2)
 		)
 		(stroke
 			(width 0)
