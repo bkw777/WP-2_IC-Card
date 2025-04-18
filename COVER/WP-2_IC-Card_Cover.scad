@@ -16,7 +16,7 @@ render_preview_for_kicad = false;
 // Which part to generate?
 part = "sram_top"; // *** - top cover for the battery-backed 128K SRAM card
 //part = "rom_top"; // same as sram_top without the battery
-//part = "mram_512_top"; // top cover for the 512K MRAM card
+//part = "mram_top"; // top cover for the MRAM card
 //part = "breakout_top"; // top cover for the breakout card
 //part = "bottom"; // bottom cover - not applicable for 1.2mm PCB. Use with pcb_thickness 0.8 or less and card_thickness 3.2
 //part = "bank_slider"; // just the bank switch actuator slider part by itself
@@ -29,6 +29,7 @@ nbanks = 4;
 // "slider" = trapped sliding actuator
 // "finger" = large concave opening for a finger
 // "pen"    = minimal slot opening for a pen
+// "none"   = switch not populated
 bank_switch_style = "slider";
 wren_switch_style = "slider";
 
@@ -128,7 +129,7 @@ components_height = 1.15; // fudge it down from 1.2 just enought to allow printi
 // Set this to 0.6 or less to generate a model
 // that allows an FDM or SLA printer to print the
 // thin sheet over the components.
-//thin_wall_minimum = 0.3; // 0.3 FDM printing, mram_512_top has small bit of 0.3mm thin roof just over the slide switch
+//thin_wall_minimum = 0.3; // 0.3 FDM printing, mram_top has small bit of 0.3mm thin roof just over the slide switch
 //thin_wall_minimum = 0.6; // *** 0.6 FDM printing (home)
 thin_wall_minimum = 0.7; // 0.7 commercial SLS/MJF printing
 
@@ -164,7 +165,8 @@ adhesive_thickness = 0.15; // *** good enough for most cases
 pcb_stl =
  part == "rom_top"      ? "inc/rom.pcb.stl"      :
  part == "sram_top"     ? "inc/sram.pcb.stl"     :
- part == "mram_512_top" ?
+ part == "mram_top"     ?
+   bank_switch_style == "none" ? "inc/mram-128.pcb.stl" :
    mram_shield ? "inc/mram-shielded.pcb.stl" :
    "inc/mram.pcb.stl"                            :
  part == "breakout_top" ? "inc/breakout.pcb.stl" :
@@ -251,7 +253,7 @@ says =
   (part == "wren_slider") ? wren_slider_width :
   (part == "rom_top" && wren_switch_style == "slider") ? wren_slider_width :
   (part == "rom_top" && wren_switch_style == "finger") ? wren_finger_width :
-  (part == "mram_512_top" && bank_switch_style == "finger") ? bank_finger_width :
+  (part == "mram_top" && bank_switch_style == "finger") ? bank_finger_width :
   bank_slider_width ;
 
 syo = says/2 + swys/2 - 0.45; // slider position Y offset
@@ -436,7 +438,9 @@ module connector (top=true) {
  }
 }
 
-module slide_switch_opening (t="slider",n=2) {
+module slide_switch_opening (t="none",n=2) {
+   if (t!="none") {
+
    stow = stw + sth * (n-1); // slider top opening width
    sbw = sth * n + stow + sth * n; // slider base width
    // switch body len is  throw * nthrows + X
@@ -450,6 +454,7 @@ module slide_switch_opening (t="slider",n=2) {
    } else {
     component_pocket(w=w,l=swys,h=swh);
    }
+
    // pins
    translate([0,-swpl/2,0])
     component_pocket(w=w+swpl,l=swys+swpl,h=swph);
@@ -475,6 +480,8 @@ module slide_switch_opening (t="slider",n=2) {
          translate([aww/2-cr,0,0])
           cylinder(h=swh,r1=cr,r2=cr+swh/finger_window_chamfer_slope,center=true);
      }
+   }
+
    }
 }
 
@@ -569,7 +576,7 @@ module sram_top () {
  batt_retainer();
 }
 
-module mram_512_top () {
+module mram_top () {
  difference() {
   top_common();
 
@@ -681,8 +688,8 @@ if($preview || render_preview_for_kicad) {
       switch_slider();
   }
  if (part == "sram_top") sram_top();
- if (part == "mram_512_top") {
-  mram_512_top();
+ if (part == "mram_top") {
+  mram_top();
   if (bank_switch_style == "slider")
    translate([swxp,swyp,0])
     rotate([0,0,swa]) 
@@ -715,7 +722,7 @@ if($preview || render_preview_for_kicad) {
    rotate([0,180,0]) {
     if (part == "rom_top") rom_top();
     if (part == "sram_top") sram_top();
-    if (part == "mram_512_top") mram_512_top();
+    if (part == "mram_top") mram_top();
     if (part == "breakout_top") breakout_top();
    }
   // don't flip the slider over
@@ -725,7 +732,7 @@ if($preview || render_preview_for_kicad) {
    echo("***************************************************");
   }
   
-  if (part == "mram_512_top" && bank_switch_style == "slider") {
+  if (part == "mram_top" && bank_switch_style == "slider") {
     translate([0,-bl/2+cnl-sprue_len-says/2,0])
      switch_slider(n=nbanks);
     slider_sprues(l=sprue_len);
