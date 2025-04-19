@@ -64,20 +64,25 @@ The BOM specifies the Industrial part so it should be reasonably safe, however y
 [512K MRAM BOM from DigiKey](https://www.digikey.com/short/nqjddjf5)  , [Mouser](https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=f6eb946163)  
 <!-- RIP Shapeways... [MRAM-512 cover from Shapeways](http://shpws.me/TIyf)  -->
 
-There are two versions of 3d-printable cover available, with different ways to handle the bank-select switch.  
-The "slider" version has a fancy separate moving part switch actuator.  
-The "window" version is a single piece and simpler to print.
+There are a few versions of 3d-printable cover available, with different ways to handle the bank-select switch.
+
+Supports both a 512K chip with a bank-select switch for 4 x 128K banks, or a 128K chip and simply omit the bank-select parts.
+
+The solder-jumpers are for hacking and custom software development.  
+They are pre-connected for normal operation and you normally just ignore them.  
+They can be used to make the card emulate a ROM card, or enable all 256K in RAM mode.  
+When A17 is connected from the bus (like a 256K ROM card) the bank switch becomes 2 banks of 256K, where positions 1 & 2 both select the same bank 1, and positions 3 & 4 both select the same bank 2.
 
 ![](ref/IMG_0049.JPG)  
 ![](ref/IMG_0050.JPG)  
 ![](ref/IMG_0053.JPG)  
 ![](ref/IMG_0058.JPG)  
-![](PCB/out/WP-2_IC-Card_MRAM_512K.jpg)  
+![](PCB/out/WP-2_IC-Card_MRAM.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM.slider.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM.finger.jpg)  
-![](PCB/out/WP-2_IC-Card_MRAM_512K.top.jpg)  
-![](PCB/out/WP-2_IC-Card_MRAM_512K.bottom.jpg)  
-![](PCB/out/WP-2_IC-Card_MRAM_512K.svg)
+![](PCB/out/WP-2_IC-Card_MRAM.top.jpg)  
+![](PCB/out/WP-2_IC-Card_MRAM.bottom.jpg)  
+![](PCB/out/WP-2_IC-Card_MRAM.svg)
 
 ----
 
@@ -94,13 +99,13 @@ There are no known rom images for any rom cards. Don't bother building one of th
 ![](PCB/out/WP-2_IC-Card_ROM.write-protect.jpg)  
 ![](PCB/out/WP-2_IC-Card_ROM.top.jpg)  
 ![](PCB/out/WP-2_IC-Card_ROM.bottomjpg)  
-![](PCB/out/WP-2_IC-Card_ROM.svg)  
+![](PCB/out/WP-2_IC-Card_ROM.svg)
 
 ----
 
 ## Programming Adapter
 The programming adapter supports both ROM and RAM cards.  
-Use with a standard eprom programmer such as TL-866.  
+Use with a standard eprom programmer such as TL-866.
 
 <!-- [Programming Adapter PCB from OSHPark](https://oshpark.com/shared_projects/TkzNwgho)  -->
 [Programming Adapter PCB from PCBWAY](https://www.pcbway.com/project/shareproject/TANDY_WP_2_IC_Card_Programming_Adapter.html)
@@ -109,12 +114,12 @@ Use with a standard eprom programmer such as TL-866.
 
 In addition to soldering the pins to the PCB, also make a male jumper for the write-enable contacts on the card.  
 Cut a pair of pins off the leftover 2.54mm pin header, and solder-blob the two pins together on the short side.  
-There is a spot to stow the jumper on the programming adapter when not in use.  
+There is a spot to stow the jumper on the programming adapter when not in use.
 
 ![](WP-2_IC-Card_programming_adapter.jpg)  
 ![](WP-2_IC-Card_programming_adapter.ROM.jpg)  
 ![](WP-2_IC-Card_programming_adapter.RAM.jpg)  
-![](PCB/out/WP-2_IC-Card_programming_adapter.svg)  
+![](PCB/out/WP-2_IC-Card_programming_adapter.svg)
 
 ### To program the ROM card
 
@@ -143,7 +148,7 @@ Set all 4 jumpers on the programming adapter to RAM.
 
 Examples using a TL-866 programmer (628128 is the generic part number compatible with the SRAM on the card):  
 `minipro --skip_id --device 628128 --read ram.bin`  
-`minipro --skip_id --device 628128 --write ram.bin`  
+`minipro --skip_id --device 628128 --write ram.bin`
 
 ----
 
@@ -155,7 +160,7 @@ Examples using a TL-866 programmer (628128 is the generic part number compatible
 [Breakout BOM from DigiKey](https://www.digikey.com/short/323npm39)  
 
 ![](PCB/out/WP-2_IC-Card_Breakout.jpg)  
-![](PCB/out/WP-2_IC-Card_Breakout.svg)  
+![](PCB/out/WP-2_IC-Card_Breakout.svg)
 
 
 # Moving files between a card and a PC
@@ -170,7 +175,7 @@ Then use the WP-2 (press `F2`+`=`) to copy files between `MEMORY CARD` and `DISK
 # Reference Material
 [WP-2 Owner & Service Manuals](https://archive.org/search.php?query=Tandy%20WP-2)  
 Card slot signals & usage: Service Manual 8-2, C-3.  
-Executable "RUN" files: Service Manual 4-16, D-1.  
+Executable "RUN" files: Service Manual 4-16, D-1.
 
 ### Connector:  
 [Original Connectors](ref/JC20-B38S-F1.pdf)  
@@ -182,7 +187,7 @@ The pins inside the card slot are 1 row x 38 pins, 1.27mm pitch, 6.0mm long
 SAMTEC 8.5mm Pin Socket  
 <https://duckduckgo.com/?q=SMS-138-01>  
 <https://www.digikey.com/en/products/detail/samtec-inc/SMS-138-01-G-S/9773732>  
-<https://www.mouser.com/ProductDetail/Samtec/SMS-138-01-G-S>  
+<https://www.mouser.com/ProductDetail/Samtec/SMS-138-01-G-S>
 
 There are much less expensive generic female 1.27mm pin headers on ebay and aliexpress, but they don't work for this. Sorry :/ The metal parts inside the cheap connectors aren't held in place accurately enough, and the pins in the WP-2 hit the edges of the metal parts in female sockets, and no amount of wiggling gets all 38 pins to line up and let the card insert. And trying just risks damaging the pins inside the WP-2. So, the Samtec socket is both deep enough to take the 6mm-long pins, and is manufactured to tight enough tolerances that the pins slot right into the socket with no problems.
 
@@ -196,48 +201,69 @@ Pin 15, 16, & 36:
 
 Pin 15 -> RA5 -> IC5 pin 66, "S1"  
 Pin 16 -> RA5 -> IC5 pin 67, "S2"  
-Pin 36 -> RA5 -> IC5 pin 68, "S3"  
+Pin 36 -> RA5 -> IC5 pin 68, "S3"
 
-RA5 is 100k pullup to VDD.  
+RA5 is 100k pullup to VDD.
 
-IC5 is a gate array with unknown programming.  
+IC5 is a gate array with unknown programming.
 
-The S1, S2, S3 labels come from a schematic in the service manual. They are not mentioned anywhere else.  
+The S1, S2, S3 labels come from a schematic in the service manual. They are not mentioned anywhere else.
 
-The service manual says the original IC Cards have no connections on any of these pins (that's in the cards, not in the WP-2).  
+The service manual says the original IC Cards have no connections on any of these pins (that's in the cards, not in the WP-2).
 
-It is unknown if the WP-2 does anything at all with these pins. They are connected to a chip, and the chip is a gate array that could be programmed to do anything. The only clues are that the pins are actually connected to anything at all instead of NC, and that they are pulled up rather than down or floating. It suggests there was a possible reserved usage, and that it was an active-low signal, and that possibly software could do it on the existing hardware.
-One guess for pins 15 & 16 might be made purely from their position on the connector. Possibly the spec for the "Toshiba IC-Card" interface includes pins for A18 and A19 that the WP-2 just doesn't happen to use.
+It is unknown if the WP-2 does anything at all with these pins.  
+They are connected to a chip, and the chip is a gate array that could be programmed to do anything.  
+The only clues are that the pins are actually connected to anything at all instead of NC, and that they are pulled up rather than down or floating.  
+It suggests there was a possible reserved usage, and that it was an active-low signal, and that possibly software could do it on the existing hardware.  
+One guess for pins 15 & 16 might be made purely from their position on the connector. Possibly the spec for the "Toshiba IC-Card" interface includes pins for A18 and A19 that the WP-2 just doesn't happen to use. Though, unused address lines pins would more likely be pulled down than up, since address lines are active-high.
 
 Pin 17, A17: Only used for ROM. the WP-2 only supports up to 128K in a RAM card.
 
-Pin 37, BCHK/Vchk, Battery Voltage Check: Unknown usage, but probably originally intended for the WP-2 (or the Citizen CBM-10WP) to detect the level of the battery in a RAM card. The schematic on service manual page 8-2 doesn't show Vchk connecting to anything, and I also cannot find anything anywhere on the motherboard that has continuity with this pin. Other similar machines had a pin that was used for the host machine to read the level of the battery on a RAM card. See the VBB pin in [Atari Portfolio Technical reference Guide, page 11](https://archive.org/details/atariportfoliotechnicalreferenceguide1989/page/n10/mode/1up).
+Pin 37, BCHK/Vchk, Battery Voltage Check: It's unknown exactly how this was intended to be used by the "IC-Card" spec.  
+The SRAM card here simply connects pin 37 to BATT+. This seems to do nothing at all on a WP-2 but maybe some other machine like WP-3 or Citizen uses it.  
+The schematic on page 8-2 in the servivce manual doesn't show Vchk connecting to anything, and I also cannot find anything anywhere on the motherboard that has continuity with this pin.  
+Other similar machines did have a pin that was used for the host machine to read the level of the battery on a RAM card.  
+See the VBB pin in [Atari Portfolio Technical reference Guide, page 11](https://archive.org/details/atariportfoliotechnicalreferenceguide1989/page/n10/mode/1up).  
 
 ### Other similar machines and card standards that are NOT the same and NOT compatible
 
 The "Toshiba IC-Card" appears to have been almost a standard, maybe, before PCMCIA type 1 was formalized. And so it's tempting to try to find other possible cards that might be compatible besides the ones sold by Tandy. There might be some but I have not found any yet.
 
-The following are NOT the same and NOT compatible.
+Just for the sake of keeping track somewhere, the following look very similar, but are NOT the same and NOT compatible.
 
 * Amstrad NC100 and clones & derivatives like NTS DreamWriter 325.  
   They look very similar but the memory card in those is PCMCIA Type 1, which is totally different from this.
 
 * ITT Canon Star Card  
-  single row 38 pins (or maybe 39 or 40, references say 38-pin, but you can count 39 holes plus another smaller hole)
-  but no polarity notch on the pin-38 side.
+  Single row 38 pins (or maybe 39 or 40, references say 38-pin, but you can physically count 39 holes plus another smaller hole in pictures)
+  But no polarity notch on the pin-38 side.
 
 * Yamaha MCD32 / MCD64  
-  MCD in particular really looks perfect, just upside-down, with the same single-row 38-pin connector and a keying notch on one side. But the key notch is on the on the wrong side, and it's not merely the same card but updside down. The pinout is different. Just for starters, MCD has GND on both pin 1 and pin 38, and vcc on pin 20, while the WP-2 has GND on pin 1 and VCC on pin 38. No matter which direction the pin numbers count, whether the Yamaha counts in the other direction or not, whether inserting the card upside-down changes that or not, no matter what either way if you managed to insert the card it would short the WP-2's power rail directly to GND.
+  This one is uinsideous. It combines both the fact that it *looks* perfect and probably fits perfectly,
+  with the fact that it would short the WP-2's VCC directly to GND.
+  It has the same single-row 38-pin connector and the same shape of keying notch on one side.
+  You could probably plug this card in and it would probably fit perfectly.
+  The key notch is on the on the wrong side, so you'd have to plug it in upside-down, but maybe the pins are just numbered the other way and doesn't really matter?
+  Well it's not merely the same card but updside down. The pinout is different.
+  Just for starters, MCD has GND on both pin 1 and pin 38, while WP-2 has GND on pin 1 and VCC on pin 38.
+  So, no matter which direction the pin numbers count, no matter what the rest of the pinout looks like,
+  if you managed to insert the card it would short the WP-2's VCC power rail directly to GND!
 
 # TODO
 CamelFORTH on ROM?  
 But how to construct rom image?  
 Try to deduce how a rom is supposed to work by recording the bus while trying to load a dictionary while the breakout board has the /DET pin not connected to GND.
 
-Document how to create a RUN file like CamelFORTH. I don't know myself, but John Hogerhuis did it to make CamelFORTH based on the available info in the service manual, and someone else ported Zork the same way. Figure that out and write some sort of reproduceable toolchain & Makefile template hello world project to create new executables.
+Document how to create a RUN file.  
+Figure that out and write some sort of reproduceable toolchain & Makefile template hello world project to create new executables.  
+Known examples:  
+  John Hogerhuis [CamelFORTH](http://bitchin100.com/files/wp2/CAMEL.ZIP)
+  "Christopher" from "randomvariations" [DUMPROM](https://randomvariations.com/category/tandy-wp-2/)
+  Ben Grimmett [HEXVIEW](https://www.facebook.com/groups/Model.T.Computers/files/files)
 
-Use the programming adapter to dump ram card images and reverse engineer the file format. Possibly eventually add an mcu to the card that can read & write the sram and present a standard usb mass storage interface to a pc.
+Use the programming adapter to dump ram card images and reverse engineer the "filesystem".  
+The files themselves (at least .DO) are already fairly well documented: https://bitchin100.com/files/wp2/wp2format.html
 
-Add a 5v power output for a [MounT](https://github.com/bkw777/MounT)?
+Possibly eventually add an mcu to the card that can read & write the sram and present a standard usb mass storage interface to a pc.
 
-Some way to access the card directly from a pc. IE, add a microcontroller to provide a usb interface.
+Add a 5v power output for a [MounT](https://github.com/bkw777/MounT) & [PDDuino](https://github.com/bkw777/PDDuino)?
