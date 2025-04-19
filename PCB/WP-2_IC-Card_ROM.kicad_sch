@@ -3056,6 +3056,187 @@
 				)
 			)
 		)
+		(symbol "000_LOCAL:SolderJumper_2_Open"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0) hide)
+			(exclude_from_sim yes)
+			(in_bom no)
+			(on_board yes)
+			(property "Reference" "JP"
+				(at 0 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SolderJumper_2_Open"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Solder Jumper, 2-pole, open"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "solder jumper SPST"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "SolderJumper*Open*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "SolderJumper_2_Open_0_1"
+				(arc
+					(start -0.254 1.016)
+					(mid -1.2656 0)
+					(end -0.254 -1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -0.254 1.016)
+					(mid -1.2656 0)
+					(end -0.254 -1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.254 1.016) (xy -0.254 -1.016)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.254 1.016) (xy 0.254 -1.016)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0.254 -1.016)
+					(mid 1.2656 0)
+					(end 0.254 1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0.254 -1.016)
+					(mid 1.2656 0)
+					(end 0.254 1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+			)
+			(symbol "SolderJumper_2_Open_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "000_LOCAL:VCC"
 			(power)
 			(pin_names
@@ -3420,6 +3601,18 @@
 		(color 0 0 0 0)
 		(uuid "d3471979-2e26-44d5-886d-cc7f523b3ce9")
 	)
+	(junction
+		(at 129.54 139.7)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e83a2d76-d611-443c-9b88-e747c5f0ce43")
+	)
+	(junction
+		(at 114.3 139.7)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ef5c5685-7bc2-421d-9e59-68a0e7f8f915")
+	)
 	(no_connect
 		(at 127 142.24)
 		(uuid "5b5b4677-8642-4fba-a328-0f64d7912586")
@@ -3450,6 +3643,36 @@
 	)
 	(wire
 		(pts
+			(xy 158.75 132.08) (xy 158.75 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "04eb6ee5-2743-413d-9c9e-993a726720af")
+	)
+	(wire
+		(pts
+			(xy 114.3 139.7) (xy 116.84 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "294278a4-5e21-440a-803e-cc3aea15b741")
+	)
+	(wire
+		(pts
+			(xy 138.43 101.6) (xy 158.75 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "34a55803-2d3f-4158-ba46-42bdad807389")
+	)
+	(wire
+		(pts
 			(xy 139.7 139.7) (xy 177.8 139.7)
 		)
 		(stroke
@@ -3457,6 +3680,16 @@
 			(type default)
 		)
 		(uuid "4590277d-d8cd-4d14-b3f3-31d1eb991154")
+	)
+	(wire
+		(pts
+			(xy 177.8 132.08) (xy 158.75 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4eeb96d8-a4af-439a-9b07-09e002e6d41e")
 	)
 	(wire
 		(pts
@@ -3470,6 +3703,26 @@
 	)
 	(wire
 		(pts
+			(xy 124.46 101.6) (xy 128.27 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6b28e771-fad1-43e4-94a6-a5dd1d614d07")
+	)
+	(wire
+		(pts
+			(xy 114.3 139.7) (xy 114.3 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "70044e08-2c2a-409c-811c-d408467facc1")
+	)
+	(wire
+		(pts
 			(xy 139.7 137.16) (xy 139.7 139.7)
 		)
 		(stroke
@@ -3477,6 +3730,36 @@
 			(type default)
 		)
 		(uuid "77450045-2fd5-47f4-a812-8055c712de2d")
+	)
+	(wire
+		(pts
+			(xy 129.54 139.7) (xy 139.7 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8285292b-1082-4570-9615-e8e903aab021")
+	)
+	(wire
+		(pts
+			(xy 114.3 124.46) (xy 118.11 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8e7a99bb-1012-417b-861e-e6bdb217200a")
+	)
+	(wire
+		(pts
+			(xy 124.46 104.14) (xy 128.27 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9bca3c4a-31d1-4a99-b451-d9bf07754028")
 	)
 	(wire
 		(pts
@@ -3490,7 +3773,17 @@
 	)
 	(wire
 		(pts
-			(xy 127 139.7) (xy 139.7 139.7)
+			(xy 125.73 124.46) (xy 129.54 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c1dcc8e4-50fc-4624-a286-a7994568144f")
+	)
+	(wire
+		(pts
+			(xy 127 139.7) (xy 129.54 139.7)
 		)
 		(stroke
 			(width 0)
@@ -3510,13 +3803,23 @@
 	)
 	(wire
 		(pts
-			(xy 88.9 139.7) (xy 116.84 139.7)
+			(xy 88.9 139.7) (xy 114.3 139.7)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "f7a2e69f-e82b-42d7-a588-95093cd39f2c")
+	)
+	(wire
+		(pts
+			(xy 129.54 124.46) (xy 129.54 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fb74ae0f-2f3e-477f-b5ab-a1e309d653be")
 	)
 	(text "Compatible with up to 512k chip\nbut only up to 256k is used.\n\nx = 1,2,4 -> 128k,256k,512k\n\nAM29F0x0\nSST39SF0x0A\nGLS29EE0x0\nAT29C0x0A\nMX29F0x0C\n"
 		(exclude_from_sim no)
@@ -3618,7 +3921,7 @@
 	)
 	(text "C&K SK-12C0405-SG 1.5 RT\nE-Switch EG1215AA\nNidec CUS-12TB\nAlps Alpine SSSS811101\n"
 		(exclude_from_sim no)
-		(at 109.22 149.86 0)
+		(at 109.982 150.876 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3944,6 +4247,17 @@
 			(justify right bottom)
 		)
 		(uuid "4da91bb5-b78a-4365-ba57-5f1775dd3afe")
+	)
+	(label "A18"
+		(at 177.8 132.08 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "5008326b-2308-4d4a-a0be-bd861792740e")
 	)
 	(label "A15"
 		(at 177.8 88.9 180)
@@ -4612,22 +4926,22 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005f96166c")
 		(property "Reference" "SW1"
-			(at 121.92 137.16 0)
+			(at 121.92 133.35 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "Write-Enable"
-			(at 121.92 134.874 0)
+		(property "Value" "CUS-12TB"
+			(at 121.92 136.144 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "000_LOCAL:CUS-12TB pth"
+		(property "Footprint" "000_LOCAL:CUS-12TB slot pth"
 			(at 121.92 140.97 0)
 			(effects
 				(font
@@ -4661,6 +4975,14 @@
 					(size 1.27 1.27)
 				)
 				(hide yes)
+			)
+		)
+		(property "LABEL" "Write-Enable"
+			(at 121.92 130.556 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -4745,72 +5067,6 @@
 			(project "WP-2_IC-Card_ROM"
 				(path "/f291f000-461a-4127-8876-c8e21ea67ede"
 					(reference "#PWR0101")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 177.8 132.08 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "10cf9e3c-5bea-435c-ba70-1a56ca4e4d52")
-		(property "Reference" "#PWR04"
-			(at 177.8 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 177.8 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 177.8 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 177.8 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 177.8 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "bf4aab22-e2fa-4c53-a12d-47f636d64b10")
-		)
-		(instances
-			(project "WP-2_IC-Card_ROM"
-				(path "/f291f000-461a-4127-8876-c8e21ea67ede"
-					(reference "#PWR04")
 					(unit 1)
 				)
 			)
@@ -5052,6 +5308,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 133.35 106.68 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2d4b35f9-6f5f-4730-b8a8-29ba9c66b9c6")
+		(property "Reference" "#PWR09"
+			(at 133.35 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 133.35 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 133.35 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 133.35 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 133.35 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1ff9720e-71b5-444a-8e93-4598fd7143af")
+		)
+		(instances
+			(project "WP-2_IC-Card_ROM"
+				(path "/f291f000-461a-4127-8876-c8e21ea67ede"
+					(reference "#PWR09")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_name "C_Small_1")
 		(lib_id "000_LOCAL:C_Small")
 		(at 156.21 83.82 0)
@@ -5265,6 +5587,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 124.46 101.6 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7b71cd0a-4422-491b-a003-bfbb5fe4fa1c")
+		(property "Reference" "#PWR010"
+			(at 118.11 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 120.65 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 124.46 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 124.46 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 124.46 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4fbe8acc-1ae6-4539-8eb6-f841c1dc359a")
+		)
+		(instances
+			(project "WP-2_IC-Card_ROM"
+				(path "/f291f000-461a-4127-8876-c8e21ea67ede"
+					(reference "#PWR010")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "000_LOCAL:Housing")
 		(at 88.9 177.8 0)
 		(unit 1)
@@ -5460,6 +5848,97 @@
 		)
 	)
 	(symbol
+		(lib_id "000_LOCAL:SW_SPDT_CUS-12")
+		(at 133.35 105.41 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "dcee1390-bc7c-4b33-ad2e-0fb882d5f13a")
+		(property "Reference" "SW2"
+			(at 133.35 95.504 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "CUS-12TB"
+			(at 133.35 98.298 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "000_LOCAL:CUS-12TB pth"
+			(at 133.35 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "datasheets/cus.pdf"
+			(at 133.35 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Switch, 2 position, single pole 2 throw, 2 position switch, SPDT"
+			(at 133.35 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "EG1215AA"
+			(at 133.35 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LABEL" "BANK"
+			(at 133.35 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "94242ee7-266f-4545-9a6e-e02352635e0c")
+		)
+		(pin "2"
+			(uuid "0713027c-6f2f-4eb2-b417-16fd44079412")
+		)
+		(pin "3"
+			(uuid "c1d3887f-e32f-42d6-868c-924507d5d93b")
+		)
+		(pin "S"
+			(uuid "a7902114-91a6-4fc2-9978-0568fe7e5fe1")
+		)
+		(instances
+			(project "WP-2_IC-Card_ROM"
+				(path "/f291f000-461a-4127-8876-c8e21ea67ede"
+					(reference "SW2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "000_LOCAL:VCC")
 		(at 139.7 129.54 0)
 		(unit 1)
@@ -5584,6 +6063,139 @@
 			(project ""
 				(path "/f291f000-461a-4127-8876-c8e21ea67ede"
 					(reference "#PWR05")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "000_LOCAL:VCC")
+		(at 124.46 104.14 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f41d54bf-883c-4e32-86b9-0f720f14e98a")
+		(property "Reference" "#PWR04"
+			(at 128.27 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VCC"
+			(at 118.872 104.14 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 124.46 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 124.46 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VCC\""
+			(at 124.46 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "fcd99ce5-7c6b-4dba-b058-a524ad5ff369")
+		)
+		(instances
+			(project "WP-2_IC-Card_ROM"
+				(path "/f291f000-461a-4127-8876-c8e21ea67ede"
+					(reference "#PWR04")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "000_LOCAL:SolderJumper_2_Open")
+		(at 121.92 124.46 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f86f4a9a-8f0b-45e3-aaa6-d0a342feb39c")
+		(property "Reference" "JP1"
+			(at 121.92 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "WREN"
+			(at 121.92 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "000_LOCAL:SolderJumper-2_open"
+			(at 121.92 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 121.92 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 121.92 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "5873a921-1455-40b3-8325-102271036ae4")
+		)
+		(pin "1"
+			(uuid "a4b0eb1f-75f3-4c42-b06c-49ee77b1aa08")
+		)
+		(instances
+			(project ""
+				(path "/f291f000-461a-4127-8876-c8e21ea67ede"
+					(reference "JP1")
 					(unit 1)
 				)
 			)

@@ -1,4 +1,4 @@
-(footprint "WP-2_IC_Card_Cover_MRAM_512"
+(footprint "WP-2_IC-Card_Cover_MRAM"
 	(version 20240108)
 	(generator "pcbnew")
 	(generator_version "8.0")
@@ -355,7 +355,8 @@
 			"ebddb375-0f08-4727-bd61-2b2372cd75ef" "fbcc27b8-264e-41c7-91bc-9a477e073a41"
 		)
 	)
-	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/WP-2_IC-Card_Cover_MRAM_512_slider.step"
+	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/WP_2_IC_Card_Cover_MRAM_bank_finger.step"
+		(hide yes)
 		(offset
 			(xyz 0 0 0)
 		)
@@ -366,7 +367,18 @@
 			(xyz 0 0 0)
 		)
 	)
-	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/WP-2_IC-Card_Cover_MRAM_512_window.step"
+	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/WP_2_IC_Card_Cover_MRAM_bank_slider.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/WP_2_IC_Card_Cover_MRAM_no_bank.step"
 		(hide yes)
 		(offset
 			(xyz 0 0 0)

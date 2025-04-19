@@ -1,4 +1,4 @@
-(footprint "WP-2_IC_Card_Cover_ROM"
+(footprint "WP-2_IC-Card_Cover_ROM"
 	(version 20240108)
 	(generator "pcbnew")
 	(generator_version "8.0")
@@ -355,7 +355,32 @@
 			"f8f3b41a-edce-42d4-8797-5db401e23646" "fc3a0663-e7d2-4840-b0ee-f9ed0e3b86e8"
 		)
 	)
-	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/WP-2_IC-Card_Cover_ROM.step"
+	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/WP_2_IC_Card_Cover_FLASH_bank_finger_wren_under.step"
+		(hide yes)
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/WP_2_IC_Card_Cover_FLASH_bank_slider_wren_under.step"
+		(hide yes)
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/WP_2_IC_Card_Cover_FLASH_no_bank_no_wren.step"
+		(hide yes)
 		(offset
 			(xyz 0 0 0)
 		)

@@ -15320,7 +15320,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "WP-2_IC-Card_Cover_MRAM_512"
+		(property "Value" "WP-2_IC-Card_Cover_MRAM"
 			(at 31.75 191.77 0)
 			(effects
 				(font
@@ -15328,7 +15328,7 @@
 				)
 			)
 		)
-		(property "Footprint" "000_LOCAL:WP-2_IC-Card_Cover_MRAM_512"
+		(property "Footprint" "000_LOCAL:WP-2_IC-Card_Cover_MRAM"
 			(at 33.02 182.88 0)
 			(effects
 				(font
