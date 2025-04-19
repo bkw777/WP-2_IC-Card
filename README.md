@@ -250,20 +250,20 @@ Just for the sake of keeping track somewhere, the following look very similar, b
   if you managed to insert the card it would short the WP-2's VCC power rail directly to GND!
 
 # TODO
-CamelFORTH on ROM?  
-But how to construct rom image?  
-Try to deduce how a rom is supposed to work by recording the bus while trying to load a dictionary while the breakout board has the /DET pin not connected to GND.
+* CamelFORTH on ROM?  
+  But how to construct rom image?  
+  Try to deduce how a rom is supposed to work by recording the bus while trying to load a dictionary while the breakout board has the /DET pin not connected to GND.
 
-Document how to create a RUN file.  
-Figure that out and write some sort of reproduceable toolchain & Makefile template hello world project to create new executables.  
-Known examples:  
-  John Hogerhuis [CamelFORTH](http://bitchin100.com/files/wp2/CAMEL.ZIP)
-  "Christopher" from "randomvariations" [DUMPROM](https://randomvariations.com/category/tandy-wp-2/)
-  Ben Grimmett [HEXVIEW](https://www.facebook.com/groups/Model.T.Computers/files/files)
+* Document how to create a RUN file.  
+  Figure that out and write some sort of reproduceable toolchain & Makefile template hello world project to create new executables.  
+  Known examples:  
+  * John Hogerhuis [CamelFORTH](http://bitchin100.com/files/wp2/CAMEL.ZIP)  
+  * "Christopher" from "randomvariations" [DUMPROM](https://randomvariations.com/category/tandy-wp-2/)  
+  * Ben Grimmett [HEXVIEW](https://www.facebook.com/groups/Model.T.Computers/files/files)
 
-Use the programming adapter to dump ram card images and reverse engineer the "filesystem".  
-The files themselves (at least .DO) are already fairly well documented: https://bitchin100.com/files/wp2/wp2format.html
+* Use the programming adapter to dump ram card images and reverse engineer the "filesystem".  
+  The files themselves (at least .DO) are already fairly well documented: https://bitchin100.com/files/wp2/wp2format.html
 
-Possibly eventually add an mcu to the card that can read & write the sram and present a standard usb mass storage interface to a pc.
+* Possibly eventually add an mcu to the card that can read & write the sram and present a standard usb mass storage interface to a pc.
 
-Add a 5v power output for a [MounT](https://github.com/bkw777/MounT) & [PDDuino](https://github.com/bkw777/PDDuino)?
+* Add a 5v power output for a [MounT](https://github.com/bkw777/MounT) & [PDDuino](https://github.com/bkw777/PDDuino)?
