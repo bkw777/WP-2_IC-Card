@@ -94,7 +94,6 @@ There are no known rom images for any rom cards. Don't bother building one of th
 ![](PCB/out/WP-2_IC-Card_ROM.write-protect.jpg)  
 ![](PCB/out/WP-2_IC-Card_ROM.top.jpg)  
 ![](PCB/out/WP-2_IC-Card_ROM.bottomjpg)  
-![](PCB/out/WP-2_IC-Card_ROM.jpg)  
 ![](PCB/out/WP-2_IC-Card_ROM.svg)  
 
 ----
