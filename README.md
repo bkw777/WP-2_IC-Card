@@ -73,8 +73,8 @@ The "window" version is a single piece and simpler to print.
 ![](ref/IMG_0053.JPG)  
 ![](ref/IMG_0058.JPG)  
 ![](PCB/out/WP-2_IC-Card_MRAM_512K.jpg)  
-![](PCB/out/WP-2_IC-Card_MRAM_512K.slider.jpg)  
-![](PCB/out/WP-2_IC-Card_MRAM_512K.window.jpg)  
+![](PCB/out/WP-2_IC-Card_MRAM.slider.jpg)  
+![](PCB/out/WP-2_IC-Card_MRAM.finger.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM_512K.top.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM_512K.bottom.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM_512K.svg)
@@ -88,6 +88,12 @@ There are no known rom images for any rom cards. Don't bother building one of th
 [ROM PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_ROM_IC_Card.html) (Select 1.2mm PCB thickness)  
 [ROM BOM from DigiKey](https://www.digikey.com/short/qfr21p8h)
 
+![](PCB/out/WP-2_IC-Card_ROM.jpg)  
+![](PCB/out/WP-2_IC-Card_ROM.slider.jpg)  
+![](PCB/out/WP-2_IC-Card_ROM.finger.jpg)  
+![](PCB/out/WP-2_IC-Card_ROM.write-protect.jpg)  
+![](PCB/out/WP-2_IC-Card_ROM.top.jpg)  
+![](PCB/out/WP-2_IC-Card_ROM.bottomjpg)  
 ![](PCB/out/WP-2_IC-Card_ROM.jpg)  
 ![](PCB/out/WP-2_IC-Card_ROM.svg)  
 
