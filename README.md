@@ -239,7 +239,7 @@ Just for the sake of keeping track somewhere, the following look very similar, b
   But no polarity notch on the pin-38 side.
 
 * Yamaha MCD32 / MCD64  
-  This one is uinsideous. It combines both the fact that it *looks* perfect and probably fits perfectly,
+  This one is insidious. It combines both the fact that it *looks* perfect and probably fits perfectly,
   with the fact that it would short the WP-2's VCC directly to GND.
   It has the same single-row 38-pin connector and the same shape of keying notch on one side.
   You could probably plug this card in and it would probably fit perfectly.
