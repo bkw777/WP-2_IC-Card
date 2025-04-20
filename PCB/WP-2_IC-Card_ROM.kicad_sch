@@ -6,8 +6,8 @@
 	(paper "USLetter")
 	(title_block
 		(title "WP-2_IC-Card_ROM")
-		(date "2025-04-17")
-		(rev "007")
+		(date "2025-04-20")
+		(rev "008")
 		(company "Brian K. White - b.kenyon.w@gmail.com")
 		(comment 1 "github.com/bkw777/WP-2_IC-Card")
 	)
@@ -3703,7 +3703,7 @@
 	)
 	(wire
 		(pts
-			(xy 124.46 101.6) (xy 128.27 101.6)
+			(xy 120.65 101.6) (xy 128.27 101.6)
 		)
 		(stroke
 			(width 0)
@@ -3750,16 +3750,6 @@
 			(type default)
 		)
 		(uuid "8e7a99bb-1012-417b-861e-e6bdb217200a")
-	)
-	(wire
-		(pts
-			(xy 124.46 104.14) (xy 128.27 104.14)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9bca3c4a-31d1-4a99-b451-d9bf07754028")
 	)
 	(wire
 		(pts
@@ -3821,7 +3811,19 @@
 		)
 		(uuid "fb74ae0f-2f3e-477f-b5ab-a1e309d653be")
 	)
-	(text "Compatible with up to 512k chip\nbut only up to 256k is used.\n\nx = 1,2,4 -> 128k,256k,512k\n\nAM29F0x0\nSST39SF0x0A\nGLS29EE0x0\nAT29C0x0A\nMX29F0x0C\n"
+	(rectangle
+		(start 107.95 88.9)
+		(end 146.05 114.3)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid fc84dd4b-47ae-45c5-829d-5125c59dcc79)
+	)
+	(text "Compatible with 128Kx8 to 512Kx8\n\nx = 1,2,4 = 128k,256k,512k\n\nAM29F0x0\nSST39SF0x0A\nGLS29EE0x0\nAT29C0x0A\nMX29F0x0C\n"
 		(exclude_from_sim no)
 		(at 177.8 76.2 0)
 		(effects
@@ -3854,13 +3856,14 @@
 		)
 		(uuid "329d55dc-3cf9-4d46-86d3-b9e2ebd5edf2")
 	)
-	(text "1.2mm thick or less"
+	(text "low profile cap\n1.2mm thick or less"
 		(exclude_from_sim no)
 		(at 156.21 73.914 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
+			(justify bottom)
 		)
 		(uuid "38e29ae6-1717-4260-8802-9e34774485aa")
 	)
@@ -3907,6 +3910,17 @@
 			(justify right bottom)
 		)
 		(uuid "658d75c3-a642-4af8-a2ad-73e492c9d207")
+	)
+	(text "Always install R1, C1, U1.\nSW1 optional. May use JP1 instead for one-time or infrequent write.\nSW2 and R2 only install with 512K chip.\n"
+		(exclude_from_sim no)
+		(at 161.036 169.926 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "77962417-1aaf-4b77-8519-23c2e0ca54f2")
 	)
 	(text "Battery Voltage Check - NC in WP-2"
 		(exclude_from_sim no)
@@ -3972,6 +3986,16 @@
 			)
 		)
 		(uuid "caafa9ee-830d-4960-a6b2-336b2ec07730")
+	)
+	(text "Do not populate\nfor 256K or 128K chip"
+		(exclude_from_sim no)
+		(at 127 85.09 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "d88f646b-ee39-4df9-9a4b-00f0f0dd5cd1")
 	)
 	(text "Hard trace to VDD"
 		(exclude_from_sim no)
@@ -5454,6 +5478,82 @@
 		)
 	)
 	(symbol
+		(lib_id "000_LOCAL:R")
+		(at 124.46 104.14 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5afef5a6-1c56-4105-bae6-635a0d12e043")
+		(property "Reference" "R2"
+			(at 124.46 106.934 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "47k"
+			(at 124.46 109.22 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "000_LOCAL:R_0805"
+			(at 124.46 105.918 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "datasheets/sei-rmcf_rmcp.pdf"
+			(at 124.46 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "RES 47K OHM 5% 1/8W 0805"
+			(at 124.46 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RMCF0805JT47K0"
+			(at 124.46 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d08ae454-16ae-48eb-95f7-3efbf1cf4221")
+		)
+		(pin "2"
+			(uuid "74efce85-caea-4863-9459-35598278066c")
+		)
+		(instances
+			(project "WP-2_IC-Card_ROM"
+				(path "/f291f000-461a-4127-8876-c8e21ea67ede"
+					(reference "R2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 101.6 86.36 0)
 		(unit 1)
@@ -5588,7 +5688,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 124.46 101.6 270)
+		(at 120.65 101.6 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5596,7 +5696,7 @@
 		(dnp no)
 		(uuid "7b71cd0a-4422-491b-a003-bfbb5fe4fa1c")
 		(property "Reference" "#PWR010"
-			(at 118.11 101.6 0)
+			(at 114.3 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5605,7 +5705,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 120.65 101.6 0)
+			(at 116.84 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5614,7 +5714,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 124.46 101.6 0)
+			(at 120.65 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5623,7 +5723,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 124.46 101.6 0)
+			(at 120.65 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5632,7 +5732,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 124.46 101.6 0)
+			(at 120.65 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6070,7 +6170,7 @@
 	)
 	(symbol
 		(lib_id "000_LOCAL:VCC")
-		(at 124.46 104.14 90)
+		(at 120.65 104.14 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6078,7 +6178,7 @@
 		(dnp no)
 		(uuid "f41d54bf-883c-4e32-86b9-0f720f14e98a")
 		(property "Reference" "#PWR04"
-			(at 128.27 104.14 0)
+			(at 124.46 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6087,7 +6187,7 @@
 			)
 		)
 		(property "Value" "VCC"
-			(at 118.872 104.14 90)
+			(at 115.062 104.14 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6095,7 +6195,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 124.46 104.14 0)
+			(at 120.65 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6104,7 +6204,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 124.46 104.14 0)
+			(at 120.65 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6113,7 +6213,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VCC\""
-			(at 124.46 104.14 0)
+			(at 120.65 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)

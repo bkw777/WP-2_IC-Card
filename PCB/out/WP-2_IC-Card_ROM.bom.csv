@@ -1,6 +1,6 @@
 "Reference","Value","Datasheet","Footprint","Qty","DNP","MPN","Description"
 "C1","1u","datasheets/CL21A105KBCLNNC.pdf","000_LOCAL:C_0805","1","","CL21A105KBCLNNC","CAP CER 1UF 50V X5R 0805 low profile"
 "J1","SMS-138-01-G-S","datasheets/sms.pdf","000_LOCAL:SMS-138-01-x-x_pcb_edge","1","","SMS-138-01-G-S","01 x 13 x 1.27mm pitch female"
-"R1","47k","datasheets/sei-rmcf_rmcp.pdf","000_LOCAL:R_0805","1","","RMCF0805JT47K0","RES 47K OHM 5% 1/8W 0805"
+"R1,R2","47k","datasheets/sei-rmcf_rmcp.pdf","000_LOCAL:R_0805","2","","RMCF0805JT47K0","RES 47K OHM 5% 1/8W 0805"
 "SW1,SW2","CUS-12TB","datasheets/cus.pdf","-- mixed values --","2","","EG1215AA","Switch, 2 position, single pole 2 throw, 2 position switch, SPDT"
 "U1","29F0x0_TSOP","datasheets/29F0x0.pdf","000_LOCAL:TSOP32-dual","1","","MX29F040CTI-70G","128K 256K 512K x 8 Flash ROM"
