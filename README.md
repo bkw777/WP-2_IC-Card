@@ -113,10 +113,6 @@ Use with a standard eprom programmer such as TL-866.
 
 [Programming adapter BOM from DigiKey](https://www.digikey.com/short/v2r3pqp4)
 
-In addition to soldering the pins to the PCB, also make a male jumper for the write-enable contacts on the card.  
-Cut a pair of pins off the leftover 2.54mm pin header, and solder-blob the two pins together on the short side.  
-There is a spot to stow the jumper on the programming adapter when not in use.
-
 ![](WP-2_IC-Card_programming_adapter.jpg)  
 ![](WP-2_IC-Card_programming_adapter.ROM.jpg)  
 ![](WP-2_IC-Card_programming_adapter.RAM.jpg)  
@@ -124,7 +120,8 @@ There is a spot to stow the jumper on the programming adapter when not in use.
 
 ### To program the ROM card
 
-Insert the male jumper into the write-enable holes on the card.
+Switch the write-enable switch on the rom card to the unlock position.  
+(or close the solder jumper JP1 if no switch installed)
 
 Set all 4 jumpers on the programming adapter to ROM.
 
