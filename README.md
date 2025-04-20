@@ -87,7 +87,8 @@ When A17 is connected from the bus (like a 256K ROM card) the bank switch become
 ----
 
 ## ROM CARD  
-There are no known rom images for any rom cards. Don't bother building one of these unless you are trying to create a rom from scratch.
+There are no known rom images for any rom cards.  
+Don't bother building one of these unless you are trying to create a rom from scratch.
 
 <!-- [ROM card PCB from OSHPark](https://oshpark.com/shared_projects/F9gte3be) (Select 0.8mm PCB thickness)  -->
 [ROM PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_ROM_IC_Card.html) (Select 1.2mm PCB thickness)  
