@@ -99,7 +99,7 @@ Don't bother building one of these unless you are trying to create a rom from sc
 ![](PCB/out/WP-2_IC-Card_ROM.finger.jpg)  
 ![](PCB/out/WP-2_IC-Card_ROM.write-protect.jpg)  
 ![](PCB/out/WP-2_IC-Card_ROM.top.jpg)  
-![](PCB/out/WP-2_IC-Card_ROM.bottomjpg)  
+![](PCB/out/WP-2_IC-Card_ROM.bottom.jpg)  
 ![](PCB/out/WP-2_IC-Card_ROM.svg)
 
 ----
