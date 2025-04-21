@@ -59,9 +59,7 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [
-        "footprint_type_mismatch|146950000|81120000|3cc6b29f-1d41-4ed4-b88a-c3b27dbe1335|00000000-0000-0000-0000-000000000000"
-      ],
+      "drc_exclusions": [],
       "meta": {
         "filename": "board_design_settings.json",
         "version": 2
@@ -586,6 +584,18 @@
           "group_by": false,
           "label": "Description",
           "name": "Description",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "L12",
+          "name": "L12",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "L23",
+          "name": "L23",
           "show": false
         }
       ],
