@@ -9949,7 +9949,7 @@
 		)
 		(uuid 69bcf6ec-d5f6-466a-94f2-53ec12e59438)
 	)
-	(text "Use the Industrial rated part, the C in MRxA08xCYSxx\nfor max magnetic protection.\n\nMRAM is physically and permanently damaged by magnetic fields.\n\nCommercial or Automotive can tolerate 25 gauss.\nIndustrial can tolerate 125 gauss.\nA fridge magnet is 100 gauss.\n"
+	(text "Use the Industrial rated part for max magnetic protection.\n( the C in MRxA08xCYSxx )\n\nMRAM is physically and permanently damaged by magnetic fields.\n\nCommercial or Automotive can tolerate 25 gauss.\nIndustrial can tolerate 125 gauss.\nA fridge magnet is 100 gauss.\n"
 		(exclude_from_sim no)
 		(at 151.892 123.444 0)
 		(effects

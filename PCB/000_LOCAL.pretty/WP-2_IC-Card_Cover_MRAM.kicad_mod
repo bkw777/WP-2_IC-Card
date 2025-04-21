@@ -4,7 +4,7 @@
 	(generator_version "8.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
-		(at 0 -2.5 0)
+		(at 0 -0.75 0)
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
@@ -17,7 +17,7 @@
 		)
 	)
 	(property "Value" "WP-2_IC_Card_Cover_MRAM_512"
-		(at 0 2.5 0)
+		(at 0 1.25 0)
 		(unlocked yes)
 		(layer "F.Fab")
 		(uuid "06559c9f-e766-451b-b62e-71ac90e409bc")
@@ -126,6 +126,26 @@
 		(uuid "2a69fbdb-c88b-40bb-ae7f-00f77b4549d1")
 	)
 	(fp_line
+		(start -22.5 -1)
+		(end -22.5 11)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "fc9738c9-a926-4276-9d74-537884d51ea6")
+	)
+	(fp_line
+		(start -22 11.499999)
+		(end 22 11.499999)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "ecb44a71-74a1-4ba0-af22-8b5443330f4a")
+	)
+	(fp_line
 		(start -0.25 0)
 		(end 0.25 0)
 		(stroke
@@ -144,6 +164,26 @@
 		)
 		(layer "F.Fab")
 		(uuid "6d671dc2-edd5-49c8-9bc8-43f837419cfe")
+	)
+	(fp_line
+		(start 22 -1.499999)
+		(end -22 -1.499999)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "bd1fa98f-b47c-4a29-9df2-0e2e1d155a40")
+	)
+	(fp_line
+		(start 22.499999 11)
+		(end 22.499999 -1)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "f9d26f9e-3267-4028-b102-05ab69672456")
 	)
 	(fp_line
 		(start 24.3 18.475)
@@ -273,6 +313,50 @@
 		(uuid "238971cf-f1e7-4e75-bf94-e2ec52f6ade1")
 	)
 	(fp_arc
+		(start -22.5 -1)
+		(mid -22.353553 -1.353553)
+		(end -22 -1.5)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "fd8c65ce-3e3f-4494-a56d-ae9a231b4a0a")
+	)
+	(fp_arc
+		(start -22 11.499999)
+		(mid -22.353553 11.353553)
+		(end -22.499999 11)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "61b1d74c-a2c5-4100-bc11-0bb5107a2f3b")
+	)
+	(fp_arc
+		(start 22 -1.499999)
+		(mid 22.353553 -1.353553)
+		(end 22.499999 -1)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "620cac9a-dc53-4a0a-b28d-6cef3dd9a8aa")
+	)
+	(fp_arc
+		(start 22.499999 11)
+		(mid 22.353553 11.353553)
+		(end 22 11.499999)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "2af07bc5-f0ef-4e6d-8a75-11877683ce66")
+	)
+	(fp_arc
 		(start 25 -27)
 		(mid 26.847759 -25.765367)
 		(end 26.414213 -23.585788)
@@ -339,20 +423,26 @@
 		(uuid "436b5249-64d2-4661-9a17-9b3cd4b66c2b")
 	)
 	(group ""
-		(uuid "d5706376-4b00-4a8e-b79d-d7333594513d")
+		(uuid "c6be23e9-4c5f-4b18-9b55-182f7d66deb4")
 		(members "0879dc60-b6e8-4f25-8314-bf0bade4fc5e" "15ce68f1-6fa3-44fe-a4e2-a4c851cfb38f"
 			"1a8eac6e-fc9c-4b23-a2b6-b32b82852e64" "238971cf-f1e7-4e75-bf94-e2ec52f6ade1"
-			"2a69fbdb-c88b-40bb-ae7f-00f77b4549d1" "308f833d-6830-44a1-a3cf-1561da729108"
-			"39d87fd0-685a-4122-85a3-a64630e09c1f" "42872939-8e2f-43d5-852b-824eec042603"
+			"2a69fbdb-c88b-40bb-ae7f-00f77b4549d1" "2af07bc5-f0ef-4e6d-8a75-11877683ce66"
+			"308f833d-6830-44a1-a3cf-1561da729108" "39d87fd0-685a-4122-85a3-a64630e09c1f"
+			"40b27c64-51a8-4f21-9691-cf4239e90f13" "42872939-8e2f-43d5-852b-824eec042603"
 			"435ca2aa-3246-4fa0-98a7-1462f5c712e0" "436b5249-64d2-4661-9a17-9b3cd4b66c2b"
 			"44d540be-cef6-4d31-9e44-dc06219d6803" "4fec933b-2def-44c7-8518-3125382d9e94"
 			"541b937b-94d8-4558-9f3d-15ba010c8744" "59e1ea4a-eef4-42a3-839f-987e72670a7d"
-			"617e638d-bca1-4b87-bb02-d568457577fc" "67c1e86e-393e-4d07-aea2-1d85e5d97d2a"
+			"617e638d-bca1-4b87-bb02-d568457577fc" "61b1d74c-a2c5-4100-bc11-0bb5107a2f3b"
+			"620cac9a-dc53-4a0a-b28d-6cef3dd9a8aa" "67c1e86e-393e-4d07-aea2-1d85e5d97d2a"
 			"6d671dc2-edd5-49c8-9bc8-43f837419cfe" "743ebebc-33d3-4cc6-a10d-8f4beb20ca9f"
 			"79833c73-ec76-4db6-849f-ca053488a01a" "888b02b1-65da-44e9-a55f-6f07883224a7"
-			"c7868b9b-74fe-4dab-ae3a-8e455a0c930f" "cdab441d-561d-4bd7-9546-9d2f11d64d02"
-			"d8b88e64-e030-40bf-aff6-2ed93377a06f" "e1aa1660-3301-452e-ae08-bc9ac3adc157"
-			"ebddb375-0f08-4727-bd61-2b2372cd75ef" "fbcc27b8-264e-41c7-91bc-9a477e073a41"
+			"96035246-1165-42b0-a74b-bd9f1c1900c7" "a50d0a3a-0b79-4c8f-bab1-07f0516911a4"
+			"bd1fa98f-b47c-4a29-9df2-0e2e1d155a40" "c7868b9b-74fe-4dab-ae3a-8e455a0c930f"
+			"cdab441d-561d-4bd7-9546-9d2f11d64d02" "d8b88e64-e030-40bf-aff6-2ed93377a06f"
+			"e1aa1660-3301-452e-ae08-bc9ac3adc157" "ebddb375-0f08-4727-bd61-2b2372cd75ef"
+			"ecb44a71-74a1-4ba0-af22-8b5443330f4a" "f9d26f9e-3267-4028-b102-05ab69672456"
+			"fbcc27b8-264e-41c7-91bc-9a477e073a41" "fc9738c9-a926-4276-9d74-537884d51ea6"
+			"fd8c65ce-3e3f-4494-a56d-ae9a231b4a0a"
 		)
 	)
 	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/WP_2_IC_Card_Cover_MRAM_bank_finger.step"

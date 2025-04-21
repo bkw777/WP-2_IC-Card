@@ -1,4 +1,4 @@
-(footprint "WP-2_IC_Card_Cover_SRAM"
+(footprint "WP-2_IC-Card_Cover_SRAM"
 	(version 20240108)
 	(generator "pcbnew")
 	(generator_version "8.0")
@@ -126,6 +126,26 @@
 		(uuid "a66837b7-7d45-4343-91b6-5e4e2f1bdd7d")
 	)
 	(fp_line
+		(start -19.999999 13)
+		(end -19.999999 4.05)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "7d4f0abe-1284-4091-8033-4f12f4f4b12d")
+	)
+	(fp_line
+		(start -19.5 3.55)
+		(end 19.5 3.55)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "720967a7-74e4-45e7-b852-a8e1b9badbed")
+	)
+	(fp_line
 		(start -0.25 0)
 		(end 0.25 0)
 		(stroke
@@ -144,6 +164,26 @@
 		)
 		(layer "F.Fab")
 		(uuid "bcb4d5cf-4dd1-41c0-b5aa-dc800422d5ab")
+	)
+	(fp_line
+		(start 19.5 13.499999)
+		(end -19.5 13.499999)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "ec5de56d-cc26-4d81-9638-1ae7f336d7a4")
+	)
+	(fp_line
+		(start 19.999999 4.05)
+		(end 19.999999 13)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "ea793132-b914-4df1-ab12-0853c4141563")
 	)
 	(fp_line
 		(start 24.3 18.475)
@@ -273,6 +313,50 @@
 		(uuid "3939adec-6475-42a8-8f05-a1a5d4bed2da")
 	)
 	(fp_arc
+		(start -20 4.05)
+		(mid -19.853553 3.696447)
+		(end -19.5 3.55)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "8135ba94-30fb-42df-90fc-d36e0c233a36")
+	)
+	(fp_arc
+		(start -19.5 13.499999)
+		(mid -19.853553 13.353553)
+		(end -19.999999 13)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "eebdb869-e453-4207-b1f0-326908d02498")
+	)
+	(fp_arc
+		(start 19.5 3.550001)
+		(mid 19.853553 3.696447)
+		(end 19.999999 4.05)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "b4de3e54-d22d-4a1e-8294-a27beaea445f")
+	)
+	(fp_arc
+		(start 19.999999 13)
+		(mid 19.853553 13.353553)
+		(end 19.5 13.499999)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "5582cec1-ae8f-4d86-92d9-9142bf7731a1")
+	)
+	(fp_arc
 		(start 25 -27)
 		(mid 26.847759 -25.765367)
 		(end 26.414213 -23.585788)
@@ -345,13 +429,17 @@
 			"20f37ad5-3d5a-435d-9d25-0581d1039323" "3939adec-6475-42a8-8f05-a1a5d4bed2da"
 			"409eb4ed-e293-47b9-9aed-75e8dbe75bf7" "42a1a4cb-5687-4102-b297-9148df33cbb4"
 			"4cda2ec5-9b3e-4157-98d2-e18714cc76fa" "4cf8f5b0-1342-4a21-9c35-ef5cc5e3ee54"
-			"51881392-642b-4599-9d92-a64ff6659d83" "76c61155-c1e4-48af-a145-7fad4f71510a"
+			"51881392-642b-4599-9d92-a64ff6659d83" "5582cec1-ae8f-4d86-92d9-9142bf7731a1"
+			"720967a7-74e4-45e7-b852-a8e1b9badbed" "76c61155-c1e4-48af-a145-7fad4f71510a"
+			"7d4f0abe-1284-4091-8033-4f12f4f4b12d" "8135ba94-30fb-42df-90fc-d36e0c233a36"
 			"83f562f5-e948-4f6e-b5cd-c67757033ad3" "83fa02f6-30c0-4d0b-8cf2-3c60295fb587"
 			"84863525-edd7-4ebc-a704-60fa83e213e9" "8607286c-340d-44b0-a944-3bdb1e3e6281"
 			"9b503f21-3e3d-4afe-aadd-12dbf33cbe5b" "a66837b7-7d45-4343-91b6-5e4e2f1bdd7d"
 			"ac31c9b9-0440-46cd-9f15-673d900818b7" "b20e59d6-c10b-4945-a596-b676378aad81"
-			"bcb4d5cf-4dd1-41c0-b5aa-dc800422d5ab" "c2ad537d-d657-49cf-92e3-ed45f11e678e"
-			"d0a49686-7484-4d84-8366-616e78e58095" "ec020d82-50ee-42f4-9740-c64642316102"
+			"b4de3e54-d22d-4a1e-8294-a27beaea445f" "bcb4d5cf-4dd1-41c0-b5aa-dc800422d5ab"
+			"c2ad537d-d657-49cf-92e3-ed45f11e678e" "d0a49686-7484-4d84-8366-616e78e58095"
+			"ea793132-b914-4df1-ab12-0853c4141563" "ec020d82-50ee-42f4-9740-c64642316102"
+			"ec5de56d-cc26-4d81-9638-1ae7f336d7a4" "eebdb869-e453-4207-b1f0-326908d02498"
 			"f0cba47b-2789-460b-9aa9-cb9194693194" "f5d1bd21-3179-4f47-b776-5c7201800655"
 		)
 	)
