@@ -4,24 +4,26 @@
 	(generator_version "8.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
-		(at 0.2 -3.2 0)
+		(at 0 -4.5 0)
+		(unlocked yes)
 		(layer "F.SilkS")
 		(uuid "901d29d2-eb76-4cd3-8bef-ad363a4494a3")
 		(effects
 			(font
-				(size 1 1)
+				(size 0.8 0.8)
 				(thickness 0.1)
 			)
 		)
 	)
 	(property "Value" "EG1215"
-		(at -0.15 -4.55 0)
-		(layer "F.Fab")
+		(at 0 -3.25 0)
+		(unlocked yes)
+		(layer "F.SilkS")
 		(uuid "f35311ea-e74d-4531-a57c-4c0f4b1751c1")
 		(effects
 			(font
-				(size 1 1)
-				(thickness 0.01)
+				(size 0.8 0.8)
+				(thickness 0.1)
 			)
 		)
 	)
@@ -63,8 +65,8 @@
 	)
 	(attr smd)
 	(fp_line
-		(start -3.35 -1.3)
-		(end -3.35 1.3)
+		(start -3.35 -0.55)
+		(end -3.35 0.55)
 		(stroke
 			(width 0.12)
 			(type solid)
@@ -73,8 +75,8 @@
 		(uuid "aac397f2-2d19-4ed1-a98e-53627c1dabe4")
 	)
 	(fp_line
-		(start -3.35 1.3)
-		(end 3.35 1.3)
+		(start -3.05 1.3)
+		(end 3.05 1.3)
 		(stroke
 			(width 0.12)
 			(type solid)
@@ -83,8 +85,18 @@
 		(uuid "967509ad-b7bc-4a3b-aec2-004cd82f4aa9")
 	)
 	(fp_line
-		(start 3.35 -1.3)
-		(end -3.35 -1.3)
+		(start -2.7 -1.3)
+		(end -3.05 -1.3)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "4da24307-d270-4c2a-8c0c-f28d720997e7")
+	)
+	(fp_line
+		(start 0.3 -1.3)
+		(end -1.8 -1.3)
 		(stroke
 			(width 0.12)
 			(type solid)
@@ -93,8 +105,28 @@
 		(uuid "638c6201-6ac1-4ef3-b571-61c581a3f8be")
 	)
 	(fp_line
-		(start 3.35 1.3)
-		(end 3.35 -1.3)
+		(start 1.8 -1.3)
+		(end 1.2 -1.3)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "fdf008bc-cc8f-4c26-9f49-8b00a4d07f55")
+	)
+	(fp_line
+		(start 3.05 -1.3)
+		(end 2.7 -1.3)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "2af122a8-3844-4a51-9d19-6be34c3fafee")
+	)
+	(fp_line
+		(start 3.35 0.55)
+		(end 3.35 -0.55)
 		(stroke
 			(width 0.12)
 			(type solid)
@@ -310,6 +342,7 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 		(solder_mask_margin -0.1)
+		(zone_connect 2)
 		(uuid "fd3d410e-4f8d-4426-856d-36d243f0f3b9")
 	)
 	(pad "S" thru_hole circle
@@ -319,6 +352,7 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 		(solder_mask_margin -0.1)
+		(zone_connect 2)
 		(uuid "8c17f63b-aece-4070-b5ec-9cac3a5e55a2")
 	)
 	(pad "S" smd roundrect

@@ -10055,7 +10055,7 @@
 		)
 		(uuid "cd660663-7bcd-40fd-b98c-f9591a49d079")
 	)
-	(text " 2: ~{DET} card type detect,  GND=RAM  NC=ROM\n 3: CE2 is simply shorted to VCC inside WP-2\n14: GND but probably not intended to be power\n15: S1 Not used but connected to IC5 pin 66\n16: S2 Not used but connected to IC5 pin 67\n17: A17 for ROM, Not used for RAM\n36: S3 Not used but connected to IC5 pin 68\n37: Battery Voltage Check, NC inside WP-2\n"
+	(text " 2: ~{DET} card type detect,  GND=RAM  NC=ROM\n 3: CE2 is simply shorted to VCC inside WP-2\n14: GND in WP-2 but possibly not in others\n15: S1 Not used but connected to IC5 pin 66\n16: S2 Not used but connected to IC5 pin 67\n17: A17 for ROM, Not used for RAM\n36: S3 Not used but connected to IC5 pin 68\n37: Battery Voltage Check, NC inside WP-2\n"
 		(exclude_from_sim no)
 		(at 17.78 148.59 0)
 		(effects
