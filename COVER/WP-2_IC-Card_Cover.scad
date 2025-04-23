@@ -8,7 +8,8 @@
 render_preview_for_kicad = false;
 
 // Which part to generate?
-part = "sram_top"; // *** - top cover for the SRAM card
+part = "sram_128k_top"; // top cover for the old 128K-only SRAM card
+//part = "sram_top"; // *** - top cover for the SRAM card
 //part = "rom_top"; // top cover for the FLASH card
 //part = "mram_top"; // top cover for the MRAM card
 //part = "breakout_top"; // top cover for the breakout card
@@ -53,6 +54,8 @@ finger_window_chamfer_slope = 0.5; // 1.0 = 45deg
 
 // number of banks (number of slide switch positions)
 nbanks =
+  bank_switch_style=="none" ? 0 :
+  part=="sram_top" ? 4 :
   part=="mram_top" ? 4 :
   part=="rom_top" ? 2 :
   0;
@@ -179,9 +182,10 @@ adhesive_thickness = 0.15; // *** good enough for most cases
 // To generate these models, export STEP from KiCAD,
 // open STEP in FreeCAD, export STL.
 pcb_stl =
- part == "rom_top"      ? "inc/rom.pcb.stl"      :
- part == "sram_top"     ? "inc/sram.pcb.stl"     :
- part == "mram_top"     ?
+ part == "rom_top"        ? "inc/rom.pcb.stl"      :
+ part == "sram_128k_top"  ? "inc/sram_128k.pcb.stl"     :
+ part == "sram_top"       ? "inc/sram.pcb.stl"     :
+ part == "mram_top"       ?
    bank_switch_style == "none" ? "inc/mram-128.pcb.stl" :
    mram_shield ? "inc/mram-shielded.pcb.stl" :
    "inc/mram.pcb.stl"                            :
@@ -238,7 +242,7 @@ ch =
 // fooxp : X position, relative to the board center
 // fooyp : Y position, relative to the front edge of the board
 
-// ram or rom components
+// ram or rom main components cavity
 rcxs = 40;    // X size
 rcys = 10;    // Y size
 rcxp = 0;     // X placement, relative to board center
@@ -246,9 +250,11 @@ rcyp = 18.5;  // Y placement, relative to board front edge
 
 // bank switch
 swxp =         // x position
+  part=="sram_top" ? -14 :
   part=="mram_top" ? 11 :
   0;     
 swyp =         // y position
+  part=="sram_top" ? 12 :
   part=="mram_top" ? 14.125 :
   part=="rom_top" ? 10 :
   0;
@@ -285,10 +291,7 @@ battery_tunnel_height = 1.6; // CR2012 = 1.2mm, CR2016 = 1.6mm  This is an ideal
 // to get any thinner than this
 battery_tunnel_roof_minimum_thickness = 0.6;
 battery_retainer_gap = 0.8; // The battery retainer is a little wedge added to the tunnel roof to let the battery pass in easily and then resist it coming back out. How much opening between the peak of the retainer wedge and the pcb. Even though tunnel_height will be less than 1.6mm you may still want to add even more obstruction in the tunnel to prevent the battery from being knocked out. This adds a little wedge inside the tunnel that passes the battery in easily and resist letting it back out. This gap is maintained regardless how other dimensions like card_thickness or tunnel_height change.
-bcyp = 11.5; // Y placement, board center to batt center
-btw = 31.5;  // tabs width
 btt = 0.8;   // tabs thickness
-btd = 6;     // tabs depth
 bbw = 21;    // batt body width
 brw = 6;     // batt retainer width
 bewa = 60;   // extractor way angle
@@ -311,7 +314,7 @@ fc = 0.1; // fitment clearance
 
 //$fn = 32;
 $fa = 6;
-$fs = 0.2;
+$fs = 0.1;
 
 include <inc/handy.scad>;
 
@@ -388,17 +391,19 @@ module polarity_notch () {
  }
 }
 
-module battery_holder () {
+module battery_holder (ea=0,fw=0,fd=0) {
  t = o+top_thickness+o;
  c = bbw/2;
  a = c * tan(45/2); // side of triangle to make an octagon
+ 
+ btw = fw + bbw + fw;
 
  // solder tabs and the coin cell are
  // centered on on bcyp
- translate([0,bcyp,0]) {
+// translate([0,y,0]) {
   
   // solder tabs
-  rounded_cube(w=btw,d=btd,h=btt*2,rh=sr,rv=sr,t=0);
+  rounded_cube(w=btw,d=fd,h=btt*2,rh=sr,rv=sr,t=0);
 
   // ...but the rest of the cutout shape is
   // shifted a little by bby
@@ -412,7 +417,7 @@ module battery_holder () {
      translate([-c,c,0]) cylinder(h=t,r=sr);
      translate([c,c,0]) cylinder(h=t,r=sr);
      translate([c,-a,0]) cylinder(h=t,r=sr);
-     translate([a,-c,0]) cylinder(h=t,r=sr);
+     translate([a,-c]) cylinder(h=t,r=sr);
     }
 
     // battery insertion/removal tunnel
@@ -422,14 +427,14 @@ module battery_holder () {
     // poker way
     eww = sr+a*2+sr;
     ewl = bl;
-    rotate([0,0,45])
+    rotate([0,0,ea])
      translate([0,-c-sr,0])
       rotate([bewa,0,0])
        translate([0,eww/2,ewl/2-sr-o])
         rounded_cube(w=eww,d=eww,h=ewl,rh=sr,rv=sr,t=0);
 
   }
- }
+// }
 }
 
 // the front 38-pin connector
@@ -529,7 +534,25 @@ module blank (l=bl,w=bw,t=card_thickness) {
 // wedge/bump added to the battery tunnel roof
 // to let the battery in but not back out
 module batt_retainer () {
-   bri = bcyp+bbw/2+sr+bby;
+ r=0.3;
+
+ translate([0,bbw/2+0.05,0])
+  rotate([90,0,90])
+   hull() {
+    translate([0,r+battery_retainer_gap,0])
+     cylinder(h=brw,r=r,center=true);
+   
+    translate([0,top_thickness-r-e,0])
+     cylinder(h=brw,r=r,center=true);
+
+    translate([4,top_thickness-r-e,0])
+     cylinder(h=brw,r=r,center=true);
+     
+    
+   }
+
+/*
+   bri = bbw/2+sr+bby;
    brl = bl/2-bri;
    ww = brl/2;
    translate([-brw/2,bri+ww,boh+e])
@@ -541,6 +564,7 @@ module batt_retainer () {
       translate([ww-brh/2,brh/2,0])
        cylinder(h=brw,r=brh/2);
      }
+*/
 }
 
 // top cover basic shape common to all cards
@@ -593,28 +617,69 @@ module rom_top () {
    translate([wexp,weyp,0])
     rotate([0,0,wea])
      slide_switch_opening(t=wren_switch_style,n=2,w=ww);
+     // bank switch
+   if (nbanks>1) {
    bw = 
      bank_switch_style == "finger" ? bank_finger_width :
      bank_switch_style == "slider" ? bank_slider_width :
      0;
-     // bank switch
-   if (nbanks>0) {
-   translate([0,swyp,0])
+   translate([swxp,swyp,0])
     slide_switch_opening(t=bank_switch_style,n=nbanks,w=bw);
    }
   }
  }
 }
 
-module sram_top () {
+module sram_128k_top () {
+ batx = 0;     // batt x
+ baty = 11.5;  // batt y
+ bea = 45;     // batt ejector angle
+ bfw = 6;      // batt foot (solder tab) width
+ bfd = 6;      // batt foot depth
+ 
  difference() {
   top_common();
   group() {
    component_pocket(w=rcxs,l=rcys,x=rcxp,y=rcyp);
-   battery_holder();
+   translate([batx,baty,0])
+    battery_holder(ea=bea,fw=bfw,fd=bfd);
   }
  }
+translate([batx,baty,0])
  batt_retainer();
+}
+
+module sram_top () {
+ batx = 8;
+ baty = 11;
+ bea = 0;     // batt ejector angle
+ bfw = 2;      // batt foot (solder tab) width
+ bfd = 7;      // batt foot depth
+
+ difference() {
+  top_common();
+  group() {
+   component_pocket(w=rcxs,l=rcys,x=rcxp,y=rcyp);
+
+   translate([batx,baty,0])
+    battery_holder(ea=bea,fw=bfw,fd=bfd);
+
+   // bank switch
+   if (nbanks>1) {
+   bw = 
+     bank_switch_style == "finger" ? bank_finger_width :
+     bank_switch_style == "slider" ? bank_slider_width :
+     0;
+   translate([swxp,swyp,0])
+    slide_switch_opening(t=bank_switch_style,n=nbanks,w=bw);
+   // bank switch components
+   translate([swxp,swyp-7,0])
+    component_pocket(w=10,l=3.5);
+   }
+  }
+ }
+ translate([batx,baty,0])
+  batt_retainer();
 }
 
 module mram_top () {
@@ -736,7 +801,15 @@ if($preview || render_preview_for_kicad) {
      translate([sth*(nbanks-1)/2-sth*(bank_switch_slider_position-1),bank_slider_width/2+swys/2+fc,0])
       switch_slider(n=nbanks,w=bank_slider_width);
   }
- if (part == "sram_top") sram_top();
+ if (part == "sram_128k_top") sram_128k_top();
+ if (part == "sram_top") {
+  sram_top();
+  if (bank_switch_style == "slider")
+   translate([swxp,swyp,0])
+    rotate([0,0,swa]) 
+     translate([sth*(nbanks-1)/2-sth*(bank_switch_slider_position-1),bank_slider_width/2+swys/2+fc,0])
+      switch_slider(n=nbanks,w=bank_slider_width);
+ }
  if (part == "mram_top") {
   mram_top();
   if (bank_switch_style == "slider")
@@ -774,6 +847,7 @@ if($preview || render_preview_for_kicad) {
   translate([0,0,top_thickness])
    rotate([0,180,0]) {
     if (part == "rom_top") rom_top();
+    if (part == "sram_128k_top") sram_128k_top();
     if (part == "sram_top") sram_top();
     if (part == "mram_top") mram_top();
     if (part == "breakout_top") breakout_top();
