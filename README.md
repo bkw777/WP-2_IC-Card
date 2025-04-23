@@ -58,12 +58,12 @@ Fully populated for for 512K SRAM
 ![](PCB/out/WP-2_IC-Card_SRAM.jpg)
 
 Setup for 128K SRAM  
-![](PCB/out/WP-2_IC-Card_SRAM.ce2.jpg)  
+![](PCB/out/WP-2_IC-Card_SRAM.ce2.jpg)
 
 ![](PCB/out/WP-2_IC-Card_SRAM.slider.jpg)  
 ![](PCB/out/WP-2_IC-Card_SRAM.finger.jpg)  
 ![](PCB/out/WP-2_IC-Card_SRAM.no_bank.jpg)  
-![](PCB/out/WP-2_IC-Card_SRAM.jpg)  
+
 ![](PCB/out/WP-2_IC-Card_SRAM.top.jpg)  
 ![](PCB/out/WP-2_IC-Card_SRAM.bottom.jpg)  
 ![](PCB/out/WP-2_IC-Card_SRAM.svg)
