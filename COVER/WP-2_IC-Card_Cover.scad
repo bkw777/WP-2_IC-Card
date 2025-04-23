@@ -3,13 +3,14 @@
 // This scad file generates several different possible parts.
 // set part="..." to select which part to output.
 
+
 // true = export stl with parts oriented for kicad
 // false = render stl with parts oriented for printing
-render_preview_for_kicad = false;
+render_preview_for_kicad = true;
 
 // Which part to generate?
-part = "sram_128k_top"; // top cover for the old 128K-only SRAM card
-//part = "sram_top"; // *** - top cover for the SRAM card
+//part = "sram_128k_top"; // top cover for the old 128K-only SRAM card
+part = "sram_top"; // *** - top cover for the SRAM card
 //part = "rom_top"; // top cover for the FLASH card
 //part = "mram_top"; // top cover for the MRAM card
 //part = "breakout_top"; // top cover for the breakout card
@@ -44,7 +45,7 @@ wren_switch_style = "under";
 // "pen" switch style slot width
 pen_slot_width = 3;
 
-bank_slider_width = 7;
+bank_slider_width = 6;
 bank_finger_width = 6; // make it wide enough to display the switch position labels
 
 wren_slider_width = 3;
@@ -254,7 +255,7 @@ swxp =         // x position
   part=="mram_top" ? 11 :
   0;     
 swyp =         // y position
-  part=="sram_top" ? 12 :
+  part=="sram_top" ? 13.75 :
   part=="mram_top" ? 14.125 :
   part=="rom_top" ? 10 :
   0;
@@ -650,7 +651,7 @@ translate([batx,baty,0])
 }
 
 module sram_top () {
- batx = 8;
+ batx = 9;
  baty = 11;
  bea = 0;     // batt ejector angle
  bfw = 2;      // batt foot (solder tab) width
