@@ -1,4 +1,4 @@
-(footprint "SolderJumper-2_P1.3mm_Bridged_RoundedPad1.0x1.5mm"
+(footprint "SolderJumper-2_Bridged"
 	(version 20240108)
 	(generator "pcbnew")
 	(generator_version "8.0")
@@ -6,24 +6,26 @@
 	(descr "SMD Solder Jumper, 1x1.5mm, rounded Pads, 0.3mm gap, bridged with 1 copper strip")
 	(tags "net tie solder jumper bridged")
 	(property "Reference" "REF**"
-		(at 0 -1.8 0)
+		(at 0 -1.75 0)
+		(unlocked yes)
 		(layer "F.SilkS")
 		(uuid "7e665f20-2274-46c5-b843-429dec3d10e8")
 		(effects
 			(font
-				(size 1 1)
-				(thickness 0.15)
+				(size 0.8 0.8)
+				(thickness 0.1)
 			)
 		)
 	)
-	(property "Value" "SolderJumper-2_P1.3mm_Bridged_RoundedPad1.0x1.5mm"
-		(at 0 1.9 0)
-		(layer "F.Fab")
+	(property "Value" "SolderJumper-2_Bridged"
+		(at 0 1.75 0)
+		(unlocked yes)
+		(layer "F.SilkS")
 		(uuid "47090aa3-9309-4fe1-8b8d-3a99dfbe88f2")
 		(effects
 			(font
-				(size 1 1)
-				(thickness 0.15)
+				(size 0.8 0.8)
+				(thickness 0.1)
 			)
 		)
 	)

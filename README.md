@@ -45,6 +45,21 @@ You can save some money on the ENIG by using Elecrow instead of PCBWAY.
 ![](PCB/out/WP-2_IC-Card_SRAM_128K.svg)  
 ![](COVER/out/WP-2_IC-Card_Cover_SRAM.png)
 
+
+****
+### work in progress updated SRAM card
+* Supports 512K or 256K chip with 128K or 256K banks  
+* Still supports simple 128K card with no banks or bank switch parts  
+* Configurable A18/CE2: A18 from bank switch, or CE2 from VMEM, or CE2 from bus
+* Emulate ROM card: cuttable /WE and /DET
+* Cuttable pin14-GND: (JP5/ T2) in case other machine besides WP-2 doesn't tie that pin to GND the way WP-2 does
+
+![](PCB/out/WP-2_IC-Card_SRAM.jpg)  
+![](PCB/out/WP-2_IC-Card_SRAM.top.jpg)  
+![](PCB/out/WP-2_IC-Card_SRAM.bottom.jpg)  
+![](PCB/out/WP-2_IC-Card_SRAM.svg)  
+
+
 ----
 
 ## M-RAM 512K Card

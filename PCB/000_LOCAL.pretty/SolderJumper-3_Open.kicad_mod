@@ -1,4 +1,4 @@
-(footprint "SolderJumper-3_P1.3mm_Bridged12_RoundedPad1.0x1.5mm"
+(footprint "SolderJumper-3_Open"
 	(version 20240108)
 	(generator "pcbnew")
 	(generator_version "8.0")
@@ -7,23 +7,25 @@
 	(tags "net tie solder jumper bridged")
 	(property "Reference" "REF**"
 		(at 0 -1.8 0)
+		(unlocked yes)
 		(layer "F.SilkS")
 		(uuid "fb938a99-3684-43f2-a488-89a83e63f06c")
 		(effects
 			(font
-				(size 1 1)
-				(thickness 0.15)
+				(size 0.8 0.8)
+				(thickness 0.1)
 			)
 		)
 	)
-	(property "Value" "SolderJumper-3_P1.3mm_Bridged12_RoundedPad1.0x1.5mm"
+	(property "Value" "SolderJumper-3_Open"
 		(at 0 1.9 0)
-		(layer "F.Fab")
+		(unlocked yes)
+		(layer "F.SilkS")
 		(uuid "452eac71-49b2-4950-b3e3-16749c0ae606")
 		(effects
 			(font
-				(size 1 1)
-				(thickness 0.15)
+				(size 0.8 0.8)
+				(thickness 0.1)
 			)
 		)
 	)
@@ -69,18 +71,6 @@
 	(zone_connect 1)
 	(attr exclude_from_pos_files exclude_from_bom)
 	(net_tie_pad_groups "1,2")
-	(fp_poly
-		(pts
-			(xy -0.8 -0.2) (xy -0.45 -0.2) (xy -0.45 0.2) (xy -0.8 0.2)
-		)
-		(stroke
-			(width 0)
-			(type solid)
-		)
-		(fill solid)
-		(layer "F.Cu")
-		(uuid "0eca9e4e-b58f-49aa-b2cf-15107f573b9b")
-	)
 	(fp_line
 		(start -2.05 0.3)
 		(end -2.05 -0.3)
