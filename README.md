@@ -220,37 +220,52 @@ There are much less expensive generic female 1.27mm pin headers on ebay and alie
 
 ### Notes about some of the card slot signals:  
 
-Pin 2, /DET Card Detect: WP-2 uses this to detect the type of card. The pin is pulled up to VDD inside the WP-2. A RAM card connects this pin to GND, which tells the WP-2 that it is a RAM card. A ROM card leaves this pin not connected, which means it will be pulled high by the pullup resistor inside the WP-2, which tells the WP-2 that it is a ROM card.
+* Pin 2, /DET Card Detect  
+  Pin 2 -> RA5 -> IC5 pin 64, "T1"
+  
+  WP-2 uses this to detect the type of card.  
+  The pin is pulled up to VDD inside the WP-2.  
+  A RAM card connects this pin to GND, which tells the WP-2 that it is a RAM card.  
+  A ROM card leaves this pin not connected, which means it will be pulled high by the pullup resistor inside the WP-2, which tells the WP-2 that it is a ROM card.
 
-Pin 3, CE2, active-high chip-enable: This is not a real CE2 signal from the WP-2, it's just connected directly to VDD inside the WP-2. The card is only enabled/disabled by /CE1. Some of these designs connect the pin anyway as long as the card is based on a chip that actually has a CE2 pin anyway, because it's possible there is some other machines besides WP-2 that use the same card standard, and possibly one of those might actually use the signal. But for instance the 512K MRAM chip does not have a CE2 pin, and that card does not bother to add logic to impliment it, so the pin is NC on that card.
+* Pin 14, 2nd GND  
+  This pin is tied to GND inside the WP-2, but it looks like it's an un-used input or output, not intended to be used as a power gnd.  
+  It looks like this pin was partially implimented as Pin 14 -> RA5 -> IC5 pin 65, "T2", just like S1-S3, but ended up not being used in the final production.  
+  So instead, IC5 pin 65 is pulled up to VDD and not connected to the socket or anything else, and the connector pin is tied to GND and not connected to anything else.  
+  It's possible the "IC Card" spec defines a function for that pin, and the gnd is just a way to satisfy that part of the spec in case there are cards that expect it, like how CE2 is hard-wired to VDD.  
+  
+  The cards in this repo all include a cuttable solder-jumper to disconnect pin 14 from GND on the card, in case there is some other machine (not WP-2) that might not like the pin being shorted to gnd.
 
-Pin 15, 16, & 36:
+* Pin 3, CE2, active-high chip-enable  
+  This is not a real CE2 signal from the WP-2, it's just connected directly to VDD inside the WP-2. The card is only enabled/disabled by /CE1. Some of these designs connect the pin anyway as long as the card is based on a chip that actually has a CE2 pin anyway, because it's possible there is some other machines besides WP-2 that use the same card standard, and possibly one of those might actually use the signal. But for instance the 512K MRAM chip does not have a CE2 pin, and that card does not bother to add logic to impliment it, so the pin is NC on that card.
 
-Pin 15 -> RA5 -> IC5 pin 66, "S1"  
-Pin 16 -> RA5 -> IC5 pin 67, "S2"  
-Pin 36 -> RA5 -> IC5 pin 68, "S3"
+* Pins 15, 16, & 36  
+  
+  Pin 15 -> RA5 -> IC5 pin 66, "S1"  
+  Pin 16 -> RA5 -> IC5 pin 67, "S2"  
+  Pin 36 -> RA5 -> IC5 pin 68, "S3"
+  
+  RA5 is 100k pullup to VDD.
+  
+  IC5 is a gate array with unknown programming.
+  
+  The S1, S2, S3 labels come from a schematic in the service manual. They are not mentioned anywhere else.
+  
+  The service manual says the original IC Cards have no connections on any of these pins (that's in the cards, not in the WP-2).
+  
+  It is unknown if the WP-2 does anything at all with these pins.  
+  They are connected to a chip, and the chip is a gate array that could be programmed to do anything.  
+  The only clues are that the pins are actually connected to anything at all instead of NC, and that they are pulled up rather than down or floating.  
+  It suggests there was a possible reserved usage, and that it was an active-low signal, and that possibly software could do it on the existing hardware.  
+  One guess for pins 15 & 16 might be made purely from their position on the connector. Possibly the spec for the "Toshiba IC-Card" interface includes pins for A18 and A19 that the WP-2 just doesn't happen to use. Though, unused address lines pins would more likely be pulled down than up, since address lines are active-high.
 
-RA5 is 100k pullup to VDD.
+* Pin 17, A17: Only used for ROM. the WP-2 only supports up to 128K in a RAM card.
 
-IC5 is a gate array with unknown programming.
-
-The S1, S2, S3 labels come from a schematic in the service manual. They are not mentioned anywhere else.
-
-The service manual says the original IC Cards have no connections on any of these pins (that's in the cards, not in the WP-2).
-
-It is unknown if the WP-2 does anything at all with these pins.  
-They are connected to a chip, and the chip is a gate array that could be programmed to do anything.  
-The only clues are that the pins are actually connected to anything at all instead of NC, and that they are pulled up rather than down or floating.  
-It suggests there was a possible reserved usage, and that it was an active-low signal, and that possibly software could do it on the existing hardware.  
-One guess for pins 15 & 16 might be made purely from their position on the connector. Possibly the spec for the "Toshiba IC-Card" interface includes pins for A18 and A19 that the WP-2 just doesn't happen to use. Though, unused address lines pins would more likely be pulled down than up, since address lines are active-high.
-
-Pin 17, A17: Only used for ROM. the WP-2 only supports up to 128K in a RAM card.
-
-Pin 37, BCHK/Vchk, Battery Voltage Check: It's unknown exactly how this was intended to be used by the "IC-Card" spec.  
-The SRAM card here simply connects pin 37 to BATT+. This seems to do nothing at all on a WP-2 but maybe some other machine like WP-3 or Citizen uses it.  
-The schematic on page 8-2 in the servivce manual doesn't show Vchk connecting to anything, and I also cannot find anything anywhere on the motherboard that has continuity with this pin.  
-Other similar machines did have a pin that was used for the host machine to read the level of the battery on a RAM card.  
-See the VBB pin in [Atari Portfolio Technical reference Guide, page 11](https://archive.org/details/atariportfoliotechnicalreferenceguide1989/page/n10/mode/1up).  
+* Pin 37, BCHK/Vchk, Battery Voltage Check: It's unknown exactly how this was intended to be used by the "IC-Card" spec.  
+  The SRAM card here simply connects pin 37 to BATT+. This seems to do nothing at all on a WP-2 but maybe some other machine like WP-3 or Citizen uses it.  
+  The schematic on page 8-2 in the servivce manual doesn't show Vchk connecting to anything, and I also cannot find anything anywhere on the motherboard that has continuity with this pin.  
+  Other similar machines did have a pin that was used for the host machine to read the level of the battery on a RAM card.  
+  See the VBB pin in [Atari Portfolio Technical reference Guide, page 11](https://archive.org/details/atariportfoliotechnicalreferenceguide1989/page/n10/mode/1up).  
 
 ### Other similar machines and card standards that are NOT the same and NOT compatible
 
