@@ -1,5 +1,9 @@
+# fuuuuucking python3/freecad
+# None of the supposed methods to prevent pycache actually work.
+__pycache__/
+
 *.step
 *.gcode
 *.3mf
 *.FCBak
-out/*.stl
+out/

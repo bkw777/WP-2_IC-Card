@@ -59,7 +59,9 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        "footprint_type_mismatch|146950000|82245000|7f8935a1-2758-4611-8a2c-128d4a876327|00000000-0000-0000-0000-000000000000"
+      ],
       "meta": {
         "filename": "board_design_settings.json",
         "version": 2
@@ -509,7 +511,7 @@
       "plot": "GERBER_${TITLE}_${REVISION}",
       "pos_files": "GERBER_${TITLE}_${REVISION}",
       "specctra_dsn": "",
-      "step": "../COVER/inc/WP-2_IC-Card_MRAM_512.pcb.step",
+      "step": "../COVER/inc/WP-2_IC-Card_MRAM.step",
       "svg": "",
       "vrml": ""
     },

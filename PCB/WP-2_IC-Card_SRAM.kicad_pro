@@ -585,6 +585,18 @@
           "label": "Description",
           "name": "Description",
           "show": true
+        },
+        {
+          "group_by": false,
+          "label": "L12",
+          "name": "L12",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "L23",
+          "name": "L23",
+          "show": false
         }
       ],
       "filter_string": "",

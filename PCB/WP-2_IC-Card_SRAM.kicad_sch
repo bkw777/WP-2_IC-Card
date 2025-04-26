@@ -6,7 +6,7 @@
 	(paper "USLetter")
 	(title_block
 		(title "WP-2_IC-Card_SRAM")
-		(date "2025-04-22")
+		(date "2025-04-25")
 		(rev "020")
 		(company "Brian K. White - b.kenyon.w@gmail.com")
 	)
@@ -5907,12 +5907,6 @@
 		(uuid "1624d173-7ff3-4228-ab1d-f4d3c4efeaeb")
 	)
 	(junction
-		(at 165.1 76.2)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "185dfe5d-1d57-47e5-ba5d-c82407fe28f0")
-	)
-	(junction
 		(at 44.45 154.94)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5935,6 +5929,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "76e0e86a-0477-486f-8169-39ea050c12af")
+	)
+	(junction
+		(at 177.8 63.5)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8125d3fe-3e54-4e06-b3a4-24f48aa0d046")
 	)
 	(junction
 		(at 121.92 170.18)
@@ -6090,7 +6090,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 76.2) (xy 165.1 76.2)
+			(xy 139.7 63.5) (xy 177.8 63.5)
 		)
 		(stroke
 			(width 0)
@@ -6150,7 +6150,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 76.2) (xy 139.7 53.34)
+			(xy 139.7 63.5) (xy 139.7 53.34)
 		)
 		(stroke
 			(width 0)
@@ -6200,7 +6200,7 @@
 	)
 	(wire
 		(pts
-			(xy 200.66 111.76) (xy 165.1 111.76)
+			(xy 200.66 111.76) (xy 177.8 111.76)
 		)
 		(stroke
 			(width 0)
@@ -6340,16 +6340,6 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 76.2) (xy 165.1 111.76)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bd42832d-343a-4b6a-af2d-1c7692b9d70b")
-	)
-	(wire
-		(pts
 			(xy 113.03 179.07) (xy 129.54 179.07)
 		)
 		(stroke
@@ -6397,6 +6387,16 @@
 			(type default)
 		)
 		(uuid "e85314f8-8220-47ab-b656-0c45e0a9e743")
+	)
+	(wire
+		(pts
+			(xy 177.8 63.5) (xy 177.8 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ea92577f-a553-41c9-b2fe-c90dd90463ff")
 	)
 	(wire
 		(pts
@@ -6518,7 +6518,7 @@
 		)
 		(uuid "6cd63b89-b16c-4b9e-bf2b-df716ead463d")
 	)
-	(text "Bridge 2-3 if 128K\n"
+	(text "Bridge 2-3 for 128K chip\n"
 		(exclude_from_sim no)
 		(at 152.146 39.116 0)
 		(effects
@@ -6528,7 +6528,7 @@
 		)
 		(uuid "707b6f7a-8614-4e1e-807d-039ea7da7947")
 	)
-	(text "Do Not Populate if 128K"
+	(text "Do Not Populate for 128K chip"
 		(exclude_from_sim no)
 		(at 102.616 186.436 0)
 		(effects
@@ -7871,7 +7871,7 @@
 	)
 	(symbol
 		(lib_id "000_LOCAL:R")
-		(at 165.1 72.39 0)
+		(at 177.8 59.69 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7879,7 +7879,7 @@
 		(dnp no)
 		(uuid "03690601-21e3-42c2-afd7-d7f3fd4f8886")
 		(property "Reference" "R1"
-			(at 166.878 71.12 0)
+			(at 179.578 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7888,7 +7888,7 @@
 			)
 		)
 		(property "Value" "47k"
-			(at 166.878 73.66 0)
+			(at 179.578 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7897,7 +7897,7 @@
 			)
 		)
 		(property "Footprint" "000_LOCAL:R_0805"
-			(at 165.1 72.39 0)
+			(at 177.8 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7906,7 +7906,7 @@
 			)
 		)
 		(property "Datasheet" "datasheets/sei-rmcf_rmcp.pdf"
-			(at 165.1 72.39 0)
+			(at 177.8 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7915,7 +7915,7 @@
 			)
 		)
 		(property "Description" "RES 47K OHM 1% 1/8W 0805"
-			(at 165.1 72.39 0)
+			(at 177.8 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7924,7 +7924,7 @@
 			)
 		)
 		(property "MPN" "RMCF0805FT47K0"
-			(at 165.1 72.39 0)
+			(at 177.8 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8834,7 +8834,7 @@
 	)
 	(symbol
 		(lib_id "power:VMEM")
-		(at 165.1 68.58 0)
+		(at 177.8 55.88 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8842,7 +8842,7 @@
 		(dnp no)
 		(uuid "557c95f9-32a3-47d0-89ab-e9d0f7290489")
 		(property "Reference" "#PWR016"
-			(at 165.1 72.39 0)
+			(at 177.8 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8851,7 +8851,7 @@
 			)
 		)
 		(property "Value" "VMEM"
-			(at 165.1 64.262 0)
+			(at 177.8 51.562 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8859,7 +8859,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 165.1 68.58 0)
+			(at 177.8 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8868,7 +8868,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 165.1 68.58 0)
+			(at 177.8 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8877,7 +8877,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 165.1 68.58 0)
+			(at 177.8 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)

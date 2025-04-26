@@ -10265,7 +10265,7 @@
 		(uuid "1ced00f4-0f80-4244-a95c-fb426d0c4234")
 	)
 	(label "3D4"
-		(at 217.17 72.39 180)
+		(at 217.17 69.85 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -11266,7 +11266,7 @@
 		(uuid "bd7289c6-fe08-4d37-b879-518930226c7b")
 	)
 	(label "3D5"
-		(at 217.17 69.85 180)
+		(at 217.17 72.39 180)
 		(fields_autoplaced yes)
 		(effects
 			(font

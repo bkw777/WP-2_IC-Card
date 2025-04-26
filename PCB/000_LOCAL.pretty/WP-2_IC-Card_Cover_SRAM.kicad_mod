@@ -4,7 +4,7 @@
 	(generator_version "8.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
-		(at 0 -2.5 0)
+		(at 0 -1.5 0)
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
@@ -17,7 +17,7 @@
 		)
 	)
 	(property "Value" "WP-2_IC_Card_Cover_SRAM"
-		(at 0 2.5 0)
+		(at 0 1.5 0)
 		(unlocked yes)
 		(layer "F.Fab")
 		(uuid "06559c9f-e766-451b-b62e-71ac90e409bc")
@@ -127,7 +127,7 @@
 	)
 	(fp_line
 		(start -19.999999 13)
-		(end -19.999999 4.05)
+		(end -19.999999 4)
 		(stroke
 			(width 0.05)
 			(type default)
@@ -136,8 +136,8 @@
 		(uuid "7d4f0abe-1284-4091-8033-4f12f4f4b12d")
 	)
 	(fp_line
-		(start -19.5 3.55)
-		(end 19.5 3.55)
+		(start -19.5 3.5)
+		(end 19.5 3.5)
 		(stroke
 			(width 0.05)
 			(type default)
@@ -176,7 +176,7 @@
 		(uuid "ec5de56d-cc26-4d81-9638-1ae7f336d7a4")
 	)
 	(fp_line
-		(start 19.999999 4.05)
+		(start 19.999999 4)
 		(end 19.999999 13)
 		(stroke
 			(width 0.05)
@@ -313,9 +313,9 @@
 		(uuid "3939adec-6475-42a8-8f05-a1a5d4bed2da")
 	)
 	(fp_arc
-		(start -20 4.05)
-		(mid -19.853553 3.696447)
-		(end -19.5 3.55)
+		(start -20 4)
+		(mid -19.853553 3.646447)
+		(end -19.5 3.5)
 		(stroke
 			(width 0.05)
 			(type default)
@@ -335,9 +335,9 @@
 		(uuid "eebdb869-e453-4207-b1f0-326908d02498")
 	)
 	(fp_arc
-		(start 19.5 3.550001)
-		(mid 19.853553 3.696447)
-		(end 19.999999 4.05)
+		(start 19.5 3.500001)
+		(mid 19.853553 3.646447)
+		(end 19.999999 4)
 		(stroke
 			(width 0.05)
 			(type default)
@@ -444,6 +444,7 @@
 		)
 	)
 	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/WP-2_IC-Card_Cover_SRAM_slider.step"
+		(hide yes)
 		(offset
 			(xyz 0 0 0)
 		)
@@ -466,7 +467,7 @@
 			(xyz 0 0 0)
 		)
 	)
-	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/WP-2_IC-Card_Cover_SRAM_no_bank.step"
+	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/WP-2_IC-Card_Cover_SRAM_none.step"
 		(hide yes)
 		(offset
 			(xyz 0 0 0)
