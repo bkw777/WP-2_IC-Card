@@ -12467,7 +12467,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "000_LOCAL:SolderJumper-3_P1.3mm_Bridged12_RoundedPad1.0x1.5mm"
+		(property "Footprint" "000_LOCAL:SolderJumper-3_Bridged12"
 			(at 129.54 165.1 0)
 			(effects
 				(font
@@ -12762,7 +12762,7 @@
 				)
 			)
 		)
-		(property "Footprint" "000_LOCAL:SolderJumper-2_P1.3mm_Bridged_RoundedPad1.0x1.5mm"
+		(property "Footprint" "000_LOCAL:SolderJumper-2_Bridged"
 			(at 43.18 50.8 0)
 			(effects
 				(font
@@ -14682,7 +14682,7 @@
 				)
 			)
 		)
-		(property "Footprint" "000_LOCAL:SolderJumper-2_P1.3mm_Bridged_RoundedPad1.0x1.5mm"
+		(property "Footprint" "000_LOCAL:SolderJumper-2_Bridged"
 			(at 57.15 135.89 0)
 			(effects
 				(font
@@ -16058,7 +16058,7 @@
 				)
 			)
 		)
-		(property "Footprint" "000_LOCAL:SolderJumper-2_P1.3mm_Bridged_RoundedPad1.0x1.5mm"
+		(property "Footprint" "000_LOCAL:SolderJumper-2_Bridged"
 			(at 43.18 81.28 0)
 			(effects
 				(font
