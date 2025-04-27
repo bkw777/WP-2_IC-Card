@@ -720,7 +720,7 @@ module sram_top () {
 
  // bank switch related components
  bank_parts_y_rel = -7.0;  // y relative to switch
- bank_parts_w = 10;
+ bank_parts_w = 9;
  bank_parts_l = 3.5;
 
  %PCB("inc/SRAM.pcb.stl");

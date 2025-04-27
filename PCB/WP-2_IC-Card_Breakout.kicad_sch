@@ -3472,10 +3472,6 @@
 			)
 		)
 	)
-	(no_connect
-		(at 114.3 60.96)
-		(uuid "48b825b2-c166-41da-8a05-78f8683f89dd")
-	)
 	(text "+5v"
 		(exclude_from_sim no)
 		(at 108.458 150.622 0)
@@ -3508,6 +3504,17 @@
 		)
 		(uuid "22a7122f-3736-431e-8435-b32006d6cf74")
 	)
+	(text "Shorted to GND"
+		(exclude_from_sim no)
+		(at 107.95 89.916 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "89668e7f-1d89-411d-a544-0b2ffb441de5")
+	)
 	(text "Card Detect: GND for RAM, NC for ROM"
 		(exclude_from_sim no)
 		(at 108.204 59.436 0)
@@ -3519,7 +3526,7 @@
 		)
 		(uuid "9c64aa70-5f43-4735-b499-961408c204bf")
 	)
-	(text "Hard trace to VDD."
+	(text "Shorted to VCC"
 		(exclude_from_sim no)
 		(at 108.204 61.976 0)
 		(effects
@@ -3660,6 +3667,17 @@
 			(justify left bottom)
 		)
 		(uuid "181988de-1fb0-447f-8899-160779a035c8")
+	)
+	(label "T2"
+		(at 184.15 93.98 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "193cff6f-7757-491a-9a9c-91f58e471989")
 	)
 	(label "A13"
 		(at 171.45 104.14 180)
@@ -4299,6 +4317,17 @@
 		)
 		(uuid "ead87f59-e02e-407b-ae65-664b4bc6bca0")
 	)
+	(label "T2"
+		(at 114.3 88.9 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ec944b38-0897-4665-bf89-aa8f3201f485")
+	)
 	(label "A17"
 		(at 114.3 96.52 0)
 		(fields_autoplaced yes)
@@ -4596,73 +4625,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 114.3 88.9 90)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005fa08971")
-		(property "Reference" "#PWR0108"
-			(at 120.65 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 118.11 88.9 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 114.3 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 114.3 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 114.3 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "9c24860a-16a4-4b80-a4cd-e503b96d7815")
-		)
-		(instances
-			(project "WP-2_IC-Card_Breakout"
-				(path "/e6354d08-0260-48e3-9224-e778b3f6e708"
-					(reference "#PWR0108")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "000_LOCAL:Conn_02x19_Odd_Even")
 		(at 177.8 100.33 0)
 		(mirror x)
@@ -4899,72 +4861,6 @@
 			(project "WP-2_IC-Card_Breakout"
 				(path "/e6354d08-0260-48e3-9224-e778b3f6e708"
 					(reference "#PWR0105")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 184.15 93.98 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-000060668305")
-		(property "Reference" "#PWR0106"
-			(at 190.5 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 187.96 93.98 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 184.15 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 184.15 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 184.15 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "df7b9047-d222-4712-9781-97a880fdf417")
-		)
-		(instances
-			(project "WP-2_IC-Card_Breakout"
-				(path "/e6354d08-0260-48e3-9224-e778b3f6e708"
-					(reference "#PWR0106")
 					(unit 1)
 				)
 			)
