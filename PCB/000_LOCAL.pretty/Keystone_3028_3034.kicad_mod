@@ -532,6 +532,7 @@
 		(at 0 0)
 		(size 18 18)
 		(layers "F.Cu" "F.Mask")
+		(zone_connect 2)
 		(uuid "fe10758f-f843-45c9-81f4-37d94d7ea2f3")
 	)
 	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/CR2032_holder_Keystone_3034.step"

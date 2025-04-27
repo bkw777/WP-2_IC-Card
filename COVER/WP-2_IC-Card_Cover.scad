@@ -707,7 +707,7 @@ module sram_top () {
  baty = 11;
  bfw = 2;      // batt foot (solder tab) width
  bfd = 7;      // batt foot depth
- byo = 0;   // Y-offset the main octagon cutout around the batt
+ byo = -0.4;   // Y-offset the main octagon cutout around the batt
  beaz = 0;     // batt ejector angle z (which octogon face)
  beax = 45;    // batt ejector angle x (ramp slope)
 

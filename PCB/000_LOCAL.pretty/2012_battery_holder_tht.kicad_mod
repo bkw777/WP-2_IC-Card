@@ -485,6 +485,7 @@
 		(size 17 17)
 		(layers "F.Cu" "F.Mask")
 		(solder_mask_margin 1.5)
+		(zone_connect 2)
 		(uuid "9b307f16-41a2-42de-8e7a-a4798de453f5")
 	)
 	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/keystone-PN3029_trimmed.STEP"

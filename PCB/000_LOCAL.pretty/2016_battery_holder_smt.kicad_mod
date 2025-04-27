@@ -455,6 +455,7 @@
 		(at 0 0)
 		(size 17.8 17.8)
 		(layers "F.Cu" "F.Mask")
+		(zone_connect 2)
 		(uuid "39693328-9803-4bba-849b-2a586c38bc7b")
 	)
 	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/keystone-PN3026.STEP"
