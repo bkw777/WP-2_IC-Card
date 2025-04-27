@@ -79,7 +79,7 @@
 		(aux_axis_origin 139.7 101.045)
 		(grid_origin 139.7 101.045)
 		(pcbplotparams
-			(layerselection 0x003d0fc_ffffffff)
+			(layerselection 0x003dcfc_ffffffff)
 			(plot_on_all_layers_selection 0x0000000_00000000)
 			(disableapertmacros no)
 			(usegerberextensions yes)
@@ -2633,7 +2633,7 @@
 		)
 		(fp_arc
 			(start 25.828427 -22.171574)
-			(mid 25.980661 -22.936945)
+			(mid 25.980667 -22.936939)
 			(end 26.414213 -23.585788)
 			(stroke
 				(width 0.05)
@@ -2644,7 +2644,7 @@
 		)
 		(fp_arc
 			(start 26.414214 -8.414214)
-			(mid 25.980662 -9.063056)
+			(mid 25.98065 -9.063055)
 			(end 25.828427 -9.828428)
 			(stroke
 				(width 0.05)
@@ -3814,7 +3814,7 @@
 		)
 	)
 	(gr_text "PCB THICKNESS 1.2mm"
-		(at 139.7 130.89 0)
+		(at 139.7 124.045 0)
 		(layer "Eco1.User")
 		(uuid "58f1f044-0708-478a-a53f-211f739bd0a9")
 		(effects
