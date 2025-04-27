@@ -68,8 +68,7 @@
 			)
 		)
 	)
-	(zone_connect 1)
-	(attr exclude_from_pos_files exclude_from_bom)
+	(attr exclude_from_pos_files exclude_from_bom allow_soldermask_bridges)
 	(net_tie_pad_groups "1, 2")
 	(fp_line
 		(start -1.4 0.3)
@@ -155,6 +154,17 @@
 		(layer "F.SilkS")
 		(uuid "a527c0ce-4964-4cf1-9531-d25d2e6a377d")
 	)
+	(fp_rect
+		(start -0.15 -0.7)
+		(end 0.15 0.7)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill solid)
+		(layer "F.Mask")
+		(uuid "aa3c2798-3c5d-4725-91f2-24721a72612c")
+	)
 	(fp_line
 		(start -1.65 -1.25)
 		(end -1.65 1.25)
@@ -199,8 +209,6 @@
 		(at -0.65 0)
 		(size 1 0.5)
 		(layers "F.Cu" "F.Mask")
-		(zone_connect 2)
-		(thermal_bridge_angle 45)
 		(options
 			(clearance outline)
 			(anchor rect)
@@ -232,8 +240,6 @@
 		(at 0.65 0)
 		(size 1 0.5)
 		(layers "F.Cu" "F.Mask")
-		(zone_connect 2)
-		(thermal_bridge_angle 45)
 		(options
 			(clearance outline)
 			(anchor rect)
