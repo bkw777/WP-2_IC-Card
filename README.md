@@ -186,7 +186,7 @@ Use with a standard eprom programmer such as TL-866.
 
 [Programming adapter BOM from DigiKey](https://www.digikey.com/short/v2r3pqp4)
 
-![](WP-2_IC-Card_programming_adapter.jpg)  
+![](/PCB/out/WP-2_IC-Card_programming_adapter.jpg)  
 
 <!-- 
 Example reading ROM card, jumpers in ROM position.
