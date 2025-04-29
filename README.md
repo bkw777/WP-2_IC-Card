@@ -1,30 +1,55 @@
-# Expansion IC-Card for [TANDY WP-2](tandy.wiki/WP-2), [TANDY WP-3](https://www.retrocoding.uk/tandy-wp-3-word-processor/), [Citizen CBM-10WP](http://mo5.com/musee-machines-cbm10wp.html), [NTS WP-10C](https://munk.org/typecast/2020/09/09/tandy-wp-2-user-manual-happy-septandy/)  
+# Expansion IC-Card for [TANDY WP-2](tandy.wiki/WP-2), [TANDY WP-3](https://www.retrocoding.uk/tandy-wp-3-word-processor/), [Citizen CBM-10WP](http://mo5.com/musee-machines-cbm10wp.html), [NTS WP-10C](https://munk.org/typecast/2020/09/09/tandy-wp-2-user-manual-happy-septandy/)
+
+![](PCB/out/WP-2_IC-Card_SRAM.jpg)  
+![](PCB/out/WP-2_IC-Card_SRAM.slider.jpg)
 
 The TANDY WP-2 and other clones of the Citizen CBM-10WP have an expansion slot that accepts ["IC Cards"](#reference-material).
 
-Here are a few different cards to fit that slot.  
-* A [battery-backed 128k RAM card](#battery-backed-sram-card) (like the original cards)  
-* A [non-volatile 512k RAM card](#m-ram-512k-card) that needs no battery  
-* A [ROM card](#rom-card) (of only academic value, since there are no known ROM card images)  
+Here are a few different cards to fit that slot.
+
+* A [battery-backed SRAM card](#sram-card) like the original cards  
+* A [non-volatile MRAM card](#mram-card) that needs no battery  
+* A [ROM card](#flash-card) of only academic value, since there are no known ROM images to load onto it  
 * A [programming adapter](#programming-adapter) that can read and write both the RAM and ROM cards  
-* A [breakout card](#breakout-card) to allow connecting the bus to a breadboard
+* A [breakout card](#breakout-card) to allow connecting the bus to a breadboard or logic analyser etc
 
-**These cards must be made with 1.2mm PCB or thinner**  
-Standard 1.6mm PCB thickness is too thick.  
-You have to change this option when ordering a PCB or you'll get 1.6mm by default.
+## Fabrication & assembly notes
 
-Attach the printable covers with thin [adhesive transfer tape](https://amazon.com/dp/B06Y34587N) or glue.
+**REQUIRES 1.2mm PCB**  
+Standard 1.6mm PCB thickness is too thick. Thinner is ok, and allows the possibility to print a bottom cover to protect the bottom surface of the pcb, but 1.2 mm is most convenient and the standard 1.6mm will NOT fit.
 
-It's a good idea to cover the bottom of the pcb with a piece of shipping or packing tape. Just lay a single 2-inch piece right across the middle and don't worry about the small bit of uncovered pcb on either side.
+ENIG copper finish will give you a better battery terminal without the expense and custom steps of proper selective hard gold.
 
-Gerbers and STLs are in [releases](../../releases/)
+Attach the cover with thin adhesive transfer tape aka "cell phone / lcd repair" tape, ideally 3-5mm wide.  
+The cards all have 5mm wide blocks for 5mm adhesive tape.  
+https://www.amazon.com/dp/B078H298G2/  
+https://www.amazon.com/dp/B019OQ4YX4/  
+https://www.amazon.com/dp/B0DRV5D4YG/  
+<!-- https://amazon.com/dp/B06Y34587N/ (This one is wider than 5mm but has no carrier film in the middle, just gummy adhesive that squishes into any form, so the width doesn't matter and you can just lay it anywhere right over the chips and pins etc.) -->
+Or glue, but adhesive is easier to remove later.
+
+It's not a bad idea to cover the bottom of the pcb with a piece of shipping or packing tape to protect the pcb from scratches.  
+Just lay a single 2-inch piece right across the middle and don't worry about the small bit of uncovered pcb on either side.
+
+The various solder-jumpers are for hacking and custom software development.  
+They are pre-connected for normal operation and you normally just ignore them. Don't solder them or cut them. If you get solder on them, clean it off to make the pcb flat again. The printed covers don't have cavities over those locations like for the other components.  
+They can be used to make the RAM cards emulate a ROM card, or enable all 256K in RAM mode, etc.  
+For the RAM cards, when bank size 128K is cut and 256K is jumpered, the bank switch becomes 2 banks of 256K instead of 4 banks of 128K, where positions 1 & 2 both select the same bank 1, and positions 3 & 4 both select the same bank 2.  
+
+Most cards have a few different styles and configurations of the printed cover.  
+If you are printing on your own FDM printer, the "slider" versions might be difficult to print accurately enough, so the "finger" versions are a simpler alternative.  
+The bank switches are optional on all cards, so there are versions of the covers without any bank switch.  
+For the ROM card this is also true for the write-protect switch.  
+There are a few more options available in the openscad file. There are a lot of configurable variables with comments at the top of the file.  
+
+Gerbers, BOMs, and STLs are in [releases](../../releases/)
 
 [pictures](https://photos.app.goo.gl/M8KbMLbY8BXGH7LL8)
 
 ----
 
-## Battery-backed SRAM CARD  
-<!-- [RAM card PCB from OSHPark]() (Select 0.8mm PCB thickness)  -->
+## SRAM CARD  
+<!--
 [128K SRAM BOM from DigiKey](https://www.digikey.com/short/fdjd3j85)  
 [128K SRAM PCB and COVER from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_RAM_IC_Card.html)  
 IMPORTANT, when ordering the PCB:  
@@ -48,36 +73,67 @@ You can save some money on the ENIG by using Elecrow instead of PCBWAY.
 
 ****
 ### work in progress updated SRAM card
-* Supports 512K or 256K chip with 128K or 256K banks  
-* Still supports simple 128K card with no banks or bank switch parts  
-* Configurable A18/CE2: A18 from bank switch, or CE2 from VMEM, or CE2 from bus  
-* Emulate ROM card: cuttable /WE and /DET  
-* Cuttable pin14-GND: (JP5/ T2) in case other machine besides WP-2 doesn't tie that pin to GND the way WP-2 does
+-->
 
-Fully populated for for 512K SRAM  
+Fully populated to use all of a 256K or 512K chip  
 ![](PCB/out/WP-2_IC-Card_SRAM.jpg)
 
-Setup for 128K SRAM  
+Configured for a 128K chip, or to use just 128K of a larger chip  
 ![](PCB/out/WP-2_IC-Card_SRAM.ce2.jpg)
 
 ![](PCB/out/WP-2_IC-Card_SRAM.slider.jpg)  
 ![](PCB/out/WP-2_IC-Card_SRAM.finger.jpg)  
 ![](PCB/out/WP-2_IC-Card_SRAM.no_bank.jpg)  
+![](PCB/out/WP-2_IC-Card_SRAM.write-enable.jpg)
 
 ![](PCB/out/WP-2_IC-Card_SRAM.top.jpg)  
 ![](PCB/out/WP-2_IC-Card_SRAM.bottom.jpg)  
 ![](PCB/out/WP-2_IC-Card_SRAM.svg)
 
+(These links are for an earlier simpler version of the card without any banks. It still accepts up to 512K chip, but only uses 128K.)  
+[128K SRAM BOM from DigiKey](https://www.digikey.com/short/fdjd3j85)  
+[128K SRAM PCB and COVER from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_RAM_IC_Card.html)  
+
+<!--
+WP-2_IC-Card_Cover_SRAM_slider.stl is a cover with a sliding actuator for the bank switch  
+WP-2_IC-Card_Cover_SRAM_finger.stl is a cover with a simple concave opening for the bank switch  
+WP-2_IC-Card_Cover_SRAM_none.stl is a cover with no bank-switch opening  
+-->
+
+<!-- [128K SRAM PCB and COVER from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_RAM_IC_Card.html)  -->
+
+<!-- When ordering the PCB:  -->
+<!-- * **Thickness: 1.2** DO NOT FORGET  -->
+<!--
+* **Min Track/Spacing: 6/6mil**  
+The PCBWAY ordering page may auto-select thinner minimum traces which is expensive, but thise pcb actually has all traces at least 0.2mm (7.8mil), so you should manually change the option to 6mil.  
+-->
+<!-- 
+* **Surface Finish: Immersion gold(ENIG)**  (for the battery)  
+* **Other Special request: "Bottom solder mask full cover."**  
+-->
+<!-- There are no openings in the bottom soldermask layer, so you have to tell them that you want full soldermask instead of none.  -->
+
+<!-- Elecrow produces ENIG cheaper than PCBWAY. Just upload the gerber zip from [releases](../../releases) -->
+<!--
+For 128K (AS6C1008, IS62C1024, etc):  
+  Don't populate SW1, D1, R3, R4  
+  Solder-bridge JP4 VMEM-CE2  
+  Print the "SRAM_none" cover  
+-->
+
 
 ----
 
-## M-RAM 512K Card
+## MRAM Card
 
 RAM card without a battery!
 
-This card is expensive. The BOM cost is over $50 before tax or shipping and not including the PCB or the 3d-printed top cover. The total including PCB, BOM, printed cover, tax, & shipping is over $100.
+This card is expensive.  
+The BOM cost is over $50 before tax or shipping and not including the PCB or the 3d-printed top cover.  
+The total including PCB, BOM, printed cover, tax, & shipping is over $100.
 
-However it does provide **4** 128k cards in a single card, without any battery.  
+However it does provide **4** 128k cards in a single card, without any battery.
 
 NOTE: MRAM is permanently damaged by exposure to magnetic fields.  
 The particular part used here is [internally shielded](PCB/datasheets/EST02880_Magnetic_Immunity_for_Everspin_MRAM_073115.pdf) and specifically the Industrial version claims to be safe to 125 gauss.  
@@ -88,14 +144,7 @@ The BOM specifies the Industrial part so it should be reasonably safe, however y
 [512K MRAM BOM from DigiKey](https://www.digikey.com/short/nqjddjf5)  , [Mouser](https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=f6eb946163)  
 <!-- RIP Shapeways... [MRAM-512 cover from Shapeways](http://shpws.me/TIyf)  -->
 
-There are a few versions of 3d-printable cover available, with different ways to handle the bank-select switch.
-
-Supports both a 512K chip with a bank-select switch for 4 x 128K banks, or a 128K chip and simply omit the bank-select parts.
-
-The solder-jumpers are for hacking and custom software development.  
-They are pre-connected for normal operation and you normally just ignore them.  
-They can be used to make the card emulate a ROM card, or enable all 256K in RAM mode.  
-When A17 is connected from the bus (like a 256K ROM card) the bank switch becomes 2 banks of 256K, where positions 1 & 2 both select the same bank 1, and positions 3 & 4 both select the same bank 2.
+Supports both a 512K chip with a bank-select switch for 4 x 128K banks, or a 128K chip and you simply omit the indicated bank-select parts.
 
 ![](ref/IMG_0049.JPG)  
 ![](ref/IMG_0050.JPG)  
@@ -112,11 +161,11 @@ When A17 is connected from the bus (like a 256K ROM card) the bank switch become
 
 ## ROM CARD  
 There are no known rom images for any rom cards.  
-Don't bother building one of these unless you are trying to create a rom from scratch.
+Don't bother building one of these unless you are trying to develop romware yourself.
 
 <!-- [ROM card PCB from OSHPark](https://oshpark.com/shared_projects/F9gte3be) (Select 0.8mm PCB thickness)  -->
-[ROM PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_ROM_IC_Card.html) (Select 1.2mm PCB thickness)  
-[ROM BOM from DigiKey](https://www.digikey.com/short/qfr21p8h)
+[ROM PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_ROM_IC_Card.html)  
+<!-- [ROM BOM from DigiKey](https://www.digikey.com/short/qfr21p8h)  -->
 
 ![](PCB/out/WP-2_IC-Card_ROM.jpg)  
 ![](PCB/out/WP-2_IC-Card_ROM.slider.jpg)  

@@ -6,8 +6,8 @@
 	(paper "USLetter")
 	(title_block
 		(title "TANDY WP-2 IC Card Breakout")
-		(date "2023-01-01")
-		(rev "003")
+		(date "2025-04-29")
+		(rev "004")
 		(company "Brian K. White - b.kenyon.w@gmail.com")
 	)
 	(lib_symbols
@@ -4668,7 +4668,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "02x19 x 2.54mm pitch male pin header"
+			(at 177.8 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "PRPC019DAAN-RC"
 			(at 177.8 100.33 0)
 			(effects
 				(font
@@ -5005,7 +5014,7 @@
 		(at 63.5 177.8 0)
 		(unit 1)
 		(exclude_from_sim yes)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
