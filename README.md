@@ -165,7 +165,7 @@ Don't bother building one of these unless you are trying to develop romware your
 
 <!-- [ROM card PCB from OSHPark](https://oshpark.com/shared_projects/F9gte3be) (Select 0.8mm PCB thickness)  -->
 [ROM PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_ROM_IC_Card.html)  
-<!-- [ROM BOM from DigiKey](https://www.digikey.com/short/qfr21p8h)  -->
+[ROM BOM from DigiKey](https://www.digikey.com/short/540dqm8m)
 
 ![](PCB/out/WP-2_IC-Card_ROM.jpg)  
 ![](PCB/out/WP-2_IC-Card_ROM.slider.jpg)  
