@@ -6,7 +6,7 @@
 	(descr "SMD Solder 3-pad Jumper, 1x1.5mm rounded Pads, 0.3mm gap, pads 1-2 bridged with 1 copper strip")
 	(tags "net tie solder jumper bridged")
 	(property "Reference" "REF**"
-		(at 0 -1.8 0)
+		(at -3 0 0)
 		(unlocked yes)
 		(layer "F.SilkS")
 		(uuid "fb938a99-3684-43f2-a488-89a83e63f06c")
@@ -15,10 +15,11 @@
 				(size 0.8 0.8)
 				(thickness 0.1)
 			)
+			(justify right)
 		)
 	)
 	(property "Value" "SolderJumper-3_Bridged12"
-		(at 0 1.9 0)
+		(at 0 -1.3 90)
 		(unlocked yes)
 		(layer "F.SilkS")
 		(uuid "452eac71-49b2-4950-b3e3-16749c0ae606")
@@ -27,6 +28,7 @@
 				(size 0.8 0.8)
 				(thickness 0.1)
 			)
+			(justify left)
 		)
 	)
 	(property "Footprint" ""
@@ -68,6 +70,32 @@
 			)
 		)
 	)
+	(property "Label12" "Label12"
+		(at -1.2 -1.3 90)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "13503d45-8410-44e4-8621-82e4d3569f46")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.1)
+			)
+			(justify left)
+		)
+	)
+	(property "Label23" "Label23"
+		(at 1.25 -1.3 90)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "2a369e3e-32a0-40bf-98c5-ca93f9516dfd")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.1)
+			)
+			(justify left)
+		)
+	)
 	(attr exclude_from_pos_files exclude_from_bom allow_soldermask_bridges)
 	(net_tie_pad_groups "1,2")
 	(fp_poly
@@ -80,7 +108,7 @@
 		)
 		(fill solid)
 		(layer "F.Cu")
-		(uuid "0eca9e4e-b58f-49aa-b2cf-15107f573b9b")
+		(uuid "04347044-a027-4e4e-899b-936b3497e615")
 	)
 	(fp_line
 		(start -2.05 0.3)
@@ -93,14 +121,24 @@
 		(uuid "986f1bfe-9091-4fe4-82d3-9c131191aa14")
 	)
 	(fp_line
-		(start -1.5 1.5)
-		(end -0.9 1.5)
+		(start -2.05 0.3)
+		(end -2.05 1)
 		(stroke
 			(width 0.12)
-			(type solid)
+			(type default)
 		)
 		(layer "F.SilkS")
-		(uuid "2da72bba-775d-4c79-bd45-1b7db6dcc9be")
+		(uuid "1350dff9-300b-401d-82a6-89fd29e01d40")
+	)
+	(fp_line
+		(start -2.05 1)
+		(end -1.4 1)
+		(stroke
+			(width 0.12)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "b6d71f4c-8076-4063-82f0-e9d265c977f9")
 	)
 	(fp_line
 		(start -1.4 -1)
@@ -111,26 +149,6 @@
 		)
 		(layer "F.SilkS")
 		(uuid "89515293-4be5-4d2a-beff-c42d85db4bf5")
-	)
-	(fp_line
-		(start -1.2 1.2)
-		(end -1.5 1.5)
-		(stroke
-			(width 0.12)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "e35602c0-90d9-4a4e-995b-a2c3bf6858c9")
-	)
-	(fp_line
-		(start -1.2 1.2)
-		(end -0.9 1.5)
-		(stroke
-			(width 0.12)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "1e56bb8c-17b5-4de2-a370-fd02e5e390b5")
 	)
 	(fp_line
 		(start 1.4 1)
@@ -205,7 +223,7 @@
 		)
 		(fill solid)
 		(layer "F.Mask")
-		(uuid "8afc6f76-9750-479b-863d-e7d6e372c9a4")
+		(uuid "bbc9f84f-bc18-450d-9da3-e563b322dde7")
 	)
 	(fp_rect
 		(start 0.5 -0.7)
@@ -216,7 +234,7 @@
 		)
 		(fill solid)
 		(layer "F.Mask")
-		(uuid "5bc22dd4-acb7-4162-bebd-71a2c9e5c4cc")
+		(uuid "2d389e62-65d5-4438-a34e-2d53e8156940")
 	)
 	(fp_line
 		(start -2.3 -1.25)

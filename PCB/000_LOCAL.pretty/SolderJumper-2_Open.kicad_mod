@@ -1,4 +1,4 @@
-(footprint "SolderJumper-2_open"
+(footprint "SolderJumper-2_Open"
 	(version 20240108)
 	(generator "pcbnew")
 	(generator_version "8.0")
@@ -17,7 +17,7 @@
 			)
 		)
 	)
-	(property "Value" "SolderJumper-2_open"
+	(property "Value" "SolderJumper-2_Open"
 		(at 0 1.75 0)
 		(unlocked yes)
 		(layer "F.SilkS")
