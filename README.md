@@ -175,7 +175,7 @@ Supports both a 512K chip with a bank-select switch for 4 x 128K banks, or a 128
 
 There are 2 options for writing to the ROM card.
 
-Regardless which option is used, also move the write-enable switch to the unlocked position,  
+Regardless which option is used, also move the write-enable switch on the card to the unlocked position,  
 or bridge the /WE solder-jumper if no switch installed.
 
 When not writing, move the write-enable switch to the locked position,  
@@ -184,7 +184,7 @@ or remove the solder from the /WE solder jumper if no switch installed.
 ### Write to the ROM card using a modded WP-2
 Cheap and convenient, but does require modifying the WP-2.  
 
-Ben Grimmett has writted software that runs on the WP-2 and writes to the flash.  
+Ben Grimmett has written software that runs on the WP-2 and writes to the flash.  
 This requires adding a bodge wire inside the WP-2 to bring the /WR signal from the cpu to an un-used pin on the card slot, and configuring the card to use that pin for write-enable instead of the normal R/W pin.  
 
 In the WP-2, RA4 pin 5 is connected to /WR on the CPU,  
