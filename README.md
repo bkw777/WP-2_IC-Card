@@ -160,8 +160,6 @@ Supports both a 512K chip with a bank-select switch for 4 x 128K banks, or a 128
 ----
 
 ## ROM CARD  
-There are no known rom images for any rom cards.  
-Don't bother building one of these unless you are trying to develop romware yourself.
 
 <!-- [ROM card PCB from OSHPark](https://oshpark.com/shared_projects/F9gte3be) (Select 0.8mm PCB thickness)  -->
 [ROM PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_ROM_IC_Card.html)  
@@ -175,11 +173,47 @@ Don't bother building one of these unless you are trying to develop romware your
 ![](PCB/out/WP-2_IC-Card_ROM.bottom.jpg)  
 ![](PCB/out/WP-2_IC-Card_ROM.svg)
 
+There are 2 options for writing to the ROM card.
+
+Regardless which option is used, also move the write-enable switch to the unlocked position,  
+or bridge the /WE solder-jumper if no switch installed.
+
+When not writing, move the write-enable switch to the locked position,  
+or remove the solder from the /WE solder jumper if no switch installed.
+
+### Write to the ROM card using a modded WP-2
+Cheap and convenient, but does require modifying the WP-2.  
+
+Ben Grimmett has writted software that runs on the WP-2 and writes to the flash.  
+This requires adding a bodge wire inside the WP-2 to bring the /WR signal from the cpu to an un-used pin on the card slot, and configuring the card to use that pin for write-enable instead of the normal R/W pin.  
+
+In the WP-2, RA4 pin 5 is connected to /WR on the CPU,  
+and RA5 pin 2 is connected to S3 (pin 36) on the card socket.
+
+Directions:  
+* In the WP-2, solder a wire from RA4 pin 5 to RA5 pin 2.  
+  You can thread the wire through another resistor pack and under a jumper wire link to get free strain relief to hold the wire in place.  
+  This wire can be left there permanently, it doesn't interfere with normal operation.
+
+* On the card, solder-jumper JP1: open 1-2, close 2-3.  
+  (Scratch the copper link connecting the R/W & /WE pads by default, join R/W to S3 with a solder blob.)  
+  JP1 may be left like this.
+
+* Find Ben Grimmett's software in the files section of the [Model-T Computers](https://www.facebook.com/groups/Model.T.Computers/) group on Facebook.
+
+### Write to the ROM card using an eprom programmer
+
+* On the card, solder-jumper JP1: open 2-3, close 1-2.  
+  (Remove any solder blob joining S3 to R/W, add a solder blocb joining R/W to /WE if not already connected by a copper trace.)  
+  This is already the default condition if you didn't change it, there is a copper trace connecting pads 1 & 2.
+
+* Build and use the programming adapter below with an eprom programmer such as XGeku T48
+
 ----
 
 ## Programming Adapter
 The programming adapter supports both ROM and RAM cards.  
-Use with a standard eprom programmer such as TL-866.
+Use with a standard eprom programmer such as TL-866 or T48, etc.
 
 <!-- [Programming Adapter PCB from OSHPark](https://oshpark.com/shared_projects/TkzNwgho)  -->
 [Programming Adapter PCB from PCBWAY](https://www.pcbway.com/project/shareproject/TANDY_WP_2_IC_Card_Programming_Adapter.html)
@@ -201,7 +235,7 @@ Example reading RAM card (SRAM or MRAM), jumpers in RAM position.
 ### To program the ROM card
 
 Switch the write-enable switch on the rom card to the unlock position.  
-(or close the solder jumper JP1 if no switch installed)
+(or close the /WE solder jumper if no switch installed)
 
 Set all 4 jumpers on the programming adapter to ROM.
 
