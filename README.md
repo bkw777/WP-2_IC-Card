@@ -208,7 +208,7 @@ Directions:
 ### Write to the ROM card using an eprom programmer
 
 * On the card, solder-jumper JP1: open 2-3, close 1-2.  
-  (Remove any solder blob joining S3 to R/W, add a solder blocb joining R/W to /WE if not already connected by a copper trace.)  
+  (Remove any solder blob joining S3 to /WE, add a solder blob joining R/W to /WE if not already connected by a copper trace.)  
   This is already the default condition if you didn't change it, there is a copper trace connecting pads 1 & 2.
 
 * Build and use the programming adapter below with an eprom programmer such as XGeku T48
