@@ -195,11 +195,15 @@ Directions:
   You can thread the wire through another resistor pack and under a jumper wire link to get free strain relief to hold the wire in place.  
   This wire can be left there permanently, it doesn't interfere with normal operation.
 
+  ![](ref/WP-2_rom_card_write_mod.jpg)  
+  ![](ref/WP-2_RA4_pin_5.jpg)  
+  ![](ref/WP-2_RA5_pin_2.jpg)
+
 * On the card, solder-jumper JP1: open 1-2, close 2-3.  
-  (Scratch the copper link connecting the R/W & /WE pads by default, join R/W to S3 with a solder blob.)  
+  (Scratch the copper link connecting the R/W & /WE pads by default, join S3 to /WE with a solder blob.)  
   JP1 may be left like this.
 
-* Find Ben Grimmett's software in the files section of the [Model-T Computers](https://www.facebook.com/groups/Model.T.Computers/) group on Facebook.
+* Find Ben Grimmett's software in the files section of the [Model-T Computers](https://www.facebook.com/groups/Model.T.Computers/files/files) group on Facebook.
 
 ### Write to the ROM card using an eprom programmer
 
@@ -220,14 +224,14 @@ Use with a standard eprom programmer such as TL-866 or T48, etc.
 
 [Programming adapter BOM from DigiKey](https://www.digikey.com/short/v2r3pqp4)
 
-![](/PCB/out/WP-2_IC-Card_programming_adapter.jpg)  
+![](PCB/out/WP-2_IC-Card_programming_adapter.jpg)  
 
 <!-- 
 Example reading ROM card, jumpers in ROM position.
-![](WP-2_IC-Card_programming_adapter.ROM.jpg)  
+![](ref/WP-2_IC-Card_programming_adapter.ROM.jpg)  
 
 Example reading RAM card (SRAM or MRAM), jumpers in RAM position.
-![](WP-2_IC-Card_programming_adapter.RAM.jpg)  
+![](ref/WP-2_IC-Card_programming_adapter.RAM.jpg)  
 -->
 
 ![](PCB/out/WP-2_IC-Card_programming_adapter.svg)
