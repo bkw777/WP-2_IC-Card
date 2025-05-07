@@ -4278,7 +4278,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "000_LOCAL:Pin_Header_Straight_1x38_Pitch1.27mm"
+		(property "Footprint" "000_LOCAL:TMS-138-01-x-x_pcb_edge"
 			(at 195.58 101.6 0)
 			(effects
 				(font
