@@ -6,8 +6,8 @@
 	(paper "USLetter")
 	(title_block
 		(title "WP-2_IC-Card_ROM")
-		(date "2025-05-04")
-		(rev "012")
+		(date "2025-05-07")
+		(rev "014")
 		(company "Brian K. White - b.kenyon.w@gmail.com")
 		(comment 1 "github.com/bkw777/WP-2_IC-Card")
 	)
@@ -4291,9 +4291,9 @@
 		)
 		(uuid fc84dd4b-47ae-45c5-829d-5125c59dcc79)
 	)
-	(text "Compatible with 128Kx8 to 512Kx8\n\nx = 1,2,4 = 128k,256k,512k\n\nAM29F0x0\nSST39SF0x0A\nGLS29EE0x0\nAT29C0x0A\nMX29F0x0C\n"
+	(text "64Kx8 to 512Kx8\n5v parallel flash\n\nAM29F0x0\nSST39SF0x0A\nGLS29EE0x0\nAT29C0x0A\nAT29C512\nMX29F0x0C\n"
 		(exclude_from_sim no)
-		(at 177.8 76.2 0)
+		(at 182.88 76.2 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4301,6 +4301,17 @@
 			(justify left bottom)
 		)
 		(uuid "15cbf1d1-e250-4047-9ee4-4f1cd3666bb3")
+	)
+	(text "(*)"
+		(exclude_from_sim no)
+		(at 187.198 130.302 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "19003b33-d825-41e4-a415-5741fe3952ee")
 	)
 	(text "IC5_68"
 		(exclude_from_sim no)
@@ -4368,7 +4379,7 @@
 		)
 		(uuid "658d75c3-a642-4af8-a2ad-73e492c9d207")
 	)
-	(text "Always install R1, C1, U1.\nSW1 optional. May use JP1 instead for one-time or infrequent write.\nSW2 and R2 only install with 512K chip.\nJP2 cuttable in case some other machine besides WP-2 does not tie pin 14 to GND."
+	(text "Always install R1, C1, U1.\nSW1 optional. May use JP3 instead for one-time or infrequent write.\nSW2 and R2 only install with 512K chip.\n"
 		(exclude_from_sim no)
 		(at 159.766 169.672 0)
 		(effects
@@ -4389,6 +4400,28 @@
 			(justify right bottom)
 		)
 		(uuid "7dd33eed-7950-4ab1-913f-d8428d2f5510")
+	)
+	(text "(*)"
+		(exclude_from_sim no)
+		(at 187.198 132.842 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "82834385-981e-4f30-b965-6f4d6d17dadb")
+	)
+	(text "(*)"
+		(exclude_from_sim no)
+		(at 187.198 127.762 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "92d2955a-7ff5-4e32-902b-f44f93c863a4")
 	)
 	(text "C&K SK-12C0405-SG 1.5 RT\nE-Switch EG1215AA\nNidec CUS-12TB\nAlps Alpine SSSS811101\n"
 		(exclude_from_sim no)
@@ -4411,15 +4444,27 @@
 		)
 		(uuid "caafa9ee-830d-4960-a6b2-336b2ec07730")
 	)
-	(text "Do not populate\nfor 256K or 128K chip"
+	(text "only populate for 512K"
 		(exclude_from_sim no)
-		(at 127 85.09 0)
+		(at 127 87.63 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
+			(justify bottom)
 		)
 		(uuid "d88f646b-ee39-4df9-9a4b-00f0f0dd5cd1")
+	)
+	(text "(*) don't move A16, A17, or A18\nfor 64K to 512K compatibility"
+		(exclude_from_sim no)
+		(at 206.248 132.588 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e8e8cbb4-23ca-474c-847f-2b5b9d00bc34")
 	)
 	(text "Shorted to VCC"
 		(exclude_from_sim no)
@@ -4433,7 +4478,7 @@
 		(uuid "ec3fd637-d220-44ff-adaa-2716b910b610")
 	)
 	(label "A14"
-		(at 177.8 86.36 180)
+		(at 177.8 91.44 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4488,7 +4533,7 @@
 		(uuid "16051749-420a-42f5-9ef3-71151d59e351")
 	)
 	(label "A16"
-		(at 177.8 91.44 180)
+		(at 177.8 127 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4598,7 +4643,7 @@
 		(uuid "2be3d8eb-27bd-44f5-b0d1-3e14cd753018")
 	)
 	(label "A8"
-		(at 177.8 121.92 180)
+		(at 177.8 106.68 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4631,7 +4676,7 @@
 		(uuid "2d12697b-69a9-4cca-911b-790548ae8822")
 	)
 	(label "A6"
-		(at 177.8 96.52 180)
+		(at 177.8 121.92 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4686,7 +4731,7 @@
 		(uuid "4a89efb1-f5ef-43fe-bb77-743d1154dd15")
 	)
 	(label "A7"
-		(at 177.8 129.54 180)
+		(at 177.8 119.38 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4708,7 +4753,7 @@
 		(uuid "5008326b-2308-4d4a-a0be-bd861792740e")
 	)
 	(label "A15"
-		(at 177.8 88.9 180)
+		(at 177.8 93.98 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4719,7 +4764,7 @@
 		(uuid "518fccc8-cbe4-4660-9184-9759bce8a100")
 	)
 	(label "A10"
-		(at 177.8 106.68 180)
+		(at 177.8 114.3 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4730,7 +4775,7 @@
 		(uuid "53b9a231-81e4-48f0-90b3-d400b918d87a")
 	)
 	(label "A17"
-		(at 177.8 93.98 180)
+		(at 177.8 129.54 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4741,7 +4786,7 @@
 		(uuid "59ec5da8-b14f-4e0f-8e34-fa447fba791e")
 	)
 	(label "A5"
-		(at 177.8 99.06 180)
+		(at 177.8 96.52 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4796,7 +4841,7 @@
 		(uuid "6cf24198-4a63-4f93-8b17-09f49ba077f8")
 	)
 	(label "A3"
-		(at 177.8 104.14 180)
+		(at 177.8 101.6 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4818,7 +4863,7 @@
 		(uuid "772b70a3-ad09-4650-aeb7-d430f072d234")
 	)
 	(label "A13"
-		(at 177.8 111.76 180)
+		(at 177.8 88.9 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4862,7 +4907,7 @@
 		(uuid "8f349a2e-2e80-4351-972e-dd39c0797cd1")
 	)
 	(label "A0"
-		(at 177.8 127 180)
+		(at 177.8 124.46 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4917,7 +4962,7 @@
 		(uuid "a2bfc1ea-ad48-4713-9e30-1a0914d49054")
 	)
 	(label "A12"
-		(at 177.8 114.3 180)
+		(at 177.8 86.36 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4961,7 +5006,7 @@
 		(uuid "adde84cd-85d0-43f3-a71c-7e60d7c39ccc")
 	)
 	(label "A2"
-		(at 177.8 116.84 180)
+		(at 177.8 104.14 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5060,7 +5105,7 @@
 		(uuid "cc592c72-9e23-4a53-b601-613d44f91bd0")
 	)
 	(label "A11"
-		(at 177.8 109.22 180)
+		(at 177.8 111.76 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5071,7 +5116,7 @@
 		(uuid "d168b254-f099-48bd-b195-807c37824b14")
 	)
 	(label "A4"
-		(at 177.8 101.6 180)
+		(at 177.8 99.06 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5115,7 +5160,7 @@
 		(uuid "e6e32bd5-6e6b-4d94-8ab7-7413bacb3c9a")
 	)
 	(label "A1"
-		(at 177.8 124.46 180)
+		(at 177.8 116.84 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5148,7 +5193,7 @@
 		(uuid "ea5815d4-a0ea-4f7f-9714-ec1ce81004a9")
 	)
 	(label "A9"
-		(at 177.8 119.38 180)
+		(at 177.8 109.22 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
