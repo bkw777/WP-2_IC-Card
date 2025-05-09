@@ -3338,14 +3338,14 @@
 		)
 		(uuid "9091584c-67c2-48d0-8c22-f743c7cd4e41")
 	)
-	(text "1x38 1.27mm pins to IC Card"
+	(text "1x38 1.27mm pitch male pins to IC Card"
 		(exclude_from_sim no)
-		(at 177.8 41.91 0)
+		(at 192.786 41.656 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify bottom)
 		)
 		(uuid "e969c8bd-6d19-45f1-8534-c3a1f527e1fb")
 	)
@@ -4269,7 +4269,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Conn_01x38_Male"
+		(property "Value" "TMS-138-01"
 			(at 199.898 50.8 0)
 			(effects
 				(font
@@ -4278,7 +4278,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "000_LOCAL:TMS-138-01-x-x_pcb_edge"
+		(property "Footprint" "000_LOCAL:TMS-138-01-x-x"
 			(at 195.58 101.6 0)
 			(effects
 				(font
