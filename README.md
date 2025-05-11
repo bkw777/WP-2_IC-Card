@@ -183,9 +183,11 @@ or remove the solder from the /WE solder jumper if no switch installed.
 
 ### Write to the ROM card using a modded WP-2
 Cheap and convenient, but does require modifying the WP-2.  
+Actually, it's possible without even soldering anything.
 
 Ben Grimmett has written software that runs on the WP-2 and writes to the flash.  
 This requires adding a bodge wire inside the WP-2 to bring the /WR signal from the cpu to an un-used pin on the card slot, and configuring the card to use that pin for write-enable instead of the normal R/W pin.  
+There is actually room, barely, to use logic analyser mini-grabbers to attach the wire instead of soldering.
 
 In the WP-2, RA4 pin 5 is connected to /WR on the CPU,  
 and RA5 pin 2 is connected to S3 (pin 36) on the card socket.
@@ -199,11 +201,24 @@ Directions:
   ![](ref/WP-2_RA4_pin_5.jpg)  
   ![](ref/WP-2_RA5_pin_2.jpg)
 
+  Solderless option:  
+  ![](ref/solderless_write_mod_1.jpg)  
+  ![](ref/solderless_write_mod_2.jpg)
+
+  Notes if using mini-grabbers instead of soldering:  
+  * Fold X1 away from RA5 to let the grabber reach.  
+  * Ensure the RA5 grabber handle lies just next the square chip, not on top of it.  
+  * Ensure the RA4 grabber lies angled towards the printer port so that the lcd ribbon doesn't lay on top of the grabber handle when you close the case. The sharp corners on the grabber handle will poke into the cable.  
+  The tape in the pic is just to keep the grabbers in the best position long enough to close the case.
+
+
 * On the card, solder-jumper JP1: open 1-2, close 2-3.  
   (Scratch the copper link connecting the R/W & /WE pads by default, join S3 to /WE with a solder blob.)  
   JP1 may be left like this.
 
 * Find Ben Grimmett's software in the files section of the [Model-T Computers](https://www.facebook.com/groups/Model.T.Computers/files/files) group on Facebook.
+
+
 
 ### Write to the ROM card using an eprom programmer
 
