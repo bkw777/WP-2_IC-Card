@@ -1,0 +1,76 @@
+(footprint "pth_36mil"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(descr "plated through hole for washing out flux")
+	(property "Reference" "REF**"
+		(at 0 4.445 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "1b3d31b3-3c1b-4535-8c8d-0f19719db52c")
+		(effects
+			(font
+				(size 4 4)
+				(thickness 0.12)
+			)
+		)
+	)
+	(property "Value" "pth_36mil"
+		(at 0 -1 0)
+		(layer "F.Fab")
+		(uuid "19c14cd3-67a7-4172-aa6e-d88a937ebce4")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.01)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "7e862bd3-153c-42ed-b44f-44f81721ae05")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4b1c2c44-784a-40fc-a718-43e006595547")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "7878ccbb-f460-4777-8936-37da093987d8")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(pad "" thru_hole circle
+		(at 0 0)
+		(size 1.524 1.524)
+		(drill 0.9144)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(zone_connect 2)
+		(uuid "4eec5eda-a0ca-4812-bbe7-183190ff3f82")
+	)
+)

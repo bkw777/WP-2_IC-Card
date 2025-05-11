@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.6,
-          "height": 0.6,
-          "width": 0.6
+          "drill": 0.9144,
+          "height": 1.524,
+          "width": 1.524
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -451,7 +451,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "WP-2_IC-Card_programming_adapter.kicad_pro",
+    "filename": "WP-2_IC-Card_programming_adapter_horizontal.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -606,8 +606,8 @@
   },
   "sheets": [
     [
-      "211a59e9-c46a-4b1f-98f9-c6c5489e865d",
-      "Root"
+      "e1b7b417-6b86-4085-b1ff-c64fb00f8fa6",
+      ""
     ]
   ],
   "text_variables": {}

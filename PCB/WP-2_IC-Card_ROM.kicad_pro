@@ -500,7 +500,7 @@
       "plot": "GERBER_${TITLE}_${REVISION}",
       "pos_files": "GERBER_${TITLE}_${REVISION}",
       "specctra_dsn": "",
-      "step": "../COVER/inc/WP-2_IC-Card_ROM.step",
+      "step": "out/WP-2_IC-Card_ROM.step",
       "svg": "",
       "vrml": ""
     },
