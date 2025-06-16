@@ -206,11 +206,12 @@ Directions:
   ![](ref/solderless_write_mod_2.jpg)
 
   Notes if using mini-grabbers instead of soldering:  
+  * requires smaller than usual j-hook mini-grabbers: https://www.amazon.com/dp/B0DL5ZLK8H  
   * Fold X1 away from RA5 to let the grabber reach.  
-  * Ensure the RA5 grabber handle lies just next the square chip, not on top of it.  
+  * Ensure the RA5 grabber handle lies on the pcb to the side of the square chip, not on top of the chip.  
   * Ensure the RA4 grabber lies angled towards the printer port so that the lcd ribbon doesn't lay on top of the grabber handle when you close the case. The sharp corners on the grabber handle will poke into the cable.  
-  The tape in the pic is just to keep the grabbers in the best position long enough to close the case.
-
+  The tape in the pic is just to keep the grabbers in the best position long enough to close the case.  
+  * Shift & wiggle the case halves back & forth a little while while closing so that the grabber handles get pushed to the sides of the chips where there is just enough room for them so they don't put pressure on the lcd.
 
 * On the card, solder-jumper JP1: open 1-2, close 2-3.  
   (Scratch the copper link connecting the R/W & /WE pads by default, join S3 to /WE with a solder blob.)  
