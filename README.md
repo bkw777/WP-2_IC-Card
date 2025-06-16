@@ -206,7 +206,7 @@ Directions:
   ![](ref/solderless_write_mod_2.jpg)
 
   Notes if using mini-grabbers instead of soldering:  
-  * requires smaller than usual j-hook mini-grabbers: https://www.amazon.com/dp/B0DL5ZLK8H  
+  * Requires mini-grabbers with a narrow body and strong hooks: https://www.amazon.com/dp/B0DL5ZLK8H  
   * Fold X1 away from RA5 to let the grabber reach.  
   * Ensure the RA5 grabber handle lies on the pcb to the side of the square chip, not on top of the chip.  
   * Ensure the RA4 grabber lies angled towards the printer port so that the lcd ribbon doesn't lay on top of the grabber handle when you close the case. The sharp corners on the grabber handle will poke into the cable.  
