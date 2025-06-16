@@ -5,9 +5,9 @@ The TANDY WP-2 and other clones of the Citizen CBM-10WP have an expansion slot t
 Here are a few different cards to fit that slot.
 
 * A [battery-backed SRAM card](#sram-card) like the original cards  
-* A [non-volatile MRAM card](#mram-card) that needs no battery  
-* A [ROM card](#rom-card) of only academic value, since there are no known ROM images to load onto it  
-* A [programming adapter](#programming-adapter) that can read and write both the RAM and ROM cards  
+* A [non-volatile MRAM card](#mram-card), a RAM card that doesn't need a battery  
+* A [ROM card](#rom-card), there is new software that runs from a rom card but no known images of any old original rom cards  
+* A [programming adapter](#programming-adapter) that can read and write both the RAM and ROM cards outside of the WP-2
 * A [breakout card](#breakout-card) to allow connecting the bus to a breadboard or logic analyser etc
 
 ![](PCB/out/WP-2_IC-Card_SRAM.jpg)  
