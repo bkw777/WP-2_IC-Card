@@ -90,9 +90,9 @@ Configured for a 128K chip, or to use just 128K of a larger chip
 ![](PCB/out/WP-2_IC-Card_SRAM.bottom.jpg)  
 ![](PCB/out/WP-2_IC-Card_SRAM.svg)
 
-(These links are for an earlier simpler version of the card without any banks. It still accepts up to 512K chip, but only uses 128K.)  
-[128K SRAM BOM from DigiKey](https://www.digikey.com/short/fdjd3j85)  
+(These links are for an earlier simpler version of the card without any banks. It still accepts any size chip from 128K to 512K, but only uses 128K.)  
 [128K SRAM PCB and COVER from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_RAM_IC_Card.html)  
+[128K SRAM BOM from DigiKey](https://www.digikey.com/short/fdjd3j85)  
 
 <!--
 WP-2_IC-Card_Cover_SRAM_slider.stl is a cover with a sliding actuator for the bank switch  
@@ -162,7 +162,7 @@ Supports both a 512K chip with a bank-select switch for 4 x 128K banks, or a 128
 ## ROM CARD  
 
 <!-- [ROM card PCB from OSHPark](https://oshpark.com/shared_projects/F9gte3be) (Select 0.8mm PCB thickness)  -->
-[ROM PCB from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_ROM_IC_Card.html)  
+[ROM PCB and COVER from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_ROM_IC_Card.html)  
 [ROM BOM from DigiKey](https://www.digikey.com/short/540dqm8m)
 
 ![](PCB/out/WP-2_IC-Card_ROM.jpg)  
@@ -181,9 +181,9 @@ or bridge the /WE solder-jumper if no switch installed.
 When not writing, move the write-enable switch to the locked position,  
 or remove the solder from the /WE solder jumper if no switch installed.
 
-### Write to the ROM card using a modded WP-2
-Cheap and convenient, but does require modifying the WP-2.  
-Actually, it's possible without even soldering anything.
+### Write to the ROM card, option 1: Using a modded WP-2
+This option is cheap and convenient, but does require modifying the WP-2 slightly.  
+It's a single jumper wire and it's even possible with only mini-grabber test clips and not even soldering anything.
 
 Ben Grimmett has written software that runs on the WP-2 and writes to the flash.  
 This requires adding a bodge wire inside the WP-2 to bring the /WR signal from the cpu to an un-used pin on the card slot, and configuring the card to use that pin for write-enable instead of the normal R/W pin.  
@@ -214,14 +214,14 @@ Directions:
   * Shift & wiggle the case halves back & forth a little while while closing so that the grabber handles get pushed to the sides of the chips where there is just enough room for them so they don't put pressure on the lcd.
 
 * On the card, solder-jumper JP1: open 1-2, close 2-3.  
-  (Scratch the copper link connecting the R/W & /WE pads by default, join S3 to /WE with a solder blob.)  
-  JP1 may be left like this.
+  Scratch the copper link connecting the R/W & /WE pads by default, and bridge the S3 & /WE pads with solder.  
+  JP1 may be left like this, you don't have to restore the original connection. The card is still compatible with any other normal un-modded WP-2 or clone.
 
 * Find Ben Grimmett's software in the files section of the [Model-T Computers](https://www.facebook.com/groups/Model.T.Computers/files/files) group on Facebook.
 
 
 
-### Write to the ROM card using an eprom programmer
+### Write to the ROM card, option 2:  Using an eprom programmer
 
 * On the card, solder-jumper JP1: open 2-3, close 1-2.  
   (Remove any solder blob joining S3 to /WE, add a solder blob joining R/W to /WE if not already connected by a copper trace.)  
@@ -233,7 +233,7 @@ Directions:
 
 ## Programming Adapter
 The programming adapter supports both ROM and RAM cards.  
-Use with a standard eprom programmer such as TL-866 or T48, etc.
+Use with a standard eprom programmer such as TL-866 or T48, etc.  
 
 <!-- [Programming Adapter PCB from OSHPark](https://oshpark.com/shared_projects/TkzNwgho)  -->
 [Programming Adapter PCB from PCBWAY](https://www.pcbway.com/project/shareproject/TANDY_WP_2_IC_Card_Programming_Adapter.html)
