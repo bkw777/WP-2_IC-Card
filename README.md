@@ -1,17 +1,17 @@
 # Expansion IC-Card for [TANDY WP-2](tandy.wiki/WP-2), [TANDY WP-3](https://www.retrocoding.uk/tandy-wp-3-word-processor/), [Citizen CBM-10WP](http://mo5.com/musee-machines-cbm10wp.html), [NTS WP-10C](https://munk.org/typecast/2020/09/09/tandy-wp-2-user-manual-happy-septandy/)
 
-![](PCB/out/WP-2_IC-Card_SRAM.jpg)  
-![](PCB/out/WP-2_IC-Card_SRAM.slider.jpg)
-
 The TANDY WP-2 and other clones of the Citizen CBM-10WP have an expansion slot that accepts ["IC Cards"](#reference-material).
 
 Here are a few different cards to fit that slot.
 
 * A [battery-backed SRAM card](#sram-card) like the original cards  
 * A [non-volatile MRAM card](#mram-card) that needs no battery  
-* A [ROM card](#flash-card) of only academic value, since there are no known ROM images to load onto it  
+* A [ROM card](#rom-card) of only academic value, since there are no known ROM images to load onto it  
 * A [programming adapter](#programming-adapter) that can read and write both the RAM and ROM cards  
 * A [breakout card](#breakout-card) to allow connecting the bus to a breadboard or logic analyser etc
+
+![](PCB/out/WP-2_IC-Card_SRAM.jpg)  
+![](PCB/out/WP-2_IC-Card_SRAM.slider.jpg)
 
 ## Fabrication & assembly notes
 
