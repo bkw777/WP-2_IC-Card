@@ -1,5 +1,6 @@
-# fuuuuucking python3/freecad
+# !@#$%^& python3/freecad
 # None of the supposed methods to prevent pycache actually work.
+# Probably because FreeCAD is now a %^$#@! flatpak.
 __pycache__/
 
 *.step

@@ -51,13 +51,18 @@ bank_finger_width = 6; // make it wide enough to display the switch position lab
 wren_slider_width = 3;
 wren_finger_width = 4;
 
-finger_window_chamfer_slope = 0.5; // 1.0 = 45deg
+// The slope of the chamfer around slide switchs using _style="finger" above.
+// You want this as small as you can successfully print without supports.
+// 1.0 = 45 degrees. Easy to print but makes the switch a little annoying to use.
+// 0.5 or less is nice to use, but the overhang is difficult to print without support,
+// and you don't want the rough surface from support in that spot.
+finger_window_chamfer_slope = 0.6; // 1.0 = 45deg
 
 
 // attach the slider to the main body
 // so it prints as one piece
-attach_slider = true;
-sprue_len = 1;
+attach_slider = false;
+sprue_len = 2;
 
 
 // preview display option
