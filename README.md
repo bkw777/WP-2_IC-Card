@@ -1,3 +1,12 @@
+<b>
+2025-09-26 -- DO NOT USE THE ROM CARD UNTIL FURTHER NOTICE
+
+Recent versions of the ROM card have the wrong pinout and will not work.  
+Early versions are ok. I don't know which specific versions yet but at least v004 and below are ok.
+</b>
+
+----
+
 # Expansion IC-Card for [TANDY WP-2](tandy.wiki/WP-2), [TANDY WP-3](https://www.retrocoding.uk/tandy-wp-3-word-processor/), [Citizen CBM-10WP](http://mo5.com/musee-machines-cbm10wp.html), [NTS WP-10C](https://munk.org/typecast/2020/09/09/tandy-wp-2-user-manual-happy-septandy/)
 
 The TANDY WP-2 and other clones of the Citizen CBM-10WP have an expansion slot that accepts ["IC Cards"](#reference-material).
@@ -160,6 +169,14 @@ Supports both a 512K chip with a bank-select switch for 4 x 128K banks, or a 128
 ----
 
 ## ROM CARD  
+
+<b>
+2025-09-26 -- DO NOT USE THE ROM CARD UNTIL FURTHER NOTICE
+
+Recent versions of the ROM card have the wrong pinout and will not work.  
+Early versions are ok. I don't know which specific versions yet but at least v004 and below are ok.
+</b>
+
 
 <!-- [ROM card PCB from OSHPark](https://oshpark.com/shared_projects/F9gte3be) (Select 0.8mm PCB thickness)  -->
 [ROM PCB and COVER from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_ROM_IC_Card.html)  
