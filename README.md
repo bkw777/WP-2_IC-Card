@@ -157,6 +157,9 @@ Supports both a 512K chip with a bank-select switch for 4 x 128K banks, or a 128
 ![](PCB/out/WP-2_IC-Card_MRAM.bottom.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM.svg)
 
+Since MRAM is sensitive to magnetic fields, you may want to store the card long term in a [ferrous metal box](https://www.amazon.com/dp/B0DRBBZR8V).  
+Many common candy tins like Altoids are good too. Just make sure a magnet sticks to any unknown new box.  
+
 ----
 
 ## ROM CARD  
