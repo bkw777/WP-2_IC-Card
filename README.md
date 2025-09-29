@@ -75,10 +75,10 @@ You can save some money on the ENIG by using Elecrow instead of PCBWAY.
 ### work in progress updated SRAM card
 -->
 
-Fully populated to use all of a 256K or 512K chip  
+Fully populated for a 512K chip  
 ![](PCB/out/WP-2_IC-Card_SRAM.jpg)
 
-Configured for a 128K chip, or to use just 128K of a larger chip  
+Configured for a 128K chip  
 ![](PCB/out/WP-2_IC-Card_SRAM.ce2.jpg)
 
 ![](PCB/out/WP-2_IC-Card_SRAM.slider.jpg)  
@@ -90,9 +90,14 @@ Configured for a 128K chip, or to use just 128K of a larger chip
 ![](PCB/out/WP-2_IC-Card_SRAM.bottom.jpg)  
 ![](PCB/out/WP-2_IC-Card_SRAM.svg)
 
+[BOM from DigiKey](https://www.digikey.com/short/7mwdq2z8)  
+[PCB and COVER from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_RAM_IC_Card.html)
+
+<!--
 (These links are for an earlier simpler version of the card without any banks. It still accepts any size chip from 128K to 512K, but only uses 128K.)  
 [128K SRAM PCB and COVER from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_RAM_IC_Card.html)  
 [128K SRAM BOM from DigiKey](https://www.digikey.com/short/fdjd3j85)  
+-->
 
 <!--
 WP-2_IC-Card_Cover_SRAM_slider.stl is a cover with a sliding actuator for the bank switch  

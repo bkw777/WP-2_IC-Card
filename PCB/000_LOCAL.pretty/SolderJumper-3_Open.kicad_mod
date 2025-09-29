@@ -1,7 +1,7 @@
 (footprint "SolderJumper-3_Open"
-	(version 20240108)
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(layer "F.Cu")
 	(descr "SMD Solder 3-pad Jumper, 1x1.5mm rounded Pads, 0.3mm gap, pads 1-2 bridged with 1 copper strip")
 	(tags "net tie solder jumper bridged")
@@ -31,19 +31,6 @@
 			(justify left)
 		)
 	)
-	(property "Footprint" ""
-		(at 0 0 0)
-		(unlocked yes)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "7ac63446-def5-4792-b0ea-15bbd4774c9f")
-		(effects
-			(font
-				(size 1.27 1.27)
-				(thickness 0.15)
-			)
-		)
-	)
 	(property "Datasheet" ""
 		(at 0 0 0)
 		(unlocked yes)
@@ -70,7 +57,7 @@
 			)
 		)
 	)
-	(property "Label12" "Label12"
+	(property "Label_1-2" ""
 		(at -1.2 -1.3 90)
 		(unlocked yes)
 		(layer "F.SilkS")
@@ -83,7 +70,7 @@
 			(justify left)
 		)
 	)
-	(property "Label23" "Label23"
+	(property "Label_2-3" ""
 		(at 1.25 -1.3 90)
 		(unlocked yes)
 		(layer "F.SilkS")
@@ -98,6 +85,28 @@
 	)
 	(attr exclude_from_pos_files exclude_from_bom allow_soldermask_bridges)
 	(net_tie_pad_groups "1,2")
+	(fp_rect
+		(start -0.75 -0.7)
+		(end -0.5 0.7)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill yes)
+		(layer "F.Mask")
+		(uuid "bbc9f84f-bc18-450d-9da3-e563b322dde7")
+	)
+	(fp_rect
+		(start 0.5 -0.7)
+		(end 0.75 0.7)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill yes)
+		(layer "F.Mask")
+		(uuid "2d389e62-65d5-4438-a34e-2d53e8156940")
+	)
 	(fp_line
 		(start -2.05 0.3)
 		(end -2.05 -0.3)
@@ -201,28 +210,6 @@
 		)
 		(layer "F.SilkS")
 		(uuid "6b1fc179-9dbe-4b9b-89df-134390a1055d")
-	)
-	(fp_rect
-		(start -0.75 -0.7)
-		(end -0.5 0.7)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(fill solid)
-		(layer "F.Mask")
-		(uuid "bbc9f84f-bc18-450d-9da3-e563b322dde7")
-	)
-	(fp_rect
-		(start 0.5 -0.7)
-		(end 0.75 0.7)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(fill solid)
-		(layer "F.Mask")
-		(uuid "2d389e62-65d5-4438-a34e-2d53e8156940")
 	)
 	(fp_line
 		(start -2.3 -1.25)
@@ -332,4 +319,5 @@
 		)
 		(uuid "b71e2cc9-0e30-4405-87b4-c1efc97a5a48")
 	)
+	(embedded_fonts no)
 )
