@@ -90,7 +90,7 @@ Configured for a 128K chip
 ![](PCB/out/WP-2_IC-Card_SRAM.bottom.jpg)  
 ![](PCB/out/WP-2_IC-Card_SRAM.svg)
 
-[BOM from DigiKey](https://www.digikey.com/short/7mwdq2z8)  
+[BOM from DigiKey](https://www.digikey.com/short/07m37w7f)  ([128K BOM](https://www.digikey.com/short/hnnwf524))  
 [PCB and COVER from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_RAM_IC_Card.html)
 
 <!--

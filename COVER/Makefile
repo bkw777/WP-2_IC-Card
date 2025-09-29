@@ -12,9 +12,9 @@ parts = SRAM MRAM ROM
 style = slider
 
 openscad = openscad-nightly
-freecadcmd = freecadcmd-daily
+#freecadcmd = freecadcmd-daily
 #openscad = openscad
-#freecadcmd = freecadcmd
+freecadcmd = freecadcmd
 
 .PHONY: all
 all: $(parts)

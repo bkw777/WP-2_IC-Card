@@ -6,8 +6,8 @@
 	(paper "USLetter")
 	(title_block
 		(title "WP-2_IC-Card_SRAM")
-		(date "2025-09-28")
-		(rev "021")
+		(date "2025-09-29")
+		(rev "022")
 		(company "Brian K. White - b.kenyon.w@gmail.com")
 	)
 	(lib_symbols
@@ -211,275 +211,6 @@
 						)
 					)
 					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "000_LOCAL:BAV70S"
-			(pin_names
-				(offset 0.762)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "D"
-				(at 0.635 -2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "BAV70S"
-				(at 0 2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "000_LOCAL:TSSOP-6-symmetric"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "datasheets/BAV70S.pdf"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "DIODE ARRAY 2 pair common cathode general purpose 6-TSSOP SOT-363"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "diode"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "SOT?363*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "BAV70S_0_1"
-				(polyline
-					(pts
-						(xy -3.81 1.27) (xy -1.27 0) (xy -3.81 -1.27) (xy -3.81 1.27) (xy -3.81 1.27) (xy -3.81 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -3.81 0) (xy 3.81 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.27 -1.27) (xy -1.27 1.27) (xy -1.27 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 -2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 0 0)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 -1.27) (xy 1.27 1.27) (xy 1.27 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 3.81 -1.27) (xy 1.27 0) (xy 3.81 1.27) (xy 3.81 -1.27) (xy 3.81 -1.27) (xy 3.81 -1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "BAV70S_1_1"
-				(pin passive line
-					(at -7.62 0 0)
-					(length 3.81)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -5.08 90)
-					(length 2.54)
-					(name "K"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 7.62 0 180)
-					(length 3.81)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(symbol "BAV70S_2_1"
-				(pin passive line
-					(at -7.62 0 0)
-					(length 3.81)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -5.08 90)
-					(length 2.54)
-					(name "K"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 7.62 0 180)
-					(length 3.81)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4830,275 +4561,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "BAV70S_1"
-			(pin_names
-				(offset 0.762)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "D"
-				(at 0.635 -2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "BAV70S"
-				(at 0 2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "000_LOCAL:TSSOP-6-symmetric"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "datasheets/BAV70S.pdf"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "DIODE ARRAY 2 pair common cathode general purpose 6-TSSOP SOT-363"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "diode"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "SOT?363*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "BAV70S_1_0_1"
-				(polyline
-					(pts
-						(xy -3.81 1.27) (xy -1.27 0) (xy -3.81 -1.27) (xy -3.81 1.27) (xy -3.81 1.27) (xy -3.81 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -3.81 0) (xy 3.81 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.27 -1.27) (xy -1.27 1.27) (xy -1.27 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 -2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 0 0)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 -1.27) (xy 1.27 1.27) (xy 1.27 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 3.81 -1.27) (xy 1.27 0) (xy 3.81 1.27) (xy 3.81 -1.27) (xy 3.81 -1.27) (xy 3.81 -1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "BAV70S_1_1_1"
-				(pin passive line
-					(at -7.62 0 0)
-					(length 3.81)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -5.08 90)
-					(length 2.54)
-					(name "K"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 7.62 0 180)
-					(length 3.81)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(symbol "BAV70S_1_2_1"
-				(pin passive line
-					(at -7.62 0 0)
-					(length 3.81)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -5.08 90)
-					(length 2.54)
-					(name "K"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 7.62 0 180)
-					(length 3.81)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "power:+BATT"
 			(power)
 			(pin_numbers
@@ -8325,96 +7787,6 @@
 		)
 	)
 	(symbol
-		(lib_name "BAV70S_1")
-		(lib_id "000_LOCAL:BAV70S")
-		(at 121.92 176.53 0)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "3a505912-e591-4f5a-99dd-6fe6b12dc4d5")
-		(property "Reference" "D2"
-			(at 121.92 182.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "BAV70S"
-			(at 121.92 180.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "000_LOCAL:TSSOP-6-symmetric"
-			(at 121.92 176.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "datasheets/BAV70S.pdf"
-			(at 121.92 176.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "DIODE ARRAY 2 pair common cathode general purpose 6-TSSOP SOT-363"
-			(at 121.92 176.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "BAV70S,135"
-			(at 121.92 176.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "837962fb-a4e0-4e20-924e-37a3da03d6ed")
-		)
-		(pin "2"
-			(uuid "1bf8f2f0-f211-4cab-83bc-4fdeced41e7d")
-		)
-		(pin "4"
-			(uuid "576e1dfe-0f5a-4c9c-bdf7-65c0457c0bd9")
-		)
-		(pin "6"
-			(uuid "4965c1a0-a991-4ef5-93ba-c4a80c2da3db")
-		)
-		(pin "5"
-			(uuid "20a80881-e5b4-4fc3-b731-1afb077b3228")
-		)
-		(pin "3"
-			(uuid "a9be5f3f-863e-435f-a798-38bae3c3eadf")
-		)
-		(instances
-			(project "WP-2_IC-Card_SRAM"
-				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "D2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "000_LOCAL:R")
 		(at 118.11 170.18 90)
 		(unit 1)
@@ -8970,6 +8342,86 @@
 		)
 	)
 	(symbol
+		(lib_id "000_LOCAL:BAV170")
+		(at 121.92 176.53 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8bf85896-c902-46fb-ba36-b46a9a68a43f")
+		(property "Reference" "D2"
+			(at 121.92 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "BAV74"
+			(at 121.92 180.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "000_LOCAL:SOT-23"
+			(at 121.92 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "datasheets/BAV74.pdf"
+			(at 121.92 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "DIODE ARRAY COMMON CATHODE GP SOT23-3"
+			(at 121.92 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "BAV74-TP"
+			(at 121.92 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0bdbaf24-8a97-415c-a3f6-ae05a45d4191")
+		)
+		(pin "2"
+			(uuid "af1ba53f-63eb-41a7-a40d-5c52e31bda53")
+		)
+		(pin "3"
+			(uuid "d727295d-0fbc-4f61-90f3-c7185308c71e")
+		)
+		(instances
+			(project "WP-2_IC-Card_SRAM"
+				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
+					(reference "D2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 190.5 58.42 0)
 		(mirror y)
@@ -9169,15 +8621,16 @@
 		)
 	)
 	(symbol
-		(lib_id "000_LOCAL:BAV70S")
-		(at 105.41 173.99 180)
-		(unit 2)
+		(lib_id "000_LOCAL:BAV170")
+		(at 105.41 173.99 0)
+		(mirror x)
+		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "a1e709e5-26d6-4d9e-a7bd-b8f011fe701d")
-		(property "Reference" "D2"
+		(uuid "a1b5554d-6062-4749-926a-addc1dbf4289")
+		(property "Reference" "D3"
 			(at 105.41 180.34 0)
 			(effects
 				(font
@@ -9185,7 +8638,7 @@
 				)
 			)
 		)
-		(property "Value" "BAV70S"
+		(property "Value" "BAV74"
 			(at 105.41 177.8 0)
 			(effects
 				(font
@@ -9193,7 +8646,7 @@
 				)
 			)
 		)
-		(property "Footprint" "000_LOCAL:TSSOP-6-symmetric"
+		(property "Footprint" "000_LOCAL:SOT-23"
 			(at 105.41 173.99 0)
 			(effects
 				(font
@@ -9202,7 +8655,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "datasheets/BAV70S.pdf"
+		(property "Datasheet" "datasheets/BAV74.pdf"
 			(at 105.41 173.99 0)
 			(effects
 				(font
@@ -9211,7 +8664,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "DIODE ARRAY 2 pair common cathode general purpose 6-TSSOP SOT-363"
+		(property "Description" "DIODE ARRAY COMMON CATHODE GP SOT23-3"
 			(at 105.41 173.99 0)
 			(effects
 				(font
@@ -9220,7 +8673,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "BAV70S,135"
+		(property "MPN" "BAV74-TP"
 			(at 105.41 173.99 0)
 			(effects
 				(font
@@ -9230,28 +8683,19 @@
 			)
 		)
 		(pin "1"
-			(uuid "da363403-f7b8-4909-8ad7-eeb56bafa7f6")
+			(uuid "cae0a54c-abc2-4dbf-95ab-afdfc97c7459")
 		)
 		(pin "2"
-			(uuid "2d2a2755-6b06-4e7d-9666-11c835620792")
-		)
-		(pin "4"
-			(uuid "49739115-af3a-4564-9ca6-cac64e952290")
-		)
-		(pin "6"
-			(uuid "279e871c-8cba-4dd0-a1b3-8567aeebca06")
-		)
-		(pin "5"
-			(uuid "9dba5c43-f4eb-4e11-8643-4635db663896")
+			(uuid "65baf2f7-9b93-4557-9cc6-41ce0587589e")
 		)
 		(pin "3"
-			(uuid "e793a4c0-a1fb-40ea-8c1b-c2951256e834")
+			(uuid "2d3322d8-1258-4502-999e-508e9ebeed7d")
 		)
 		(instances
 			(project "WP-2_IC-Card_SRAM"
 				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "D2")
-					(unit 2)
+					(reference "D3")
+					(unit 1)
 				)
 			)
 		)
@@ -9820,7 +9264,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "AS6C4008-55TIN"
+		(property "MPN" "AS6C4008-55STIN"
 			(at 215.9 88.9 0)
 			(effects
 				(font
@@ -10093,7 +9537,7 @@
 				)
 			)
 		)
-		(property "Value" "BAV170"
+		(property "Value" "BAV74"
 			(at 33.02 182.88 0)
 			(effects
 				(font
@@ -10110,7 +9554,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "datasheets/BAV170.pdf"
+		(property "Datasheet" "datasheets/BAV74.pdf"
 			(at 33.02 179.07 0)
 			(effects
 				(font
@@ -10119,7 +9563,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "DIODE ARRAY COMMON CATHODE GP 85V 125MA SOT23-3"
+		(property "Description" "DIODE ARRAY COMMON CATHODE GP SOT23-3"
 			(at 33.02 179.07 0)
 			(effects
 				(font
@@ -10128,7 +9572,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "BAV170-7-F"
+		(property "MPN" "BAV74-TP"
 			(at 33.02 179.07 0)
 			(effects
 				(font

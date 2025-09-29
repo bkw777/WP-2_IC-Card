@@ -1,7 +1,7 @@
 (footprint "SOT-23"
-	(version 20240108)
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(layer "F.Cu")
 	(descr "SOT-23, Standard")
 	(tags "SOT-23")
@@ -11,31 +11,19 @@
 		(uuid "22708e67-f514-4c73-95f9-3b24acdfb1b6")
 		(effects
 			(font
-				(size 1 1)
-				(thickness 0.15)
+				(size 0.8 0.8)
+				(thickness 0.1)
 			)
 		)
 	)
 	(property "Value" "SOT-23"
 		(at 0 2.5 0)
-		(layer "F.Fab")
+		(layer "F.SilkS")
 		(uuid "35086c78-5e6f-45ab-b0b3-ec6b50a8ab08")
 		(effects
 			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Footprint" ""
-		(at 0 0 0)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "7a8c699b-f745-45e0-9712-1806b976c3ff")
-		(effects
-			(font
-				(size 1.27 1.27)
-				(thickness 0.15)
+				(size 0.8 0.8)
+				(thickness 0.1)
 			)
 		)
 	)
@@ -208,33 +196,34 @@
 	(pad "1" smd roundrect
 		(at -1 -0.95)
 		(size 0.9 0.8)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0.1)
 		(uuid "94f81d08-8304-4a22-878a-2119737cf389")
 	)
 	(pad "2" smd roundrect
 		(at -1 0.95)
 		(size 0.9 0.8)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0.1)
 		(uuid "5fa9cb39-bfe9-4d59-af7d-d3bf028b2956")
 	)
 	(pad "3" smd roundrect
 		(at 1 0)
 		(size 0.9 0.8)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0.1)
 		(uuid "6261a287-bc80-4cbd-b353-dc8dfb08c15f")
 	)
-	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/SOT-23.wrl"
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/SOT-23.step"
 		(offset
 			(xyz 0 0 0)
 		)
 		(scale
-			(xyz 0.39 0.39 0.39)
+			(xyz 1 1 1)
 		)
 		(rotate
-			(xyz 0 0 0)
+			(xyz -0 -0 -0)
 		)
 	)
 )
