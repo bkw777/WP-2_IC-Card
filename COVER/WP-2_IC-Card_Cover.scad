@@ -10,9 +10,9 @@ PRINT = true;
 
 // Which part to generate?
 //part = "SRAM_128K"; // top cover for the old 128K-only SRAM card
-part = "SRAM"; // *** - top cover for the SRAM card
+//part = "SRAM"; // *** - top cover for the SRAM card
 //part = "ROM"; // top cover for the FLASH card
-//part = "MRAM"; // top cover for the MRAM card
+part = "MRAM"; // top cover for the MRAM card
 //part = "breakout"; // top cover for the breakout card
 //part = "bottom"; // bottom cover - not applicable for 1.2mm PCB. Use with pcb_thickness 0.8 or less and card_thickness 3.2
 //part = "slider_2p"; // just the bank switch actuator slider part by itself, 2-position
@@ -801,6 +801,12 @@ module mram_top () {
  swxp = 11;    // x
  swyp = 13;    // y
  
+  // bank switch related components
+ bank_parts_y_rel = -5.25;  // y relative to switch
+ bank_parts_w = 12;
+ bank_parts_l = 3.5;
+ 
+ 
  %PCB("inc/MRAM.pcb.stl");
 
  // main body is conditionally flipped for printing
@@ -826,7 +832,10 @@ module mram_top () {
    // bank-select slide switch
    translate([swxp,swyp,0])
     slide_switch_opening(t=bank_switch_style,n=nbanks,w=bank_slider_width);
-   
+   // bank switch components
+   translate([swxp,swyp+bank_parts_y_rel])
+    component_pocket(w=bank_parts_w,l=bank_parts_l);
+
   }
  }
 
