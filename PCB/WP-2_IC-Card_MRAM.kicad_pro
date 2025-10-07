@@ -625,6 +625,18 @@
           "label": "L23",
           "name": "L23",
           "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Label_1-2",
+          "name": "Label_1-2",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Label_2-3",
+          "name": "Label_2-3",
+          "show": false
         }
       ],
       "filter_string": "",
