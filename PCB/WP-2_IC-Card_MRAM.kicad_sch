@@ -6,8 +6,8 @@
 	(paper "USLetter")
 	(title_block
 		(title "WP-2_IC-Card_MRAM")
-		(date "2025-09-30")
-		(rev "019.01")
+		(date "2025-10-04")
+		(rev "019")
 		(company "Brian K. White - b.kenyon.w@gmail.com")
 	)
 	(lib_symbols
@@ -4766,6 +4766,24 @@
 				)
 			)
 			(property "Description" "3-pole Solder Jumper, pins 1+2 closed/bridged"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Label_1-2" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Label_2-3" ""
 				(at 0 0 0)
 				(effects
 					(font
@@ -11951,8 +11969,8 @@
 				(hide yes)
 			)
 		)
-		(property "L12" "128K"
-			(at 127.508 166.878 90)
+		(property "Label_1-2" "128K"
+			(at 127.508 166.37 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11960,8 +11978,8 @@
 				(justify left)
 			)
 		)
-		(property "L23" "256K"
-			(at 127.508 163.576 90)
+		(property "Label_2-3" "256K"
+			(at 127.508 163.83 90)
 			(effects
 				(font
 					(size 1.27 1.27)
