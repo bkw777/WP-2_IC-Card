@@ -146,7 +146,7 @@ The Commercial and Automotive versions are only safe to 25 gauss. A fridge magne
 The BOM specifies the Industrial part so it should be reasonably safe, however you should still generally avoid exposure to magnetic fields.  
 
 [512K MRAM PCB and COVER from PCBWAY](https://www.pcbway.com/project/shareproject/512k_MRAM_IC_Card_for_TANDY_WP_2_30f542a7.html)  
-[512K MRAM BOM from DigiKey](https://www.digikey.com/short/nqjddjf5)  , [Mouser](https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=f6eb946163)  
+[512K MRAM BOM from DigiKey](https://www.digikey.com/short/fp3bdwmf)  <!--, [Mouser](https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=f6eb946163)  -->
 <!-- RIP Shapeways... [MRAM-512 cover from Shapeways](http://shpws.me/TIyf)  -->
 
 Supports both a 512K chip with a bank-select switch for 4 x 128K banks, or a 128K chip and you simply omit the indicated bank-select parts.
