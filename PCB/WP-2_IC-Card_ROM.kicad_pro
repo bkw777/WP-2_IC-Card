@@ -616,6 +616,18 @@
           "label": "LABEL",
           "name": "LABEL",
           "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Label23",
+          "name": "Label23",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Label12",
+          "name": "Label12",
+          "show": false
         }
       ],
       "filter_string": "",

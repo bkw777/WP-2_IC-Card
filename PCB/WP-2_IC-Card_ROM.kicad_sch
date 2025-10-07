@@ -6,8 +6,8 @@
 	(paper "USLetter")
 	(title_block
 		(title "WP-2_IC-Card_ROM")
-		(date "2025-09-26")
-		(rev "016")
+		(date "2025-10-07")
+		(rev "017")
 		(company "Brian K. White - b.kenyon.w@gmail.com")
 		(comment 1 "github.com/bkw777/WP-2_IC-Card")
 	)
@@ -4727,7 +4727,7 @@
 		(uuid "518fccc8-cbe4-4660-9184-9759bce8a100")
 	)
 	(label "A10"
-		(at 177.8 114.3 180)
+		(at 177.8 111.76 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4747,7 +4747,7 @@
 		(uuid "59ec5da8-b14f-4e0f-8e34-fa447fba791e")
 	)
 	(label "A5"
-		(at 177.8 96.52 180)
+		(at 177.8 99.06 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5037,7 +5037,7 @@
 		(uuid "cc592c72-9e23-4a53-b601-613d44f91bd0")
 	)
 	(label "A11"
-		(at 177.8 111.76 180)
+		(at 177.8 114.3 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5047,7 +5047,7 @@
 		(uuid "d168b254-f099-48bd-b195-807c37824b14")
 	)
 	(label "A4"
-		(at 177.8 99.06 180)
+		(at 177.8 96.52 180)
 		(effects
 			(font
 				(size 1.27 1.27)
