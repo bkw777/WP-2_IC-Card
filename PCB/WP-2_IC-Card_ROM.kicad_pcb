@@ -5240,7 +5240,7 @@
 				(allow_two_segments yes)
 				(prefer_zone_connections yes)
 			)
-			(uuid "14b740f2-a5a2-4e3e-a4ca-559b39139c19")
+			(uuid "1417e8a1-e42f-406a-b4fd-eef7f641504a")
 		)
 		(pad "S" thru_hole circle
 			(at -2.5 0.005 180)
@@ -5264,7 +5264,7 @@
 				(allow_two_segments yes)
 				(prefer_zone_connections yes)
 			)
-			(uuid "14b740f2-a5a2-4e3e-a4ca-559b39139c19")
+			(uuid "a3a5853a-ea5b-4df3-9119-4fe85e9197e9")
 		)
 		(pad "S" thru_hole circle
 			(at 2.5 0.005 180)
@@ -5288,7 +5288,7 @@
 				(allow_two_segments yes)
 				(prefer_zone_connections yes)
 			)
-			(uuid "14b740f2-a5a2-4e3e-a4ca-559b39139c19")
+			(uuid "04db0d9c-913f-4fc6-95d1-f245d181061a")
 		)
 		(pad "S" smd roundrect
 			(at 5.15 -1.105 180)
@@ -5309,7 +5309,7 @@
 				(allow_two_segments yes)
 				(prefer_zone_connections yes)
 			)
-			(uuid "14b740f2-a5a2-4e3e-a4ca-559b39139c19")
+			(uuid "f954a2a8-1f7d-47ef-a026-8d2caef02968")
 		)
 		(pad "S" smd roundrect
 			(at 5.15 1.105 180)
@@ -5330,7 +5330,7 @@
 				(allow_two_segments yes)
 				(prefer_zone_connections yes)
 			)
-			(uuid "14b740f2-a5a2-4e3e-a4ca-559b39139c19")
+			(uuid "4a186a79-d8ce-4328-8f1e-bffa3909565f")
 		)
 		(group ""
 			(uuid "c4a7ad06-954f-4425-8db8-e1fb2bb4a552")
@@ -5390,6 +5390,17 @@
 		(fill yes)
 		(layer "F.SilkS")
 		(uuid "0fc2e197-655b-472c-b8dd-b535bb433581")
+	)
+	(gr_rect
+		(start 147.89 104.695)
+		(end 159.89 110.695)
+		(stroke
+			(width 0.12)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "1f071aeb-ea28-4272-8db2-b209cad29ef1")
 	)
 	(gr_line
 		(start 123.289999 94.185903)
@@ -5927,6 +5938,17 @@
 				(thickness 0.15)
 			)
 			(justify top)
+		)
+	)
+	(gr_text "1.2mm PCB\nTHICKNESS"
+		(at 153.89 107.695 0)
+		(layer "F.SilkS")
+		(uuid "91031c91-83f6-451f-9e4e-07265e7ca6fd")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
 		)
 	)
 	(gr_text "TANDY WP-2 ROM IC Card"

@@ -16,14 +16,19 @@ Here are a few different cards to fit that slot.
 ## Fabrication & assembly notes
 
 **REQUIRES 1.2mm PCB**  
-Standard 1.6mm PCB thickness is too thick. Thinner is ok, and allows the possibility to print a bottom cover to protect the bottom surface of the pcb, but 1.2 mm is most convenient and the standard 1.6mm will NOT fit.
+The normal default PCB thickness of 1.6mm will NOT fit.  
+If you don't remember to manually change the PCB THICKNESS to 1.2mm when ordering, you'll get 1.6mm.  
 
+Thinner is ok.  
+A thinner pcb allows the possibility to print a bottom cover to protect the bottom surface of the pcb from scratches.
+
+The SRAM card has a battery terminal that should be gold.
 ENIG copper finish will give you a better battery terminal without the expense and custom steps of proper selective hard gold.
 
-Attach the cover with thin adhesive transfer tape aka "cell phone / lcd repair" tape, ideally 3-5mm wide.  
-The cards all have 5mm wide blocks for 5mm adhesive tape.  
+Attach the cover with thin 3mm or 1/8" adhesive transfer tape aka "cell phone / lcd repair" tape.  
+The cards all have 3mm wide blocks for adhesive transfer tape.  
 https://www.amazon.com/dp/B078H298G2/  
-https://www.amazon.com/dp/B019OQ4YX4/  
+https://www.amazon.com/dp/B019OQ4ZG0/  
 https://www.amazon.com/dp/B0DRV5D4YG/  
 <!-- https://amazon.com/dp/B06Y34587N/ (This one is wider than 5mm but has no carrier film in the middle, just gummy adhesive that squishes into any form, so the width doesn't matter and you can just lay it anywhere right over the chips and pins etc.) -->
 Or glue, but adhesive is easier to remove later.
