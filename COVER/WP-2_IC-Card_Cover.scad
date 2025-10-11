@@ -10,9 +10,9 @@ PRINT = true;
 
 // Which part to generate?
 //part = "SRAM_128K"; // top cover for the old 128K-only SRAM card
-//part = "SRAM"; // *** - top cover for the SRAM card
+part = "SRAM"; // *** - top cover for the SRAM card
 //part = "ROM"; // top cover for the FLASH card
-part = "MRAM"; // top cover for the MRAM card
+//part = "MRAM"; // top cover for the MRAM card
 //part = "breakout"; // top cover for the breakout card
 //part = "bottom"; // bottom cover - not applicable for 1.2mm PCB. Use with pcb_thickness 0.8 or less and card_thickness 3.2
 //part = "slider_2p"; // just the bank switch actuator slider part by itself, 2-position
@@ -32,7 +32,9 @@ part = "MRAM"; // top cover for the MRAM card
 // "none"   = switch not populated, delete from cover
 
 // bank-select switch
-bank_switch_style = "slider";
+bank_switch_style = "finger"; // keep old name until makefile updated
+ram_bank_switch_style = bank_switch_style;
+rom_bank_switch_style = "none";
 
 // write-enable switch
 wren_switch_style = "under";
@@ -484,7 +486,7 @@ module slide_switch_opening (t="none",n=2,w=2) {
     cw = 1.5+sr+fc; // cavity width around actuator
     pw = cw + by/2;
     translate([0,pw/2,0])
-     component_pocket(w=bx,l=pw,h=1.2);
+     component_pocket(w=sth*n+sth*2,l=pw,h=1.2);
    }
 
    }
@@ -582,14 +584,14 @@ module rom_top () {
 
  // bank switch
  bsp = is_undef(bank_switch_slider_position) ? 2 : bank_switch_slider_position ;
- nbanks = bank_switch_style=="none" ? 0 : 2;
+ nbanks = rom_bank_switch_style=="none" ? 0 : 2;
  swxp = 0;         // x
  swyp = 10;        // y
 
  // write enable switch
  wsp = is_undef(wren_switch_slider_position) ? 2 : wren_switch_slider_position ;
  wexp = -15;       // x
- weyp = 0.5;       // y
+ weyp = 0.475;       // y
 
  %PCB("inc/ROM.pcb.stl");
 
@@ -608,15 +610,15 @@ module rom_top () {
      0;
    // wren switch
    translate([wexp,weyp,0])
-     slide_switch_opening(t=wren_switch_style,n=2,w=ww);
+     slide_switch_opening(t=wren_switch_style,n=3,w=ww);
      // bank switch
    if (nbanks>1) {
    bw = 
-     bank_switch_style == "finger" ? bank_finger_width :
-     bank_switch_style == "slider" ? bank_slider_width :
+     rom_bank_switch_style == "finger" ? bank_finger_width :
+     rom_bank_switch_style == "slider" ? bank_slider_width :
      0;
    translate([swxp,swyp,0])
-    slide_switch_opening(t=bank_switch_style,n=nbanks,w=bw);
+    slide_switch_opening(t=rom_bank_switch_style,n=nbanks,w=bw);
    }
   }
  }
@@ -626,7 +628,7 @@ module rom_top () {
  // the switch slider is NOT flipped or elevated regardless of print vs preview,
  // but is moved to a different x,y
 
- bs = (bank_switch_style == "slider" && nbanks>1);
+ bs = (rom_bank_switch_style == "slider" && nbanks>1);
  ws = (wren_switch_style == "slider");
  yo = (bs && ws) ? 10 : 0 ; // y offset if printing and we have both
  
@@ -719,7 +721,7 @@ module sram_top () {
  
  // bank switch
  bsp = is_undef(bank_switch_slider_position) ? 3 : bank_switch_slider_position ;
- nbanks = bank_switch_style=="none" ? 0 : 4;
+ nbanks = ram_bank_switch_style=="none" ? 0 : 4;
  swxp = -14;    // x
  swyp = 13.75;  // y
 
@@ -745,11 +747,11 @@ module sram_top () {
    // bank switch
    if (nbanks>1) {
    bw = 
-     bank_switch_style == "finger" ? bank_finger_width :
-     bank_switch_style == "slider" ? bank_slider_width :
+     ram_bank_switch_style == "finger" ? bank_finger_width :
+     ram_bank_switch_style == "slider" ? bank_slider_width :
      0;
    translate([swxp,swyp,0])
-    slide_switch_opening(t=bank_switch_style,n=nbanks,w=bw);
+    slide_switch_opening(t=ram_bank_switch_style,n=nbanks,w=bw);
    // bank switch components
    translate([swxp,swyp+bank_parts_y_rel])
     component_pocket(w=bank_parts_w,l=bank_parts_l);
@@ -765,7 +767,7 @@ module sram_top () {
  // the switch slider is NOT flipped or elevated regardless of print vs preview,
  // but is moved to a different x,y
 
- if (bank_switch_style == "slider") {
+ if (ram_bank_switch_style == "slider") {
 
   tx = prt ? 0 : swxp + sth*(nbanks-1)/2-sth*(bsp-1) ;
   ty = prt ? -bl/2-bank_slider_width/2+cnl-sprue_len : swyp + bank_slider_width/2+swys/2+fc ;
@@ -797,7 +799,7 @@ module mram_top () {
 
  // bank switch
  bsp = is_undef(bank_switch_slider_position) ? 3 : bank_switch_slider_position ;
- nbanks = bank_switch_style=="none" ? 0 : 4;
+ nbanks = ram_bank_switch_style=="none" ? 0 : 4;
  swxp = 11;    // x
  swyp = 13;    // y
  
@@ -831,7 +833,7 @@ module mram_top () {
 
    // bank-select slide switch
    translate([swxp,swyp,0])
-    slide_switch_opening(t=bank_switch_style,n=nbanks,w=bank_slider_width);
+    slide_switch_opening(t=ram_bank_switch_style,n=nbanks,w=bank_slider_width);
    // bank switch components
    translate([swxp,swyp+bank_parts_y_rel])
     component_pocket(w=bank_parts_w,l=bank_parts_l);
@@ -843,7 +845,7 @@ module mram_top () {
 
  // the switch slider is NOT flipped or elevated regardless of print vs preview,
  // but is moved to a different x,y
- if (bank_switch_style == "slider") {
+ if (ram_bank_switch_style == "slider") {
 
   tx = prt ? 0 : swxp + sth*(nbanks-1)/2-sth*(bsp-1) ;
   ty = prt ? -bl/2-bank_slider_width/2+cnl-sprue_len : swyp + bank_slider_width/2+swys/2+fc ;

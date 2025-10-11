@@ -171,38 +171,22 @@ Many common candy tins like Altoids are good too. Just make sure a magnet sticks
 
 <!-- [ROM card PCB from OSHPark](https://oshpark.com/shared_projects/F9gte3be) (Select 0.8mm PCB thickness)  -->
 [ROM PCB and COVER from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_ROM_IC_Card.html)  
-[ROM BOM from DigiKey](https://www.digikey.com/short/540dqm8m)
+[ROM BOM from DigiKey](https://www.digikey.com/short/3f4nmrp4) (256K & no bank sw)
 
 ![](PCB/out/WP-2_IC-Card_ROM.jpg)  
-![](PCB/out/WP-2_IC-Card_ROM.slider.jpg)  
-![](PCB/out/WP-2_IC-Card_ROM.finger.jpg)  
-![](PCB/out/WP-2_IC-Card_ROM.write-protect.jpg)  
+![](PCB/out/WP-2_IC-Card_ROM.write_sw.jpg)  
+![](PCB/out/WP-2_IC-Card_ROM.adhesive.jpg)  
+![](PCB/out/WP-2_IC-Card_ROM.no_sw1.jpg)  
 ![](PCB/out/WP-2_IC-Card_ROM.top.jpg)  
 ![](PCB/out/WP-2_IC-Card_ROM.bottom.jpg)  
 ![](PCB/out/WP-2_IC-Card_ROM.svg)
 
-There are 2 options for writing to the ROM card.
+There are 2 options for writing to the ROM card, using a programmer or using software on a modded WP-2.
 
-Regardless which option is used, also move the write-enable switch on the card to the unlocked position,  
-or bridge the /WE solder-jumper if no switch installed.
+### Write to the ROM card using a WP-2 with "S3 write mod"
 
-When not writing, move the write-enable switch to the locked position,  
-or remove the solder from the /WE solder jumper if no switch installed.
-
-### Write to the ROM card, option 1: Using a modded WP-2
-This option is cheap and convenient, but does require modifying the WP-2 slightly.  
-It's a single jumper wire and it's even possible with only mini-grabber test clips and not even soldering anything.
-
-Ben Grimmett has written software that runs on the WP-2 and writes to the flash.  
-This requires adding a bodge wire inside the WP-2 to bring the /WR signal from the cpu to an un-used pin on the card slot, and configuring the card to use that pin for write-enable instead of the normal R/W pin.  
-There is actually room, barely, to use logic analyser mini-grabbers to attach the wire instead of soldering.
-
-In the WP-2, RA4 pin 5 is connected to /WR on the CPU,  
-and RA5 pin 2 is connected to S3 (pin 36) on the card socket.
-
-Directions:  
-* In the WP-2, solder a wire from RA4 pin 5 to RA5 pin 2.  
-  You can thread the wire through another resistor pack and under a jumper wire link to get free strain relief to hold the wire in place.  
+* On the WP-2 mainboard, add a bodge wire connecting RA4 pin 5 to RA5 pin 2.  
+  ( RA4p5 is /WR on the cpu, RA4p2 is pin 36 (S3) on the IC Card connector )  
   This wire can be left there permanently, it doesn't interfere with normal operation.
 
   ![](ref/WP-2_rom_card_write_mod.jpg)  
@@ -214,28 +198,29 @@ Directions:
   ![](ref/solderless_write_mod_2.jpg)
 
   Notes if using mini-grabbers instead of soldering:  
-  * Requires mini-grabbers with a narrow body and strong hooks: https://www.amazon.com/dp/B0DL5ZLK8H  
+  * Requires mini-grabbers with a thin body and strong hooks: https://www.amazon.com/dp/B0DL5ZLK8H  
   * Fold X1 away from RA5 to let the grabber reach.  
   * Ensure the RA5 grabber handle lies on the pcb to the side of the square chip, not on top of the chip.  
   * Ensure the RA4 grabber lies angled towards the printer port so that the lcd ribbon doesn't lay on top of the grabber handle when you close the case. The sharp corners on the grabber handle will poke into the cable.  
   The tape in the pic is just to keep the grabbers in the best position long enough to close the case.  
   * Shift & wiggle the case halves back & forth a little while while closing so that the grabber handles get pushed to the sides of the chips where there is just enough room for them so they don't put pressure on the lcd.
 
-* On the card, solder-jumper JP1: open 1-2, close 2-3.  
-  Scratch the copper link connecting the R/W & /WE pads by default, and bridge the S3 & /WE pads with solder.  
-  JP1 may be left like this, you don't have to restore the original connection. The card is still compatible with any other normal un-modded WP-2 or clone.
+* On the card, Select SW1 position S3 or solder-jumper S3 if no switch installed.
 
-* Find Ben Grimmett's software in the files section of the [Model-T Computers](https://www.facebook.com/groups/Model.T.Computers/files/files) group on Facebook.
+* Find Ben Grimmett's software in the files section of the [Model-T Computers](https://www.facebook.com/groups/Model.T.Computers/files/files) group on Facebook.  
+  I have no detailed directions for this. I think HEXVIEW is what writes to flash.  
+  Copy HEXVIEW.CO to the WP-2 using a serial cable and TPDD emulator (LaddieAlpha or DL2).  
+  Run HEXVIEW.CO on the WP-2 to write a rom image to the card. I think it will try to read the rom image from the pc via TPDD.
 
+### Write to the ROM card using an eprom programmer
 
+* Build the [programming adapter](#programming-adapter) programming adapter below  
 
-### Write to the ROM card, option 2:  Using an eprom programmer
+* See [To program the ROM card](#to-program-the-rom-card)
 
-* On the card, solder-jumper JP1: open 2-3, close 1-2.  
-  (Remove any solder blob joining S3 to /WE, add a solder blob joining R/W to /WE if not already connected by a copper trace.)  
-  This is already the default condition if you didn't change it, there is a copper trace connecting pads 1 & 2.
-
-* Build and use the programming adapter below with an eprom programmer such as XGeku T48
+If the card has a 512K chip and bank switch installed then there are a few complications to writing the banks.  
+See https://github.com/bkw777/M4ROM?tab=readme-ov-file#programming-the-chip for explaination from a similar project with the same feature.  
+This is the main reason the default BOM has a 256K chip and no bank switch.
 
 ----
 
@@ -262,13 +247,12 @@ Example reading RAM card (SRAM or MRAM), jumpers in RAM position.
 
 ### To program the ROM card
 
-Switch the write-enable switch on the rom card to the unlock position.  
-(or close the /WE solder jumper if no switch installed)
-
 Set all 4 jumpers on the programming adapter to ROM.
 
+Set the write-enable switch on the card to the R/W position.
+
 Example using a TL-866 programmer to write a file named `rom.bin` to the ROM card:  
-`minipro --device SST39SF020A --write rom.bin`
+`minipro --device SST39SF020A --unprotect --protect --write rom.bin`
 
 <!-- old version of the breakout card also had a footprint for the rom chip and some extra pins to enable/disable it -->
 <!-- current breakout card no longer has that, this is just for reference for TechTangents who has one.-->
