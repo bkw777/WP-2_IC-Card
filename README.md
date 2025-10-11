@@ -217,7 +217,7 @@ There are 2 options for writing to the ROM card, using a programmer or using sof
 
 ### Write to the ROM card using an eprom programmer
 
-* Build the [programming adapter](#programming-adapter) programming adapter below  
+* Build the [programming adapter](#programming-adapter) below  
 
 * See [To program the ROM card](#to-program-the-rom-card)
 
