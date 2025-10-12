@@ -260,8 +260,8 @@ No gerbers or pcbway yet because I'm still trying to make it simpler. See the 2 
   WP-2_IC-Card_programming_adapter_horizontal.kicad_pro  
   programming_adapter_floor.kicad_pro  
 ![](PCB/out/WP-2_IC-Card_programming_adapter_fancy_horizontal.jpg)  
-![]ref/horizontal_programmer_1.jpg)  
-![]ref/horizontal_programmer_2.jpg)  
+![](ref/horizontal_programmer_1.jpg)  
+![](ref/horizontal_programmer_2.jpg)  
 
 <!-- 
 Example reading ROM card, jumpers in ROM position.
