@@ -11,25 +11,35 @@ Here are a few different cards to fit that slot.
 * A [breakout card](#breakout-card) to allow connecting the bus to a breadboard or logic analyser etc
 
 ![](PCB/out/WP-2_IC-Card_SRAM.jpg)  
-![](PCB/out/WP-2_IC-Card_SRAM.slider.jpg)
+![](PCB/out/WP-2_IC-Card_SRAM.slider.jpg)  
+
+![](ref/sram_cover_exploded.jpg)  
+![](ref/sram_cover_assembled.jpg)  
+![](ref/screen_sram_bank1.jpg)  
 
 ## Fabrication & assembly notes
 
-**REQUIRES 1.2mm PCB**  
+* **REQUIRES 1.2mm PCB**  
 The normal default PCB thickness of 1.6mm will NOT fit.  
 If you don't remember to manually change the PCB THICKNESS to 1.2mm when ordering, you'll get 1.6mm.  
 
-Thinner is ok.  
-A thinner pcb allows the possibility to print a bottom cover to protect the bottom surface of the pcb from scratches.
+1.2mm  
+![](PCB/out/1.2mm_pcb.jpg)  
 
-The SRAM card has a battery terminal that should be gold.
+1.6mm  
+![](PCB/out/1.6mm_pcb.jpg)  
+
+* The SRAM card has a battery terminal that should be gold.
 ENIG copper finish will give you a better battery terminal without the expense and custom steps of proper selective hard gold.
 
-Attach the cover with thin 3mm or 1/8" adhesive transfer tape aka "cell phone / lcd repair" tape.  
-The cards all have 3mm wide blocks for adhesive transfer tape.  
-https://www.amazon.com/dp/B078H298G2/  
-https://www.amazon.com/dp/B019OQ4ZG0/  
+* Attach the cover with thin 3mm or 1/8" adhesive transfer tape aka "cell phone / tablet screen repair tape".  
+![](ref/adhesive_transfer_tape.jpg)  
+https://www.amazon.com/dp/B0C78LJLDR/  
 https://www.amazon.com/dp/B0DRV5D4YG/  
+https://www.amazon.com/dp/B078H298G2/  
+https://www.amazon.com/dp/B019OQ4ZG0/ 0.2mm  
+https://www.amazon.com/dp/B01N27LYV9/ 0.09mm  
+
 <!-- https://amazon.com/dp/B06Y34587N/ (This one is wider than 5mm but has no carrier film in the middle, just gummy adhesive that squishes into any form, so the width doesn't matter and you can just lay it anywhere right over the chips and pins etc.) -->
 Or glue, but adhesive is easier to remove later.
 
@@ -237,12 +247,21 @@ This is the main reason the default BOM has a 256K chip and no bank switch.
 The programming adapter supports both ROM and RAM cards.  
 Use with a standard eprom programmer such as TL-866 or T48, etc.  
 
+There's a couple of programming adapters, a minimal one and a fancy but safer one.
+
+Minimalist programming adapter. Requires extreme care not to bend the pins when pulling the card off the adapter.  
+![](PCB/out/WP-2_IC-Card_programming_adapter.jpg)  
 <!-- [Programming Adapter PCB from OSHPark](https://oshpark.com/shared_projects/TkzNwgho)  -->
 [Programming Adapter PCB from PCBWAY](https://www.pcbway.com/project/shareproject/TANDY_WP_2_IC_Card_Programming_Adapter.html)
-
 [Programming adapter BOM from DigiKey](https://www.digikey.com/short/v2r3pqp4)
 
-![](PCB/out/WP-2_IC-Card_programming_adapter.jpg)  
+Horizontal 2-part programming adapter that protects the pins a lot better, but it's larger and more involved to build.  
+No gerbers or pcbway yet because I'm still trying to make it simpler. See the 2 project files:  
+  WP-2_IC-Card_programming_adapter_horizontal.kicad_pro  
+  programming_adapter_floor.kicad_pro  
+![](PCB/out/WP-2_IC-Card_programming_adapter_fancy_horizontal.jpg)  
+![]ref/horizontal_programmer_1.jpg)  
+![]ref/horizontal_programmer_2.jpg)  
 
 <!-- 
 Example reading ROM card, jumpers in ROM position.
