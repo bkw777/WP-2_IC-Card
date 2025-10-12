@@ -161,6 +161,7 @@ Supports both a 512K chip with a bank-select switch for 4 x 128K banks, or a 128
 ![](ref/IMG_0053.JPG)  
 ![](ref/IMG_0058.JPG)  
 ![](PCB/out/WP-2_IC-Card_MRAM.jpg)  
+![](PCB/out/WP-2_IC-Card_MRAM.adhesive.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM.slider.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM.finger.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM.top.jpg)  

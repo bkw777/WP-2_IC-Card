@@ -6,8 +6,8 @@
 	(paper "USLetter")
 	(title_block
 		(title "WP-2_IC-Card_MRAM")
-		(date "2025-10-04")
-		(rev "019")
+		(date "2025-10-12")
+		(rev "020")
 		(company "Brian K. White - b.kenyon.w@gmail.com")
 	)
 	(lib_symbols
@@ -5494,6 +5494,17 @@
 		)
 		(uuid "cdc0d076-63c6-46dd-96a8-18df85545802")
 	)
+	(text "Cuttable."
+		(exclude_from_sim no)
+		(at 38.608 81.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e970eaf7-5f1e-400f-a6ae-0ec1766fc6b5")
+	)
 	(text "BANK_1"
 		(exclude_from_sim no)
 		(at 63.5 180.34 0)
@@ -7019,7 +7030,7 @@
 	)
 	(wire
 		(pts
-			(xy 31.75 81.28) (xy 39.37 81.28)
+			(xy 31.75 81.28) (xy 54.61 81.28)
 		)
 		(stroke
 			(width 0)
@@ -7956,16 +7967,6 @@
 			(type default)
 		)
 		(uuid "63d2eef3-212c-42d2-bce3-f3ad48ae6c23")
-	)
-	(wire
-		(pts
-			(xy 46.99 81.28) (xy 54.61 81.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "63e5aa74-3765-4518-a92f-1581cd27528b")
 	)
 	(bus
 		(pts
@@ -15845,91 +15846,6 @@
 			(project "WP-2_IC-Card_MRAM_512"
 				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
 					(reference "#PWR06")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "000_LOCAL:SolderJumper_2_Bridged")
-		(at 43.18 81.28 0)
-		(unit 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(uuid "a2f863f0-3caf-4e33-ba4c-7d60f4f63776")
-		(property "Reference" "JP4"
-			(at 43.18 83.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "T2"
-			(at 43.18 85.852 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "000_LOCAL:SolderJumper-2_Bridged"
-			(at 43.18 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 43.18 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Solder Jumper, 2-pole, closed/bridged"
-			(at 43.18 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "L12" ""
-			(at 43.18 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "L23" ""
-			(at 43.18 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "f053a8cb-a2bf-49cb-9a79-4d3b25838660")
-		)
-		(pin "1"
-			(uuid "f96dc940-eb0c-4718-b021-93e3010d754d")
-		)
-		(instances
-			(project "WP-2_IC-Card_MRAM"
-				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "JP4")
 					(unit 1)
 				)
 			)
