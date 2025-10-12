@@ -80,22 +80,22 @@ You can save some money on the ENIG by using Elecrow instead of PCBWAY.
 ### work in progress updated SRAM card
 -->
 
-Fully populated for a 512K chip  
+Fully populated for a 256k or 512k chip  
 ![](PCB/out/WP-2_IC-Card_SRAM.jpg)
 
-Configured for a 128K chip  
-![](PCB/out/WP-2_IC-Card_SRAM.ce2.jpg)
+Configured for a 128k chip  
+![](PCB/out/WP-2_IC-Card_SRAM.128.jpg)
 
 ![](PCB/out/WP-2_IC-Card_SRAM.slider.jpg)  
 ![](PCB/out/WP-2_IC-Card_SRAM.finger.jpg)  
 ![](PCB/out/WP-2_IC-Card_SRAM.no_bank.jpg)  
-![](PCB/out/WP-2_IC-Card_SRAM.write-enable.jpg)
+![](PCB/out/WP-2_IC-Card_SRAM.adhesive.jpg)
 
 ![](PCB/out/WP-2_IC-Card_SRAM.top.jpg)  
 ![](PCB/out/WP-2_IC-Card_SRAM.bottom.jpg)  
 ![](PCB/out/WP-2_IC-Card_SRAM.svg)
 
-[BOM from DigiKey](https://www.digikey.com/short/07m37w7f)  ([128K BOM](https://www.digikey.com/short/hnnwf524))  
+[BOM from DigiKey (512k)](https://www.digikey.com/short/2rpt9c9w)  ([(128k)](https://www.digikey.com/short/qqcwz9tr))  
 [PCB and COVER from PCBWAY](https://www.pcbway.com/project/shareproject/WP_2_RAM_IC_Card.html)
 
 <!--

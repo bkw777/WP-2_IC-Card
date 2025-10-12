@@ -6,8 +6,8 @@
 	(paper "USLetter")
 	(title_block
 		(title "WP-2_IC-Card_SRAM")
-		(date "2025-10-05")
-		(rev "022")
+		(date "2025-10-12")
+		(rev "023")
 		(company "Brian K. White - b.kenyon.w@gmail.com")
 	)
 	(lib_symbols
@@ -5178,6 +5178,17 @@
 		)
 		(uuid "366db1d6-74cd-4363-940e-7d4b7ff7b1e9")
 	)
+	(text "(T2) Leave a small clear space around trace\nbetween connector and gnd zone fill\nso it's easy to cut the trace."
+		(exclude_from_sim no)
+		(at 93.98 77.978 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "47ce7055-6f4a-4be4-9f93-4a1b212a5250")
+	)
 	(text "1x38 1.27mm Female"
 		(exclude_from_sim no)
 		(at 97.79 35.56 0)
@@ -5233,7 +5244,7 @@
 		)
 		(uuid "698c836d-d0db-4069-9b24-0f9479ed4d2e")
 	)
-	(text "Caps all low profile 1.2mm height or less to fit under printed cover.\n\nCompatible with 128Kx8 to 512Kx8 SRAM.\n\nFor 128K SRAM (no banks): Omit SW1, D2, R3, R4. Bridge JP4 1-2 (BUS-CE2).\n\nTo emulate ROM: Cut JP3 (~{DET}). Cut JP1 (~{WE}).\n\nFor 256K bank size (connect bus A17 to SRAM): Cut JP2 1-2. Bridge JP2 2-3."
+	(text "Caps all low profile 1.2mm height or less to fit under printed cover.\n\nCompatible with 128Kx8 to 512Kx8 SRAM.\n\nFor 128K SRAM (no banks): Omit SW1, D2, D3, R3, R4. Bridge JP4 1-2 (BUS-CE2).\n\nTo emulate ROM: Cut JP3 (~{DET}). Cut JP1 (~{WE}).\n\nFor 256K bank size (iow to connect bus A17 to SRAM): Cut JP2 1-2. Bridge JP2 2-3."
 		(exclude_from_sim no)
 		(at 162.306 168.402 0)
 		(effects
@@ -5296,6 +5307,17 @@
 			)
 		)
 		(uuid "a2300919-ea39-420f-8ade-7bd4d3de56b0")
+	)
+	(text "WHITE: CUS-14TB\nBLACK: MSS14-V-TR"
+		(exclude_from_sim no)
+		(at 69.596 164.592 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a79d437c-16a8-4796-86d2-c3080425e483")
 	)
 	(text "VCC"
 		(exclude_from_sim no)
@@ -5419,6 +5441,12 @@
 		(uuid "505dcc19-2f5a-47fb-9229-5c8d4e88c42b")
 	)
 	(junction
+		(at 177.8 63.5)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5971bafe-b740-4e08-8e5c-e4a2117d70e6")
+	)
+	(junction
 		(at 113.03 179.07)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5429,18 +5457,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "76e0e86a-0477-486f-8169-39ea050c12af")
-	)
-	(junction
-		(at 177.8 63.5)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "8125d3fe-3e54-4e06-b3a4-24f48aa0d046")
-	)
-	(junction
-		(at 121.92 170.18)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "8646d94c-b6c4-40d0-87a6-7c9e62e78d6d")
 	)
 	(junction
 		(at 90.17 45.72)
@@ -5467,10 +5483,16 @@
 		(uuid "bf74cd2c-182a-480d-a64c-ef9a9a2dccfa")
 	)
 	(junction
+		(at 121.92 170.18)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d216c023-73a3-46f5-a13f-e03380e244fc")
+	)
+	(junction
 		(at 114.3 116.84)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "da65bbbe-189b-4588-b5ae-b6f35c510430")
+		(uuid "fb2bcac2-55c6-4d87-8e81-c73abd067d8f")
 	)
 	(no_connect
 		(at 86.36 171.45)
@@ -5550,7 +5572,7 @@
 	)
 	(wire
 		(pts
-			(xy 90.17 78.74) (xy 97.79 78.74)
+			(xy 90.17 78.74) (xy 107.95 78.74)
 		)
 		(stroke
 			(width 0)
@@ -5677,16 +5699,6 @@
 			(type default)
 		)
 		(uuid "69b21116-1ab5-4b5d-90f1-139d15bfaecc")
-	)
-	(wire
-		(pts
-			(xy 105.41 78.74) (xy 107.95 78.74)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6b6f8be4-9607-49a6-8007-cdb62ff08cac")
 	)
 	(wire
 		(pts
@@ -7057,84 +7069,6 @@
 		)
 	)
 	(symbol
-		(lib_id "000_LOCAL:R")
-		(at 177.8 59.69 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "03690601-21e3-42c2-afd7-d7f3fd4f8886")
-		(property "Reference" "R1"
-			(at 179.578 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "47k"
-			(at 179.578 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "000_LOCAL:R_0805"
-			(at 177.8 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "datasheets/sei-rmcf_rmcp.pdf"
-			(at 177.8 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "RES 47K OHM 1% 1/8W 0805"
-			(at 177.8 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "RMCF0805FT47K0"
-			(at 177.8 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "5151e4e0-f22d-41f0-901b-1189761b0a3a")
-		)
-		(pin "2"
-			(uuid "24ee02c1-cf75-4832-a814-c6afc0fe8f05")
-		)
-		(instances
-			(project "WP-2_IC-Card_SRAM"
-				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "R1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "000_LOCAL:C_Small")
 		(at 190.5 55.88 0)
 		(mirror y)
@@ -7279,6 +7213,84 @@
 		)
 	)
 	(symbol
+		(lib_id "000_LOCAL:R")
+		(at 118.11 170.18 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1143a24d-2430-4796-94e4-e247b7b9958e")
+		(property "Reference" "R3"
+			(at 117.094 168.656 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100k"
+			(at 119.126 168.656 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "000_LOCAL:R_0805"
+			(at 118.11 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "datasheets/PYU-RC_GROUP_51.pdf"
+			(at 118.11 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "RES 100K OHM 1/8W 0805"
+			(at 118.11 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0805FR-07100KL"
+			(at 118.11 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "13b53e52-9e86-472e-a4ee-68ade514a839")
+		)
+		(pin "2"
+			(uuid "9a987be7-a062-4410-84ff-b7faa73a1e63")
+		)
+		(instances
+			(project "WP-2_IC-Card_SRAM"
+				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
+					(reference "R3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:PWR_FLAG")
 		(at 90.17 45.72 0)
 		(unit 1)
@@ -7362,7 +7374,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "47k"
+		(property "Value" "100k"
 			(at 102.616 166.116 0)
 			(effects
 				(font
@@ -7380,7 +7392,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "datasheets/sei-rmcf_rmcp.pdf"
+		(property "Datasheet" "datasheets/PYU-RC_GROUP_51.pdf"
 			(at 101.6 167.64 0)
 			(effects
 				(font
@@ -7389,7 +7401,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "RES 47K OHM 1% 1/8W 0805"
+		(property "Description" "RES 100K OHM 1/8W 0805"
 			(at 101.6 167.64 0)
 			(effects
 				(font
@@ -7398,7 +7410,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "RMCF0805FT47K0"
+		(property "MPN" "RC0805FR-07100KL"
 			(at 101.6 167.64 0)
 			(effects
 				(font
@@ -7787,84 +7799,6 @@
 		)
 	)
 	(symbol
-		(lib_id "000_LOCAL:R")
-		(at 118.11 170.18 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "444f4791-c0a3-48ac-8130-d015a717ce73")
-		(property "Reference" "R3"
-			(at 117.348 167.132 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "47k"
-			(at 119.126 167.132 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "000_LOCAL:R_0805"
-			(at 118.11 170.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "datasheets/sei-rmcf_rmcp.pdf"
-			(at 118.11 170.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "RES 47K OHM 1% 1/8W 0805"
-			(at 118.11 170.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "RMCF0805FT47K0"
-			(at 118.11 170.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "adcd0c10-6a99-478c-93f7-be63357ed9b1")
-		)
-		(pin "2"
-			(uuid "dbf25d2e-7416-4a71-bf5e-c62a7df6ca10")
-		)
-		(instances
-			(project "WP-2_IC-Card_SRAM"
-				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "R3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:VBUS")
 		(at 25.4 179.07 0)
 		(unit 1)
@@ -8189,15 +8123,15 @@
 	)
 	(symbol
 		(lib_id "000_LOCAL:R")
-		(at 114.3 113.03 0)
+		(at 177.8 59.69 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "78c758de-2864-444d-937e-2cb28b02d640")
-		(property "Reference" "R2"
-			(at 115.57 112.014 0)
+		(uuid "7f818f13-b84c-4dbc-b477-70c9c1b5af1d")
+		(property "Reference" "R1"
+			(at 179.324 58.674 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8205,8 +8139,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "47k"
-			(at 115.57 114.046 0)
+		(property "Value" "100k"
+			(at 179.324 60.706 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8215,7 +8149,7 @@
 			)
 		)
 		(property "Footprint" "000_LOCAL:R_0805"
-			(at 114.3 113.03 0)
+			(at 177.8 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8223,8 +8157,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "datasheets/sei-rmcf_rmcp.pdf"
-			(at 114.3 113.03 0)
+		(property "Datasheet" "datasheets/PYU-RC_GROUP_51.pdf"
+			(at 177.8 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8232,8 +8166,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "RES 47K OHM 1% 1/8W 0805"
-			(at 114.3 113.03 0)
+		(property "Description" "RES 100K OHM 1/8W 0805"
+			(at 177.8 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8241,8 +8175,8 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "RMCF0805FT47K0"
-			(at 114.3 113.03 0)
+		(property "MPN" "RC0805FR-07100KL"
+			(at 177.8 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8251,15 +8185,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "2fb95c2b-6abc-4a84-9847-e36f14a2437d")
+			(uuid "4826a96d-a020-45d3-ad58-c8ff6db664f0")
 		)
 		(pin "2"
-			(uuid "31d5be57-ec15-480d-a5b5-e45dfe17d8cc")
+			(uuid "c3c1d9e0-1460-4836-b34d-f943a739e7f4")
 		)
 		(instances
 			(project "WP-2_IC-Card_SRAM"
 				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "R2")
+					(reference "R1")
 					(unit 1)
 				)
 			)
@@ -8790,6 +8724,84 @@
 		)
 	)
 	(symbol
+		(lib_id "000_LOCAL:R")
+		(at 114.3 113.03 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b03d038e-0438-4834-b6a9-549ead15da29")
+		(property "Reference" "R2"
+			(at 115.824 112.014 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100k"
+			(at 115.824 114.046 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "000_LOCAL:R_0805"
+			(at 114.3 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "datasheets/PYU-RC_GROUP_51.pdf"
+			(at 114.3 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "RES 100K OHM 1/8W 0805"
+			(at 114.3 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0805FR-07100KL"
+			(at 114.3 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e0bba186-94cf-412d-841e-01a2d4b103c3")
+		)
+		(pin "2"
+			(uuid "d3aa176d-9c69-4974-b18c-569ee3409a06")
+		)
+		(instances
+			(project "WP-2_IC-Card_SRAM"
+				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
+					(reference "R2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:VMEM")
 		(at 44.45 154.94 0)
 		(unit 1)
@@ -9003,7 +9015,7 @@
 				)
 			)
 		)
-		(property "Value" "CUS-14TB"
+		(property "Value" "CUS-14B"
 			(at 85.09 166.37 0)
 			(effects
 				(font
@@ -9594,73 +9606,6 @@
 			(project "WP-2_IC-Card_RAM"
 				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
 					(reference "D1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "000_LOCAL:SolderJumper_2_Bridged")
-		(at 101.6 78.74 0)
-		(unit 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(uuid "d995295e-3327-44b1-8e13-3a1bb03d0863")
-		(property "Reference" "JP5"
-			(at 101.6 73.914 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "T2"
-			(at 101.6 76.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "000_LOCAL:SolderJumper-2_Bridged"
-			(at 101.6 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 101.6 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Solder Jumper, 2-pole, closed/bridged"
-			(at 101.6 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "47ad65c2-4777-4711-a8d2-03c9ec606ead")
-		)
-		(pin "1"
-			(uuid "7b519615-3fde-46c8-9a86-0f36892d4fc0")
-		)
-		(instances
-			(project "WP-2_IC-Card_SRAM"
-				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "JP5")
 					(unit 1)
 				)
 			)
