@@ -34,9 +34,9 @@ ENIG copper finish will give you a better battery terminal without the expense a
 
 * Attach the cover with thin 3mm or 1/8" adhesive transfer tape aka "cell phone / tablet screen repair tape".  
 ![](ref/adhesive_transfer_tape.jpg)  
-https://www.amazon.com/dp/B0C78LJLDR/  
-https://www.amazon.com/dp/B0DRV5D4YG/  
-https://www.amazon.com/dp/B078H298G2/  
+https://www.amazon.com/dp/B0C78LJLDR/ 0.2mm  
+https://www.amazon.com/dp/B0DRV5D4YG/ 0.2mm  
+https://www.amazon.com/dp/B078H298G2/ 0.2mm  
 https://www.amazon.com/dp/B019OQ4ZG0/ 0.2mm  
 https://www.amazon.com/dp/B01N27LYV9/ 0.09mm  
 
@@ -100,7 +100,6 @@ Configured for a 128k chip
 ![](PCB/out/WP-2_IC-Card_SRAM.finger.jpg)  
 ![](PCB/out/WP-2_IC-Card_SRAM.no_bank.jpg)  
 ![](PCB/out/WP-2_IC-Card_SRAM.adhesive.jpg)
-
 ![](PCB/out/WP-2_IC-Card_SRAM.top.jpg)  
 ![](PCB/out/WP-2_IC-Card_SRAM.bottom.jpg)  
 ![](PCB/out/WP-2_IC-Card_SRAM.svg)
