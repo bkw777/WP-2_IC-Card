@@ -195,6 +195,7 @@ Many common candy tins like Altoids are good too. Just make sure a magnet sticks
 SW1 is optional. The marked S3 and R/W pads double as solder jumpers.
 ![](PCB/out/WP-2_IC-Card_ROM.no_sw1.jpg)  
 
+![](ref/BennVenn_ROM.jpg)  
 ![](PCB/out/WP-2_IC-Card_ROM.top.jpg)  
 ![](PCB/out/WP-2_IC-Card_ROM.bottom.jpg)  
 ![](PCB/out/WP-2_IC-Card_ROM.svg)
