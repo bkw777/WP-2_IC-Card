@@ -257,8 +257,8 @@ Minimalist programming adapter. Requires extreme care not to bend the pins when 
 
 Horizontal 2-part programming adapter that protects the pins a lot better, but it's larger and more involved to build.  
 No gerbers or pcbway yet because I'm still trying to make it simpler. See the 2 project files:  
-  WP-2_IC-Card_programming_adapter_horizontal.kicad_pro  
-  programming_adapter_floor.kicad_pro  
+  WP-2_IC-Card_Programming-Adapter_Horizontal_Main.kicad_pro  
+  WP-2_IC-Card_Programming-Adapter_Horizontal_Floor.kicad_pro  
 ![](PCB/out/WP-2_IC-Card_programming_adapter_fancy_horizontal.jpg)  
 ![](ref/horizontal_programmer_1.jpg)  
 ![](ref/horizontal_programmer_2.jpg)  
