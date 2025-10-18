@@ -38,8 +38,8 @@
         "other_text_upright": false,
         "pads": {
           "drill": 0.9144,
-          "height": 1.524,
-          "width": 1.524
+          "height": 1.6,
+          "width": 1.6
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -462,7 +462,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "WP-2_IC-Card_programming_adapter_horizontal.kicad_pro",
+    "filename": "WP-2_IC-Card_Programming-Adapter_Horizontal_Floor.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -501,7 +501,7 @@
       "plot": "GERBER_${TITLE}_${REVISION}",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "000_LOCAL.pretty/3d/programming_adapter_horizontal_floor.step",
       "svg": "",
       "vrml": ""
     },
@@ -618,8 +618,8 @@
   },
   "sheets": [
     [
-      "e1b7b417-6b86-4085-b1ff-c64fb00f8fa6",
-      ""
+      "211a59e9-c46a-4b1f-98f9-c6c5489e865d",
+      "Root"
     ]
   ],
   "text_variables": {}
