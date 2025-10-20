@@ -195,6 +195,13 @@ Many common candy tins like Altoids are good too. Just make sure a magnet sticks
 SW1 is optional. The marked S3 and R/W pads double as solder jumpers.
 ![](PCB/out/WP-2_IC-Card_ROM.no_sw1.jpg)  
 
+Fully populated with 512k chip, bank switch, and convenience write-enable switch.  
+![](ref/rom_full.jpg)  
+
+Minimal config with 256k chip, no bank switch, solder blob for WP-2 S3 pin write mod.  
+R1 is not ideal or wanted here because it is a pullup on /WE, and in this configuration, the /WE line is connected to both the S3 and /WR pins inside the WP-2, and they both already have 100k pullups each.  
+![](ref/rom_minimal.jpg)
+
 ![](ref/BennVenn_ROM.jpg)  
 ![](PCB/out/WP-2_IC-Card_ROM.top.jpg)  
 ![](PCB/out/WP-2_IC-Card_ROM.bottom.jpg)  
