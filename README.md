@@ -200,6 +200,7 @@ Fully populated with 512k chip, bank switch, and convenience write-enable switch
 
 Minimal config with 256k chip, no bank switch, solder blob for WP-2 S3 pin write mod.  
 R1 is not ideal or wanted here because it is a pullup on /WE, and in this configuration, the /WE line is connected to both the S3 and /WR pins inside the WP-2, and they both already have 100k pullups each.  
+If you leave the solder blob on, then you don't need R1. If you remove the solder blob, then you need R1. Same for the R/W position or S3.  
 ![](ref/rom_minimal.jpg)
 
 ![](ref/BennVenn_ROM.jpg)  
