@@ -227,7 +227,7 @@ There are 2 options for writing to the ROM card, using a programmer or using sof
 * On the card, Select SW1 position S3 or solder-jumper S3 if no switch installed.
 
 * Find Ben Grimmett's software in the files section of the [Model-T Computers](https://www.facebook.com/groups/Model.T.Computers/files/files) group on Facebook.  
-  and especially the latest version of hexview on his [discord](https://discord.com/channels/761864233855615017/763902318135214084/1429597645520896151).  
+  and especially the latest version of hexview on his [Discord](https://discord.com/channels/761864233855615017/763902318135214084/1429597645520896151).  
   Copy HEXVIEW v2 (or later) to the WP-2 using a serial cable and TPDD emulator (LaddieAlpha or DL2).  
   (I would change the name to something like HEXVIEW2.CO)  
   Run HEXVIEW on the WP-2 (F2-FILES -> RAM DISK -> HEXVIEW2.CO -> F2-RUN)  
