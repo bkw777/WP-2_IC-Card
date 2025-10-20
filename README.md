@@ -227,9 +227,11 @@ There are 2 options for writing to the ROM card, using a programmer or using sof
 * On the card, Select SW1 position S3 or solder-jumper S3 if no switch installed.
 
 * Find Ben Grimmett's software in the files section of the [Model-T Computers](https://www.facebook.com/groups/Model.T.Computers/files/files) group on Facebook.  
-  I have no detailed directions for this. I think HEXVIEW is what writes to flash.  
-  Copy HEXVIEW.CO to the WP-2 using a serial cable and TPDD emulator (LaddieAlpha or DL2).  
-  Run HEXVIEW.CO on the WP-2 to write a rom image to the card. I think it will try to read the rom image from the pc via TPDD.
+  and especially the latest version of hexview on his [discord](https://discord.com/channels/761864233855615017/763902318135214084/1429597645520896151).  
+  Copy HEXVIEW v2 (or later) to the WP-2 using a serial cable and TPDD emulator (LaddieAlpha or DL2).  
+  (I would change the name to something like HEXVIEW2.CO)  
+  Run HEXVIEW on the WP-2 (F2-FILES -> RAM DISK -> HEXVIEW2.CO -> F2-RUN)  
+  Run RomCardWriter.exe on a pc and press S in hexview to write a full rom image from the pc to the rom card.
 
 ### Write to the ROM card using an eprom programmer
 
