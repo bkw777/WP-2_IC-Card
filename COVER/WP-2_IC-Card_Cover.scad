@@ -9,7 +9,6 @@
 PRINT = true;
 
 // Which part to generate?
-//part = "SRAM_128K"; // top cover for the old 128K-only SRAM card
 part = "SRAM"; // *** - top cover for the SRAM card
 //part = "ROM"; // top cover for the FLASH card
 //part = "MRAM"; // top cover for the MRAM card
@@ -34,10 +33,12 @@ part = "SRAM"; // *** - top cover for the SRAM card
 // bank-select switch
 bank_switch_style = "finger"; // keep old name until makefile updated
 ram_bank_switch_style = bank_switch_style;
-rom_bank_switch_style = "none";
+//rom_bank_switch_style = bank_switch_style;
+rom_bank_switch_style = "none"; // default 256k rom with no banksw for simplicity
 
 // write-enable switch
-wren_switch_style = "under";
+wren_switch_style = "under"; // switch with top covered and pen slot in the pcb
+//wren_switch_style = "solder"; // for solder-blob with no switch
 
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -450,13 +451,18 @@ module slide_switch_opening (t="none",n=2,w=2) {
    if (t=="pen") {
     translate([0,pen_slot_width/2,0])
     component_pocket(w=bc+bx+bc,l=bc+by+bc+pen_slot_width,h=swh);
-   } else {
+   } else if (t!="solder") {
     component_pocket(w=bc+bx+bc,l=bc+by+bc,h=swh);
    }
 
    // pins
+   if (t=="solder") {
+   translate([0,-swpl/2-1.2,0])
+    component_pocket(w=8,l=3,h=0.6);
+   } else {
    translate([0,-swpl/2,0])
     component_pocket(w=bc+bx+swpl+bc,l=by+swpl+bc,h=swph);
+   }
 
    if (t=="slider") {
 
@@ -656,47 +662,6 @@ module rom_top () {
   }
  }
 
-
-}
-
-
-// ####    SRAM_128K    ########################################################
-module sram_128k_top () {
-
- // main components
- mcx = 0;      // X placement
- mcy = -8.5;   // Y placement
- mcw = 40;     // X size
- mcl = 10;     // Y size
-
- batx = 0;     // batt x
- baty = 11.5;  // batt y
- bfw = 6;      // batt foot (solder tab) width
- bfd = 7;      // batt foot depth
- byo = -0.5;   // Y-offset the main octagon cutout around the batt
- beaz = 45;    // batt ejector angle z (which octogon face)
- beax = 60;    // batt ejector angle x (ramp slope)
-
-
- %PCB("inc/SRAM_128K.pcb.stl");
-
- // main body is conditionally flipped for printing
- translate([0,0,ptz]) rotate([0,pry,0]) {
-
-  difference() {
-   top_common();
-   group() {
-    translate([mcx,mcy,0])
-    component_pocket(w=mcw,l=mcl);
-    translate([batx,baty,0])
-     battery_holder(eaz=beaz,eax=beax,fw=bfw,fd=bfd,yo=byo);
-   }
-  }
-
- translate([batx,baty,0])
-  batt_retainer(yo=byo);
-
- }
 
 }
 
@@ -922,7 +887,6 @@ module switch_slider (n=2,w=2) {
 /////////////////////////////////////////////////////////
 
  if (part == "ROM")        rom_top();
- if (part == "SRAM_128K")  sram_128k_top();
  if (part == "SRAM")       sram_top();
  if (part == "MRAM")       mram_top();
  if (part == "breakout")   breakout_top();

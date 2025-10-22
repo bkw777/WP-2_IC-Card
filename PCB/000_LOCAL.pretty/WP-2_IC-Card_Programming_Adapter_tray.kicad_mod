@@ -1,4 +1,4 @@
-(footprint "WP-2_IC-Card_Programming-Adapter_Horizontal_Floor"
+(footprint "WP-2_IC-Card_Programming_Adapter_tray"
 	(version 20241229)
 	(generator "pcbnew")
 	(generator_version "9.0")
@@ -16,7 +16,7 @@
 			)
 		)
 	)
-	(property "Value" "WP-2_IC_Card_Programming-Adapter_Horizontal_Floor"
+	(property "Value" "WP-2_IC_Card_Programming_Adapter_tray"
 		(at 0 1.27 0)
 		(unlocked yes)
 		(layer "F.Fab")
@@ -289,127 +289,7 @@
 		(uuid "3b1ddd27-7cf1-43ed-adb6-2f39c6ed06cd")
 	)
 	(embedded_fonts no)
-	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/programming_adapter_floor.step"
-		(hide yes)
-		(offset
-			(xyz -1.27 0 -3.2)
-		)
-		(scale
-			(xyz 1 1 1)
-		)
-		(rotate
-			(xyz 0 0 0)
-		)
-	)
-	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/programming_adapter_floor.step"
-		(hide yes)
-		(offset
-			(xyz -1.27 0 2.54)
-		)
-		(scale
-			(xyz 1 1 1)
-		)
-		(rotate
-			(xyz 0 0 0)
-		)
-	)
-	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/PinHeader_1x01_P2.54mm_Vertical.step"
-		(hide yes)
-		(offset
-			(xyz 0 -28.448 2.54)
-		)
-		(scale
-			(xyz 1 1 1)
-		)
-		(rotate
-			(xyz 0 -180 0)
-		)
-	)
-	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/PinHeader_1x01_P2.54mm_Vertical.step"
-		(hide yes)
-		(offset
-			(xyz 0 28.448 2.54)
-		)
-		(scale
-			(xyz 1 1 1)
-		)
-		(rotate
-			(xyz 0 -180 0)
-		)
-	)
-	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/PinHeader_1x01_P2.54mm_Vertical.step"
-		(hide yes)
-		(offset
-			(xyz 10.16 0 2.54)
-		)
-		(scale
-			(xyz 1 1 1)
-		)
-		(rotate
-			(xyz 0 180 0)
-		)
-	)
-	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/PinHeader_1x01_P2.54mm_Vertical.step"
-		(hide yes)
-		(offset
-			(xyz 10.16 -22.86 2.54)
-		)
-		(scale
-			(xyz 1 1 1)
-		)
-		(rotate
-			(xyz 180 0 0)
-		)
-	)
-	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/PinHeader_1x01_P2.54mm_Vertical.step"
-		(hide yes)
-		(offset
-			(xyz 10.16 22.86 2.54)
-		)
-		(scale
-			(xyz 1 1 1)
-		)
-		(rotate
-			(xyz 180 0 0)
-		)
-	)
-	(model "${KIPRJMOD}/out/WP-2_IC-Card_ROM.step"
-		(hide yes)
-		(offset
-			(xyz -25.5 0 -1.2)
-		)
-		(scale
-			(xyz 1 1 1)
-		)
-		(rotate
-			(xyz 0 0 -90)
-		)
-	)
-	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/PinHeader_1x01_P2.54mm_Vertical.step"
-		(hide yes)
-		(offset
-			(xyz -12.7 -28.448 2.54)
-		)
-		(scale
-			(xyz 1 1 1)
-		)
-		(rotate
-			(xyz 180 0 0)
-		)
-	)
-	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/PinHeader_1x01_P2.54mm_Vertical.step"
-		(hide yes)
-		(offset
-			(xyz -12.7 28.448 2.54)
-		)
-		(scale
-			(xyz 1 1 1)
-		)
-		(rotate
-			(xyz 180 0 0)
-		)
-	)
-	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/WP-2_IC-Card_Programming-Adapter_Horizontal_Floor.step"
+	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/WP-2_IC-Card_Programming_Adapter_tray.step"
 		(offset
 			(xyz 0 0 0)
 		)

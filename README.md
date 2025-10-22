@@ -257,21 +257,13 @@ This is the main reason the default BOM has a 256K chip and no bank switch.
 The programming adapter supports both ROM and RAM cards.  
 Use with a standard eprom programmer such as TL-866 or T48, etc.  
 
-There's a couple of programming adapters, a minimal one and a fancy but safer one.
-
-Minimalist programming adapter. Requires extreme care not to bend the pins when pulling the card off the adapter.  
+<!-- Minimalist programming adapter. Requires extreme care not to bend the pins when pulling the card off the adapter.  
 ![](PCB/out/WP-2_IC-Card_programming_adapter.jpg)  
 <!-- [Programming Adapter PCB from OSHPark](https://oshpark.com/shared_projects/TkzNwgho)  -->
 [Programming Adapter PCB from PCBWAY](https://www.pcbway.com/project/shareproject/TANDY_WP_2_IC_Card_Programming_Adapter.html)
 [Programming adapter BOM from DigiKey](https://www.digikey.com/short/v2r3pqp4)
 
-Horizontal 2-part programming adapter that protects the pins a lot better, but it's larger and more involved to build.  
-No gerbers or pcbway yet because I'm still trying to make it simpler. See the 2 project files:  
-  WP-2_IC-Card_Programming-Adapter_Horizontal_Main.kicad_pro  
-  WP-2_IC-Card_Programming-Adapter_Horizontal_Floor.kicad_pro  
-![](PCB/out/WP-2_IC-Card_programming_adapter_fancy_horizontal.jpg)  
-![](ref/horizontal_programmer_1.jpg)  
-![](ref/horizontal_programmer_2.jpg)  
+![](PCB/out/WP-2_IC-Card_Programming_Adapter.jpg)  
 
 <!-- 
 Example reading ROM card, jumpers in ROM position.
@@ -281,7 +273,7 @@ Example reading RAM card (SRAM or MRAM), jumpers in RAM position.
 ![](ref/WP-2_IC-Card_programming_adapter.RAM.jpg)  
 -->
 
-![](PCB/out/WP-2_IC-Card_programming_adapter.svg)
+![](PCB/out/WP-2_IC-Card_Programming_Adapter.svg)
 
 ### To program the ROM card
 
