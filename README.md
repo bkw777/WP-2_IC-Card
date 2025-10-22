@@ -94,7 +94,7 @@ Fully populated for a 256k or 512k chip
 ![](PCB/out/WP-2_IC-Card_SRAM.jpg)
 
 Configured for a 128k chip  
-![](PCB/out/WP-2_IC-Card_SRAM.128.jpg)
+![](PCB/out/WP-2_IC-Card_SRAM.ce2.jpg)
 
 ![](PCB/out/WP-2_IC-Card_SRAM.slider.jpg)  
 ![](PCB/out/WP-2_IC-Card_SRAM.finger.jpg)  
