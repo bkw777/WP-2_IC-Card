@@ -1,15 +1,16 @@
 // top cover for WP-2 IC Card
+//
+// Generates several different possible parts.
+//
+// Use the customizer panel to select the main options.
 
-// This scad file generates several different possible parts.
-// set part="..." to select which part to output.
 
-// Render stl with parts oriented for printing vs preview.
-// Not using $preview because we want to actually render
-// stl with parts in the preview placements for kicad 3d viewer.
+// Render in print orientation, else render in preview orientation
 PRINT = true;
 
 // Which part to generate?
-part = "SRAM"; // *** - top cover for the SRAM card
+part = "SRAM"; // ["SRAM","MRAM","ROM","breakout","bottom"]
+//part = "SRAM"; // *** - top cover for the SRAM card
 //part = "ROM"; // top cover for the FLASH card
 //part = "MRAM"; // top cover for the MRAM card
 //part = "breakout"; // top cover for the breakout card
@@ -29,16 +30,14 @@ part = "SRAM"; // *** - top cover for the SRAM card
 // "pen"    = minimal slot for pen
 // "under"  = slot in pcb, top is covered
 // "none"   = switch not populated, delete from cover
+// "solder" = switch not populated, solder-blob instead
 
-// bank-select switch
-bank_switch_style = "finger"; // keep old name until makefile updated
-ram_bank_switch_style = bank_switch_style;
-//rom_bank_switch_style = bank_switch_style;
-rom_bank_switch_style = "none"; // default 256k rom with no banksw for simplicity
-
-// write-enable switch
-wren_switch_style = "under"; // switch with top covered and pen slot in the pcb
-//wren_switch_style = "solder"; // for solder-blob with no switch
+// bank switch for SRAM / MRAM
+ram_bank_switch_style = "finger"; // ["finger","slider","pen","under","none"]
+// bank switch for ROM
+rom_bank_switch_style = "none"; // ["finger","slider","pen","under","none"]
+// write-enable switch for ROM
+wren_switch_style = "under"; // ["under","solder","slider","pen","finger"]
 
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -48,32 +47,42 @@ wren_switch_style = "under"; // switch with top covered and pen slot in the pcb
 // "pen" switch style slot width
 pen_slot_width = 3;
 
+// bank switch slider width
 bank_slider_width = 6;
-bank_finger_width = 6; // make it wide enough to display the switch position labels
+// bank switch finger width - make it wide enough to see the labels
+bank_finger_width = 6;
 
+// write-enable switch slider width
 wren_slider_width = 3;
+// write-enable switch finger width
 wren_finger_width = 4;
 
-// The slope of the chamfer around slide switchs using _style="finger" above.
-// You want this as small as you can successfully print without supports.
-// 1.0 = 45 degrees. Easy to print but makes the switch a little annoying to use.
-// 0.5 or less is nice to use, but the overhang is difficult to print without support,
-// and you don't want the rough surface from support in that spot.
-finger_window_chamfer_slope = 0.6; // 1.0 = 45deg
+// You want this as small as you can successfully print.
+// 1.0 = 45 degrees. Easy to print but annoying to use.
+// 0.5 or less is nice to use but difficult to print overhang. 
+// The slope of the chamfer for switches with "finger" style opening. 1.0=45 deg.
+finger_chamfer_slope = 0.6;
+finger_window_chamfer_slope =
+  (finger_chamfer_slope<0.2)?0.2:
+  (finger_chamfer_slope>100)?100:
+  finger_chamfer_slope;
 
 
-// attach the slider to the main body
-// so it prints as one piece
+///////////////////////////////////////////////////////////////////////////////////
+
+
+// attach the slider to the main body with sprues
 attach_slider = false;
 sprue_len = 2;
-
 
 // preview display option
 // override default and show the switch slider in arbitary switch position #
 // value is switch position number, ie 4 position switch values are 1, 2, 3, 4
 //
-//bank_switch_slider_position = 1;
-//wren_switch_slider_position = 1;
+// preview switch position - only for slider
+bank_switch_slider_position = 3;
+// preview switch position - only for slider
+wren_switch_slider_position = 1;
 
 
 // card_thickness is the total stack thickness
@@ -103,6 +112,8 @@ sprue_len = 2;
 // That *technically* makes all the component pockets slightly
 // short but in reality it works fine, and allows the model
 // to have a thick enough ceiling for SLS printing.
+
+// Total stackup thickness of all parts: bottom cover + pcb + adhesive + top cover: spec is 3.2
 card_thickness = 3.2;
 
 // If pcb_thickness is less than 1.2, then generate a bottom cover too.
@@ -115,7 +126,10 @@ card_thickness = 3.2;
 // but it's not useful *here* because a bottom cover generated from here will be too thin to be printed.
 //pcb_thickness = 0.6;
 //pcb_thickness = 0.8;
+
+// default 1.2, may be thinner but no thicker. If less than 1.2, possible to add bottom cover.
 pcb_thickness = 1.2; // ***
+assert (pcb_thickness<=1.2);
 
 // How tall is the tallest component? (not counting the battery holder or slide switch)
 // If this is any greater than 1.2, then there will be no roof over the components.
@@ -124,8 +138,9 @@ pcb_thickness = 1.2; // ***
 // The sram and diode are 1.2mm, and the resistors are usually under 1.0,
 // The only question is the caps. When sourcing components you have to specifically
 // select caps that are 1.2mm or less, most will be a little taller.
-components_height = 1.15; // fudge it down from 1.2 just enought to allow printing a 0.7mm roof over the components
-//components_height = 1.2; // ***
+
+// height of tallest component - really 1.2 but fudge it down to 1.15 to allow thin_wall_minimum over top
+components_height = 1.15; // .01
 
 // If card_thickness - pcb_thickness - components_height 
 // comes out less than thin_wall_minimum, then don't
@@ -147,14 +162,15 @@ components_height = 1.15; // fudge it down from 1.2 just enought to allow printi
 // including extra thin parts over tall components like the slide swtch.
 //thin_wall_minimum = 0.3; // 0.3 FDM printing, slide switch only has 0.3mm above it.
 //thin_wall_minimum = 0.6; // *** 0.6 FDM printing (home)
-thin_wall_minimum = 0.7; // 0.7 commercial SLS/MJF printing
+// Commercial SLS/MJF usually cannot print below = 0.7-0.8. FDM at home can be as low as a single layer. Thin spots below this limit will make holes instead.
+thin_wall_minimum = 0.7;
 
-// Shaves the bottom of the top cover
-// to make room for adhesive without making the card thicker.
 // For liquid glue, use 0.
 // For thin adhesive transfer tape, use 0 to 0.2
-// amazon.com/dp/B06Y34587N 3M 468MP 5.2mil = 0.13mm
-adhesive_thickness = 0.15; // *** good enough for most cases
+// amazon.com/dp/B06Y34587N 3M 468MP 5.2mil is 0.13mm
+
+// Shaves the bottom of the top cover to make room for adhesive without making the card thicker
+adhesive_thickness = 0.2;
 
 //// Some useful combinations:
 
@@ -171,10 +187,18 @@ adhesive_thickness = 0.15; // *** good enough for most cases
 //card_thickness = 3.2;
 //pcb_thickness = 0.8;
 
+// fitment clearance
+fc = 0.1;
 
 ///////////////////////////////////////////////////////////////////////////////
 // END OF USER CONFIG
 ///////////////////////////////////////////////////////////////////////////////
+/* [Hidden] */
+
+// arc smoothness
+//$fn = 32;
+$fa = 6;
+$fs = 0.1;
 
 bw = 54;    // main body width (X)
 bl = 54;    // main body length (Y)
@@ -205,7 +229,8 @@ gda = // grip_depth_angle limited to 0-90
 cnw = 48.6;  // connector width
 cnl = 8.525; // connector depth
 cnp = 3;     // connector post length
-cnpt = 0.8;  // post thickness
+//cnpt = connector_post_thickness+fc*2; // post thickness
+cnpt = 0.8;  // cavity for connector pins & solder
 
 // polarity notch - front corner by pin 38
 nl = 9.5;   // polarity notch length
@@ -254,7 +279,7 @@ battery_tunnel_roof_minimum_thickness = 0.6;
 // This gap is maintained regardless how other dimensions like
 // card_thickness or tunnel_height change.
 battery_retainer_gap = 0.6;
-btt = 0.8;   // tabs thickness
+btt = 0.8;   // tabs thickness (w/solder)
 bbw = 21;    // batt body width
 brw = 6;     // batt retainer width
 
@@ -283,7 +308,7 @@ brh = boh-battery_retainer_gap;  // batt retainer height , wedge thickness
 //   to a derived spot relative to the front connector, slider attached by sprues
 // * ... or maybe there is no slider this time because the user is generating
 //   for a board with those parts not populated...
-prt = (PRINT && !$preview);       // $preview isn't enough, sometimes we want to full render & export in the preview orientations
+prt = (PRINT && !$preview);       // $preview isn't enough, sometimes we want to full render & export in the preview orientation
 ptz = (prt) ? top_thickness : 0 ; // print translate z
 pry = (prt) ? 180 : 0 ;           // print rotate y
 
@@ -292,11 +317,6 @@ pry = (prt) ? 180 : 0 ;           // print rotate y
 o = 0.1;    // normal overlap/overhang, easily visible with # or %, for things that won't show in the final shape
 e = 0.002;  // epsilon - extra small overlap/overhang for things that would make visible edges in the final shape
 
-fc = 0.1; // fitment clearance
-
-//$fn = 32;
-$fa = 6;
-$fs = 0.1;
 
 include <inc/handy.scad>;
 
