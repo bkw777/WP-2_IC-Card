@@ -5451,6 +5451,16 @@
 		)
 		(uuid "483df8f3-bf9f-4799-a013-a476a5cbb4ae")
 	)
+	(text "Cuttable"
+		(exclude_from_sim no)
+		(at 43.688 80.518 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "744504cd-1b77-4a4e-a7c7-7fd6b95d8f1f")
+	)
 	(text "(*) 3A17 & 3A18 must go to A17 & A18\nto allow 128K chip compatibility"
 		(exclude_from_sim no)
 		(at 174.752 97.79 0)
@@ -5461,6 +5471,17 @@
 			(justify left top)
 		)
 		(uuid "8994cea9-875e-4e4e-b4b1-6ff540433909")
+	)
+	(text "T2"
+		(exclude_from_sim no)
+		(at 31.75 81.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "9f5c3622-5f7d-462b-b4b4-b6afd507ce67")
 	)
 	(text "150mA min"
 		(exclude_from_sim no)
@@ -5493,17 +5514,6 @@
 			(justify left top)
 		)
 		(uuid "cdc0d076-63c6-46dd-96a8-18df85545802")
-	)
-	(text "Cuttable."
-		(exclude_from_sim no)
-		(at 38.608 81.28 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "e970eaf7-5f1e-400f-a6ae-0ec1766fc6b5")
 	)
 	(text "BANK_1"
 		(exclude_from_sim no)
@@ -7030,16 +7040,6 @@
 	)
 	(wire
 		(pts
-			(xy 31.75 81.28) (xy 54.61 81.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "16558bff-21cb-419b-a8d2-4af85c4f21d3")
-	)
-	(wire
-		(pts
 			(xy 31.75 132.08) (xy 46.99 132.08)
 		)
 		(stroke
@@ -7867,6 +7867,16 @@
 			(type default)
 		)
 		(uuid "5b327d44-71ec-449d-b442-178669334770")
+	)
+	(wire
+		(pts
+			(xy 31.75 81.28) (xy 54.61 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5c4d0c58-f9c6-448d-b3ac-bdb0dbee84e4")
 	)
 	(wire
 		(pts
@@ -10268,16 +10278,6 @@
 		)
 		(uuid "705a7a92-2f6e-4dda-8ecb-12d2c981ae2b")
 	)
-	(label "T2"
-		(at 31.75 81.28 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "71f4d190-72e2-4f65-bbd1-3c3213d46e0c")
-	)
 	(label "A3"
 		(at 31.75 124.46 0)
 		(effects
@@ -11096,7 +11096,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "000_LOCAL:SMS-138-01-x-x_pcb_edge"
+		(property "Footprint" "000_LOCAL:SMS-138-01-x-S_pcb_edge"
 			(at 26.67 93.98 0)
 			(effects
 				(font

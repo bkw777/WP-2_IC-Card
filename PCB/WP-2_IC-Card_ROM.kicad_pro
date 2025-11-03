@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.0,
-          "height": 1.0,
-          "width": 0.3
+          "drill": 1.0,
+          "height": 2.0,
+          "width": 1.0
         },
         "silk_line_width": 0.12,
         "silk_text_italic": false,
@@ -62,14 +62,6 @@
       "drc_exclusions": [
         [
           "footprint_type_mismatch|135890000|89695000|b9154e62-0a3e-4903-975b-b221b73ff235|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "silk_over_copper|160199607|114988088|3429b62d-71ea-4d13-87cc-8e6ac1920d69|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "silk_over_copper|160199607|114988088|4564ad89-d906-4c81-bab3-ff70f986f4f9|00000000-0000-0000-0000-000000000000",
           ""
         ]
       ],
@@ -145,7 +137,7 @@
         "max_error": 0.005,
         "min_clearance": 0.2,
         "min_connection": 0.2,
-        "min_copper_edge_clearance": 0.2,
+        "min_copper_edge_clearance": 0.5,
         "min_groove_width": 0.0,
         "min_hole_clearance": 0.25,
         "min_hole_to_hole": 0.25,
@@ -534,7 +526,7 @@
       "plot": "GERBER_${TITLE}_${REVISION}",
       "pos_files": "GERBER_${TITLE}_${REVISION}",
       "specctra_dsn": "",
-      "step": "out/WP-2_IC-Card_ROM.step",
+      "step": "../COVER/out/WP-2_IC-Card_ROM.step",
       "svg": "",
       "vrml": ""
     },

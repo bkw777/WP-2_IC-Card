@@ -1,12 +1,12 @@
-(footprint "TMS-138-01-x-x"
-	(version 20240108)
+(footprint "TMS-138-xx-x-S"
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(layer "F.Cu")
 	(descr "Through hole straight pin header, 1x38, 1.27mm pitch, single row")
 	(tags "Through hole pin header THT 1x38 1.27mm single row")
 	(property "Reference" "REF**"
-		(at 1.27 0 -90)
+		(at 1.27 0 270)
 		(layer "F.SilkS")
 		(hide yes)
 		(uuid "80c2355f-7e0f-469a-879e-badcfb3a42c9")
@@ -17,25 +17,13 @@
 			)
 		)
 	)
-	(property "Value" "TMS-138-01-x-x"
-		(at -1.27 0 -90)
+	(property "Value" "TMS-138-xx-x-S"
+		(at -1.27 0 270)
 		(layer "F.Fab")
 		(uuid "f319c66b-45d6-4360-87f8-dc5fcedab3b2")
 		(effects
 			(font
 				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Footprint" ""
-		(at 0 0 0)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "8b0143d5-4cd0-425b-a24f-788a9d96e0e6")
-		(effects
-			(font
-				(size 1.27 1.27)
 				(thickness 0.15)
 			)
 		)
@@ -106,7 +94,7 @@
 		(uuid "ceb8cfc4-242a-45c3-ab0b-1cc6c9aa1bb9")
 	)
 	(fp_text user "${REFERENCE}"
-		(at 1.27 0 -90)
+		(at 1.27 0 270)
 		(layer "F.Fab")
 		(uuid "8c4f3c99-15d1-4dfb-8b69-0847e026b9e0")
 		(effects
@@ -421,6 +409,7 @@
 		(remove_unused_layers no)
 		(uuid "0765ada6-61da-4f20-addb-1dbb97102241")
 	)
+	(embedded_fonts no)
 	(model "${KIPRJMOD}/000_LOCAL.pretty/3d/PinHeader_1x38_P1.27mm_Vertical.step"
 		(hide yes)
 		(offset

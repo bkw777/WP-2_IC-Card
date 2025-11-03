@@ -1,36 +1,36 @@
 // top cover for WP-2 IC Card
 //
 // Generates several different possible parts.
-//
-// Use the customizer panel to select the main options.
 
+// Mostly you shouldn't need to edit these variables directly.
+// Use the customizer panel to output variations without changing the code.
 
 // Render in print orientation, else render in preview orientation
 PRINT = true;
 
 // Which part to generate?
 part = "SRAM"; // ["SRAM","MRAM","ROM","breakout","bottom"]
-//part = "SRAM"; // *** - top cover for the SRAM card
-//part = "ROM"; // top cover for the FLASH card
-//part = "MRAM"; // top cover for the MRAM card
-//part = "breakout"; // top cover for the breakout card
-//part = "bottom"; // bottom cover - not applicable for 1.2mm PCB. Use with pcb_thickness 0.8 or less and card_thickness 3.2
-//part = "slider_2p"; // just the bank switch actuator slider part by itself, 2-position
-//part = "slider_3p"; // just the bank switch actuator slider part by itself, 3-position
-//part = "slider_4p"; // just the bank switch actuator slider part by itself, 4-position
-//part = "wren_slider"; // just the write-enable switch actuator slider part by itself
+// "SRAM"        top cover for the SRAM card
+// "ROM"         top cover for the FLASH card
+// "MRAM"        top cover for the MRAM card
+// "breakout"    top cover for the breakout card
+// "bottom"      bottom cover - thickness is determined indirectly from pcb_thickness, 1.2mm pcb leaves 0 bottom cover
+// "slider_2p"   just the bank switch actuator slider part by itself, 2-position
+// "slider_3p"   just the bank switch actuator slider part by itself, 3-position
+// "slider_4p"   just the bank switch actuator slider part by itself, 4-position
+// "wren_slider" just the write-enable switch actuator slider part by itself, it's narrower than normal
 
 // Which style of slide switch actuator?
 // Use "none" to delete a switch.
-// IE for a 128K MRAM or FLASH card with no bank switch installed,
+// IE for a 128K card with no bank switch installed,
 // you can output a cover with no opening or slider.
 //
-// "slider" = trapped sliding actuator
-// "finger" = large concave opening for a finger
-// "pen"    = minimal slot for pen
-// "under"  = slot in pcb, top is covered
-// "none"   = switch not populated, delete from cover
-// "solder" = switch not populated, solder-blob instead
+// "slider"  trapped sliding actuator
+// "finger"  large concave opening for a finger
+// "pen"     minimal slot for pen
+// "under"   slot in pcb, top is covered
+// "none"    switch not populated, delete from cover
+// "solder"  switch not populated, but there is a solder-blob
 
 // bank switch for SRAM / MRAM
 ram_bank_switch_style = "finger"; // ["finger","slider","pen","under","none"]
@@ -80,7 +80,8 @@ sprue_len = 2;
 // value is switch position number, ie 4 position switch values are 1, 2, 3, 4
 //
 // preview switch position - only for slider
-bank_switch_slider_position = 3;
+ram_bank_switch_slider_position = 3;
+rom_bank_switch_slider_position = 2;
 // preview switch position - only for slider
 wren_switch_slider_position = 1;
 
@@ -129,7 +130,6 @@ card_thickness = 3.2;
 
 // default 1.2, may be thinner but no thicker. If less than 1.2, possible to add bottom cover.
 pcb_thickness = 1.2; // ***
-assert (pcb_thickness<=1.2);
 
 // How tall is the tallest component? (not counting the battery holder or slide switch)
 // If this is any greater than 1.2, then there will be no roof over the components.
@@ -140,7 +140,7 @@ assert (pcb_thickness<=1.2);
 // select caps that are 1.2mm or less, most will be a little taller.
 
 // height of tallest component - really 1.2 but fudge it down to 1.15 to allow thin_wall_minimum over top
-components_height = 1.15; // .01
+components_height = 1.2; // .01
 
 // If card_thickness - pcb_thickness - components_height 
 // comes out less than thin_wall_minimum, then don't
@@ -162,15 +162,26 @@ components_height = 1.15; // .01
 // including extra thin parts over tall components like the slide swtch.
 //thin_wall_minimum = 0.3; // 0.3 FDM printing, slide switch only has 0.3mm above it.
 //thin_wall_minimum = 0.6; // *** 0.6 FDM printing (home)
-// Commercial SLS/MJF usually cannot print below = 0.7-0.8. FDM at home can be as low as a single layer. Thin spots below this limit will make holes instead.
-thin_wall_minimum = 0.7;
+// Commercial SLS/MJF usually cannot print below = 0.7-0.8. FDM at home can be as low as a single layer. If the ceiling over a component pocket will be less than this, then a hole is punched clean through instead. For printing your own on FDM you can set this to 0.5 or less to cover even the tops of the slide switches.
+thin_wall_minimum = 0.8; // 0.01
 
 // For liquid glue, use 0.
 // For thin adhesive transfer tape, use 0 to 0.2
 // amazon.com/dp/B06Y34587N 3M 468MP 5.2mil is 0.13mm
 
 // Shaves the bottom of the top cover to make room for adhesive without making the card thicker
-adhesive_thickness = 0.2;
+adhesive_thickness = 0.2; // 0.01
+
+// The solder posts on the main connector. True size is 0.51 . Padded to account for a slight discrepency between the pcb thickness and the plastic body of the connector, to make the top_thickness come out to 2.0 (3.2 total - 1.2 pcb), so that we can actually use the available 0.8mm for wall thickness over top of the components.
+connector_post_thickness = 0.8; // 0.01
+
+// add a little more vertical height to the pocket above the slider to allow the top cover to come down closer than adhesive_thickness without binding up the slider
+slider_extra_clearance = 0.1; // 0.01
+// add a little more throw length to the slider slot
+slider_extra_throw = 0.1; // 0.01
+slider_fingernail_depth = 0.8;
+
+battery_tunnel_roof_thickness = 0.8;
 
 //// Some useful combinations:
 
@@ -188,7 +199,12 @@ adhesive_thickness = 0.2;
 //pcb_thickness = 0.8;
 
 // fitment clearance
-fc = 0.1;
+fc = 0.1; // 0.01
+// large corner radius
+cr = 2; // 0.01
+// small corner radius
+sr = 0.5; // 0.01
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // END OF USER CONFIG
@@ -204,16 +220,16 @@ bw = 54;    // main body width (X)
 bl = 54;    // main body length (Y)
 
 max_pcb_thickness = 1.2; // side of connector to side of pins is 1.27, max orderable pcb thickness that doesn't exceed is 1.2
-connector_post_thickness = 0.51; // the solder posts on the main connector
+assert (pcb_thickness<=max_pcb_thickness);
+
 
 // top cover - the full thickness with no adhesive_thickness subtracted
 top_thickness = card_thickness/2 + connector_post_thickness/2;
+//top_thickness = card_thickness - pcb_thickness; // 0.01
 
 // bottom cover - the full thickness with no adhesive_thickness subtracted
 bottom_thickness = card_thickness/2 - connector_post_thickness/2 - pcb_thickness;
-
-cr = 2;     // large corner radius
-sr = 0.5;   // small corner radius & fillets
+//bottom_thickness = pcb_thickness;
 
 // finger grips
 gl = 18;  // grip length
@@ -252,8 +268,10 @@ swpl = 1; // switch pins lenghth
 swph = 0.5; // switch pins thickness
 // slider
 sth = 1.5; // switch throw - 1.5mm travel per position, actuator is 1.3mm
+swaw = sth; // switch actuator width
+swal = sth+0.1; // switch actuator length
 stw = sth + sth + sth; // slider top width
-sbh = 0.8; // slider base height (thickness)
+sbh = 1; // slider base height (thickness)
 
 // figure out the actual slide switch pocket height
 // based on top_thickness and thin_wall_minumum
@@ -285,10 +303,7 @@ brw = 6;     // batt retainer width
 
 // derived values
 // boh = battery opening height,
-// as close as possible to the desired battery_tunnel_height
-// without violating thin_wall_minimum
-btroofmin = thin_wall_minimum >= battery_tunnel_roof_minimum_thickness ? thin_wall_minimum : battery_tunnel_roof_minimum_thickness;
-boh = battery_tunnel_height <= top_thickness-btroofmin ? battery_tunnel_height : top_thickness-btroofmin;
+boh = top_thickness - battery_tunnel_roof_thickness;
 // Adjusts the retainer wedge as needed to get the desired
 // gap regardles what the tunnel height worked out to.
 brh = boh-battery_retainer_gap;  // batt retainer height , wedge thickness
@@ -455,8 +470,8 @@ module connector (top=true) {
 module slide_switch_opening (t="none",n=2,w=2) {
    if (t!="none") {
 
-   stow = stw + sth * (n-1); // slider top opening width
-   sbw = sth * n + stow + sth * n; // slider base width
+   stow = slider_extra_throw + stw + sth * (n-1) + slider_extra_throw; // slider top opening width
+   sbw = slider_extra_throw + sth * n + stow + sth * n + slider_extra_throw; // slider base width
    // switch body len is  throw * nthrows + X
    bc = 0.2; // body clearance (want more than normal fc)
    // X is different for 2-throw vs >2-throw
@@ -488,10 +503,14 @@ module slide_switch_opening (t="none",n=2,w=2) {
 
     translate([0,w/2+by/2+fc-e,0]) {
      // slider base
-     component_pocket(w=fc+sbw+fc,l=fc+w+fc,h=sbh+fc);
+     component_pocket(w=fc+sbw+fc,l=fc+w+fc,h=sbh+fc+slider_extra_clearance);
      // slider slot
-     translate([0,-sr/2,0])
-      component_pocket(w=fc+stow+fc,l=fc+w+fc+sr,h=card_thickness);
+     // if there won't be a ceiling over top of the switch body
+     // then grow the slider hole to overlap the switch body hole
+     // by at least one SR to make the corners clean right angles
+     wadj = (top_thickness-slide_switch_thickness < thin_wall_minimum) ? sr : 0;
+     translate([0,-wadj/2,0])
+      component_pocket(w=fc+stow+fc,l=fc+w+fc+wadj,h=card_thickness);
     }
 
    } else if (t=="finger") {
@@ -609,7 +628,7 @@ module rom_top () {
  mcl = 10;
 
  // bank switch
- bsp = is_undef(bank_switch_slider_position) ? 2 : bank_switch_slider_position ;
+ bsp = is_undef(rom_bank_switch_slider_position) ? 2 : rom_bank_switch_slider_position ;
  nbanks = rom_bank_switch_style=="none" ? 0 : 2;
  swxp = 0;         // x
  swyp = 10;        // y
@@ -705,7 +724,7 @@ module sram_top () {
 
  
  // bank switch
- bsp = is_undef(bank_switch_slider_position) ? 3 : bank_switch_slider_position ;
+ bsp = is_undef(ram_bank_switch_slider_position) ? 3 : ram_bank_switch_slider_position ;
  nbanks = ram_bank_switch_style=="none" ? 0 : 4;
  swxp = -14;    // x
  swyp = 13.75;  // y
@@ -738,7 +757,7 @@ module sram_top () {
    translate([swxp,swyp,0])
     slide_switch_opening(t=ram_bank_switch_style,n=nbanks,w=bw);
    // bank switch components
-   translate([swxp,swyp+bank_parts_y_rel])
+   if (ram_bank_switch_style!="none") translate([swxp,swyp+bank_parts_y_rel])
     component_pocket(w=bank_parts_w,l=bank_parts_l);
    }
   }
@@ -783,7 +802,7 @@ module mram_top () {
  cl = 4;    // caps len
 
  // bank switch
- bsp = is_undef(bank_switch_slider_position) ? 3 : bank_switch_slider_position ;
+ bsp = is_undef(ram_bank_switch_slider_position) ? 3 : ram_bank_switch_slider_position ;
  nbanks = ram_bank_switch_style=="none" ? 0 : 4;
  swxp = 11;    // x
  swyp = 13;    // y
@@ -820,7 +839,7 @@ module mram_top () {
    translate([swxp,swyp,0])
     slide_switch_opening(t=ram_bank_switch_style,n=nbanks,w=bank_slider_width);
    // bank switch components
-   translate([swxp,swyp+bank_parts_y_rel])
+   if (ram_bank_switch_style!="none") translate([swxp,swyp+bank_parts_y_rel])
     component_pocket(w=bank_parts_w,l=bank_parts_l);
 
   }
@@ -892,9 +911,12 @@ module switch_slider (n=2,w=2) {
    rounded_cube(w=bw,d=w,h=sbh*2,rh=sr-fc,rv=sr-fc,t=0);
   }
   union () {
-  // cut actuator slot
-  translate([0,0,abh/2+sbh+e])
+  // cut actuator top slot
+  translate([0,0,card_thickness-slider_fingernail_depth])
    cube([sth,w+o,abh],center=true);
+  // cut actuator vertical slot
+  translate([0,-w/2,0])
+   rounded_cube(w=swaw,d=swal*2,h=card_thickness*2,rh=sr-fc,rv=0.01,t=0);
   // cut flat bottom
   translate([0,0,-(sbh+o)/2])
    cube([e+bw+e,e+w+e,sbh+o],center=true);

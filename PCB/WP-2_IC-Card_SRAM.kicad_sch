@@ -5189,14 +5189,14 @@
 		)
 		(uuid "47ce7055-6f4a-4be4-9f93-4a1b212a5250")
 	)
-	(text "1x38 1.27mm Female"
+	(text "1x38 1.27mm Female\nSMS-138-01-S-S\nSMS-138-01-G-S"
 		(exclude_from_sim no)
-		(at 97.79 35.56 0)
+		(at 80.518 35.052 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right bottom)
+			(justify left bottom)
 		)
 		(uuid "483df8f3-bf9f-4799-a013-a476a5cbb4ae")
 	)
@@ -5222,14 +5222,14 @@
 		)
 		(uuid "6428ca09-71e4-4375-9272-0cc31e464442")
 	)
-	(text "CR2012\n\n(can hold CR2016 if you bend the\ntabs down slightly before soldering)"
+	(text "CR2012\n(can hold CR2016 if you bend the\ntabs down slightly before soldering)"
 		(exclude_from_sim no)
-		(at 38.862 193.04 0)
+		(at 44.45 193.294 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left top)
+			(justify top)
 		)
 		(uuid "6626f754-7230-41c6-ad77-6d6a6727a611")
 	)
@@ -5244,7 +5244,7 @@
 		)
 		(uuid "698c836d-d0db-4069-9b24-0f9479ed4d2e")
 	)
-	(text "Caps all low profile 1.2mm height or less to fit under printed cover.\n\nCompatible with 128Kx8 to 512Kx8 SRAM.\n\nFor 128K SRAM (no banks): Omit SW1, D2, D3, R3, R4. Bridge JP4 1-2 (BUS-CE2).\n\nTo emulate ROM: Cut JP3 (~{DET}). Cut JP1 (~{WE}).\n\nFor 256K bank size (iow to connect bus A17 to SRAM): Cut JP2 1-2. Bridge JP2 2-3."
+	(text "All caps must be low profile 1.2mm height or less to fit under printed cover.\n\nCompatible with 128Kx8 to 512Kx8 SRAM.\n\nFor 128K SRAM: Bridge JP4 1-2. Omit SW1 D2 D3 R3 R4.\nFor 256K or 512K SRAM in 128K banks: Bridge JP2 1-2. Open JP2 2-3.\nFor 256K or 512K SRAM in 256K banks: Open JP2 1-2. Bridge JP2 2-3.\n\nFor normal RAM operation: Bridge JP3. Bridge JP1.\nTo emulate ROM: Open JP3. Open JP1.\n"
 		(exclude_from_sim no)
 		(at 162.306 168.402 0)
 		(effects
@@ -5268,7 +5268,7 @@
 	)
 	(text "Do Not Populate for 128K chip"
 		(exclude_from_sim no)
-		(at 102.616 186.436 0)
+		(at 99.06 186.436 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6699,7 +6699,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "SMS-138-01-G-S"
+		(property "Value" "SMS-138-01-S-S"
 			(at 96.52 40.64 0)
 			(effects
 				(font
@@ -6708,7 +6708,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "000_LOCAL:SMS-138-01-x-x_pcb_edge"
+		(property "Footprint" "000_LOCAL:SMS-138-01-x-S_pcb_edge"
 			(at 85.09 91.44 0)
 			(effects
 				(font
@@ -7574,7 +7574,7 @@
 		(dnp no)
 		(uuid "2d0bf7db-582d-4ba1-a1cc-3f030ac2c117")
 		(property "Reference" "JP2"
-			(at 138.684 96.266 90)
+			(at 137.668 98.806 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7582,8 +7582,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "BANK SIZE"
-			(at 138.684 98.552 90)
+		(property "Value" "A17"
+			(at 137.414 104.14 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7618,8 +7618,8 @@
 				(hide yes)
 			)
 		)
-		(property "Label_1-2" "128K"
-			(at 137.668 105.918 90)
+		(property "Label_1-2" "BNK"
+			(at 137.414 106.172 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7627,8 +7627,8 @@
 				(justify left)
 			)
 		)
-		(property "Label_2-3" "256K"
-			(at 137.668 102.616 90)
+		(property "Label_2-3" "BUS"
+			(at 137.414 102.108 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8644,14 +8644,14 @@
 		(dnp no)
 		(uuid "ad590981-3d1d-4d4a-9a80-65d3f8b89ea6")
 		(property "Reference" "JP4"
-			(at 152.4 41.402 0)
+			(at 146.812 47.244 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "CE2"
+		(property "Value" "RAM_CE2"
 			(at 152.4 48.514 90)
 			(effects
 				(font
@@ -8687,7 +8687,7 @@
 				(hide yes)
 			)
 		)
-		(property "Label_1-2" "BUS"
+		(property "Label_1-2" "BUS_CE2"
 			(at 150.114 48.514 90)
 			(effects
 				(font
