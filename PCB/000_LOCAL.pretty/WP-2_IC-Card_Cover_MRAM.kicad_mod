@@ -340,6 +340,26 @@
 		(uuid "dd7f0fd0-4a08-412d-b7bb-d10e55e6c2fd")
 	)
 	(fp_line
+		(start -22.5 11.1)
+		(end -22.5 -0.9)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "ec5c6e02-4a75-4b55-b07f-ad8814908f9d")
+	)
+	(fp_line
+		(start -22 -1.4)
+		(end 22 -1.4)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "8edd9bf5-7ca6-420f-9d26-2c0821ea7ed4")
+	)
+	(fp_line
 		(start -0.25 0)
 		(end 0.25 0)
 		(stroke
@@ -359,6 +379,70 @@
 		(layer "F.Fab")
 		(uuid "bdb9d2d0-def9-4344-8386-9046231acef6")
 	)
+	(fp_line
+		(start 22 11.6)
+		(end -22 11.6)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "fea96536-51a9-45af-9e0d-1d4a7dfdb839")
+	)
+	(fp_line
+		(start 22.5 -0.9)
+		(end 22.5 11.1)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "98eaa065-6cf2-4992-818a-9f37c6c67adb")
+	)
+	(fp_arc
+		(start -22.500001 -0.9)
+		(mid -22.353554 -1.253553)
+		(end -22.000001 -1.4)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "94b3ae18-30f0-4aa9-a5ba-f4516e345757")
+	)
+	(fp_arc
+		(start -22.000001 11.6)
+		(mid -22.353554 11.453554)
+		(end -22.5 11.100001)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "d97cc5b6-754f-438b-a535-0a00f1345c95")
+	)
+	(fp_arc
+		(start 22.000001 -1.399999)
+		(mid 22.353554 -1.253553)
+		(end 22.5 -0.9)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "be57fe50-a249-4071-8760-9fae97710c9c")
+	)
+	(fp_arc
+		(start 22.5 11.100001)
+		(mid 22.353554 11.453554)
+		(end 22.000001 11.6)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "8a99c6b6-6e8a-4253-a29f-60846ec9503c")
+	)
 	(fp_circle
 		(center 0 0)
 		(end 0.25 0)
@@ -375,6 +459,7 @@
 		(size 1 2)
 		(drill oval 1 2)
 		(layers "F&B.Cu" "*.Mask")
+		(clearance 0.5)
 		(uuid "2cbcb989-2dbd-483e-bdfc-840c13a61e10")
 	)
 	(pad "" np_thru_hole oval
@@ -382,6 +467,7 @@
 		(size 1 2)
 		(drill oval 1 2)
 		(layers "F&B.Cu" "*.Mask")
+		(clearance 0.5)
 		(uuid "cfd207a7-d58d-495f-976f-901f9e931d0d")
 	)
 	(embedded_fonts no)

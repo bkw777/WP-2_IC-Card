@@ -9,8 +9,8 @@
 	(paper "USLetter")
 	(title_block
 		(title "WP-2_IC-Card_Breakout")
-		(date "2025-04-27")
-		(rev "010")
+		(date "2025-11-02")
+		(rev "011")
 		(company "Brian K. White - b.kenyon.w@gmail.com")
 		(comment 1 "github.com/bkw777/WP-2_IC-Card")
 		(comment 2 "PCB THICKNESS 1.2mm")

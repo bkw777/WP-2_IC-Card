@@ -12042,7 +12042,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "BANK SIZE"
+		(property "Value" "RAM_A17"
 			(at 130.81 161.798 90)
 			(effects
 				(font
@@ -12078,7 +12078,7 @@
 				(hide yes)
 			)
 		)
-		(property "Label_1-2" "128K"
+		(property "Label_1-2" "BANKSW"
 			(at 127.508 166.37 90)
 			(effects
 				(font
@@ -12087,7 +12087,7 @@
 				(justify left)
 			)
 		)
-		(property "Label_2-3" "256K"
+		(property "Label_2-3" "BUS_A17"
 			(at 127.508 163.83 90)
 			(effects
 				(font
