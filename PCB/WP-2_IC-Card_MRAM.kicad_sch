@@ -5397,7 +5397,7 @@
 		)
 		(uuid 69bcf6ec-d5f6-466a-94f2-53ec12e59438)
 	)
-	(text "Use the Industrial rated part for max magnetic protection.\n( the C in MRxA08xCYSxx )\n\nMRAM is physically and permanently damaged by magnetic fields.\n\nCommercial or Automotive can tolerate 25 gauss.\nIndustrial can tolerate 125 gauss.\nA fridge magnet is 100 gauss.\n"
+	(text "Use the Industrial rated part for max magnetic protection.\n( the C in MRxA08xCYSxx )\n\nMRAM is physically and permanently damaged by magnetic fields.\n\nCommercial or Automotive can tolerate 25 gauss.\nIndustrial can tolerate 125 gauss.\nA fridge magnet is 50-100 gauss.\n"
 		(exclude_from_sim no)
 		(at 151.892 123.444 0)
 		(effects
@@ -5450,6 +5450,17 @@
 			(justify right bottom)
 		)
 		(uuid "483df8f3-bf9f-4799-a013-a476a5cbb4ae")
+	)
+	(text "Ideally this should be a bus-hold\nversion or add pullups to the B side."
+		(exclude_from_sim no)
+		(at 208.026 42.418 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "58bc1c2d-23e8-468b-a0b8-9bdb6284bd82")
 	)
 	(text "Cuttable"
 		(exclude_from_sim no)
@@ -5567,16 +5578,16 @@
 		(uuid "1966cae9-4877-4faf-9408-528da27b4d61")
 	)
 	(junction
-		(at 72.39 57.15)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "21957245-cc3e-4a3b-9b52-74df2b382cd2")
-	)
-	(junction
 		(at 101.6 78.74)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "2f92319a-be0e-41fa-aefe-cdcd1ba8ba0f")
+	)
+	(junction
+		(at 88.9 143.51)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "32bd6472-39f8-487d-8e43-40f5f43425db")
 	)
 	(junction
 		(at 214.63 148.59)
@@ -5669,6 +5680,12 @@
 		(uuid "c0a30694-2beb-49c2-bee2-798d82b517cd")
 	)
 	(junction
+		(at 72.39 57.15)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c18f0537-90c4-42e1-b0eb-0613de0b6aae")
+	)
+	(junction
 		(at 69.85 55.88)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5717,14 +5734,6 @@
 		(uuid "fde723a1-cf35-4a51-abf1-633d0a00f77b")
 	)
 	(no_connect
-		(at 88.9 138.43)
-		(uuid "01ee437d-64f3-42ff-af34-dffc5a8e7e2c")
-	)
-	(no_connect
-		(at 88.9 140.97)
-		(uuid "0cb4648d-46a5-46bd-8b8d-7d599cac81bd")
-	)
-	(no_connect
 		(at 31.75 53.34)
 		(uuid "0e5d5480-bdd6-40dc-9d46-2dc28c8aca9f")
 	)
@@ -5733,7 +5742,7 @@
 		(uuid "31e2d8e8-beaf-4e99-915e-94d71c444cee")
 	)
 	(no_connect
-		(at 109.22 138.43)
+		(at 109.22 146.05)
 		(uuid "44d99fa5-4eeb-4da7-8263-a018c3ec2d8a")
 	)
 	(no_connect
@@ -5747,10 +5756,6 @@
 	(no_connect
 		(at 109.22 140.97)
 		(uuid "748b402e-fecc-4957-9ae3-77043a0399e9")
-	)
-	(no_connect
-		(at 88.9 143.51)
-		(uuid "74e5f9f0-1eb5-4f1b-81ef-83fae189a023")
 	)
 	(no_connect
 		(at 63.5 180.34)
@@ -6900,16 +6905,6 @@
 	)
 	(wire
 		(pts
-			(xy 72.39 146.05) (xy 88.9 146.05)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0ceff1f9-8ba8-49b6-ab12-be30fe13f208")
-	)
-	(wire
-		(pts
 			(xy 88.9 36.83) (xy 82.55 36.83)
 		)
 		(stroke
@@ -7227,6 +7222,16 @@
 			(type default)
 		)
 		(uuid "23e46be5-cca3-4d00-9af2-8afa2a0fd907")
+	)
+	(wire
+		(pts
+			(xy 88.9 143.51) (xy 88.9 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "24ad472b-d83b-4b75-817b-3e62b02e2a9d")
 	)
 	(bus
 		(pts
@@ -7800,6 +7805,16 @@
 	)
 	(wire
 		(pts
+			(xy 88.9 140.97) (xy 88.9 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "540427cd-4f2a-4ed1-9081-257363affdc1")
+	)
+	(wire
+		(pts
 			(xy 106.68 187.96) (xy 106.68 185.42)
 		)
 		(stroke
@@ -7817,6 +7832,16 @@
 			(type default)
 		)
 		(uuid "55d08926-1081-461b-970c-84057be02166")
+	)
+	(wire
+		(pts
+			(xy 109.22 138.43) (xy 132.08 138.43)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "55faa3b1-6122-4441-a61f-7e01366007b0")
 	)
 	(bus
 		(pts
@@ -8328,6 +8353,16 @@
 		)
 		(uuid "82a41a27-c1db-424a-857b-605a187c9f14")
 	)
+	(wire
+		(pts
+			(xy 72.39 139.7) (xy 83.82 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "82ca6927-c2bb-4def-91e5-9baa8a4377ec")
+	)
 	(bus
 		(pts
 			(xy 49.53 58.42) (xy 49.53 60.96)
@@ -8380,7 +8415,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 146.05) (xy 132.08 107.95)
+			(xy 132.08 138.43) (xy 132.08 107.95)
 		)
 		(stroke
 			(width 0)
@@ -8417,6 +8452,16 @@
 			(type default)
 		)
 		(uuid "8c8e8e90-33f0-4267-a264-e42b5d69470b")
+	)
+	(wire
+		(pts
+			(xy 83.82 139.7) (xy 83.82 138.43)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8cece65b-dd5d-4706-8e63-dc9c015f3c28")
 	)
 	(wire
 		(pts
@@ -8940,7 +8985,7 @@
 	)
 	(wire
 		(pts
-			(xy 72.39 57.15) (xy 72.39 146.05)
+			(xy 72.39 57.15) (xy 72.39 139.7)
 		)
 		(stroke
 			(width 0)
@@ -9280,6 +9325,16 @@
 	)
 	(wire
 		(pts
+			(xy 83.82 138.43) (xy 88.9 138.43)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "de8feca7-862e-43c3-8169-385c40148dd5")
+	)
+	(wire
+		(pts
 			(xy 31.75 63.5) (xy 46.99 63.5)
 		)
 		(stroke
@@ -9337,6 +9392,16 @@
 			(type default)
 		)
 		(uuid "e7ec39c9-00b7-4b73-af08-aa0234a4ce45")
+	)
+	(wire
+		(pts
+			(xy 82.55 143.51) (xy 88.9 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e9265503-4184-439b-9eb5-af0086675bfc")
 	)
 	(bus
 		(pts
@@ -9567,16 +9632,6 @@
 			(type default)
 		)
 		(uuid "fa931f36-a58c-4fe4-aa71-2bff8bbda0ed")
-	)
-	(wire
-		(pts
-			(xy 109.22 146.05) (xy 132.08 146.05)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fb60e9b0-0272-4ecd-a48e-69585263ccb5")
 	)
 	(wire
 		(pts
@@ -10579,7 +10634,7 @@
 		(uuid "aaeef942-5975-4a7f-a8dc-2da655cefcae")
 	)
 	(label "~{OE}"
-		(at 88.9 146.05 180)
+		(at 88.9 138.43 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10659,7 +10714,7 @@
 		(uuid "b7836bb6-23d6-4b29-bdf7-1c3e0180bb5e")
 	)
 	(label "~{3OE}"
-		(at 109.22 146.05 0)
+		(at 109.22 138.43 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12034,7 +12089,7 @@
 		(dnp no)
 		(uuid "1edfec81-5a7e-4c66-9e16-edd395c49aaa")
 		(property "Reference" "JP2"
-			(at 131.064 159.512 90)
+			(at 131.064 158.75 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12043,7 +12098,7 @@
 			)
 		)
 		(property "Value" "RAM_A17"
-			(at 130.81 161.798 90)
+			(at 130.81 160.782 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12192,6 +12247,73 @@
 			(project "WP-2_IC-Card_MRAM_512"
 				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
 					(reference "#PWR015")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "000_LOCAL:GND")
+		(at 82.55 143.51 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2135a8cb-e658-4d95-9769-5ef7d932b565")
+		(property "Reference" "#PWR026"
+			(at 82.55 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 82.55 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 82.55 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 82.55 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 82.55 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ba49d7ef-2367-4704-a1cd-b998f69ed97a")
+		)
+		(instances
+			(project "WP-2_IC-Card_MRAM"
+				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
+					(reference "#PWR026")
 					(unit 1)
 				)
 			)
