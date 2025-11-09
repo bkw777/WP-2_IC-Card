@@ -2207,6 +2207,209 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "000_LOCAL:D_Dual_CommonAnode_KKA_Parallel"
+			(pin_names
+				(offset 0.762)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "D_Dual_CommonAnode_KKA_Parallel"
+				(at 0 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at -1.27 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at -1.27 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Dual diode, common anode on pin 1"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "D_Dual_CommonAnode_KKA_Parallel_0_0"
+				(polyline
+					(pts
+						(xy 2.54 1.27) (xy 2.54 3.81)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -3.81) (xy 2.54 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "D_Dual_CommonAnode_KKA_Parallel_0_1"
+				(circle
+					(center -1.27 0)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 0) (xy -2.54 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 3.81) (xy 2.54 2.54) (xy 0 1.27) (xy 0 3.81) (xy 0 3.81) (xy 0 3.81)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -1.27) (xy 2.54 -2.54) (xy 0 -3.81) (xy 0 -1.27) (xy 0 -1.27) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 2.54) (xy -1.27 2.54) (xy -1.27 -2.54) (xy 2.54 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 2.54 180)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 -2.54 180)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "000_LOCAL:GND"
 			(power)
 			(pin_names
@@ -4561,6 +4764,128 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "000_LOCAL:VMEM"
+			(power)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "VMEM"
+				(at 0 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"VMEM\""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "VMEM_0_1"
+				(polyline
+					(pts
+						(xy -0.762 1.27) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "VMEM_1_1"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0)
+					(hide yes)
+					(name "VMEM"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "power:+BATT"
 			(power)
 			(pin_numbers
@@ -5134,8 +5459,8 @@
 		)
 	)
 	(rectangle
-		(start 64.77 158.75)
-		(end 133.35 187.96)
+		(start 68.58 157.48)
+		(end 133.35 189.23)
 		(stroke
 			(width 0)
 			(type dash)
@@ -5143,7 +5468,7 @@
 		(fill
 			(type none)
 		)
-		(uuid 6de78b9e-1b1f-4116-aeeb-9664456f2f65)
+		(uuid 5c674ad8-24a1-4c42-ae2d-b5d6fbc39247)
 	)
 	(text "3: Not a real control line. Connected to VDD inside WP-2."
 		(exclude_from_sim no)
@@ -5166,6 +5491,17 @@
 			(justify left bottom)
 		)
 		(uuid "25180a02-fa8c-4d1b-b10a-330eab5738d8")
+	)
+	(text "WHITE: CUS-14TB\nBLACK: MSS14-V-TR"
+		(exclude_from_sim no)
+		(at 90.678 162.56 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "2ea91763-1e11-461a-b9dd-96279a74ccbf")
 	)
 	(text "38: +5v supplied from WP-2."
 		(exclude_from_sim no)
@@ -5255,6 +5591,17 @@
 		)
 		(uuid "6cd63b89-b16c-4b9e-bf2b-df716ead463d")
 	)
+	(text "BANK_1"
+		(exclude_from_sim no)
+		(at 86.36 165.1 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6e51672a-807b-4a02-af75-4306c4cf037d")
+	)
 	(text "128K or 256K: join BUS-CE2\n512K: both open"
 		(exclude_from_sim no)
 		(at 152.4 38.608 0)
@@ -5268,7 +5615,7 @@
 	)
 	(text "Do Not Populate for 128K chip"
 		(exclude_from_sim no)
-		(at 99.06 186.436 0)
+		(at 101.6 187.96 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5308,17 +5655,6 @@
 		)
 		(uuid "a2300919-ea39-420f-8ade-7bd4d3de56b0")
 	)
-	(text "WHITE: CUS-14TB\nBLACK: MSS14-V-TR"
-		(exclude_from_sim no)
-		(at 69.596 164.592 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "a79d437c-16a8-4796-86d2-c3080425e483")
-	)
 	(text "VCC"
 		(exclude_from_sim no)
 		(at 90.17 139.7 0)
@@ -5352,17 +5688,6 @@
 		)
 		(uuid "cdc0d076-63c6-46dd-96a8-18df85545802")
 	)
-	(text "BANK_1"
-		(exclude_from_sim no)
-		(at 86.36 171.45 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "d029dc79-264d-49bc-8832-790302dfa54f")
-	)
 	(text "AS6C1008  AS6C2008A  AS6C4008\nIS62C1024  IS62C5128EL\nCY62128  CY62148ESL\nR1LP0108E\nTC551001"
 		(exclude_from_sim no)
 		(at 199.136 139.192 0)
@@ -5385,6 +5710,17 @@
 		)
 		(uuid "de8a82c1-cadd-4fbb-a63a-b0afccad51f9")
 	)
+	(text "BANK_2"
+		(exclude_from_sim no)
+		(at 86.36 167.64 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e06f01b3-b6f2-4b17-85df-e328a3d2bd3e")
+	)
 	(text "17: A17 for ROM. Not used for RAM."
 		(exclude_from_sim no)
 		(at 83.82 86.36 0)
@@ -5395,6 +5731,17 @@
 			(justify right bottom)
 		)
 		(uuid "e5a32964-d554-4eb6-96b0-440ac7891050")
+	)
+	(text "BANK_3"
+		(exclude_from_sim no)
+		(at 86.36 170.18 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e965b6e9-26e3-460c-8ba0-47558c2fed6a")
 	)
 	(text "(CE2)"
 		(exclude_from_sim no)
@@ -5429,6 +5776,18 @@
 		(uuid "1624d173-7ff3-4228-ab1d-f4d3c4efeaeb")
 	)
 	(junction
+		(at 106.68 167.64)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "208dca96-901c-4bf1-acdf-78335db6008a")
+	)
+	(junction
+		(at 109.22 170.18)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3b2c8ea1-6f0d-4f95-b388-69fc8dddb87a")
+	)
+	(junction
 		(at 44.45 154.94)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5447,16 +5806,16 @@
 		(uuid "5971bafe-b740-4e08-8e5c-e4a2117d70e6")
 	)
 	(junction
-		(at 113.03 179.07)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "60fdbfa4-2ba4-45fc-9bfa-e4eee82b4bb1")
-	)
-	(junction
 		(at 105.41 45.72)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "76e0e86a-0477-486f-8169-39ea050c12af")
+	)
+	(junction
+		(at 119.38 167.64)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "86042c86-b048-4eae-b94c-1f2badce4a0b")
 	)
 	(junction
 		(at 90.17 45.72)
@@ -5465,10 +5824,10 @@
 		(uuid "9c6f0a67-ab94-4fdf-b957-26ab898f4aaa")
 	)
 	(junction
-		(at 105.41 167.64)
+		(at 124.46 170.18)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "acaba5b6-db83-4f3d-a6fe-7d132cc8cbde")
+		(uuid "9c766335-9234-4155-8167-a61d5e8369c2")
 	)
 	(junction
 		(at 33.02 173.99)
@@ -5483,20 +5842,10 @@
 		(uuid "bf74cd2c-182a-480d-a64c-ef9a9a2dccfa")
 	)
 	(junction
-		(at 121.92 170.18)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "d216c023-73a3-46f5-a13f-e03380e244fc")
-	)
-	(junction
 		(at 114.3 116.84)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "fb2bcac2-55c6-4d87-8e81-c73abd067d8f")
-	)
-	(no_connect
-		(at 86.36 171.45)
-		(uuid "1daf84b6-98fc-4040-9846-596a2327fd9f")
 	)
 	(no_connect
 		(at 90.17 83.82)
@@ -5507,18 +5856,22 @@
 		(uuid "7267e6f1-77e4-46aa-ade6-5f22d4ce5e06")
 	)
 	(no_connect
+		(at 86.36 165.1)
+		(uuid "9fe0ad81-90d6-4ff7-a213-7e9d21d7028b")
+	)
+	(no_connect
 		(at 90.17 81.28)
 		(uuid "ff6344a8-3880-4037-b617-5bf963cccdb0")
 	)
 	(wire
 		(pts
-			(xy 121.92 170.18) (xy 139.7 170.18)
+			(xy 96.52 172.72) (xy 96.52 175.26)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "01d99454-8e17-470e-ab57-d7fb51d8d9da")
+		(uuid "006b31a1-acc0-4de9-8017-97c616c6fb5a")
 	)
 	(wire
 		(pts
@@ -5582,23 +5935,13 @@
 	)
 	(wire
 		(pts
-			(xy 86.36 179.07) (xy 113.03 179.07)
+			(xy 106.68 167.64) (xy 106.68 172.72)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "17f71874-560f-4e89-a2d0-835b2ad1c8d4")
-	)
-	(wire
-		(pts
-			(xy 69.85 171.45) (xy 76.2 171.45)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2405adb9-ea66-4937-a9a6-452d6c988357")
+		(uuid "23bc7ecf-57b0-48f0-bb85-a1aff2f01671")
 	)
 	(wire
 		(pts
@@ -5609,16 +5952,6 @@
 			(type default)
 		)
 		(uuid "2cbc84b8-def5-40cd-baa7-14b5119808de")
-	)
-	(wire
-		(pts
-			(xy 113.03 173.99) (xy 113.03 179.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "33e2bf52-b899-4b42-b6a8-dcf4081ca9f6")
 	)
 	(wire
 		(pts
@@ -5642,13 +5975,13 @@
 	)
 	(wire
 		(pts
-			(xy 121.92 170.18) (xy 121.92 171.45)
+			(xy 106.68 167.64) (xy 119.38 167.64)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "3fee1ad2-8864-4e43-baea-ca0056f55356")
+		(uuid "3cd6ca9b-af78-47ee-8a26-ea3a74601b12")
 	)
 	(wire
 		(pts
@@ -5662,13 +5995,13 @@
 	)
 	(wire
 		(pts
-			(xy 105.41 167.64) (xy 152.4 167.64)
+			(xy 119.38 167.64) (xy 152.4 167.64)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "51ec2699-d674-4a0f-9076-54ebcfa263a0")
+		(uuid "519db659-0139-43c9-96bf-c65b76779516")
 	)
 	(wire
 		(pts
@@ -5692,6 +6025,16 @@
 	)
 	(wire
 		(pts
+			(xy 109.22 170.18) (xy 124.46 170.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "63b64d92-6b61-4a83-94a1-7a0449ae48fe")
+	)
+	(wire
+		(pts
 			(xy 215.9 53.34) (xy 215.9 55.88)
 		)
 		(stroke
@@ -5699,6 +6042,16 @@
 			(type default)
 		)
 		(uuid "69b21116-1ab5-4b5d-90f1-139d15bfaecc")
+	)
+	(wire
+		(pts
+			(xy 106.68 177.8) (xy 109.22 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6bd841d7-a618-409e-b45d-ee3bc884a1d2")
 	)
 	(wire
 		(pts
@@ -5749,16 +6102,6 @@
 			(type default)
 		)
 		(uuid "7c2c4ff3-5137-4828-9e92-83fd1c81a050")
-	)
-	(wire
-		(pts
-			(xy 86.36 176.53) (xy 114.3 176.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7c9ad3ce-9766-47c9-a334-9617bcc9ea78")
 	)
 	(wire
 		(pts
@@ -5822,6 +6165,56 @@
 	)
 	(wire
 		(pts
+			(xy 119.38 167.64) (xy 119.38 172.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "943d63c8-3e34-4fce-9e14-9e3951aafe15")
+	)
+	(wire
+		(pts
+			(xy 86.36 172.72) (xy 96.52 172.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a14b83ad-47a6-43dd-8311-b70fa96c2907")
+	)
+	(wire
+		(pts
+			(xy 86.36 167.64) (xy 106.68 167.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a24232f8-e316-4b93-bc72-063320bc1a26")
+	)
+	(wire
+		(pts
+			(xy 86.36 170.18) (xy 109.22 170.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a5507c98-a06f-47e0-94b4-0c1c1c335439")
+	)
+	(wire
+		(pts
+			(xy 109.22 170.18) (xy 109.22 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a61951cd-bfa3-4a86-972e-8568c393c736")
+	)
+	(wire
+		(pts
 			(xy 139.7 99.06) (xy 139.7 86.36)
 		)
 		(stroke
@@ -5832,13 +6225,13 @@
 	)
 	(wire
 		(pts
-			(xy 86.36 173.99) (xy 97.79 173.99)
+			(xy 124.46 170.18) (xy 139.7 170.18)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "b158f324-fda2-403f-b458-6d99c4ba1f24")
+		(uuid "ab457b6f-5189-4aa7-bfe5-35d1cee42385")
 	)
 	(wire
 		(pts
@@ -5852,13 +6245,23 @@
 	)
 	(wire
 		(pts
-			(xy 113.03 179.07) (xy 129.54 179.07)
+			(xy 124.46 170.18) (xy 124.46 172.72)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "cb694e43-5424-4a48-98e1-61598caec888")
+		(uuid "b7f305fa-ad67-4ac7-b01e-b9fa1c7214e8")
+	)
+	(wire
+		(pts
+			(xy 73.66 165.1) (xy 76.2 165.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "baae2ff5-12db-4880-9a07-34ca988d6236")
 	)
 	(wire
 		(pts
@@ -5872,16 +6275,6 @@
 	)
 	(wire
 		(pts
-			(xy 129.54 179.07) (xy 129.54 176.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d6e201d4-b28c-4feb-8dd5-c0ef08f6c2c8")
-	)
-	(wire
-		(pts
 			(xy 152.4 54.61) (xy 152.4 106.68)
 		)
 		(stroke
@@ -5889,16 +6282,6 @@
 			(type default)
 		)
 		(uuid "d91cb8a6-d67f-4cca-821c-d2ebaec3a984")
-	)
-	(wire
-		(pts
-			(xy 105.41 167.64) (xy 105.41 168.91)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e85314f8-8220-47ab-b656-0c45e0a9e743")
 	)
 	(wire
 		(pts
@@ -5921,7 +6304,7 @@
 		(uuid "eb972cc6-e8de-4b96-bf25-9d9dd3e55102")
 	)
 	(label "A17bank"
-		(at 121.92 170.18 0)
+		(at 124.46 170.18 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6200,16 +6583,6 @@
 		)
 		(uuid "54ac6e46-dc9c-4941-abee-22817207bc6f")
 	)
-	(label "BANK_4"
-		(at 86.36 179.07 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "5931c39c-8d67-4ae6-a098-42ed6f742fb1")
-	)
 	(label "A8"
 		(at 90.17 109.22 0)
 		(effects
@@ -6219,16 +6592,6 @@
 			(justify left bottom)
 		)
 		(uuid "5fa59487-5ad7-4188-8e56-95ef1565dd27")
-	)
-	(label "BANK_3"
-		(at 86.36 176.53 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "61307cc1-5272-4195-8086-b194a6f20b9a")
 	)
 	(label "A14"
 		(at 200.66 63.5 180)
@@ -6251,7 +6614,7 @@
 		(uuid "661cc37a-1eb0-41a3-a6dd-33fb9374f519")
 	)
 	(label "A18_CE2"
-		(at 105.41 167.64 0)
+		(at 119.38 167.64 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6329,16 +6692,6 @@
 			(justify left bottom)
 		)
 		(uuid "886e0835-0191-4d03-b94f-0757dadad733")
-	)
-	(label "BANK_2"
-		(at 86.36 173.99 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "88b44bf5-6555-4f95-a7cb-3d47ba433e2c")
 	)
 	(label "A5"
 		(at 90.17 116.84 0)
@@ -6639,6 +6992,16 @@
 			(justify left bottom)
 		)
 		(uuid "e80e2ec4-ca91-43ad-a1ae-d80ee99370c1")
+	)
+	(label "BANK_4"
+		(at 86.36 172.72 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ed31ee30-1623-4fed-949f-73815b3b73db")
 	)
 	(label "D4"
 		(at 90.17 68.58 0)
@@ -7213,84 +7576,6 @@
 		)
 	)
 	(symbol
-		(lib_id "000_LOCAL:R")
-		(at 118.11 170.18 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "1143a24d-2430-4796-94e4-e247b7b9958e")
-		(property "Reference" "R3"
-			(at 117.094 168.656 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "100k"
-			(at 119.126 168.656 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "000_LOCAL:R_0805"
-			(at 118.11 170.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "datasheets/PYU-RC_GROUP_51.pdf"
-			(at 118.11 170.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "RES 100K OHM 1/8W 0805"
-			(at 118.11 170.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "RC0805FR-07100KL"
-			(at 118.11 170.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "13b53e52-9e86-472e-a4ee-68ade514a839")
-		)
-		(pin "2"
-			(uuid "9a987be7-a062-4410-84ff-b7faa73a1e63")
-		)
-		(instances
-			(project "WP-2_IC-Card_SRAM"
-				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "R3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:PWR_FLAG")
 		(at 90.17 45.72 0)
 		(unit 1)
@@ -7351,84 +7636,6 @@
 			(project "WP-2_IC-Card_RAM"
 				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
 					(reference "#FLG0103")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "000_LOCAL:R")
-		(at 101.6 167.64 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "1e36e8a6-41b2-436b-8965-27063975db04")
-		(property "Reference" "R4"
-			(at 100.584 166.116 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "100k"
-			(at 102.616 166.116 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "000_LOCAL:R_0805"
-			(at 101.6 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "datasheets/PYU-RC_GROUP_51.pdf"
-			(at 101.6 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "RES 100K OHM 1/8W 0805"
-			(at 101.6 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "RC0805FR-07100KL"
-			(at 101.6 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "00b56723-a509-40c5-b32b-c205e680cf55")
-		)
-		(pin "2"
-			(uuid "c5442c9b-d461-43b2-bea1-fcc35bd43f37")
-		)
-		(instances
-			(project "WP-2_IC-Card_SRAM"
-				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "R4")
 					(unit 1)
 				)
 			)
@@ -7655,73 +7862,6 @@
 		)
 	)
 	(symbol
-		(lib_id "000_LOCAL:GND")
-		(at 114.3 170.18 0)
-		(mirror y)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "2d827ce2-429f-4869-b26a-9a131fa971ec")
-		(property "Reference" "#PWR09"
-			(at 114.3 173.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 118.11 171.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 114.3 170.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 114.3 170.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 114.3 170.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "4dc77a79-82e7-43d2-85c8-adfbb7ba383e")
-		)
-		(instances
-			(project "WP-2_IC-Card_SRAM"
-				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "#PWR09")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "000_LOCAL:C_Small")
 		(at 44.45 157.48 0)
 		(mirror y)
@@ -7793,6 +7933,100 @@
 			(project "WP-2_IC-Card_RAM"
 				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
 					(reference "C2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "000_LOCAL:R")
+		(at 119.38 176.53 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4d14db73-7451-498a-b265-bc839a81b2ef")
+		(property "Reference" "R4"
+			(at 116.332 175.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "200k"
+			(at 115.316 177.546 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "000_LOCAL:R_0805"
+			(at 121.158 176.53 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 119.38 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "RES 200K OHM 1% 1/8W 0805"
+			(at 119.38 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RMCF0805FT200K"
+			(at 119.38 176.53 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "L12" ""
+			(at 119.38 176.53 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "L23" ""
+			(at 119.38 176.53 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "615f835f-86cc-4867-9f14-12ee7b86a4d5")
+		)
+		(pin "1"
+			(uuid "8ccb3c67-6e3b-4154-85cd-811f290abcc1")
+		)
+		(instances
+			(project "WP-2_IC-Card_SRAM"
+				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
+					(reference "R4")
 					(unit 1)
 				)
 			)
@@ -7929,17 +8163,32 @@
 		)
 	)
 	(symbol
-		(lib_id "000_LOCAL:GND")
-		(at 97.79 167.64 0)
-		(mirror y)
+		(lib_id "000_LOCAL:SW_1P4T_CUS-14B")
+		(at 81.28 168.91 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "622a1acf-243b-4cfe-9826-5de26a68b643")
-		(property "Reference" "#PWR08"
-			(at 97.79 171.45 0)
+		(uuid "5f56df85-38b7-45a9-af8d-d3371f5c2a1e")
+		(property "Reference" "SW1"
+			(at 81.28 162.306 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "CUS-14B"
+			(at 83.82 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "000_LOCAL:CUS-14TB pth"
+			(at 65.405 164.465 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7947,8 +8196,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GND"
-			(at 93.98 168.91 0)
+		(property "Datasheet" "datasheets/cus.pdf"
+			(at 81.28 168.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7956,8 +8205,8 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" ""
-			(at 97.79 167.64 0)
+		(property "Description" "SWITCH SLIDE SP4T 300MA 4V"
+			(at 81.28 168.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7965,17 +8214,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
-			(at 97.79 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 97.79 167.64 0)
+		(property "MPN" "CUS-14TB"
+			(at 81.28 168.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7984,12 +8224,30 @@
 			)
 		)
 		(pin "1"
-			(uuid "8ae802d3-2a32-4fb4-8896-7cd878af0c45")
+			(uuid "e6bef21c-e5ba-433f-b954-2f4a48d77f86")
+		)
+		(pin "2"
+			(uuid "cfcf939f-568c-4c78-b140-fa0e9b411649")
+		)
+		(pin "3"
+			(uuid "6516784d-e98a-4e59-86dd-149d9e2387ed")
+		)
+		(pin "4"
+			(uuid "56b9e2f1-91b3-4f61-8842-111e85e99e6e")
+		)
+		(pin "5"
+			(uuid "8271fb6e-19b7-4387-bdbe-f01ceeac2ff2")
+		)
+		(pin "6"
+			(uuid "813850aa-0aec-4bf3-b4b4-d35c7a927ef8")
+		)
+		(pin "S"
+			(uuid "c26441e4-2378-4c9f-93d4-a94fba42a095")
 		)
 		(instances
 			(project "WP-2_IC-Card_SRAM"
 				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "#PWR08")
+					(reference "SW1")
 					(unit 1)
 				)
 			)
@@ -8123,6 +8381,100 @@
 	)
 	(symbol
 		(lib_id "000_LOCAL:R")
+		(at 124.46 176.53 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7b36bf20-5946-4fc2-9c69-e68c2906bb8d")
+		(property "Reference" "R5"
+			(at 127.508 175.006 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "200k"
+			(at 128.524 177.292 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "000_LOCAL:R_0805"
+			(at 126.238 176.53 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 124.46 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "RES 200K OHM 1% 1/8W 0805"
+			(at 124.46 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RMCF0805FT200K"
+			(at 124.46 176.53 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "L12" ""
+			(at 124.46 176.53 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "L23" ""
+			(at 124.46 176.53 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "b5698cc1-8363-49e8-ab6a-bfbbcb0416f8")
+		)
+		(pin "1"
+			(uuid "f29425f9-eb4b-4b5c-a7ad-c45e43b12ade")
+		)
+		(instances
+			(project "WP-2_IC-Card_SRAM"
+				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
+					(reference "R5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "000_LOCAL:R")
 		(at 177.8 59.69 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8194,6 +8546,138 @@
 			(project "WP-2_IC-Card_SRAM"
 				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
 					(reference "R1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "000_LOCAL:VMEM")
+		(at 73.66 165.1 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "81351648-9ce2-4fc1-b23f-b201f483aa67")
+		(property "Reference" "#PWR05"
+			(at 73.66 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VMEM"
+			(at 73.66 161.036 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 73.66 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 73.66 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 73.66 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f4387fc2-ec30-44ce-a186-3f99bcf4bf84")
+		)
+		(instances
+			(project "WP-2_IC-Card_SRAM"
+				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
+					(reference "#PWR05")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "000_LOCAL:GND")
+		(at 81.28 175.26 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8953f5e9-0e8a-4f56-b770-d4d14319efd7")
+		(property "Reference" "#PWR020"
+			(at 81.28 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 81.28 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 81.28 175.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 81.28 175.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 81.28 175.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "772b66ba-af60-4363-ae42-017065774c60")
+		)
+		(instances
+			(project "WP-2_IC-Card_SRAM"
+				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
+					(reference "#PWR020")
 					(unit 1)
 				)
 			)
@@ -8276,86 +8760,6 @@
 		)
 	)
 	(symbol
-		(lib_id "000_LOCAL:BAV170")
-		(at 121.92 176.53 0)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "8bf85896-c902-46fb-ba36-b46a9a68a43f")
-		(property "Reference" "D2"
-			(at 121.92 182.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "BAV74"
-			(at 121.92 180.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "000_LOCAL:SOT-23"
-			(at 121.92 176.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "datasheets/BAV74.pdf"
-			(at 121.92 176.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "DIODE ARRAY COMMON CATHODE GP SOT23-3"
-			(at 121.92 176.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "BAV74-TP"
-			(at 121.92 176.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "0bdbaf24-8a97-415c-a3f6-ae05a45d4191")
-		)
-		(pin "2"
-			(uuid "af1ba53f-63eb-41a7-a40d-5c52e31bda53")
-		)
-		(pin "3"
-			(uuid "d727295d-0fbc-4f61-90f3-c7185308c71e")
-		)
-		(instances
-			(project "WP-2_IC-Card_SRAM"
-				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "D2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 190.5 58.42 0)
 		(mirror y)
@@ -8423,16 +8827,17 @@
 		)
 	)
 	(symbol
-		(lib_id "power:VBUS")
-		(at 69.85 171.45 0)
+		(lib_id "000_LOCAL:GND")
+		(at 124.46 180.34 0)
+		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "9f1e664b-a1cd-4880-b62d-cc5cc1872c80")
-		(property "Reference" "#PWR05"
-			(at 69.85 175.26 0)
+		(uuid "9ddf8c38-0242-489c-9ca1-a7d23f1b4fb9")
+		(property "Reference" "#PWR022"
+			(at 124.46 184.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8440,16 +8845,17 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "VBUS"
-			(at 69.85 167.64 0)
+		(property "Value" "GND"
+			(at 128.27 181.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
-			(at 69.85 171.45 0)
+			(at 124.46 180.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8458,7 +8864,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 69.85 171.45 0)
+			(at 124.46 180.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8466,8 +8872,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Power symbol creates a global label with name \"VBUS\""
-			(at 69.85 171.45 0)
+		(property "Description" ""
+			(at 124.46 180.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8476,12 +8882,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "750a076e-ceb2-4a18-bc58-68818fd31404")
+			(uuid "77bdaae4-e51d-47d3-b06a-71aedc902038")
 		)
 		(instances
 			(project "WP-2_IC-Card_SRAM"
 				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "#PWR05")
+					(reference "#PWR022")
 					(unit 1)
 				)
 			)
@@ -8549,86 +8955,6 @@
 			(project "WP-2_IC-Card_SRAM"
 				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
 					(reference "#PWR014")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "000_LOCAL:BAV170")
-		(at 105.41 173.99 0)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "a1b5554d-6062-4749-926a-addc1dbf4289")
-		(property "Reference" "D3"
-			(at 105.41 180.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "BAV74"
-			(at 105.41 177.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "000_LOCAL:SOT-23"
-			(at 105.41 173.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "datasheets/BAV74.pdf"
-			(at 105.41 173.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "DIODE ARRAY COMMON CATHODE GP SOT23-3"
-			(at 105.41 173.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "BAV74-TP"
-			(at 105.41 173.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "cae0a54c-abc2-4dbf-95ab-afdfc97c7459")
-		)
-		(pin "2"
-			(uuid "65baf2f7-9b93-4557-9cc6-41ce0587589e")
-		)
-		(pin "3"
-			(uuid "2d3322d8-1258-4502-999e-508e9ebeed7d")
-		)
-		(instances
-			(project "WP-2_IC-Card_SRAM"
-				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "D3")
 					(unit 1)
 				)
 			)
@@ -8999,41 +9325,32 @@
 		)
 	)
 	(symbol
-		(lib_id "000_LOCAL:SW_1P4T_CUS-14B")
-		(at 81.28 175.26 0)
+		(lib_id "000_LOCAL:D_Dual_CommonAnode_KKA_Parallel")
+		(at 101.6 175.26 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "bcbec22a-29d9-4f30-9c84-80c2b276052c")
-		(property "Reference" "SW1"
-			(at 82.55 168.91 0)
+		(uuid "bf7d7028-ae55-4055-851f-4e7e5f0c38a9")
+		(property "Reference" "D2"
+			(at 97.79 177.292 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "CUS-14B"
-			(at 85.09 166.37 0)
+		(property "Value" "BAW56"
+			(at 97.282 179.578 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "000_LOCAL:CUS-14TB pth"
-			(at 65.405 170.815 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "datasheets/cus.pdf"
-			(at 81.28 175.26 0)
+		(property "Footprint" "000_LOCAL:SOT-23"
+			(at 100.33 175.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9041,8 +9358,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "SWITCH SLIDE SP4T 300MA 4V"
-			(at 81.28 175.26 0)
+		(property "Datasheet" "datasheets/BAW56.PDF"
+			(at 100.33 175.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9050,8 +9367,8 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "CUS-14TB"
-			(at 81.28 175.26 0)
+		(property "Description" "Dual diode, common anode on pin 3"
+			(at 101.6 175.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9060,30 +9377,18 @@
 			)
 		)
 		(pin "1"
-			(uuid "12603ebe-9431-42ed-9eca-fc8cf9f6ea92")
-		)
-		(pin "2"
-			(uuid "fd1dfce4-0313-4ea1-b759-a11f92f4a24b")
+			(uuid "3a61ddcc-d5c9-43bc-acae-cad19f257487")
 		)
 		(pin "3"
-			(uuid "f8e9d4c5-d3c6-45cd-81a5-2c4fc945bf27")
+			(uuid "1d677faa-9976-40b4-ba8d-52a881a1eb75")
 		)
-		(pin "4"
-			(uuid "da54b6f6-3d68-465f-bf9a-dc1ddb762a2b")
-		)
-		(pin "5"
-			(uuid "6f54105b-5fe8-4b0b-988b-40e94a90ead0")
-		)
-		(pin "6"
-			(uuid "d2c93ce1-45f9-4e1b-b546-62426b033123")
-		)
-		(pin "S"
-			(uuid "976e1e85-e4b0-4860-b110-13ab8b9c0056")
+		(pin "2"
+			(uuid "3b1f7a77-3727-41ee-b86b-bd4fa3bd88b0")
 		)
 		(instances
 			(project "WP-2_IC-Card_SRAM"
 				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "SW1")
+					(reference "D2")
 					(unit 1)
 				)
 			)
@@ -9456,6 +9761,73 @@
 		)
 	)
 	(symbol
+		(lib_id "000_LOCAL:GND")
+		(at 119.38 180.34 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "cdd4071a-5c76-4329-8a93-7b5b2ab1775a")
+		(property "Reference" "#PWR021"
+			(at 119.38 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 115.57 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 119.38 180.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 119.38 180.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 119.38 180.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "23857520-8d87-4ba1-9f97-8b7e80ee0636")
+		)
+		(instances
+			(project "WP-2_IC-Card_SRAM"
+				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
+					(reference "#PWR021")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "000_LOCAL:C_Small")
 		(at 35.56 157.48 0)
 		(mirror y)
@@ -9805,73 +10177,6 @@
 			(project "WP-2_IC-Card_SRAM"
 				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
 					(reference "#FLG01")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "000_LOCAL:GND")
-		(at 81.28 181.61 0)
-		(mirror y)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "ec9fd465-0d4c-4eb7-a1b5-54bf4c039f7e")
-		(property "Reference" "#PWR06"
-			(at 81.28 185.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 81.28 185.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 81.28 181.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 81.28 181.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 81.28 181.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "e6d002fd-6dde-4730-9253-04b7c4a6fe14")
-		)
-		(instances
-			(project "WP-2_IC-Card_SRAM"
-				(path "/61a4a6ea-f14c-4701-87bd-6399392c074d"
-					(reference "#PWR06")
 					(unit 1)
 				)
 			)

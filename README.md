@@ -154,31 +154,37 @@ The total including PCB, BOM, printed cover, tax, & shipping is over $100.
 
 However it does provide **4** 128k cards in a single card, without any battery.
 
-NOTE: MRAM is permanently damaged by exposure to magnetic fields.  
-The particular part used here is [internally shielded](PCB/datasheets/EST02880_Magnetic_Immunity_for_Everspin_MRAM_073115.pdf) and specifically the Industrial version claims to be safe to 125 gauss.  
-The Commercial and Automotive versions are only safe to 25 gauss. A fridge magnet is 100 gauss.  
-The BOM specifies the Industrial part so it should be reasonably safe, however you should still generally avoid exposure to magnetic fields.  
+Supports both a 512K chip with a bank-select switch for 4 x 128K banks, or a 128K chip and you simply omit the indicated bank-select parts.
+
+NOTE: MRAM is permanently damaged by strong magnetic fields.  
+The BOM here specifies the Industrial grade version of the chip which claims to be able to tolerate up to 125 gauss.  
+The Commercial and Automotive versions are only safe to 25 gauss. A fridge magnet is 100-300 gauss.  
+Even with the Industrial part you should still avoid exposure to magnetic fields.  
+
+You may want to store the card in a [steel candy tin](https://www.amazon.com/dp/B0DRBBZR8V),  
+with 5-10mm thick shipping foam affixed to the inside top & bottom surfaces, so that the card is suspended in the center not directly touching either the top or bottom surface.  
+The 4 edge walls aren't a problem because the center of the mram chip isn't near a card edge.  
+Magnetic fields drop off rapidly with distance, so suspending the card 6mm away from the walls makes even more difference than the steel shell.  
+
+This protects against even direct contact with many common magnetic sources that measure in the 100-1000 gauss range, including large high end headphones, bluetooth speakers, cell phones, laptops, "refrigerator" magnets, tablet covers, handbag closers, magnets usb-c cable ends, etc.  
+But for example a much stronger magnet in the base of a flashlight measures 3900, and the can & foam reduces that to 500, which is still too high.  
 
 [512K MRAM PCB and COVER from PCBWAY](https://www.pcbway.com/project/shareproject/512k_MRAM_IC_Card_for_TANDY_WP_2_30f542a7.html)  
-[512K MRAM BOM from DigiKey](https://www.digikey.com/short/fp3bdwmf)  <!--, [Mouser](https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=f6eb946163)  -->
-<!-- RIP Shapeways... [MRAM-512 cover from Shapeways](http://shpws.me/TIyf)  -->
-
-Supports both a 512K chip with a bank-select switch for 4 x 128K banks, or a 128K chip and you simply omit the indicated bank-select parts.
+[512K MRAM BOM from DigiKey](https://www.digikey.com/short/d22n7358)
 
 ![](ref/IMG_0049.JPG)  
 ![](ref/IMG_0050.JPG)  
 ![](ref/IMG_0053.JPG)  
 ![](ref/IMG_0058.JPG)  
 ![](PCB/out/WP-2_IC-Card_MRAM.jpg)  
-![](PCB/out/WP-2_IC-Card_MRAM.adhesive.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM.slider.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM.finger.jpg)  
+![](PCB/ref/WP-2_IC-Card_MRAM.adhesive.jpg)  
+![](PCB/ref/WP-2_IC-Card_MRAM.tin_closed.jpg)  
+![](PCB/ref/WP-2_IC-Card_MRAM.tin_open.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM.top.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM.bottom.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM.svg)
-
-Since MRAM is sensitive to magnetic fields, you may want to store the card long term in a [ferrous metal box](https://www.amazon.com/dp/B0DRBBZR8V).  
-Many common candy tins like Altoids are good too. Just make sure a magnet sticks to any unknown new box.  
 
 ----
 
