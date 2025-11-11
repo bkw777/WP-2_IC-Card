@@ -3243,7 +3243,7 @@
 				)
 			)
 		)
-		(property "Value" "WP-2_IC_Card_Cover_ROM"
+		(property "Value" "WP-2_IC-Card_Cover_ROM"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
