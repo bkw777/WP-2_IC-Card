@@ -42,21 +42,25 @@ https://www.amazon.com/dp/B019OQ4ZG0/ 0.2mm
 https://www.amazon.com/dp/B01N27LYV9/ 0.09mm  
 
 <!-- https://amazon.com/dp/B06Y34587N/ (This one is wider than 5mm but has no carrier film in the middle, just gummy adhesive that squishes into any form, so the width doesn't matter and you can just lay it anywhere right over the chips and pins etc.) -->
-Or glue, but adhesive is easier to remove later.
+Or glue, but adhesive is easier to remove later.  
+You can make the cover easy to remove by just using small bits of tape instead of full lengths like the picture. It doesn't take much to hold it on
 
-It's not a bad idea to cover the bottom of the pcb with a piece of shipping or packing tape to protect the pcb from scratches.  
-Just lay a single 2-inch piece right across the middle and don't worry about the small bit of uncovered pcb on either side.
+The cover is not just cosmetic. It prevents the components from catching on the lip of the card slot when inserting & removing, and protects against shorts, and protects against general physical damage to the components.
 
-The various solder-jumpers are for hacking and custom software development.  
-They are pre-connected for normal operation and you normally just ignore them. Don't solder them or cut them. If you get solder on them, clean it off to make the pcb flat again. The printed covers don't have cavities over those locations like for the other components.  
-They can be used to make the RAM cards emulate a ROM card, or enable all 256K in RAM mode, etc.  
-For the RAM cards, when bank size 128K is cut and 256K is jumpered, the bank switch becomes 2 banks of 256K instead of 4 banks of 128K, where positions 1 & 2 both select the same bank 1, and positions 3 & 4 both select the same bank 2.  
+Similarly, it's a good idea to cover the bottom of the pcb with a piece of 2 inch shipping or packing tape to protect the pcb from scratching and shorting.  
+Just lay a simple single piece across the main pcb part along the connector edge but not on the connector.
+
+The various solder-jumpers are mostly for hacking and custom software development like making a ram card emulate a rom card, or possible use in other machines besides the WP-2, for instance maybe some other machine besides the WP-2 could address 256k in ram mode, etc.  
+They are pre-connected for normal operation and you normally just ignore them. Don't solder them or cut them.  
+
+The most likely exceptions you might actually use are:  
+. On the ROM card, to make a simple 256k rom card with no bank switch or write-enable switch, hard-wired to always be write-enabled via the S3 pin to work with a matching bodge wire mod in the WP-2, solder-blob the S3 pin pads on the (unpopulated) write-enable switch.  
+. On the SRAM card, to make a simple 128k ram card with no bank switch, solder-blob RAM_A17 to BUS_A17 (or RAM_A17 to VMEM, it doesn't much matter which, but only one or the other not both!)
 
 Most cards have a few different styles and configurations of the printed cover.  
-If you are printing on your own FDM printer, the "slider" versions might be difficult to print accurately enough, so the "finger" versions are a simpler alternative.  
-The bank switches are optional on all cards, so there are versions of the covers without any bank switch.  
-For the ROM card this is also true for the write-protect switch.  
-There are a few more options available in the openscad file. There are a lot of configurable variables with comments at the top of the file.  
+If you have trouble printing the fancy switch sliders, the "finger" versions are a simpler alternative.  
+The switches are optional on all cards, so there are versions without any bank-select or write-enable switches.  
+Aside from the pre-generated stl files, you can open the scad file in openscad and use the customizer panel to select different options and generate a new stl file. You don't have to touch the scad code. Just play with a few of the main options at the top of the customizer panel.
 
 Gerbers, BOMs, and STLs are in [releases](../../releases/)
 
