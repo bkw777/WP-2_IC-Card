@@ -55,7 +55,7 @@ They are pre-connected for normal operation and you normally just ignore them. D
 
 The most likely exceptions you might actually use are:  
 . On the ROM card, to make a simple 256k rom card with no bank switch or write-enable switch, hard-wired to always be write-enabled via the S3 pin to work with a matching bodge wire mod in the WP-2, solder-blob the S3 pin pads on the (unpopulated) write-enable switch.  
-. On the SRAM card, to make a simple 128k ram card with no bank switch, solder-blob RAM_A17 to BUS_A17 (or RAM_A17 to VMEM, it doesn't much matter which, but only one or the other not both!)
+. On the SRAM card, to make a simple 128k ram card with no bank switch, solder-blob RAM_CE2 to BUS_CE2 (or RAM_CE2 to VMEM, it doesn't much matter which, but only one or the other not both!)
 
 Most cards have a few different styles and configurations of the printed cover.  
 If you have trouble printing the fancy switch sliders, the "finger" versions are a simpler alternative.  
