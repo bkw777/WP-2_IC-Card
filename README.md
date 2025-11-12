@@ -33,7 +33,8 @@ If you don't remember to manually change the PCB THICKNESS to 1.2mm when orderin
 ENIG copper finish will give you a better battery terminal without the expense and custom steps of proper selective hard gold.
 
 * Attach the cover with thin 3mm or 1/8" adhesive transfer tape aka "cell phone / tablet screen repair tape".  
-![](ref/adhesive_transfer_tape.jpg)  
+![](ref/adhesive_transfer_tape.jpg)
+![](ref/WP-2_IC-Card_MRAM.adhesive.jpg) 
 https://www.amazon.com/dp/B0C78LJLDR/ 0.2mm  
 https://www.amazon.com/dp/B0DRV5D4YG/ 0.2mm  
 https://www.amazon.com/dp/B078H298G2/ 0.2mm  
@@ -162,12 +163,14 @@ The Commercial and Automotive versions are only safe to 25 gauss. A fridge magne
 Even with the Industrial part you should still avoid exposure to magnetic fields.  
 
 You may want to store the card in a [steel candy tin](https://www.amazon.com/dp/B0DRBBZR8V),  
-with 5-10mm thick shipping foam affixed to the inside top & bottom surfaces, so that the card is suspended in the center not directly touching either the top or bottom surface.  
+with 5-10mm thick shipping foam affixed to the inside top & bottom surfaces, so that the card is suspended away from the top or bottom surface.  
 The 4 edge walls aren't a problem because the center of the mram chip isn't near a card edge.  
-Magnetic fields drop off rapidly with distance, so suspending the card 6mm away from the walls makes even more difference than the steel shell.  
+Magnetic fields drop off rapidly with distance, so suspending the card even just 6mm away from the inside walls makes even more difference than the steel shell.  
 
-This protects against even direct contact with many common magnetic sources that measure in the 100-1000 gauss range, including large high end headphones, bluetooth speakers, cell phones, laptops, "refrigerator" magnets, tablet covers, handbag closers, magnets usb-c cable ends, etc.  
-But for example a much stronger magnet in the base of a flashlight measures 3900, and the can & foam reduces that to 500, which is still too high.  
+This protects against many common magnetic sources that measure in the 100-1000 gauss range.  
+Some examples: large over ear headphones, bluetooth speaker, cell phone, laptop lid, "refrigerator" magnets, tablet cover, handbag closer, magnetic usb-c cable end.  
+But for example a 3900 gauss (very strong) flashlight handle stuck to the outside of the can still measures 500 gauss at the surface of the foam, which is still too high.  
+For long-term storage, you may want to just keep it in a larger box & filler that simply adds at least another inch (20-30mm) of distance on all sides.
 
 [512K MRAM PCB and COVER from PCBWAY](https://www.pcbway.com/project/shareproject/512k_MRAM_IC_Card_for_TANDY_WP_2_30f542a7.html)  
 [512K MRAM BOM from DigiKey](https://www.digikey.com/short/d22n7358)
@@ -179,9 +182,8 @@ But for example a much stronger magnet in the base of a flashlight measures 3900
 ![](PCB/out/WP-2_IC-Card_MRAM.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM.slider.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM.finger.jpg)  
-![](PCB/ref/WP-2_IC-Card_MRAM.adhesive.jpg)  
-![](PCB/ref/WP-2_IC-Card_MRAM.tin_closed.jpg)  
-![](PCB/ref/WP-2_IC-Card_MRAM.tin_open.jpg)  
+![](ref/WP-2_IC-Card_MRAM.tin_closed.jpg)  
+![](ref/WP-2_IC-Card_MRAM.tin_open.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM.top.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM.bottom.jpg)  
 ![](PCB/out/WP-2_IC-Card_MRAM.svg)
