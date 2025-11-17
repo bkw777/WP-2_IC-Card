@@ -273,7 +273,7 @@ Use with a standard eprom programmer such as TL-866 or T48, etc.
 ![](PCB/out/WP-2_IC-Card_programming_adapter.jpg)  
 <!-- [Programming Adapter PCB from OSHPark](https://oshpark.com/shared_projects/TkzNwgho)  -->
 [Programming Adapter PCB from PCBWAY](https://www.pcbway.com/project/shareproject/TANDY_WP_2_IC_Card_Programming_Adapter.html)  
-[Programming adapter BOM from DigiKey](https://www.digikey.com/short/v2r3pqp4)
+[Programming adapter BOM from DigiKey](https://www.digikey.com/short/5hhj5749)
 
 ![](PCB/out/WP-2_IC-Card_Programming_Adapter.jpg)  
 
