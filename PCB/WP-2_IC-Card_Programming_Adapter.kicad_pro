@@ -512,7 +512,7 @@
       "plot": "GERBER_${TITLE}_${REVISION}",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "000_LOCAL.pretty/3d/WP-2_IC-Card_Programming_Adapter_tray.step",
       "svg": "",
       "vrml": ""
     },

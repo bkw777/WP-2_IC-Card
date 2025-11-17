@@ -3293,7 +3293,7 @@
 		)
 		(uuid "43c2b153-9a36-4f3b-9a11-91bd1ab4b830")
 	)
-	(text "DIP pin headers to programmer\n29F020 pinout\n"
+	(text "DIP pin headers to programmer\n39SF020 pinout / 62C2008 pinout"
 		(exclude_from_sim no)
 		(at 88.646 51.308 0)
 		(effects

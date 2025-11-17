@@ -2806,7 +2806,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "256Kx8 STATIC RAM"
+		(property "Description" "128Kx8 STATIC RAM"
 			(at 0 0 0)
 			(effects
 				(font
