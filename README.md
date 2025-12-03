@@ -332,7 +332,10 @@ Examples using a TL-866 programmer (628128 is the generic part number compatible
 
 ## BUS TAP
 
-Breakout card with a card socket to monitor bus signals while a card is in use.
+Breakout card with a card socket to monitor bus signals while a card is in use.  
+The VHOST-VCARD pins allow to measure the current drawn by the card.  
+VHOST is VCC from the WP-2, VCARD is VCC to the card.  
+
 <!-- [Breakout PCB from OSHPark](https://oshpark.com/shared_projects/4spvX9oV) (Select 0.8mm PCB thickness)  -->
 <!-- [Breakout PCB from PCBWAY](https://www.pcbway.com/project/shareproject/TANDY_WP_2_IC_Card_Breakout.html) (Select 1.2mm PCB thickness)  -->
 
