@@ -8,7 +8,7 @@ Here are a few different cards to fit that slot.
 * A [non-volatile MRAM card](#mram-card), a RAM card that doesn't need a battery  
 * A [ROM card](#rom-card), there is new software that runs from a rom card but no known images of any old original rom cards  
 * A [programming adapter](#programming-adapter) that can read and write both the RAM and ROM cards outside of the WP-2
-* A [breakout card](#breakout-card) to allow connecting the bus to a breadboard or logic analyser etc
+* A [bus-tap/breakout card](#bus-tap) to allow connecting the bus to a breadboard or logic analyser etc
 
 ![](PCB/out/WP-2_IC-Card_SRAM.jpg)  
 ![](PCB/out/WP-2_IC-Card_SRAM.slider.jpg)  
@@ -276,6 +276,8 @@ Use with a standard eprom programmer such as TL-866 or T48, etc.
 [Programming adapter BOM from DigiKey](https://www.digikey.com/short/5hhj5749)
 
 ![](PCB/out/WP-2_IC-Card_Programming_Adapter.jpg)  
+![](ref/horizontal_programmer_1.jpg)  
+![](ref/horizontal_programmer_2.jpg)
 
 <!-- 
 Example reading ROM card, jumpers in ROM position.
@@ -318,15 +320,19 @@ Examples using a TL-866 programmer (628128 is the generic part number compatible
 
 ----
 
+<!-- the bus tap card is the new breakout card -->
+<!-- 
 ## BREAKOUT CARD
 
 <!-- [Breakout PCB from OSHPark](https://oshpark.com/shared_projects/4spvX9oV) (Select 0.8mm PCB thickness)  -->
+<!--
 [Breakout PCB from PCBWAY](https://www.pcbway.com/project/shareproject/TANDY_WP_2_IC_Card_Breakout.html) (Select 1.2mm PCB thickness)  
 
 [Breakout BOM from DigiKey](https://www.digikey.com/short/323npm39)  
 
 ![](PCB/out/WP-2_IC-Card_Breakout.jpg)  
 ![](PCB/out/WP-2_IC-Card_Breakout.svg)
+-->
 
 ----
 
@@ -342,6 +348,10 @@ VHOST is VCC from the WP-2, VCARD is VCC to the card.
 <!-- [Breakout BOM from DigiKey](https://www.digikey.com/short/323npm39)  -->
 
 ![](PCB/out/WP-2_IC-Card_BUS_TAP.jpg)  
+![](ref/bus_tap.1.jpg)  
+![](ref/bus_tap.5.jpg)  
+![](ref/bus_tap.7.jpg)
+
 <!-- ![](PCB/out/WP-2_IC-Card_Breakout.svg) -->
 
 
