@@ -95,4 +95,4 @@ https://github.com/LivingM100SIG/Living_M100SIG/tree/main/M100SIG/Lib-15-WP2
 CamelFORTH ported by John Hogerhuis  
 http://bitchin100.com/files/wp2/CAMEL.ZIP
 
-[DumpROM](DumpROM) by Christofer @ randomvariations
+[DumpROM](DumpROM) by Christopher @ randomvariations
