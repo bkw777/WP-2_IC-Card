@@ -54,16 +54,17 @@ To exit HexViewer press EXIT (F2+Bksp)
 
 ## usage
 AA/DD arguments are hex pairs
-
-E         - erase flash chip
-pAA       - read byte from i/o port AA
-PAADD     - write byte DD to i/o port AA
-RAAAA     - read byte from memory address AAAA
-WAAAADD   - write byte DD to memory address AAAA
-GAAAA     - go to (view) memory address AAAA
-S         - serial interface (9600n81, ESC to close)
-M         - monitor
-F         - flash check
+```
+E           erase flash chip
+pAA         read byte from i/o port AA
+PAADD       write byte DD to i/o port AA
+RAAAA       read byte from memory address AAAA
+WAAAADD     write byte DD to memory address AAAA
+GAAAA       go to (view) memory address AAAA
+S           serial interface (9600n81, ESC to close)
+M           monitor
+F           flash check
+```
 
 The same commands are accepted via the serial port after pressing S.  
 This is how RomCardWriter.exe works.
@@ -74,30 +75,30 @@ To access a flash/rom card:
 
 To write to a flash card you have to erase the card first.
 
-ROM bank window is 16k from 0x4000 to 0x7FFF
-RAM bank window is 32k from 0x8000 to 0xFFFF
-Bank control is by writing to I/O port 0x51
-bit 0-4 select ROM bank number
+ROM bank window is 16k from 0x4000 to 0x7FFF  
+RAM bank window is 32k from 0x8000 to 0xFFFF  
+Bank control is by writing to I/O port 0x51  
+bit 0-4 select ROM bank number  
 bit 5-7 select RAM bank number
 
-RAM Bank 0-3 is internal expansion RAM
-RAM Bank 4-7 is IC card RAM
-ROM Bank 0-14 is Main ROM banks 0-14
+RAM Bank 0-3 is internal expansion RAM  
+RAM Bank 4-7 is IC card RAM  
+ROM Bank 0-14 is Main ROM banks 0-14  
 ROM Bank 15-30 is IC Card ROM banks 0-15
 
 So, to access a flash/rom ic card:  
-Write bank# to port 0x51
+Write bank# to port 0x51  
 where bank# is 0x0F to 0x1E
 
-Example, to view the 1st 16k block of a flash/rom ic card:
-P 51 0F
+Example, to view the 1st 16k block of a flash/rom ic card:  
+P 51 0F  
 G 4000
 
-To write a byte of data to the card:
-E             erase chip
-P 51 0F       select rom ic card, bank 0
-G 4000        view address 0x4000, should be FF because of chip-erase
-W 4000 5A     write "Z" to address 0x4000
+To write a byte of data to the card:  
+E             erase chip  
+P 51 0F       select rom ic card, bank 0  
+G 4000        view address 0x4000, should be FF because of chip-erase  
+W 4000 5A     write "Z" to address 0x4000  
 G 4000        view address 0x4000, should be 5A/"Z" now
 
 ### To write a ROM image to the flash card from the serial port  
