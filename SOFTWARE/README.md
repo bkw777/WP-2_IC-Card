@@ -6,7 +6,7 @@ The main rom does not care what the filenames look like, but I am using a conven
 
 # HexViewer / MENU.PI / BASIC / RomCardWriter
 
-The software to write to the rom card from the WP-2 (and the hardware mod to make it possible) comes from Ben Grimmett @BennVenn
+The software to write to the rom card from the WP-2 (and the hardware mod to make it possible) comes from [Ben Grimmett / @BennVenn](https://discord.com/invite/F5ckxM2)
 
 [HexViewer](HexViewer) - .PR version of HexViewer
 
