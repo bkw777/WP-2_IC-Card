@@ -238,7 +238,7 @@ There are 2 options for writing to the ROM card, using a programmer or using sof
 
   Notes if using mini-grabbers instead of soldering:  
   * Requires mini-grabbers with a thin body and strong hooks: https://www.amazon.com/dp/B0DL5ZLK8H  
-  * Fold X1 away from RA5 to let the grabber reach.  
+  * Lean X1 away from RA5 slightly to let the grabber reach.  
   * Ensure the RA5 grabber handle lies on the pcb to the side of the square chip, not on top of the chip.  
   * Ensure the RA4 grabber lies angled towards the printer port so that the lcd ribbon doesn't lay on top of the grabber handle when you close the case. The sharp corners on the grabber handle will poke into the cable.  
   The tape in the pic is just to keep the grabbers in the best position long enough to close the case.  
@@ -246,22 +246,13 @@ There are 2 options for writing to the ROM card, using a programmer or using sof
 
 * On the card, Select SW1 position S3 or solder-jumper S3 if no switch installed.
 
-* Find Ben Grimmett's software in the files section of the [Model-T Computers](https://www.facebook.com/groups/Model.T.Computers/files/files) group on Facebook.  
-  and especially the latest version of hexview on his [Discord](https://discord.com/channels/761864233855615017/763902318135214084/1429597645520896151).  
-  Copy HEXVIEW v2 (or later) to the WP-2 using a serial cable and TPDD emulator (LaddieAlpha or DL2).  
-  (I would change the name to something like HEXVIEW2.CO)  
-  Run HEXVIEW on the WP-2 (F2-FILES -> RAM DISK -> HEXVIEW2.CO -> F2-RUN)  
-  Run RomCardWriter.exe on a pc and press S in hexview to write a full rom image from the pc to the rom card.
+* See [SOFTWARE](SOFTWARE) for the software & directions.
 
 ### Write to the ROM card using an eprom programmer
 
-* Build the [programming adapter](#programming-adapter) below  
+* Build the [programming adapter](#programming-adapter) below.
 
-* See [To program the ROM card](#to-program-the-rom-card)
-
-If the card has a 512K chip and bank switch installed then there are a few complications to writing the banks.  
-See https://github.com/bkw777/M4ROM?tab=readme-ov-file#programming-the-chip for explaination from a similar project with the same feature.  
-This is the main reason the default BOM has a 256K chip and no bank switch.
+* See [To program the ROM card](#to-program-the-rom-card).
 
 ----
 

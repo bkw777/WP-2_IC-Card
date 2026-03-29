@@ -1,0 +1,31 @@
+SST vs MX flash chip
+
+There is a difference between the two chips, but either one works.
+
+The difference is just this:
+
+The card slot only has address lines for 256k.
+
+A 512k chip needs to have it's highest address bit tied either high or low by a bank switch or solder blob.
+
+The chips have both a command to erase the whiole chip, and a command to erase just a block.
+
+The command to erase a block requires supplying a block number on the address lines, but one of those address lines is hard wired.
+
+If the bank switch is in bank 2 position, then when you issue the command to erase block N, the chip sees N+256 because the highest address bit is high.
+
+That's an invalid number because the block numbers don't go that high.
+
+The SST chip ignores the highest few address bits for this command, so with an SST chip, the erase-block command works normally, even if the highest address bit is stuck high or low by a bank switch or solder blob.
+
+The MX chip does not ignore any address bits for this command, so the erase-block command only works in bank 1.
+
+Ben's software to write to the flash from the WP-2 does not use the erase-block command (so far), and so there is no problem. Both the SST and MX chips are supported and work the same.
+
+To use all 512k, whether using the sofware write mod to write from the WP-2, or using a programmer and the programming adapter, the procedure is the same:
+* First do a full chip erase.
+* Then write each bank without doing a chip-erase before writing.
+
+In hexview, the E command erases the chip, and none of the write commands do any erasing first since they only write a single byte at a time.
+
+In a programmer, most programmer software will default to automatically erasing before each write, but there will be some way to disable that.
