@@ -6,7 +6,7 @@ Here are a few different cards to fit that slot.
 
 * A [battery-backed SRAM card](#sram-card) like the original cards  
 * A [non-volatile MRAM card](#mram-card), a RAM card that doesn't need a battery  
-* A [ROM card](#rom-card), there is new software that runs from a rom card but no known images of any old original rom cards  
+* A [ROM card](#rom-card), there is [new software](SOFTWARE) that runs from a rom card but no known images of any old original rom cards  
 * A [programming adapter](#programming-adapter) that can read and write both the RAM and ROM cards outside of the WP-2
 * A [bus-tap/breakout card](#bus-tap) to allow connecting the bus to a breadboard or logic analyser etc
 
