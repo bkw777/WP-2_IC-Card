@@ -27,7 +27,7 @@ To flash MENU.PI to a flash card using just the WP-2 itself (no programmer & pro
 * Connect a serial cable from a PC to the WP-2  
   Single-piece all-in-one cable that's perfect for this and annoying for any other use: https://amazon.com/dp/B072XV7GG3  
   No other adapters or cables needed with this. It goes directly from a PCs usb port to the WP-2's serial port.  
-  More info & other options: http://tandy.wiki/WP-2#Serial_Cable_to_PC  http://tandy.wiki/Model_T_Serial_Cable#USB-Serial_Adapters
+  More info & other options: http://tandy.wiki/WP-2#Serial_Cable_to_PC and http://tandy.wiki/Model_T_Serial_Cable#USB-Serial_Adapters
 
 * Start a TPDD emulator on the PC.  
   [LaddieAlpha](https://bitchin100.com/wiki/index.php?title=LaddieCon#LaddieAlpha): `C:\...> .\LaddieAlpha.EXE COM5 8` or `$ mono ./LaddieAlpha.EXE /dev/ttyUSB0 8`  
