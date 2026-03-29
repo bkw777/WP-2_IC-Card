@@ -1,12 +1,9 @@
-Building [HEXVIEW for WP-2](https://discord.com/channels/761864233855615017/763902318135214084/1487211108447027230)
+Building [HexViewer for WP-2](https://discord.com/channels/761864233855615017/763902318135214084/1487211108447027230)
 
 ## requirements  
 The .asm may be compiled using z88dk-z80asm.  
-Install [z88dk](https://github.com/z88dk/z88dk)
-
-There are precompiled versions for mac and windows.  
-You only need the `z88dk-z80asm` executable.  
-For instance from the windows zip file, you just need `bin/z88dk-z80asm.exe`
+Install [z88dk](https://github.com/z88dk/z88dk)  
+There are precompiled versions for mac and windows.
 
 Installing z88dk on ubuntu without using the snap or docker images.  
 ```
@@ -22,6 +19,7 @@ $ sudo make install
 ```
 $ make clean all
 ```
+This produces `HXVIEW22.PR`
 
 Writing to a flash card from the WP-2 using HexViewer requires configuring both the WP-2 and the IC Card for the software write mod.  
 * Inside the WP-2 add a bodge wire from RA4 pin 5 (near the cpu IC1) to RA5 pin 2 (near the card slot CN1).  
