@@ -9,34 +9,34 @@
 ;
 ; z88dk_z80asm -b -o=DUMPROM.PR dumprom.asm
 
-CHARSENSE	equ		0100h
-CHARGET		equ		0103h
+CHARSENSE	EQU		0100h
+CHARGET		EQU		0103h
 
-SETLOC		equ		0109h
-GETLOC		equ		010Ch
-CURSORON	equ		010Fh
-CURSORTYPE	equ		0112h
+SETLOC		EQU		0109h
+GETLOC		EQU		010Ch
+CURSORON	EQU		010Fh
+CURSORTYPE	EQU		0112h
 
-CHAROUT		equ		0118h
-PUTCHAR         equ		01A3h
-STROUT		equ		011Bh
-CLS		equ		011Eh
-BEEP		equ		0121h
+CHAROUT		EQU		0118h
+PUTCHAR		EQU		01A3h
+STROUT		EQU		011Bh
+CLS			EQU		011Eh
+BEEP		EQU		0121h
 
-RSINIT		equ		0140h
-GETDATALEN	equ		0143h
-SENDDATA	equ		0146h
-GETDATA		equ		0149h
-RSCLOSE		equ		014Ch
+RSINIT		EQU		0140h
+GETDATALEN	EQU		0143h
+SENDDATA	EQU		0146h
+GETDATA		EQU		0149h
+RSCLOSE		EQU		014Ch
 
-CHGSLOT		equ		0166h
+CHGSLOT		EQU		0166h
 
-LINEIN		equ		01A6h
+LINEIN		EQU		01A6h
 
-BKSP		equ		08h
-LF		equ		0Ah
-CR		equ		0Dh
-ESC		equ		1Bh
+BKSP		EQU		08h
+LF		EQU		0Ah
+CR		EQU		0Dh
+ESC		EQU		1Bh
 
 ORG		0AC00H-8
 DB		"PR"
@@ -46,96 +46,97 @@ DW		0000h
 
 PRGSTART:
 START:
-		CALL	CLS
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		XOR	A
-		ld	(CURSLOT),a
-		CALL	CHGSLOT		; change to slot zero to start
-		ld	hl,0h		; start at zero to read the first bank
-		ld	(CURRENT),hl
-		call	DUMPLOOP
+	CALL	CLS
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	NOP
+	XOR	A
+	LD	(CURSLOT),A
+	CALL	CHGSLOT		; change to slot zero to start
+	LD	HL,0h		; start at zero to read the first bank
+	LD	(CURRENT),HL
+	CALL	DUMPLOOP
 MAINLOOP:
-		call	BEEP		; We dumped another block
-		ld	hl,4000h	; remaining banks start at 4000h
-		ld	(CURRENT),hl
-		ld	a,(CURSLOT)
-		inc	a
-		ld	(CURSLOT),a	; bump to next slot
-		cp	0Fh		; if slot 15 (IC Card)
-		jr	z,DONE		; then we are done
-		call	CHGSLOT
-		call	DUMPLOOP	; otherwise dump it
-		jr	MAINLOOP
-DONE:		xor	a
-		CALL	CHGSLOT		; change back to slot zero
-		xor	a
-		ret
+	CALL	BEEP		; We dumped another block
+	LD	HL,4000h	; remaining banks start at 4000h
+	LD	(CURRENT),HL
+	LD	A,(CURSLOT)
+	INC	A
+	LD	(CURSLOT),A	; bump to next slot
+	CP	0Fh		; if slot 15 (IC Card)
+	JR	Z,DONE		; then we are done
+	CALL	CHGSLOT
+	CALL	DUMPLOOP	; otherwise dump it
+	JR	MAINLOOP
+DONE:
+	XOR	A
+	CALL	CHGSLOT		; change back to slot zero
+	XOR	A
+	RET
 
-DUMPLOOP:	
-		ld	hl,084Dh	; 9600 bps, 8n1, no xon, timer enabled
-		call	RSINIT
+DUMPLOOP:
+	LD	HL,084Dh	; 9600 bps, 8n1, no xon, timer enabled
+	CALL	RSINIT
 BYTELOOP:
-		ld	hl,(CURRENT)
-		ld	a,(hl)
-		inc	hl
-		ld	(CURRENT),hl
-		call	SENDDATA
-		ld	a,h
-		cp	080h
-		jr	nz,BYTELOOP
-		call	SENDDATA	; for some reason we have to send
+	LD	HL,(CURRENT)
+	LD	A,(HL)
+	INC	HL
+	LD	(CURRENT),HL
+	CALL	SENDDATA
+	LD	A,H
+	CP	080h
+	JR	NZ,BYTELOOP
+	CALL	SENDDATA	; for some reason we have to send
 					; another dummy byte before the close
-		call	RSCLOSE
-		ret
+	CALL	RSCLOSE
+	RET
 
 CURRENT:
-		DW	00000H
+	DW	00000H
 CURSLOT:
-		DB	0h
+	DB	0h
 PRGEND:
 
 END:

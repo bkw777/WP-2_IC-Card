@@ -1,6 +1,6 @@
 ; dumps all of the ROM banks to the serial port
 ; sets the serial port to 9600
-; compile with (Udo Munk's) z80asm -fb -vl DUMPROM.CO
+; compile with (Udo Munk) z80asm -fb -vl DUMPROM.CO
 CHARSENSE	equ		100H
 CHARGET		equ		103H
 
