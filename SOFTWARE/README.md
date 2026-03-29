@@ -32,7 +32,7 @@ To flash a ROM image (MENU.PI or WPBAS.PI) to a flash card using just the WP-2 i
   which connects directly from a usb port to the WP-2: https://amazon.com/dp/B072XV7GG3  
 
 * Start a [TPDD server](http://tandy.wiki/TPDD_server) (FB-100 floppy drive emulator) on the PC.  
-  Examples including the options to support WP-2 8.2 filenames:  
+  Examples, including the options to support WP-2 8.2 filenames:  
   * [LaddieAlpha](https://bitchin100.com/wiki/index.php?title=LaddieCon#LaddieAlpha)  
     `C:\...> .\LaddieAlpha.EXE COM5 8`  
     or  
