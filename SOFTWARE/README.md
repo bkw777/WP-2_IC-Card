@@ -31,10 +31,11 @@ To flash a ROM image (MENU.PI or WPBAS.PI) to a flash card using just the WP-2 i
   For reference, here is a one-piece cable with null-modem and gender-change built-in,  
   which connects directly from a usb port to the WP-2: https://amazon.com/dp/B072XV7GG3  
 
-* Start a [TPDD emulator](http://tandy.wiki/TPDD_server) on the PC.
+* Start a [TPDD emulator](http://tandy.wiki/TPDD_server) on the PC.  
   Examples including the options to support WP-2 8.2 filenames:  
   * [LaddieAlpha](https://bitchin100.com/wiki/index.php?title=LaddieCon#LaddieAlpha)  
     `C:\...> .\LaddieAlpha.EXE COM5 8`  
+    or  
   * [dl2](https://github.com/bkw777/dl2)  
     `$ dl -v -c wp2`
 
