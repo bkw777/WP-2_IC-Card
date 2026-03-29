@@ -1,5 +1,5 @@
 # Makefile for DumpROM
-# Requires Udo Munk's z80asm or https://github.com/z88dk/z88dk
+# Requires https://github.com/z88dk/z88dk
 
 SRC = dumprom.asm
 EXE = DUMPROM.PR
