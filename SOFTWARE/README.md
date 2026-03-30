@@ -30,10 +30,10 @@ The software to write to a ROM flash card from the WP-2 (and the hardware mod to
 [RomCardWriter](RomCardWriter) - Windows app to write a ROM image to a flash card via HexViewer in serial xfer mode
 
 WPBAS.PI - ROM image - MSBASIC ported to WP-2  
-  `MONITOR` exits BASIC back to the system rom.
+`MONITOR` exits BASIC back to the system rom.
 
 MENU.PI - ROM image - multi-rom image with selector menu front-end  
-  Includes MSBASIC and HexViewer, and the top level selector menu is also a space invader game.
+Includes MSBASIC and HexViewer, and the top level selector menu is also a space invader game.
 
 ## Writing a ROM image to a FLASH card from the WP-2  
 To flash a ROM image (MENU.PI or WPBAS.PI) to a flash card using just the WP-2 itself (and a PC and a serial connection), without a programmer & programming adapter:
