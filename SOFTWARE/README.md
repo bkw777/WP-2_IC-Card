@@ -15,11 +15,11 @@ RUN files may be run from `RAM DISK` (extra 32k or 128k SRAM chip installed in t
 Enter the word processor. Start an empty junk document if necessary.  
 From there press FILES (F2+=)  
 Arrow left/right to `RAM DISK`, `MEMORY CARD`, or `DISKETTE` and press Enter  
-Arrow up/down to the file and press RUN (F2+7)
+Arrow up/down to the file and press `RUN` (F2+7)
 
 ## RUN a ROM IC Card
 Enter the word processor. Start an empty junk document if necessary.  
-From there press RUN (F2+7)
+From there press `RUN` (F2+7)
 
 # HexViewer / MENU.PI / BASIC / RomCardWriter
 
