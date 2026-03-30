@@ -56,11 +56,9 @@ To flash a ROM image (MENU.PI or WPBAS.PI) to a flash card using just the WP-2 i
   * [dl2](https://github.com/bkw777/dl2)  
     `$ dl -v -c wp2`
 
-* Copy the RAM version of HexViewer `HXVIEWnn.PR` from `DISKETTE` to `RAM DISK` (not `MEMORY`) on the WP-2.  
+* Copy `HXVIEWnn.PR` from `DISKETTE` to `RAM DISK` (not `MEMORY`) on the WP-2.  
   If you don't have a ram disk, then [get one, it's just a $7 chip](https://www.digikey.com/short/70tr9zhp).  
   Until then, you can alternatively skip this step, and in the next step run HexViewer directly from `DISKETTE` instead of `RAM DISK`.  
-  (There is a bug in the system rom that corrupts RUN files when copied to the main internal 32k.  
-  RUN files do work from a RAM IC card, but for this job the card slot is occupied by a ROM IC card.)
   
   On the WP-2, enter the word processor. Start an empty junk/temp document if necessary.  
   From there, press `FILES` (F2+=),  
