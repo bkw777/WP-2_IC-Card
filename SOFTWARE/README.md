@@ -13,7 +13,7 @@ RUN files may be run from `RAM DISK` (extra 32k or 128k SRAM chip installed in t
 (Not `MEMORY`, because there is a bug in the system rom that corrupts RUN files when copied to the internal main 32k)
 
 Enter the word processor. Start an empty junk document if necessary.  
-From there press FILES (F2+=)  
+From there press `FILES` (F2+=)  
 Arrow left/right to `RAM DISK`, `MEMORY CARD`, or `DISKETTE` and press Enter  
 Arrow up/down to the file and press `RUN` (F2+7)
 
