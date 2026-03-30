@@ -425,43 +425,27 @@ There are much less expensive generic female 1.27mm pin headers on ebay and alie
 
 ### Other similar machines and card standards that are NOT the same and NOT compatible
 
-The "Toshiba IC-Card" appears to have been almost a standard, maybe, before PCMCIA type 1 was formalized. And so it's tempting to try to find other possible cards that might be compatible besides the ones sold by Tandy. There might be some but I have not found any yet.
+The "Toshiba IC-Card" appears to have been just barely almost a standard, maybe, before PCMCIA type 1 was formalized.  
+And so it's tempting to try to find other possible cards that might be compatible besides the ones sold by Tandy.  
+There might be some but I have not found any yet.
 
-Just for the sake of keeping track somewhere, the following look very similar, but are NOT the same and NOT compatible.
+Just for the sake of keeping track somewhere, here are various cards I've found that look very similar, but are NOT the same and NOT compatible.
 
 * Amstrad NC100 and clones & derivatives like NTS DreamWriter 325.  
-  They look very similar but the memory card in those is PCMCIA Type 1, which is totally different from this.
+  They look very similar but the memory card in those is PCMCIA Type 1, which is totally different.
 
 * ITT Canon Star Card  
-  Single row 38 pins (or maybe 39 or 40, references say 38-pin, but you can physically count 39 holes plus another smaller hole in pictures)
+  Single row 38 pins (or maybe 39 or 40. Pictures all look like 39 holes plus maybe another smaller hole, but references all say 38-pin).  
   But no polarity notch on the pin-38 side.
 
 * Yamaha MCD32 / MCD64  
-  This one is insidious. It combines both the fact that it *looks* perfect and probably fits perfectly,
-  with the fact that it would short the WP-2's VCC directly to GND.
-  It has the same single-row 38-pin connector and the same shape of keying notch on one side.
-  You could probably plug this card in and it would probably fit perfectly.
-  The key notch is on the on the wrong side, so you'd have to plug it in upside-down, but maybe the pins are just numbered the other way and doesn't really matter?
-  Well it's not merely the same card but updside down. The pinout is different.
-  Just for starters, MCD has GND on both pin 1 and pin 38, while WP-2 has GND on pin 1 and VCC on pin 38.
-  So, no matter which direction the pin numbers count, no matter what the rest of the pinout looks like,
-  if you managed to insert the card it would short the WP-2's VCC power rail directly to GND!
+  This one is evil. It fits perfectly (visually upside down but physically a perfect fit),  
+  and shorts VCC directly dead-short to GND, and nothing prevents you from doing it.  
 
 # TODO
-* CamelFORTH on ROM?  
-  But how to construct rom image?  
-  Try to deduce how a rom is supposed to work by recording the bus while trying to load a dictionary while the breakout board has the /DET pin not connected to GND.
-
-* Document how to create a RUN file.  
-  Figure that out and write some sort of reproduceable toolchain & Makefile template hello world project to create new executables.  
-  Known examples:  
-  * John Hogerhuis [CamelFORTH](http://bitchin100.com/files/wp2/CAMEL.ZIP)  
-  * "Christopher" from "randomvariations" [DUMPROM](https://randomvariations.com/category/tandy-wp-2/)  
-  * Ben Grimmett [HEXVIEW](https://www.facebook.com/groups/Model.T.Computers/files/files)
-
 * Use the programming adapter to dump ram card images and reverse engineer the "filesystem".  
   The files themselves (at least .DO) are already fairly well documented: https://bitchin100.com/files/wp2/wp2format.html
 
 * Possibly eventually add an mcu to the card that can read & write the sram and present a standard usb mass storage interface to a pc.
 
-* Add a 5v power output for a [MounT](https://github.com/bkw777/MounT) & [PDDuino](https://github.com/bkw777/PDDuino)?
+* Add a 5v power output for [PDDuino](https://github.com/bkw777/PDDuino)?
