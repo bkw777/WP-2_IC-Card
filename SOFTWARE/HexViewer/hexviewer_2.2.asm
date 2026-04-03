@@ -894,7 +894,7 @@ MonitorPortAddress:
 	DB 0
 
 Instructions:
-	DB "HexViewer---v2.2"
+	DB "HexViewer-v2.2bw"
 	DB "S - Serial xfer "
 	DB "G - Goto Address"
 	DB "W - Write Data  "
@@ -910,7 +910,7 @@ PortMSG:
 	DB "Port?",0
 
 DataMSG:
-	DB "Data?   ",0
+	DB "Data?",0
 
 FlashMSG:
 	DB "           Flash Detected! Enabling Flash Command Tools. Press any key...",0
