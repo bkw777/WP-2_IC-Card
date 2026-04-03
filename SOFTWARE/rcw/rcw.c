@@ -22,13 +22,14 @@
   #define HANDLE int
   #define INVALID_HANDLE_VALUE -1
   #define CloseHandle(x) close(x)
-  #define Sleep(x) usleep(x*1000)
   #define BAUD_RATE B9600
 #endif
 
 #define BANK_SIZE 0x4000 // 16KB per bank (0x4000 to 0x7FFF)
 #define START_ADDRESS 0x4000
 #define ERASE_TIMEOUT_MS 100 // Timeout for erase ACK (20ms typical, padded for safety)
+
+bool verbose = false;
 
 // Open and configure the COM port
 #ifdef _WIN32
@@ -82,7 +83,7 @@ HANDLE open_serial_port(const char* port_name) {
 	HANDLE fd;
 	struct termios ti;
 
-	fd=open(port_name,O_RDWR|O_NOCTTY);
+	fd = open(port_name,O_RDWR|O_NOCTTY);
 	if (fd<0) { fprintf(stderr,"%s\n",strerror(errno)); return INVALID_HANDLE_VALUE; }
 
 #ifdef TIOCEXCL
@@ -93,27 +94,32 @@ HANDLE open_serial_port(const char* port_name) {
 //	flock(tty_fd,LOCK_EX|LOCK_NB);
 #endif // TIOCEXCL
 
+	 // flush (discard) any possible pre-existing junk in both input and output buffers
 	(void)!tcflush(fd, TCIOFLUSH);
 
+	// load the termios flags
 	if (tcgetattr(fd,&ti)==-1) return INVALID_HANDLE_VALUE;
 
+	// set a bunch of different flags to raw mode
 	cfmakeraw(&ti);
 
+	// set the baud rate
 	if (cfsetspeed(&ti,BAUD_RATE)==-1) return INVALID_HANDLE_VALUE;
 
-	ti.c_iflag &= ~(IXON|IXOFF|IXANY);
-	ti.c_cflag |= CRTSCTS;    // enable rtscts
-	//ti.c_cflag &= ~CRTSCTS; // disable rtscts
+	// set the main serial params
+	// cfmakeraw() already did some of these but not all
+	ti.c_iflag &= ~(IXON|IXOFF|IXANY);  // disable xonoff (we send raw binary)
+	ti.c_cflag |= CRTSCTS;         // enable rtscts
+	//ti.c_cflag &= ~CRTSCTS;      // disable rtscts
+	ti.c_cflag |= (CREAD|CLOCAL);  // disable modem control lines
+	ti.c_cflag &= ~PARENB;         // no parity
+	ti.c_cflag &= ~CSTOPB;         // 1 stop bit
+	ti.c_cflag &= ~CSIZE;          // character size mask
+	ti.c_cflag |= CS8;             // 8 bit bytes
+	ti.c_cc[VMIN] = 1;             // minimume bytes, block until at least 1
+	ti.c_cc[VTIME] = 0;            // no timeout
 
-	ti.c_cflag |= (CREAD|CLOCAL);
-	ti.c_cflag &= ~PARENB;
-	ti.c_cflag &= ~CSTOPB;
-	ti.c_cflag &= ~CSIZE;
-	ti.c_cflag |= CS8;
-
-	ti.c_cc[VMIN] = 1;
-	ti.c_cc[VTIME] = 0;
-
+	// apply all the settings above
 	if (tcsetattr(fd,TCSANOW,&ti)==-1) return INVALID_HANDLE_VALUE;
 
 	return fd;
@@ -125,38 +131,32 @@ int send_command(HANDLE hSerial, const unsigned char* cmd, size_t cmd_len,
 	unsigned char* response, size_t response_len, DWORD timeout_ms) {
 	DWORD bytes_written=0, bytes_read=0;
 
-	printf("> %s\n",cmd);
+	if (verbose) printf("> %s\n",cmd);
 
 #ifdef _WIN32
-	//if (!ReadFile(hSerial, response, response_len, &bytes_read, NULL)) {
-	WriteFile(hSerial, cmd, cmd_len, &bytes_written, NULL)
-#else
-	bytes_written = write(hSerial,cmd,cmd_len);
-	tcdrain(hSerial);
-#endif
-
-	if (bytes_written != cmd_len) {
-		//fprintf(stderr, "Error writing to COM port: %ld\n", GetLastError());
-		fprintf(stderr,"%s\n",strerror(errno));
+	if (!WriteFile(hSerial, cmd, cmd_len, &bytes_written, NULL) || bytes_written != cmd_len) {
+		fprintf(stderr, "Error writing to COM port: %ld\n", GetLastError());
 		return -1;
 	}
-
 	Sleep(timeout_ms); // Wait for device to process
-
-#ifdef _WIN32
-	//if (!ReadFile(hSerial, response, response_len, &bytes_read, NULL)) {
-	ReadFile(hSerial, response, response_len, &bytes_read, NULL);
+	if (!ReadFile(hSerial, response, response_len, &bytes_read, NULL)) {
+		fprintf(stderr, "Error reading from COM port: %ld\n", GetLastError());
+		bytes_read = -1;
+	}
 #else
-	bytes_read = read(hSerial, response, response_len);
-#endif
-
-	printf("< %s\n",response);
-
-	if (bytes_read != response_len) {
-		//fprintf(stderr, "Error reading from COM port: %ld\n", GetLastError());
-		fprintf(stderr,"%s\n",strerror(errno));
+	if ((bytes_written = write(hSerial, cmd, cmd_len)) != cmd_len) {
+		fprintf(stderr, "Error writing to COM port: %s\n", strerror(errno));
 		return -1;
 	}
+	tcdrain(hSerial);
+	usleep(timeout_ms*1000); // Wait for device to process
+	if ((bytes_read = read(hSerial, response, response_len)) != response_len) {
+		fprintf(stderr, "Error reading from COM port: %s\n", strerror(errno));
+		bytes_read = -1;
+	}
+#endif // _WIN32
+
+	if (verbose) printf("< %s\n",response);
 
 	return bytes_read;
 }
@@ -242,8 +242,13 @@ int write_memory(HANDLE hSerial, unsigned short address, unsigned char data) {
 	return 0;
 }
 
+///////////////////////////////////////////////////////////////////////////////
+
 // Main
 int main(int argc, char* argv[]) {
+
+	if (getenv("VERBOSE")) verbose = true;
+
 	if (argc != 3) {
 		fprintf(stderr, "Usage: %s <SERIAL_PORT> <FILENAME>\n", argv[0]);
 		return 1;
