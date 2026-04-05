@@ -1,8 +1,9 @@
 ; MemUtil 1.0 - Brian K. White
-; based on HexViewer 2.2 - Ben Grimmett
-; https://discord.com/channels/761864233855615017/763902318135214084/1487211108447027230
-; z88dk-z80asm -v -b -o=HXVIEW22.PR hexviewer_2.2.asm
-; Copy HXVIEW22.PR to a WP-2 internal ram disk or ram/mram ic-card via TPDD, or run directly from "diskette".
+; Forked from HexViewer 2.2 - Ben Grimmett
+; compile: z88dk-z80asm -v -b -o=foo.PR foo.asm
+; start tpdd: dl -v -c wp2
+; On WP-2 F2+= -> "DISKETTE", F1+1 -> Copy
+; copy foo.PR from "DISKETTE" to "RAM DISK" or "RAM CARD", or run (F2+7) directly from "DISKETTE"
 
 CLS EQU 0x011E
 CHARSENSE EQU 0x0100

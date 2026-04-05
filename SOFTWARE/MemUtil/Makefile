@@ -1,7 +1,7 @@
 # Makefile for WP-2 MemUtil
 # Requires https://github.com/z88dk/z88dk
 
-NAME := MEM
+NAME := MemUtil
 SRC = $(NAME).asm
 EXE = $(NAME).PR
 Z80ASM = z88dk-z80asm

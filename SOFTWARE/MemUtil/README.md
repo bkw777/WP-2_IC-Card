@@ -19,7 +19,7 @@ $ sudo make install
 ```
 $ make clean all
 ```
-This produces `MEM.PR`
+This produces `MemUtil.PR`
 
 Writing to a flash card from the WP-2 using HexViewer requires configuring both the WP-2 and the IC Card for the software write mod.  
 * Inside the WP-2 add a bodge wire from RA4 pin 5 (near the cpu IC1) to RA5 pin 2 (near the card slot CN1).  
@@ -31,11 +31,11 @@ Examples, including the flags to support WP-2 8.2 filenames
 [LaddieAlpha](https://bitchin100.com/wiki/index.php?title=LaddieCon#LaddieAlpha): `C:\...> .\LaddieAlpha.EXE COM5 8` or `$ mono ./LaddieAlpha.EXE /dev/ttyUSB0 8`  
 [dl2](https://github.com/bkw777/dl2): `$ dl -v -c wp2`
 
-Copy `MEM.PR` to the WP-2:  
+Copy `MemUtil.PR` to the WP-2:  
 On the WP-2, enter the word processor. Start an empty junk/temp document if necessary.  
 From there, press FILES (F2+=),  
 arrow left/right to DISKETTE and press Enter,  
-arrow down to highlight `MEM.PR`,  
+arrow down to highlight `MemUtil.PR`,  
 press F1+C for copy, (or F1+1 for a menu then select Copy)  
 select RAM DISK or MEMORY CARD (MEMORY does not work)
 
