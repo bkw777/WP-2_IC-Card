@@ -1,5 +1,14 @@
-/* rcw.c - Write a rom image file to HexViewer running on a TANDY WP-2
+/* rcw.c - Write to rom card via HexViewer running on a TANDY WP-2
  * Port of Ben Grimmett's RomCardWriter.cpp to cross-platform plain c
+ */
+
+/*
+ * TODO Escape control bytes to allow XON/XOFF
+ * because the WP-2 does not support RTS/CTS.
+ * wxmodem style: escape DLE, XON, XOFF. escape BYTE = DLE BYTExor64
+ * DLE:  0x10 -> 0x10 0x50
+ * XON:  0x11 -> 0x10 0x51
+ * XOFF: 0x13 -> 0x10 0x53
  */
 
 #include <stdio.h>
@@ -30,6 +39,11 @@
 #define ERASE_TIMEOUT_MS 100 // Timeout for erase ACK (20ms typical, padded for safety)
 
 bool verbose = false;
+
+// write b to stdout as hex pairs
+void b2h(const unsigned char* b, size_t n) {
+	if (n>0) for (size_t i=0;i<n;i++) printf(" %02X",b[i]);
+}
 
 // Open and configure the COM port
 #ifdef _WIN32
@@ -64,11 +78,11 @@ HANDLE open_serial_port(const char* port_name) {
 	}
 
 	COMMTIMEOUTS timeouts = { 0 };
-	timeouts.ReadIntervalTimeout = 50;
-	timeouts.ReadTotalTimeoutConstant = 50;
-	timeouts.ReadTotalTimeoutMultiplier = 10;
-	timeouts.WriteTotalTimeoutConstant = 50;
-	timeouts.WriteTotalTimeoutMultiplier = 10;
+	timeouts.ReadIntervalTimeout = 50;         // 50ms between bytes
+	timeouts.ReadTotalTimeoutMultiplier = 10;  // 10ms * nbytes
+	timeouts.ReadTotalTimeoutConstant = 50;    // ... + 50ms
+	timeouts.WriteTotalTimeoutMultiplier = 10; // 10ms * nbytes
+	timeouts.WriteTotalTimeoutConstant = 50;   // ... + 50ms 
 
 	if (!SetCommTimeouts(hSerial, &timeouts)) {
 		fprintf(stderr, "Error setting COM timeouts: %ld\n", GetLastError());
@@ -108,16 +122,23 @@ HANDLE open_serial_port(const char* port_name) {
 
 	// set the main serial params
 	// cfmakeraw() already did some of these but not all
-	ti.c_iflag &= ~(IXON|IXOFF|IXANY);  // disable xonoff (we send raw binary)
-	ti.c_cflag |= CRTSCTS;         // enable rtscts
-	//ti.c_cflag &= ~CRTSCTS;      // disable rtscts
+	// Disable RTS/CTS because WP-2 does not support RTS/CTS.
+	// Disable XON/XOFF because HexViewer and RomCardWriter send raw binary.
+	// hexviewer.asm: LD HL,0x084C ; 9600 bps, 8n1, no xon, timer enabled
+	ti.c_iflag &= ~(IXON|IXOFF|IXANY); // disable xonoff
+	//ti.c_iflag |= (IXON|IXOFF|IXANY); // eable xonoff with IXANY
+	//ti.c_iflag &= ~IXANY;         // disable IXANY
+	//ti.c_iflag |= (IXON|IXOFF);   // eable xonoff without IXANY
+	//ti.c_cflag |= CRTSCTS;        // enable rtscts
+	ti.c_cflag &= ~CRTSCTS;        // disable rtscts
 	ti.c_cflag |= (CREAD|CLOCAL);  // disable modem control lines
 	ti.c_cflag &= ~PARENB;         // no parity
 	ti.c_cflag &= ~CSTOPB;         // 1 stop bit
 	ti.c_cflag &= ~CSIZE;          // character size mask
 	ti.c_cflag |= CS8;             // 8 bit bytes
-	ti.c_cc[VMIN] = 1;             // minimume bytes, block until at least 1
-	ti.c_cc[VTIME] = 0;            // no timeout
+	ti.c_cc[VMIN] = 1;             // minimum bytes, block until at least 1
+	//ti.c_cc[VTIME] = 0;            // no timeout
+	ti.c_cc[VTIME] = 1;            // 100ms timeout
 
 	// apply all the settings above
 	if (tcsetattr(fd,TCSANOW,&ti)==-1) return INVALID_HANDLE_VALUE;
@@ -131,7 +152,7 @@ int send_command(HANDLE hSerial, const unsigned char* cmd, size_t cmd_len,
 	unsigned char* response, size_t response_len, DWORD timeout_ms) {
 	DWORD bytes_written=0, bytes_read=0;
 
-	if (verbose) printf("> %s\n",cmd);
+	if (verbose) { putchar('>') ;b2h(cmd,cmd_len) ;putchar('\n') ; }
 
 #ifdef _WIN32
 	if (!WriteFile(hSerial, cmd, cmd_len, &bytes_written, NULL) || bytes_written != cmd_len) {
@@ -156,7 +177,7 @@ int send_command(HANDLE hSerial, const unsigned char* cmd, size_t cmd_len,
 	}
 #endif // _WIN32
 
-	if (verbose) printf("< %s\n",response);
+	if (verbose) { putchar('<') ;b2h(response,bytes_read) ;putchar('\n') ; }
 
 	return bytes_read;
 }

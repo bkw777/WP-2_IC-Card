@@ -21,19 +21,19 @@ Arrow up/down to the file and press `RUN` (F2+7)
 Enter the word processor. Start an empty junk document if necessary.  
 From there press `RUN` (F2+7)
 
-# HexViewer / MENU.PI / BASIC / RomCardWriter
+# HexViewer / RomCardWriter / MultiRom
 
 The software to write to a ROM flash card from the WP-2 (and the hardware mod to make it possible) comes from [Ben Grimmett / @BennVenn](https://discord.com/invite/F5ckxM2)
 
-[HexViewer](HexViewer) - RAM executable file version of HexViewer
+[HexViewer](BenGrimmett/HexViewer) - Memory viewing/writing utility
 
-[RomCardWriter](RomCardWriter) - Windows app to write a ROM image to a flash card via HexViewer in serial xfer mode
+[RomCardWriter](BenGrimmett/RomCardWriter) - Windows app to write a ROM image to a flash card via HexViewer in serial xfer mode
 
-WPBAS.PI - ROM image - MSBASIC ported to WP-2  
-`MONITOR` exits BASIC back to the system rom.
-
-MENU.PI - ROM image - multi-rom image with selector menu front-end  
+[MENU.PI](BenGrimmett) - ROM image - multi-rom image with selector menu front-end  
 Includes MSBASIC and HexViewer, and the top level selector menu is also a space invader game.
+
+[WPBAS.PI](BenGrimmett) - ROM image - MSBASIC ported to WP-2  
+`MONITOR` exits BASIC back to the system rom.
 
 ## Writing a ROM image to a FLASH card from the WP-2  
 To flash a ROM image (MENU.PI or WPBAS.PI) to a flash card using just the WP-2 itself (and a PC and a serial connection), without a programmer & programming adapter:
@@ -56,14 +56,14 @@ To flash a ROM image (MENU.PI or WPBAS.PI) to a flash card using just the WP-2 i
   * [dl2](https://github.com/bkw777/dl2)  
     `$ dl -v -c wp2`
 
-* Copy `HXVIEWnn.PR` from `DISKETTE` to `RAM DISK` (not `MEMORY`) on the WP-2.  
+* Copy `HXVIEW22.PR` from `DISKETTE` to `RAM DISK` (not `MEMORY`) on the WP-2.  
   If you don't have a ram disk, then [get one, it's just a $7 chip](https://www.digikey.com/short/70tr9zhp).  
   Until then, you can alternatively skip this step, and in the next step run HexViewer directly from `DISKETTE` instead of `RAM DISK`.  
   
   On the WP-2, enter the word processor. Start an empty junk/temp document if necessary.  
   From there, press `FILES` (F2+=),  
   arrow left/right to `DISKETTE` and press Enter,  
-  arrow down to highlight `HXVIEWnn.PR`,  
+  arrow down to highlight `HXVIEW22.PR`,  
   press F1+C for copy, (or F1+1 for a menu then select Copy)  
   select `RAM DISK`
 
@@ -71,7 +71,7 @@ To flash a ROM image (MENU.PI or WPBAS.PI) to a flash card using just the WP-2 i
   On the WP-2, enter the word processor. Start an empty junk/temp document if necessary.  
   From there, press `FILES` (F2+=),  
   arrow left/right to `RAM DISK` (or `DISKETTE`) and press Enter,  
-  arrow down to highlight `HXVIEWnn.PR`,  
+  arrow down to highlight `HXVIEW22.PR`,  
   press `RUN` (F2+7)
 
 * Kill the TPDD server on the PC. (Ctrl+C)
