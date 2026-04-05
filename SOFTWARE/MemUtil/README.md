@@ -1,4 +1,4 @@
-Building [HexViewer for WP-2](https://discord.com/channels/761864233855615017/763902318135214084/1487211108447027230)
+MemUtil is a fork of Ben Grimmett's HexViewer
 
 ## requirements  
 The .asm may be compiled using z88dk-z80asm.  
@@ -19,7 +19,7 @@ $ sudo make install
 ```
 $ make clean all
 ```
-This produces `HXVIEW22.PR`
+This produces `MEM.PR`
 
 Writing to a flash card from the WP-2 using HexViewer requires configuring both the WP-2 and the IC Card for the software write mod.  
 * Inside the WP-2 add a bodge wire from RA4 pin 5 (near the cpu IC1) to RA5 pin 2 (near the card slot CN1).  
@@ -31,11 +31,11 @@ Examples, including the flags to support WP-2 8.2 filenames
 [LaddieAlpha](https://bitchin100.com/wiki/index.php?title=LaddieCon#LaddieAlpha): `C:\...> .\LaddieAlpha.EXE COM5 8` or `$ mono ./LaddieAlpha.EXE /dev/ttyUSB0 8`  
 [dl2](https://github.com/bkw777/dl2): `$ dl -v -c wp2`
 
-Copy `HXVIEWnn.PR` to the WP-2:  
+Copy `MEM.PR` to the WP-2:  
 On the WP-2, enter the word processor. Start an empty junk/temp document if necessary.  
 From there, press FILES (F2+=),  
 arrow left/right to DISKETTE and press Enter,  
-arrow down to highlight `HXVIEWnn.PR`,  
+arrow down to highlight `MEM.PR`,  
 press F1+C for copy, (or F1+1 for a menu then select Copy)  
 select RAM DISK or MEMORY CARD (MEMORY does not work)
 
@@ -53,24 +53,32 @@ press RUN (F2+7).
 To exit HexViewer press EXIT (F2+Bksp)
 
 ## usage
-AA/DD arguments are hex pairs
+```
+E - Erase flash chip
+G - Go to addr
+W - Write data
+P - Write to I/O Port
+M - Monitor
+S - Serial interface mode
+Up/Dn - go up/down 0x80 byte
+? - go to this help
+```
+
+<!--
+Serial Interface Mode  
 ```
 E           erase flash chip
-pAA         read byte from i/o port AA
-PAADD       write byte DD to i/o port AA
-RAAAA       read byte from memory address AAAA
-WAAAADD     write byte DD to memory address AAAA
-GAAAA       go to (view) memory address AAAA
-S           serial interface (9600n81, ESC to close)
-M           monitor
+p n         read byte from port n
+P n b       write byte b to port n
+R addr      read byte from address addr
+W addr b    write byte b to address addr
 F           flash check
+Q           quit serial interface
 ```
+-->
 
-The same commands are accepted via the serial port after pressing S.  
-This is how RomCardWriter.exe works.
-
-To access a flash/rom card:  
-* tell the main rom to select and map a 16k block from the card into the rom bank window  
+Low level example to access a flash/rom card:  
+* tell the main rom to select a 16k block from the card to map into the rom bank window  
 * read/write to addresses within the rom bank window  
 
 To write to a flash card you have to erase the card first.
@@ -102,13 +110,13 @@ W 4000 5A     write "Z" to address 0x4000
 G 4000        view address 0x4000, should be 5A/"Z" now
 
 ### To write a ROM image to the flash card from the serial port  
-RomCardWriter is only available as a Windows executable at this time, and the .cpp source is also just for Windows.  
-It just issues the commands above via serial port, so it should be simple to reimplement in portable c or python or even bash.
+RomCardWriter is only available as a Windows executable at this time.  
+The \*nix port "rcw" starts to work ok but hangs after 20-30 bytes.
 
-* Start HexViewer on the WP-2  
+* Run MemUtil on the WP-2  
 * Press "S" to put HexViewer into serial xfer mode  
 * Run RomCardWriter on the PC to send foo.PI  
 ```
 C:\...> RomCardWriter COM5 MENU.PI
 ```
-Takes 1-2 minutes.  
+Takes 1-2 minutes.
