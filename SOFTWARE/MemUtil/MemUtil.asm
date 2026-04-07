@@ -1020,7 +1020,7 @@ DataMSG:
 	DB "Data?   ",0
 
 FlashMSG:
-	DB "Flash card detected, enabling flash functions.",0
+	DB "Writable flash card detected, enabling flash functions.",0
 
 EraseMSG:
 	DB "Are you sure you want to erase the flash card? (y/N) ",0
