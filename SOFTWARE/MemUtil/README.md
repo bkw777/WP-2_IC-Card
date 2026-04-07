@@ -21,7 +21,7 @@ $ make clean all
 ```
 This produces `MemUtil.PR`
 
-Writing to a flash card from the WP-2 using HexViewer requires configuring both the WP-2 and the IC Card for the software write mod.  
+Writing to a flash card from the WP-2 using MemUtil requires configuring both the WP-2 and the IC Card for the software write mod.  
 * Inside the WP-2 add a bodge wire from RA4 pin 5 (near the cpu IC1) to RA5 pin 2 (near the card slot CN1).  
 * On the card switch SW1 to the S3 position (or solder-blob the two S3 pads).
 
@@ -58,10 +58,10 @@ E - Erase flash chip
 G - Go to addr
 W - Write data
 P - Write to I/O Port
-M - Monitor
 S - Serial interface mode
-Up/Dn - go up/down 0x80 byte
-? - go to this help
+Up/Dn - go up/down 0x80 bytes
+F1+1 - Help
+F2+Bksp - Exit
 ```
 
 <!--
@@ -78,8 +78,6 @@ Q           quit serial interface
 -->
 
 Low level example to access a flash/rom card:  
-* tell the main rom to select a 16k block from the card to map into the rom bank window  
-* read/write to addresses within the rom bank window  
 
 To write to a flash card you have to erase the card first.
 
@@ -114,9 +112,8 @@ RomCardWriter is only available as a Windows executable at this time.
 The \*nix port "rcw" starts to work ok but hangs after 20-30 bytes.
 
 * Run MemUtil on the WP-2  
-* Press "S" to put HexViewer into serial xfer mode  
+* Press "S" to put MemUtil into serial xfer mode  
 * Run RomCardWriter on the PC to send foo.PI  
 ```
 C:\...> RomCardWriter COM5 MENU.PI
 ```
-Takes 1-2 minutes.
