@@ -21,11 +21,11 @@ Arrow up/down to the file and press `RUN` (F2+7)
 Enter the word processor. Start an empty junk document if necessary.  
 From there press `RUN` (F2+7)
 
-# HexViewer / RomCardWriter / MultiRom
+# MemUtil / RomCardWriter / MultiRom
 
 The software to write to a ROM flash card from the WP-2 (and the hardware mod to make it possible) comes from [Ben Grimmett / @BennVenn](https://discord.com/invite/F5ckxM2)
 
-[HexViewer](BenGrimmett/HexViewer) - Memory viewing/writing utility
+[MemUtil](MemUtil) - Memory viewing/writing utility (forked from [HexViewer](BenGrimmett/HexViewer))
 
 [RomCardWriter](BenGrimmett/RomCardWriter) - Windows app to write a ROM image to a flash card via HexViewer in serial xfer mode
 
@@ -48,7 +48,7 @@ To flash a ROM image (MENU.PI or WPBAS.PI) to a flash card using just the WP-2 i
   For reference, here is a one-piece cable with null-modem and gender-change built-in,  
   which connects directly from a usb port to the WP-2: https://amazon.com/dp/B072XV7GG3  
 
-* Start a [TPDD server](http://tandy.wiki/TPDD_server) (FB-100 floppy drive emulator) on the PC.  
+* On the PC, CD into the MemUtil directory and start a [TPDD server](http://tandy.wiki/TPDD_server) (FB-100 floppy drive emulator) on the PC.  
   Examples, including the options to support WP-2 8.2 filenames:  
   * [LaddieAlpha](https://bitchin100.com/wiki/index.php?title=LaddieCon#LaddieAlpha)  
     `C:\...> .\LaddieAlpha.EXE COM5 8`  
@@ -56,14 +56,14 @@ To flash a ROM image (MENU.PI or WPBAS.PI) to a flash card using just the WP-2 i
   * [dl2](https://github.com/bkw777/dl2)  
     `$ dl -v -c wp2`
 
-* Copy `HXVIEW22.PR` from `DISKETTE` to `RAM DISK` (not `MEMORY`) on the WP-2.  
+* Copy `MemUtil.PR` from `DISKETTE` to `RAM DISK` (not `MEMORY`) on the WP-2.  
   If you don't have a ram disk, then [get one, it's just a $7 chip](https://www.digikey.com/short/70tr9zhp).  
-  Until then, you can alternatively skip this step, and in the next step run HexViewer directly from `DISKETTE` instead of `RAM DISK`.  
+  Until then, you can alternatively skip this step, and in the next step run MemUtil directly from `DISKETTE` instead of `RAM DISK`.  
   
   On the WP-2, enter the word processor. Start an empty junk/temp document if necessary.  
   From there, press `FILES` (F2+=),  
   arrow left/right to `DISKETTE` and press Enter,  
-  arrow down to highlight `HXVIEW22.PR`,  
+  arrow down to highlight `MemUtil.PR`,  
   press F1+C for copy, (or F1+1 for a menu then select Copy)  
   select `RAM DISK`
 
@@ -71,7 +71,7 @@ To flash a ROM image (MENU.PI or WPBAS.PI) to a flash card using just the WP-2 i
   On the WP-2, enter the word processor. Start an empty junk/temp document if necessary.  
   From there, press `FILES` (F2+=),  
   arrow left/right to `RAM DISK` (or `DISKETTE`) and press Enter,  
-  arrow down to highlight `HXVIEW22.PR`,  
+  arrow down to highlight `MemUtil.PR`,  
   press `RUN` (F2+7)
 
 * Kill the TPDD server on the PC. (Ctrl+C)
