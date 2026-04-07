@@ -137,8 +137,8 @@ HANDLE open_serial_port(const char* port_name) {
 	ti.c_cflag &= ~CSIZE;          // character size mask
 	ti.c_cflag |= CS8;             // 8 bit bytes
 	ti.c_cc[VMIN] = 1;             // minimum bytes, block until at least 1
-	//ti.c_cc[VTIME] = 0;            // no timeout
-	ti.c_cc[VTIME] = 1;            // 100ms timeout
+	ti.c_cc[VTIME] = 0;            // no timeout
+	//ti.c_cc[VTIME] = 1;            // 100ms timeout
 
 	// apply all the settings above
 	if (tcsetattr(fd,TCSANOW,&ti)==-1) return INVALID_HANDLE_VALUE;

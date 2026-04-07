@@ -2,21 +2,31 @@
 # Requires https://github.com/z88dk/z88dk
 
 NAME := MemUtil
-SRC = $(NAME).asm
-EXE = $(NAME).PR
+PR = $(NAME).PR
+PI = $(NAME).PI
+
 Z80ASM = z88dk-z80asm
+ZFLAGS := # -v
 
-all: $(EXE)
+# PI output crashes on WP-2
+all: PR # PI
 
-$(EXE): $(SRC)
+.PHONY: PR
+PR: $(PR)
 
-%.PR: $%
-	$(Z80ASM) -v -b -o=$@ $^
+.PHONY: PI
+PI: $(PI)
+
+%.PR: %.asm
+	$(Z80ASM) $(ZFLAGS) -b -o=$@ $<
+	@rm *.o
 	@ls -l $@
 
-#%.PI: $%
-#	$(Z80ASM) -v -DON_ROM -b -o=$@ $^
-#	@ls -l $@
+%.PI: %.asm
+	$(Z80ASM) $(ZFLAGS) -DROM -b -o=$@ $<
+	@rm *.o
+	@ls -l $@
 
+.PHONY: clean
 clean:
 	rm -f *.o *.bin *.lis *.lst *.map *.def *.PR *.PI
