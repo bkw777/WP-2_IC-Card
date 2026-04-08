@@ -3,7 +3,8 @@
 ; Compile to PR (RUN File):  z88dk-z80asm -v -b -o=foo.PR foo.asm
 ; Compile to PI (ROM Image): z88dk-z80asm -v -DROM -b -o=foo.PI foo.asm
 ;
-; FIXME:  ROM image output is not correct?
+; FIXME:  ROM image output is not correct? TODO: look at MENU.PI
+; TDOD: test if seperate SST vs MX access commands really needed
 
 ; WP-2 System ROM Calls
 ;CMPHLDE			EQU		0x0020	; Compare HL to DE
@@ -73,17 +74,19 @@ pBANKCTL	EQU		0x51
 aROMWINDOW	EQU		0x4000
 
 ; Keyboard keys
-kBACK	EQU		0x08
+kBS		EQU		0x08
 kESC	EQU		0x1B
 kUP		EQU		0x1E
 kDN		EQU		0x1F
 
 
-; Flash types
-ST EQU 0x01		; SST
-MX EQU 0x02		; Macronix
-MXs EQU 0x03	; Macronix on bad PCB versions with scrambled lines
-
+; Flash chip manufacturer IDs
+;ST_ID		EQU		0x20	; ST M29F512B  - same api as MX
+SST_ID		EQU		0xBF	; SST
+MX_ID		EQU		0xC2	; Macronix
+IFDEF SUPPORT_BAD_PCB
+MXs_ID 		EQU 	0x43	; MX chip on borked PCB design
+ENDIF
 
 ; Build ROM image vs RAM file
 IFDEF ROM	; Header for WP-2 executable ROM image
@@ -145,13 +148,20 @@ ReadKeyboard:
 	JP Z,SerialHandler
 	CP 's'
 	JP Z,SerialHandler
+
+	; Help on either '?' or HELP (F1+1)
 	CP '?'
 	JP Z,DisplayHELP
-	CP '1'		; F1+1 = HELP
-	JP Z,RKHELP	; check F1
-	CP kBACK	; F2+Bksp = EXIT
-	JP Z,RKEXIT	; check F2
+	CP '1'				; F1+1 = HELP
+	JP Z,RKHELP			; check F1
 
+	; Exit on either Esc or EXIT
+	CP kESC
+	JP Z,Exit
+	CP kBS				; F2+BS = EXIT
+	JP Z,RKEXIT			; check F2
+
+	; unconditional loop
 	JP ReadKeyboard
 
 ; got '1', is F1 pressed also?
@@ -160,7 +170,7 @@ RKHELP:
 	JP NZ,DisplayHELP
 	JP ReadKeyboard
 
-; got kBACK, is F2 pressed also?
+; got kBS, is F2 pressed also?
 RKEXIT:
 	BIT 0,L		; F2
 	JP NZ,Exit
@@ -196,6 +206,7 @@ ShowFlashMSG:
 	CALL SETLOC
 	LD HL,FlashMSG
 	CALL STROUT
+;	CALL PrintFlashType
 	CALL GetAnyKey
 	RET
 
@@ -262,13 +273,25 @@ DisplayHELP:
 	JP START
 
 FlashHelp:
-	LD A,(FlashPresent)
+	LD A,(FlashType)
 	CP 0
 	RET Z
 	LD HL,0x0006
 	CALL SETLOC
 	LD HL,HelpMSG6
 	CALL STROUT
+	CALL PrintFlashType
+	RET
+
+PrintFlashType:
+	LD A,' '
+	CALL CHAROUT
+	LD A,'('
+	CALL CHAROUT
+	LD A,(FlashType)
+	CALL Hex2SCR
+	LD A,')'
+	CALL CHAROUT
 	RET
 
 ; Add 0x80 to address pointer
@@ -618,7 +641,7 @@ AsciiInv:
 	RET
 
 ERASEFLASH:
-	LD A,(FlashPresent)
+	LD A,(FlashType)
 	CP 0
 	JP Z,START
 	CALL DrawTitle
@@ -649,10 +672,6 @@ EF1:
 	LD A,0x10
 	CALL FlashPreamble
 w4fe:
-;	LD HL,200	; forced pause for debugging
-;	CALL WAIT
-;	LD HL,'.'	; progress dots, never loops enough
-;	CALL CHAROUT
 	LD A,(aROMWINDOW)
 	LD B,A
 	LD A,(aROMWINDOW)
@@ -673,39 +692,36 @@ TestForFlash: ; CFI query
 	LD A,0x90
 	CALL FlashPreamble
 	LD A,(aROMWINDOW)
-	CP 0xBF
-	JP NZ,NotSST
-	LD A,ST
-	LD (FlashType),A
-	JP SST
+	CP SST_ID	; detect SST
+	JP Z,TF2
+	CP MX_ID	; detect Macronix
+	JP Z,TF2
+;	CP ST_ID	; detect ST (old 64k)
+;	JP Z,TF2
 
-NotSST:
-	LD A,0x90
-	CALL FlashPreambleMX
-	LD A,(aROMWINDOW)
-	CP 0xC2 ; test for MX Flash
-	JP NZ,NotMX
-	LD A,MX
-	LD (FlashType),A
-	JP SST
 
-NotMX:
+; Try MX chip on borked PCB
+IFDEF SUPPORT_BAD_PCB
 	LD A,0x09
 	CALL FlashPreambleMXswapped
 	LD A,(aROMWINDOW)
-	CP 0x43 ; test for MX Flash
-	JP NZ,noFlash
-	LD A,MXs
-	LD (FlashType),A
+	CP MXs_ID
+	JP Z,TF2
+ENDIF
 
-SST:
+	; no flash found
+	XOR A
+
+TF2:
+	; remember whaever we found
+	LD (FlashType),A	; store the finding
+	CP 0
+	JP Z,TFend			; skip if no flash
 	LD A,0xF0
-	CALL FlashPreamble
-	LD A,1
-	LD (FlashPresent),A
+	CALL FlashPreamble	; reset the chip
 	CALL ShowFlashMSG
 
-noFlash:
+TFend:
 	POP AF
 	OUT (pBANKCTL),A ; restore current bank
 	RET
@@ -715,19 +731,24 @@ FlashPreamble: ; command in A
 	PUSH AF
 
 	LD A,(FlashType)
-	CP MX
+	CP MX_ID
 	JP Z,UseMXFlashPreamble
-	LD A,(FlashType)
-	CP MXs
+;	CP ST_ID
+;	JP Z,UseMXFlashPreamble
+IFDEF SUPPORT_BAD_PCB
+	CP MXs_ID
 	JP Z,UseMXFlashPreambleSwapped
+ENDIF
 	JP UseSSTFlashPreamble
 
 UseMXFlashPreamble:
 	POP AF
 	JP FlashPreambleMX
+IFDEF SUPPORT_BAD_PCB
 UseMXFlashPreambleSwapped:
 	POP AF
 	JP FlashPreambleMXswapped
+ENDIF
 UseSSTFlashPreamble:
 	POP AF
 
@@ -779,6 +800,7 @@ FlashPreambleMX: ; command in A
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Address 0x02AA = 0xA214 = Bank 2, 0x6214
 ;Address 0x0555 = 0x5928 = Bank 1, 0x5928
+IFDEF SUPPORT_BAD_PCB
 FlashPreambleMXswapped: ; command in A
 	PUSH BC
 
@@ -800,6 +822,7 @@ FlashPreambleMXswapped: ; command in A
 
 	POP BC
 	RET
+ENDIF
 
 SerialHandler: ; pass control over to the serial port for flash erase/writing
 	CALL DrawTitle
@@ -816,11 +839,13 @@ SH1:
 	CALL CHARSENSE
 	JP Z,SH1 ; no data from keyboard, loop
 
-	; Key pressed
-	BIT 0,L		; F2?
-	JP Z,SH1	; else loop
-	CP kBACK	; also Del/Bksp?
-	JP Z,START	; then exit serial mode
+	; Key pressed - exit loop if Esc or EXIT (F2+BS)
+	CP kESC		; ESC?
+	JP Z,START	; yes, quit
+	CP kBS		; no, BS?
+	JP NZ,SH1	; no, loop
+	BIT 0,L		; yes, also F2?
+	JP NZ,START	; yes, quit
 	JP SH1		; loop
 
 SerialDataRX:
@@ -1007,23 +1032,20 @@ Buffer:
 	DB '0'
 	DB '0'
 
-FlashPresent:
-	DB 0
-
 AddressMSG:
 	DB "Address?",0
 
 PortMSG:
-	DB "Port?   ",0
+	DB "Port?",0
 
 DataMSG:
-	DB "Data?   ",0
+	DB "Data?",0
 
 FlashMSG:
 	DB "Writable flash card detected, enabling flash functions.",0
 
 EraseMSG:
-	DB "Are you sure you want to erase the flash card? (y/N) ",0
+	DB "Are you sure you want to erase the flash card? (y/N)",0
 
 ErasingMSG:
 	DB "Erasing...",0
@@ -1031,7 +1053,6 @@ ErasingMSG:
 SerialMSG:
 	DB "Serial Interface Active (9600,8n1)",0
 
-; max 7 lines, 1st line is already drawn
 HelpMSG1:
 	DB "S - Serial interface mode",0
 HelpMSG2:
@@ -1064,6 +1085,6 @@ AppName:
 	DB "MemUtil",0
 
 AppVer:
-	DB "v1.1",0
+	DB "v1.2",0
 
 PRGEND:

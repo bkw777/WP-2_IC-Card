@@ -6,7 +6,8 @@ PR = $(NAME).PR
 PI = $(NAME).PI
 
 Z80ASM = z88dk-z80asm
-ZFLAGS := # -v
+FLAGS := -DSUPPORT_BAD_PCB  # -v
+# -DSUPPORT_BADPCB  include the code to support the bad versions of the PCB with the scrambled address lines.
 
 # PI output crashes on WP-2
 all: PR # PI
@@ -18,12 +19,12 @@ PR: $(PR)
 PI: $(PI)
 
 %.PR: %.asm
-	$(Z80ASM) $(ZFLAGS) -b -o=$@ $<
+	$(Z80ASM) $(FLAGS) -b -o=$@ $<
 	@rm *.o
 	@ls -l $@
 
 %.PI: %.asm
-	$(Z80ASM) $(ZFLAGS) -DROM -b -o=$@ $<
+	$(Z80ASM) $(FLAGS) -DROM -b -o=$@ $<
 	@rm *.o
 	@ls -l $@
 
