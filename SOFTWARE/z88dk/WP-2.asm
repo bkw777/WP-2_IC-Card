@@ -115,7 +115,7 @@ ORG aROMWINDOW	; rom bank window
 DB "PI"			; ID
 DW 0			; reserved
 DB 0x0F			; bank number (15-31), 0x0F = first 16k of rom ic card
-DB START		; entry addr
+DW START		; entry addr ; error in service manual, says DB
 DW 0			; reserved
 
 ELSE		; Header for WP-2 executable RUN file
