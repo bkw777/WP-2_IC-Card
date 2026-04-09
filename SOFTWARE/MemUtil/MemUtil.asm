@@ -1,10 +1,22 @@
 ; MemUtil 1.0 - Brian K. White
 ; Forked from HexViewer 2.2 - Ben Grimmett
-; Compile to PR (RUN File):  z88dk-z80asm -v -b -o=foo.PR foo.asm
-; Compile to PI (ROM Image): z88dk-z80asm -v -DROM -b -o=foo.PI foo.asm
+; Compile to RUN File:  z88dk-z80asm -v -b -o=foo.PR foo.asm
+; Compile to ROM Image: z88dk-z80asm -v -DROM -b -o=foo.PI foo.asm
 ;
 ; FIXME:  ROM image output is not correct? TODO: look at MENU.PI
-; TDOD: test if seperate SST vs MX access commands really needed
+; TODO: figure out the limits/rules about the file size
+; TODO: figure out how to do "sub run files" to get past the size limit
+;
+; MYSTERY
+; When the output file grows past ~2024 bytes there is some sort of
+; truncation or corruption when the OS loads the file into ram to run.
+; The help screen text is truncated mid way and ends with 3 bytes of some kind
+; of binary, and it's always the same 3 bytes. Yet, the other strings that come
+; later in the asm source are still present? Only HelpMSG# gets corrupted.
+; And the program still runs and works.
+; I think the 3 bytes are the same that always appear after the padding 0x1A's
+; at the end of the file in ram ...1A 1A 1A 46 F9 03
+;
 
 ; WP-2 System ROM Calls
 ;CMPHLDE			EQU		0x0020	; Compare HL to DE
@@ -26,10 +38,6 @@ CLS				EQU		0x011E	; Clear screen
 ;PRNSTATUS		EQU		0x0133	; Check printer status
 ;READSLOT		EQU		0x0160	; Read data in a slot
 ;CHGSLOT			EQU		0x0166	; Change slots
-;CALLFAR						; Call a routine in another slot
-;  RST 0x30
-;  DB n   ; slot#
-;  DW nn  ; addr
 RSINIT			EQU		0x0140	; Initialize RS232C (Baud rate etc...)
 GETDATALEN		EQU		0x0143	; Get the length of effective data in aux-buffer
 SENDDATA		EQU		0x0146	; Output one byte of data to RS232C
@@ -72,53 +80,83 @@ pBANKCTL	EQU		0x51
 
 ; Memory Addresses
 aROMWINDOW	EQU		0x4000
+szROMBANK	EQU		0x4000
+aRAMWINDOW	EQU		0x8000
+szRAMBANK	EQU		0x8000
+aWORKAREA	EQU		0xAC00
+
+; RST Hooks
+;hBREAK		EQU		0x28	; debug hook table break pointer
+;hCALLFAR	EQU		0x30	; Call a routine in another slot
+;	RST hCALLFAR
+;	DB slot
+;	DW addr
 
 ; Keyboard keys
+kTAB	EQU		0x0B
 kBS		EQU		0x08
+kENTER	EQU		0x0D
 kESC	EQU		0x1B
+kRIGHT	EQU		0x1C
+kLEFT	EQU		0x1D
 kUP		EQU		0x1E
-kDN		EQU		0x1F
+kDOWN	EQU		0x1F
+kDEL	EQU		0x7F
+
+; Keyboard modifiers (L bits after CHARSENSE or CHARGET)
+mF2			EQU		0	; BIT mF2,L NZ = F2 is pressed
+mF1			EQU		1	; BIT mF1,L NZ = F1 is pressed
+mCTRL		EQU		2	; BIT mCTRL,L NZ = Ctrl is pressed
+mRSHIFT		EQU		3	; BIT mRSHIFT,L NZ = Right Shift is pressed
+mLSHIFT		EQU		4	; BIT mLSHIFT,L NZ = Left Shift is pressed
+mCAPSLOCK	EQU		5	; BIT mCAPSLOCK,L NZ = Caps Lock is on
+mGRPH		EQU		6	; BIT mGRPH,L NZ = either GRPH or CODE mode is active
+mCODE		EQU		7	; If mGRPH, Then: BIT mCODE,L Z = GRPH, NZ = CODE
 
 
 ; Flash chip manufacturer IDs
-;ST_ID		EQU		0x20	; ST M29F512B  - same api as MX
-SST_ID		EQU		0xBF	; SST
-MX_ID		EQU		0xC2	; Macronix
-IFDEF SUPPORT_BAD_PCB
-MXs_ID 		EQU 	0x43	; MX chip on borked PCB design
-ENDIF
+; 0x5555/0x2AAA actually works on all, 0x555/0x2AA does not
+ID_SST		EQU		0xBF	; SST	SST39SF020A-70-4C-TU		5555:AA	2AAA:55
+							; Greenliant GLS29EE010-70-4C-WHE	5555:AA	2AAA:55
+ID_MX		EQU		0xC2	; MXIC	MX29F040CTI-70G				555:AA	2AA:55
+ID_ST		EQU		0x20	; STM	M29F512B-70NZ				555:AA	2AA:55
+ID_AM		EQU		0x01	; AMD	AM29F010-70EC				5555:AA	2AAA:55
+ID_AT		EQU		0x1F	; Atmel	AT29C010A-70TC				5555:AA	2AAA:55
+							; Atmel	AT28C010-12TU				5555:AA	2AAA:55
+ID_MXs 		EQU 	0x43	; not a real mfr id, MX chip on borked PCB design
 
-; Build ROM image vs RAM file
+;------------------------------------------------------------------------------
+; HEADER
+;------------------------------------------------------------------------------
 IFDEF ROM	; Header for WP-2 executable ROM image
 
 ORG aROMWINDOW	; rom bank window start
 DB "PI"			; ID
 DW 0			; reserved
 DB 0x0F			; bank number (15-31), bank 15 is the first 16k of the rom ic 
-DB PRGSTART		; entry addr
+DB START		; entry addr
 DW 0			; reserved
 
 ELSE		; Header for WP-2 executable RUN-file
 
-ORG 0xAC00-8	; application work area
+ORG aWORKAREA-8	; application work area
 DB "PR"			; ID
-DW PRGEND - PRGSTART + 1	; length
-DW PRGSTART		; entry addr
-DW 0			; located addr (0=here)
+DW PRGEND-PRGTOP+1	; length
+DW START		; entry addr
+DW 0			; located addr (0="here")
 
 ENDIF
 
-
-PRGSTART:
-	CALL DrawTitle
-	CALL KILLBUF
-	CALL TestForFlash
-	JP DisplayHELP
-
+;------------------------------------------------------------------------------
+; BODY
+;------------------------------------------------------------------------------
+PRGTOP:
 START:
+	CALL TestForFlash
+
+MAIN:
 	CALL DisplayRAM
 
-; Command line interpreter of sorts...
 ReadKeyboard:
 	CALL KILLBUF
 	CALL CHARGET
@@ -126,7 +164,7 @@ ReadKeyboard:
 
 	CP kUP
 	JP Z,PREVIOUS
-	CP kDN
+	CP kDOWN
 	JP Z,NEXT
 	CP 'G'
 	JP Z,GOTO
@@ -161,7 +199,6 @@ ReadKeyboard:
 	CP kBS				; F2+BS = EXIT
 	JP Z,RKEXIT			; check F2
 
-	; unconditional loop
 	JP ReadKeyboard
 
 ; got '1', is F1 pressed also?
@@ -173,14 +210,17 @@ RKHELP:
 ; got kBS, is F2 pressed also?
 RKEXIT:
 	BIT 0,L		; F2
-	JP NZ,Exit
-	JP ReadKeyboard
-
+	JP Z,ReadKeyboard
+	; fall through to Exit:
 ; Return to the OS
 Exit:
 	XOR A
 	OUT (pBANKCTL),A
+IFDEF ROM
+	RET Z
+ELSE
 	RET
+ENDIF
 
 DrawTitle:
 	CALL CLS
@@ -199,15 +239,6 @@ GetAnyKey:
 	CALL STROUT
 	CALL CHARGET
 	CALL KILLBUF
-	RET
-
-ShowFlashMSG:
-	LD HL,0x0001
-	CALL SETLOC
-	LD HL,FlashMSG
-	CALL STROUT
-;	CALL PrintFlashType
-	CALL GetAnyKey
 	RET
 
 ; Go to the help screen
@@ -246,31 +277,26 @@ DisplayHELP:
 
 	CALL FlashHelp
 
-;	LD HL,0x0006
-;	CALL SETLOC
-;	LD HL,HelpMSG6
-;	CALL STROUT
-
 	LD HL,0x0007
-	CALL SETLOC
-	LD HL,ExitKey
-	CALL STROUT
-	LD HL,0x0907
 	CALL SETLOC
 	LD HL,ExitLabel
 	CALL STROUT
 
-	LD HL,0x2307
+	LD HL,0x2407
 	CALL SETLOC
-	LD HL,HelpKey
-	CALL STROUT
-	LD HL,0x2907
-	CALL SETLOC
+	LD A,'?'
+	CALL CHAROUT
+	LD A,' '
+	CALL CHAROUT
+	LD A,'-'
+	CALL CHAROUT
+	LD A,' '
+	CALL CHAROUT
 	LD HL,HelpLabel
 	CALL STROUT
 
 	CALL GetAnyKey
-	JP START
+	JP MAIN
 
 FlashHelp:
 	LD A,(FlashType)
@@ -300,7 +326,7 @@ NEXT:
 	LD DE,0x80
 	ADD HL,DE
 	LD (AddressPointer),HL
-	JP START
+	JP MAIN
 
 ; Subtract 0x80 from address pointer
 PREVIOUS:
@@ -309,7 +335,7 @@ PREVIOUS:
 	OR A
 	SBC HL,DE
 	LD (AddressPointer),HL
-	JP START
+	JP MAIN
 
 ; Go to a user requested memory location
 GOTO:
@@ -333,7 +359,7 @@ GOTO:
 
 	LD A,1
 	CALL SETCURSORONOFF
-	JP START
+	JP MAIN
 
 ; Write a value to an IO port
 WRITEPORT:
@@ -372,10 +398,11 @@ WRITEPORT:
 	CALL Get8bitFromUser
 
 	OUT (C),A
+	LD (TempBank),A
 
 	LD A,1
 	CALL SETCURSORONOFF
-	JP START
+	JP MAIN
 
 ; Write a value to a memory location
 WRITERAM:
@@ -413,6 +440,11 @@ WRITERAM:
 	POP HL
 	PUSH AF
 
+	; TODO test actual proper conditions before deciding flash write:
+	; * addr >= aRomBank
+	; * addr < aRomBank + lRomBank
+	; * current bank >= 0F
+	; * current bank <= 1F
 	; Check if HL < 0x8000
 	LD A,H
 	CP 0x80
@@ -422,7 +454,7 @@ WRITERAM:
 	LD (HL),A
 	LD A,1
 	CALL SETCURSORONOFF
-	JP START
+	JP MAIN
 
 Write2Flash:
 	POP AF
@@ -431,14 +463,45 @@ Write2Flash:
 	PUSH AF
 
 	LD A,0xA0
-	CALL FlashPreamble
-	POP AF
-	POP HL
-	LD (HL),A
+	CALL FlashPreamble ; start flash write cmd
+
+	LD A,(TempBank)
+	OUT (pBANKCTL),A ; switch to flash bank
+
+	POP AF ; restore data byte to A
+	POP HL ; restore addr to HL
+	LD (HL),A	; write data to addr
+
+; works, just not needed
+;	LD	B,0xFF ; abort counter
+;	LD C,A
+;wffw: ; wait for flash complete
+;	LD A,(HL)
+;	CP C
+;	JP Z,wffe
+;	DJNZ wffe	; if we tried 256 times then give up
+;;	LD A,1
+;;	CALL WAIT	; sleep 100ms
+;	JP wffw
+;wffe:
 
 	LD A,1
 	CALL SETCURSORONOFF
-	JP START
+
+; works, just not needed now
+;----DEBUG--------------
+; show how many loops it took to write
+; ...answer: always 01
+;	LD HL,0x4806
+;	CALL SETLOC
+;	LD A,0xFF
+;	SUB B
+;	CALL Hex2SCR
+;	CALL CHARGET
+;	CALL KILLBUF
+;-----------------------
+
+	JP MAIN
 
 ; Ascii Hex input from keyboard, Returns in HL
 Get16bitFromUser:
@@ -575,12 +638,12 @@ DisplayRAM:
 	LD HL,AppVer
 	CALL STROUT
 
-	LD HL,0x4A07
+	LD HL,0x4907
 	CALL SETLOC
-	LD HL,HelpKey
-	CALL STROUT
-	LD HL,0x4A06
-	CALL SETLOC
+	LD A,'?'
+	CALL CHAROUT
+	LD A,'-'
+	CALL CHAROUT
 	LD HL,HelpLabel
 	CALL STROUT
 
@@ -643,7 +706,7 @@ AsciiInv:
 ERASEFLASH:
 	LD A,(FlashType)
 	CP 0
-	JP Z,START
+	JP Z,MAIN
 	CALL DrawTitle
 	LD HL,0x0001
 	CALL SETLOC
@@ -656,7 +719,7 @@ ERASEFLASH:
 	CP A,'y'
 	JP Z,EF1
 	CP A,'Y'
-	JP NZ,START
+	JP NZ,MAIN
 EF1:
 	LD HL,0x0002
 	CALL SETLOC
@@ -683,8 +746,10 @@ w4fe:
 
 	POP AF
 	OUT (pBANKCTL),A ; restore current bank
-	JP START
+	JP MAIN
 
+; We don't actually do anything different depending on chip_id any more
+; except to overall enable/disable writing if we recognize any flash at all.
 TestForFlash: ; CFI query
 	IN A,(pBANKCTL) ; backup current bank
 	PUSH AF
@@ -692,22 +757,16 @@ TestForFlash: ; CFI query
 	LD A,0x90
 	CALL FlashPreamble
 	LD A,(aROMWINDOW)
-	CP SST_ID	; detect SST
+	CP ID_SST	; SST / Greenliant / Microchip
 	JP Z,TF2
-	CP MX_ID	; detect Macronix
+	CP ID_MX	; Macronix
 	JP Z,TF2
-;	CP ST_ID	; detect ST (old 64k)
-;	JP Z,TF2
-
-
-; Try MX chip on borked PCB
-IFDEF SUPPORT_BAD_PCB
-	LD A,0x09
-	CALL FlashPreambleMXswapped
-	LD A,(aROMWINDOW)
-	CP MXs_ID
+	CP ID_ST	; STMicro
 	JP Z,TF2
-ENDIF
+	CP ID_AM	; AMD
+	JP Z,TF2
+	CP ID_AT	; Atmel
+	JP Z,TF2
 
 	; no flash found
 	XOR A
@@ -716,57 +775,38 @@ TF2:
 	; remember whaever we found
 	LD (FlashType),A	; store the finding
 	CP 0
-	JP Z,TFend			; skip if no flash
+	JP Z,TFend			; skip the rest if no flash
 	LD A,0xF0
-	CALL FlashPreamble	; reset the chip
-	CALL ShowFlashMSG
-
+	CALL FlashPreamble	; reset the chip out of command mode
 TFend:
 	POP AF
 	OUT (pBANKCTL),A ; restore current bank
 	RET
 
 FlashPreamble: ; command in A
+	PUSH BC	; stash B
+	LD B,A	; save COMMAND in B
+	;LD C,pBANKCTL ; we never use it between here & pop?
 
-	PUSH AF
+	; flash command sequence = 0x5555<0xAA, 0x2AAA<0x55, 0x5555<COMMAND
+	; bank@ic = [addr@ic/banklen]   (division without remainder)
+	; bank = bank@ic + 0x0F
+	; addr = addr@ic - (bank@ic * banklen) + bankwindowaddr
+	; addr = addr@ic - (bank@ic * 0x4000) + 0x4000
 
-	LD A,(FlashType)
-	CP MX_ID
-	JP Z,UseMXFlashPreamble
-;	CP ST_ID
-;	JP Z,UseMXFlashPreamble
-IFDEF SUPPORT_BAD_PCB
-	CP MXs_ID
-	JP Z,UseMXFlashPreambleSwapped
-ENDIF
-	JP UseSSTFlashPreamble
-
-UseMXFlashPreamble:
-	POP AF
-	JP FlashPreambleMX
-IFDEF SUPPORT_BAD_PCB
-UseMXFlashPreambleSwapped:
-	POP AF
-	JP FlashPreambleMXswapped
-ENDIF
-UseSSTFlashPreamble:
-	POP AF
-
-	PUSH BC
-
-	LD B,A
-	LD C,pBANKCTL
-	; The flash unlock sequence is 5555<AA, 2AAA<55, 5555<90h to read Hardware ID
-	LD A,0x10
+	; write 0xAA to addr 0x5555
+	LD A,0x10 ; addr 0x5555/0x4000 = bank 1 + 0x0F = 0x10
 	OUT (pBANKCTL),A ; set flash bank 1
 	LD A,0xAA
-	LD (0x5555),A
+	LD (0x5555),A ; addr 0x5555 - (1*0x4000) + 0x4000 = same 0x5555
 
-	LD A,0x0F
+	; write 0x55 to addr 0x2AAA
+	LD A,0x0F ; addr 0x2AAA/0x4000 = bank 0 + 0x0F = 0x0F
 	OUT (pBANKCTL),A ; set flash bank 0
 	LD A,0x55
-	LD (0x6AAA),A
+	LD (0x6AAA),A ; addr 0x2AAA - (0*0x4000) + 0x4000 = 0x6AAA
 
+	; write COMMAND (saved in B) to addr 0x5555
 	LD A,0x10
 	OUT (pBANKCTL),A ; set flash bank 1
 	LD A,B
@@ -775,64 +815,22 @@ UseSSTFlashPreamble:
 	POP BC
 	RET
 
-FlashPreambleMX: ; command in A
-	PUSH BC
-
-	LD B,A
-	LD C,pBANKCTL
-	; The flash unlock sequence is 555<AA, 2AA<55, 555<90h to read Hardware ID
-	LD A,0x0F
-	OUT (pBANKCTL),A ;set flash bank 0
-	LD A,0xAA
-	LD (0x4555),A
-
-	LD A,0x55
-	LD (0x42AA),A
-
-	LD A,B
-	LD (0x4555),A
-
-	POP BC
-	RET
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; PCB versions 007-030 had scrambled address & data lines.
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;Address 0x02AA = 0xA214 = Bank 2, 0x6214
-;Address 0x0555 = 0x5928 = Bank 1, 0x5928
-IFDEF SUPPORT_BAD_PCB
-FlashPreambleMXswapped: ; command in A
-	PUSH BC
-
-	LD B,A
-	LD C,pBANKCTL
-	; The flash unlock sequence is 555<AA, 2AA<55, 555<90h to read Hardware ID
-	LD A,0x10
-	OUT (pBANKCTL),A ;set flash bank 1
-	LD A,0x55
-	LD (0x6214),A
-	LD A,0x11
-	OUT (pBANKCTL),A ;set flash bank 2
-	LD A,0xAA
-	LD (0x5928),A
-	LD A,0x10
-	OUT (pBANKCTL),A ;set flash bank 1
-	LD A,B
-	LD (0x6214),A
-
-	POP BC
-	RET
-ENDIF
-
-SerialHandler: ; pass control over to the serial port for flash erase/writing
+; Pass control over to the serial port for flash erase/writing
+SerialHandler:
 	CALL DrawTitle
 	LD HL,0x1503
 	CALL SETLOC
 	LD HL,SerialMSG
 	CALL STROUT
 
-	LD HL,0x084C ; 9600 bps, 8n1, no xon, timer enabled
+	; RS-232 SETUP
+	; TODO: the user & service manuals both say there is no RTS/CTS or DSR/DTR,
+	; but the RTS, CTS, DTR, and DSR are all wired up to IC9 (uPD71051, 8251-clone).
+	; So presumably it should be possible to manually program IC9 to enable RTS/CTS.
+	; TODO: test if maybe it's already silently doing RTS/CTS by default.
+	LD HL,0x084C ; 9600, 8n1, no xonoff, timer enabled
 	CALL RSINIT
+
 SH1:
 	CALL GETDATA
 	JP NZ,SerialDataRX
@@ -841,11 +839,11 @@ SH1:
 
 	; Key pressed - exit loop if Esc or EXIT (F2+BS)
 	CP kESC		; ESC?
-	JP Z,START	; yes, quit
+	JP Z,MAIN	; yes, quit
 	CP kBS		; no, BS?
 	JP NZ,SH1	; no, loop
 	BIT 0,L		; yes, also F2?
-	JP NZ,START	; yes, quit
+	JP NZ,MAIN	; yes, quit
 	JP SH1		; loop
 
 SerialDataRX:
@@ -853,7 +851,7 @@ SerialDataRX:
 	CP 'E' ; erase command
 	JP Z,SerialErase
 	CP 'Q' ; Quit Serial handler
-	JP Z,START
+	JP Z,MAIN
 	CP 'R' ; Read Mem address
 	JP Z,ReadMemAddress
 	CP 'W' ; write Mem address
@@ -864,7 +862,7 @@ SerialDataRX:
 	JP Z,ReadPort51
 	LD A,'?' ; Nack
 	CALL SENDDATA
-	JP START
+	JP MAIN
 
 SerialErase:
 	IN A,(pBANKCTL) ; backup current bank
@@ -893,7 +891,12 @@ Sw4fe:
 
 WritePort51:
 	CALL GETDATA
-	JP Z,WritePort51
+	JP Z,WritePort51 ; loop immediate
+;	JP NZ,wp51a      ; sleep 100ms then loop
+;	LD A,1
+;	CALL WAIT
+;	JP WritePort51
+;wp51a:
 	OUT (pBANKCTL),A
 	LD (TempBank),A
 	LD A,1 ; ack
@@ -948,6 +951,7 @@ WriteMemAddress:
 	LD A,1 ; ack
 	CALL SENDDATA
 	JP SH1
+
 WriteFlashAddress:
 
 	POP AF
@@ -961,14 +965,18 @@ WriteFlashAddress:
 	LD A,(TempBank)
 	OUT (pBANKCTL),A
 	POP AF
-	POP hl
+	POP HL
 	LD (HL),A
 
-	LD B,A
-wffc: ; wait for flash complete
+	LD B,0xFF ; abort counter
+	LD C,A
+wfa1: ; wait for flash complete
 	LD A,(HL)
-	CP B
-	JP NZ,wffc
+	CP C
+	JP Z,wfa2 ; write done
+	DJNZ wfa2 ; abort after 256 tries
+	JP wfa1 ; retry
+wfa2:
 	LD A,1 ;ack
 	CALL SENDDATA
 	JP SH1
@@ -1041,9 +1049,6 @@ PortMSG:
 DataMSG:
 	DB "Data?",0
 
-FlashMSG:
-	DB "Writable flash card detected, enabling flash functions.",0
-
 EraseMSG:
 	DB "Are you sure you want to erase the flash card? (y/N)",0
 
@@ -1056,22 +1061,19 @@ SerialMSG:
 HelpMSG1:
 	DB "S - Serial interface mode",0
 HelpMSG2:
-	DB "G - Go to address rom window: 4000-7FFF)",0
+	DB "G - Go to address (rom bank window: 4000-7FFF)",0
 HelpMSG3:
 	DB "W - Write a byte to a memory address",0
 HelpMSG4:
-	DB "P - Write to I/O port (ROM IC Card banks: port 51, data 0F-1F)",0
+	DB "P - Write to I/O port (set rom ic card bank: port 51 data 0F-1F)",0
 HelpMSG5:
-	DB "Up/Dn - Go -/+ 0x80",0
+	DB "Up/Dn - Move by 0x80",0
 HelpMSG6:
 	DB "E - Erase Flash IC Card",0
 
-ExitKey:
-	DB "F2+Bksp",0
 ExitLabel:
-	DB "EXIT",0
-HelpKey:
-	DB "F1+1",0
+	DB "Cncl - EXIT",0
+
 HelpLabel:
 	DB "HELP",0
 
@@ -1085,6 +1087,6 @@ AppName:
 	DB "MemUtil",0
 
 AppVer:
-	DB "v1.2",0
+	DB "v1.4",0
 
 PRGEND:
