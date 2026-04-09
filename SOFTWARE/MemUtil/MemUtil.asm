@@ -209,13 +209,13 @@ ENDIF
 
 ; got '1', is F1 pressed also?
 RKHELP:
-	BIT 1,L 	; F1
+	BIT mF1,L 	; F1
 	JP NZ,DisplayHELP
 	JP ReadKeyboard
 
 ; got kBS, is F2 pressed also?
 RKEXIT:
-	BIT 0,L		; F2
+	BIT mF2,L		; F2
 	JP Z,ReadKeyboard
 	; fall through to Exit:
 ; Return to the OS
@@ -671,7 +671,7 @@ SH1:
 	JP Z,MAIN	; yes, quit
 	CP kBS		; no, BS?
 	JP NZ,SH1	; no, loop
-	BIT 0,L		; yes, also F2?
+	BIT mF2,L	; yes, also F2?
 	JP NZ,MAIN	; yes, quit
 	JP SH1		; loop
 
