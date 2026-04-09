@@ -29,7 +29,7 @@ SETCURSORONOFF	EQU		0x010F	; Set cursor on/off
 SETCURSORTYPE	EQU		0x0112	; Set cursor type
 ;SETCOLOR		EQU		0x0115	; Set character color
 CHAROUT			EQU		0x0118	; Output character to console, no esc seq
-;PUTCHAR			EQU		0x01A3	; Output character to console, support esc seq
+;PUTCHAR		EQU		0x01A3	; Output character to console, support esc seq
 STROUT			EQU		0x011B	; Output string to console, no esc seq
 CLS				EQU		0x011E	; Clear screen
 ;BEEP			EQU		0x0121	; Beep a buzzer
@@ -37,20 +37,20 @@ CLS				EQU		0x011E	; Clear screen
 ;PRNOUT			EQU		0x0130	; Output one byte of data to printer
 ;PRNSTATUS		EQU		0x0133	; Check printer status
 ;READSLOT		EQU		0x0160	; Read data in a slot
-;CHGSLOT			EQU		0x0166	; Change slots
+;CHGSLOT		EQU		0x0166	; Change slots
 RSINIT			EQU		0x0140	; Initialize RS232C (Baud rate etc...)
 GETDATALEN		EQU		0x0143	; Get the length of effective data in aux-buffer
 SENDDATA		EQU		0x0146	; Output one byte of data to RS232C
 GETDATA			EQU		0x0149	; Get data from the aux-buffer
 RSCLOSE			EQU		0x014C	; Close RS232C
 ;TAPEIN			EQU		0x0150	; Read data from tape
-;TAPEOUT			EQU		0x0153	; Write data to tape
-;MOTORON			EQU		0x0156	; Motor on
+;TAPEOUT		EQU		0x0153	; Write data to tape
+;MOTORON		EQU		0x0156	; Motor on
 ;MOTOROFF		EQU		0x0159	; Motor off
 ;SYNCREAD		EQU		0x0169	; Read Sync
 ;SYNCWRITE		EQU		0x016C	; Write Sync
 ;LINEIN			EQU		0x01A6	; Cooked line input
-;LINEIN2			EQU		0x01AC	; Cooked line input with default string
+;LINEIN2		EQU		0x01AC	; Cooked line input with default string
 ;UNGETFORLINP	EQU		0x01A9	; Unget Char for LINEIN and LINEIN2
 ;MALLOC			EQU		0x0170	; Memory allocation
 ;MCHGSIZE		EQU		0x0173	; Changes the size of mALLOCed BLOCK
@@ -66,14 +66,14 @@ RSCLOSE			EQU		0x014C	; Close RS232C
 ;DELETE			EQU		0x0194	; Delete a file
 ;RENAME			EQU		0x0197	; Rename a file
 ;FORMAT			EQU		0X019A	; Format a disk-device
-;DEVROOM			EQU		0x01C1	; Get devices rest size (remaining 128-byte blocks)
+;DEVROOM		EQU		0x01C1	; Get devices rest size (remaining 128-byte blocks)
 ;SEEK			EQU		0x01BE	; Seek file pointer - only ram disk & ic card ram disk
 ;WAIT			EQU		0x01A0	; Wait for fixed time in 0.1s
 ;RUNIC			EQU		0x01AF	; Run IC card program
-;RUNFILE			EQU		0x01B2	; Run a program file
+;RUNFILE		EQU		0x01B2	; Run a program file
 ;POFFCOUNTPOINTER	EQU	0x01B5	; Get power off counter pointer
 ;SETBTYPE		EQU		0x01B8	; Set battery type
-;GETWORK			EQU		0x01BB	; Get work area
+;GETWORK		EQU		0x01BB	; Get work area
 
 ; I/O Ports
 pBANKCTL	EQU		0x51
@@ -209,13 +209,13 @@ ENDIF
 
 ; got '1', is F1 pressed also?
 RKHELP:
-	BIT mF1,L 	; F1
+	BIT mF1,L			; F1
 	JP NZ,DisplayHELP
 	JP ReadKeyboard
 
 ; got kBS, is F2 pressed also?
 RKEXIT:
-	BIT mF2,L		; F2
+	BIT mF2,L			; F2
 	JP Z,ReadKeyboard
 	; fall through to Exit:
 ; Return to the OS
