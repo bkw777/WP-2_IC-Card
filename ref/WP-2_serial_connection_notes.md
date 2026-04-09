@@ -1,4 +1,4 @@
-##use telcom as a terminal to login to linux
+## use telcom as a terminal to login to linux
 ```
 $ sudo stty -F /dev/ttyUSB0 9600 cs8 -parenb -cstopb ixoff ixon -ixany
 $ sudo agetty -8 -L ttyUSB0 9600 vt52
@@ -13,10 +13,10 @@ XON/XOFF: Enable
 Printer echo: off  
 Duplex: Full
 
-##use tpdd emulator to transfer files
+## use tpdd emulator to transfer files
 `$ dl -v -c wp2` (Ctrl+C to exit)
 
-##run or copy an executable file from disk
+## run or copy an executable file from disk
 * On PC: Start a tpdd emulator
 * On WP-2: Press `FILES` (`F2`+`=`) -> `DISKETTE` -> arrows to hightlight foo.PR
   * To run directly from disk: press `RUN` (`F2`+`7`)
