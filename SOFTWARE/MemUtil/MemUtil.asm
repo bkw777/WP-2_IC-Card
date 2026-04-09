@@ -1,4 +1,4 @@
-; MemUtil 1.0 - Brian K. White
+; MemUtil - Brian K. White
 ; Forked from HexViewer 2.2 - Ben Grimmett
 ; Compile to RUN File:  z88dk-z80asm -v -b -o=foo.PR foo.asm
 ; Compile to ROM Image: z88dk-z80asm -v -DROM -b -o=foo.PI foo.asm
@@ -129,15 +129,17 @@ ID_MXs 		EQU 	0x43	; not a real mfr id, MX chip on borked PCB design
 ; HEADER
 ;------------------------------------------------------------------------------
 IFDEF ROM	; Header for WP-2 executable ROM image
+FLASH		EQU 0
 
 ORG aROMWINDOW	; rom bank window start
 DB "PI"			; ID
 DW 0			; reserved
 DB 0x0F			; bank number (15-31), bank 15 is the first 16k of the rom ic 
-DB START		; entry addr
+DW START		; entry addr  ; Error in service manual, says DB
 DW 0			; reserved
 
 ELSE		; Header for WP-2 executable RUN-file
+FLASH		EQU 1
 
 ORG aWORKAREA-8	; application work area
 DB "PR"			; ID
@@ -152,7 +154,9 @@ ENDIF
 ;------------------------------------------------------------------------------
 PRGTOP:
 START:
+IF FLASH
 	CALL TestForFlash
+ENDIF
 
 MAIN:
 	CALL DisplayRAM
@@ -178,10 +182,12 @@ ReadKeyboard:
 	JP Z,WRITEPORT
 	CP 'p'
 	JP Z,WRITEPORT
+IF FLASH
 	CP 'E'
 	JP Z,ERASEFLASH
 	CP 'e'
 	JP Z,ERASEFLASH
+ENDIF
 	CP 'S'
 	JP Z,SerialHandler
 	CP 's'
@@ -275,7 +281,9 @@ DisplayHELP:
 	LD HL,HelpMSG5
 	CALL STROUT
 
+IF FLASH
 	CALL FlashHelp
+ENDIF
 
 	LD HL,0x0007
 	CALL SETLOC
@@ -297,28 +305,6 @@ DisplayHELP:
 
 	CALL GetAnyKey
 	JP MAIN
-
-FlashHelp:
-	LD A,(FlashType)
-	CP 0
-	RET Z
-	LD HL,0x0006
-	CALL SETLOC
-	LD HL,HelpMSG6
-	CALL STROUT
-	CALL PrintFlashType
-	RET
-
-PrintFlashType:
-	LD A,' '
-	CALL CHAROUT
-	LD A,'('
-	CALL CHAROUT
-	LD A,(FlashType)
-	CALL Hex2SCR
-	LD A,')'
-	CALL CHAROUT
-	RET
 
 ; Add 0x80 to address pointer
 NEXT:
@@ -440,6 +426,7 @@ WRITERAM:
 	POP HL
 	PUSH AF
 
+IF FLASH
 	; TODO test actual proper conditions before deciding flash write:
 	; * addr >= aRomBank
 	; * addr < aRomBank + lRomBank
@@ -449,58 +436,12 @@ WRITERAM:
 	LD A,H
 	CP 0x80
 	JP C,Write2Flash  ; Jump if HL < 0x8000 (carry set means H < 0x80)
+ENDIF
 
 	POP AF
 	LD (HL),A
 	LD A,1
 	CALL SETCURSORONOFF
-	JP MAIN
-
-Write2Flash:
-	POP AF
-	; change this to write to the flash
-	PUSH HL
-	PUSH AF
-
-	LD A,0xA0
-	CALL FlashPreamble ; start flash write cmd
-
-	LD A,(TempBank)
-	OUT (pBANKCTL),A ; switch to flash bank
-
-	POP AF ; restore data byte to A
-	POP HL ; restore addr to HL
-	LD (HL),A	; write data to addr
-
-; works, just not needed
-;	LD	B,0xFF ; abort counter
-;	LD C,A
-;wffw: ; wait for flash complete
-;	LD A,(HL)
-;	CP C
-;	JP Z,wffe
-;	DJNZ wffe	; if we tried 256 times then give up
-;;	LD A,1
-;;	CALL WAIT	; sleep 100ms
-;	JP wffw
-;wffe:
-
-	LD A,1
-	CALL SETCURSORONOFF
-
-; works, just not needed now
-;----DEBUG--------------
-; show how many loops it took to write
-; ...answer: always 01
-;	LD HL,0x4806
-;	CALL SETLOC
-;	LD A,0xFF
-;	SUB B
-;	CALL Hex2SCR
-;	CALL CHARGET
-;	CALL KILLBUF
-;-----------------------
-
 	JP MAIN
 
 ; Ascii Hex input from keyboard, Returns in HL
@@ -703,6 +644,194 @@ AsciiInv:
 	CALL CHAROUT
 	RET
 
+; Pass control over to the serial port for flash erase/writing
+SerialHandler:
+	CALL DrawTitle
+	LD HL,0x1503
+	CALL SETLOC
+	LD HL,SerialMSG
+	CALL STROUT
+
+	; RS-232 SETUP
+	; TODO: the user & service manuals both say there is no RTS/CTS or DSR/DTR,
+	; but the RTS, CTS, DTR, and DSR are all wired up to IC9 (uPD71051, 8251-clone).
+	; So presumably it should be possible to manually program IC9 to enable RTS/CTS.
+	; TODO: test if maybe it's already silently doing RTS/CTS by default.
+	LD HL,0x084C ; 9600, 8n1, no xonoff, timer enabled
+	CALL RSINIT
+
+SH1:
+	CALL GETDATA
+	JP NZ,SerialDataRX
+	CALL CHARSENSE
+	JP Z,SH1 ; no data from keyboard, loop
+
+	; Key pressed - exit loop if Esc or EXIT (F2+BS)
+	CP kESC		; ESC?
+	JP Z,MAIN	; yes, quit
+	CP kBS		; no, BS?
+	JP NZ,SH1	; no, loop
+	BIT 0,L		; yes, also F2?
+	JP NZ,MAIN	; yes, quit
+	JP SH1		; loop
+
+SerialDataRX:
+	; Received Serial byte is in A
+IF FLASH
+	CP 'E' ; erase command
+	JP Z,SerialErase
+ENDIF
+	CP 'Q' ; Quit Serial handler
+	JP Z,MAIN
+	CP 'R' ; Read Mem address
+	JP Z,ReadMemAddress
+	CP 'W' ; write Mem address
+	JP Z,WriteMemAddress
+	CP 'P' ; write port 51
+	JP Z,WritePort51
+	CP 'p' ; read port 51
+	JP Z,ReadPort51
+	LD A,'?' ; Nack
+	CALL SENDDATA
+	JP MAIN
+
+WritePort51:
+	CALL GETDATA
+	JP Z,WritePort51 ; loop immediate
+;	JP NZ,wp51a      ; sleep 100ms then loop
+;	LD A,1
+;	CALL WAIT
+;	JP WritePort51
+;wp51a:
+	OUT (pBANKCTL),A
+	LD (TempBank),A
+	LD A,1 ; ack
+	CALL SENDDATA
+	JP SH1
+
+ReadPort51:
+	IN A,(pBANKCTL)
+	CALL SENDDATA
+	JP SH1
+
+ReadMemAddress:
+	; Wait for 2 bytes in the serial rx buffer
+	CALL GETDATALEN
+	LD A,L
+	CP 2
+	JP NZ,ReadMemAddress
+	CALL GETDATA
+	PUSH AF
+	CALL GETDATA
+	LD L,A
+	POP AF
+	LD H,A
+	LD A,(HL)
+	CALL SENDDATA
+	JP SH1
+
+WriteMemAddress:
+	; Wait for 3 bytes in the serial rx buffer
+	CALL GETDATALEN
+	LD A,L
+	CP 3
+	JP NZ,WriteMemAddress
+	CALL GETDATA
+	PUSH AF
+	CALL GETDATA
+	LD L,A
+	POP AF
+	LD H,A
+	PUSH HL
+	CALL GETDATA
+	POP HL
+IF FLASH
+	; Check if HL < 0x8000
+	PUSH AF
+	LD A,H
+	CP 0x80
+	JP C,S_WriteFlashAddress ; Jump if HL < 0x8000 (carry set means H < 80h)
+	POP AF
+ENDIF
+	LD (HL),A
+
+	LD A,1 ; ack
+	CALL SENDDATA
+	JP SH1
+
+;------------------------------------------------------------------------------
+IF FLASH
+;------------------------------------------------------------------------------
+
+FlashHelp:
+	LD A,(FlashType)
+	CP 0
+	RET Z
+	LD HL,0x0006
+	CALL SETLOC
+	LD HL,HelpMSG6
+	CALL STROUT
+	CALL PrintFlashType
+	RET
+
+PrintFlashType:
+	LD A,' '
+	CALL CHAROUT
+	LD A,'('
+	CALL CHAROUT
+	LD A,(FlashType)
+	CALL Hex2SCR
+	LD A,')'
+	CALL CHAROUT
+	RET
+
+Write2Flash:
+	POP AF
+	; change this to write to the flash
+	PUSH HL
+	PUSH AF
+
+	LD A,0xA0
+	CALL FlashPreamble ; start flash write cmd
+
+	LD A,(TempBank)
+	OUT (pBANKCTL),A ; switch to flash bank
+
+	POP AF ; restore data byte to A
+	POP HL ; restore addr to HL
+	LD (HL),A	; write data to addr
+
+; works, just not needed
+;	LD	B,0xFF ; abort counter
+;	LD C,A
+;wffw: ; wait for flash complete
+;	LD A,(HL)
+;	CP C
+;	JP Z,wffe
+;	DJNZ wffe	; if we tried 256 times then give up
+;;	LD A,1
+;;	CALL WAIT	; sleep 100ms
+;	JP wffw
+;wffe:
+
+	LD A,1
+	CALL SETCURSORONOFF
+
+; works, just not needed now
+;----DEBUG--------------
+; show how many loops it took to write
+; ...answer: always 01
+;	LD HL,0x4806
+;	CALL SETLOC
+;	LD A,0xFF
+;	SUB B
+;	CALL Hex2SCR
+;	CALL CHARGET
+;	CALL KILLBUF
+;-----------------------
+
+	JP MAIN
+
 ERASEFLASH:
 	LD A,(FlashType)
 	CP 0
@@ -815,55 +944,6 @@ FlashPreamble: ; command in A
 	POP BC
 	RET
 
-; Pass control over to the serial port for flash erase/writing
-SerialHandler:
-	CALL DrawTitle
-	LD HL,0x1503
-	CALL SETLOC
-	LD HL,SerialMSG
-	CALL STROUT
-
-	; RS-232 SETUP
-	; TODO: the user & service manuals both say there is no RTS/CTS or DSR/DTR,
-	; but the RTS, CTS, DTR, and DSR are all wired up to IC9 (uPD71051, 8251-clone).
-	; So presumably it should be possible to manually program IC9 to enable RTS/CTS.
-	; TODO: test if maybe it's already silently doing RTS/CTS by default.
-	LD HL,0x084C ; 9600, 8n1, no xonoff, timer enabled
-	CALL RSINIT
-
-SH1:
-	CALL GETDATA
-	JP NZ,SerialDataRX
-	CALL CHARSENSE
-	JP Z,SH1 ; no data from keyboard, loop
-
-	; Key pressed - exit loop if Esc or EXIT (F2+BS)
-	CP kESC		; ESC?
-	JP Z,MAIN	; yes, quit
-	CP kBS		; no, BS?
-	JP NZ,SH1	; no, loop
-	BIT 0,L		; yes, also F2?
-	JP NZ,MAIN	; yes, quit
-	JP SH1		; loop
-
-SerialDataRX:
-	; Received Serial byte is in A
-	CP 'E' ; erase command
-	JP Z,SerialErase
-	CP 'Q' ; Quit Serial handler
-	JP Z,MAIN
-	CP 'R' ; Read Mem address
-	JP Z,ReadMemAddress
-	CP 'W' ; write Mem address
-	JP Z,WriteMemAddress
-	CP 'P' ; write port 51
-	JP Z,WritePort51
-	CP 'p' ; read port 51
-	JP Z,ReadPort51
-	LD A,'?' ; Nack
-	CALL SENDDATA
-	JP MAIN
-
 SerialErase:
 	IN A,(pBANKCTL) ; backup current bank
 	PUSH AF
@@ -889,70 +969,7 @@ Sw4fe:
 	CALL SENDDATA
 	JP SH1
 
-WritePort51:
-	CALL GETDATA
-	JP Z,WritePort51 ; loop immediate
-;	JP NZ,wp51a      ; sleep 100ms then loop
-;	LD A,1
-;	CALL WAIT
-;	JP WritePort51
-;wp51a:
-	OUT (pBANKCTL),A
-	LD (TempBank),A
-	LD A,1 ; ack
-	CALL SENDDATA
-	JP SH1
-
-ReadPort51:
-	IN A,(pBANKCTL)
-	CALL SENDDATA
-	JP SH1
-
-ReadMemAddress:
-	; Wait for 2 bytes in the serial rx buffer
-	CALL GETDATALEN
-	LD A,L
-	CP 2
-	JP NZ,ReadMemAddress
-	CALL GETDATA
-	PUSH AF
-	CALL GETDATA
-	LD L,A
-	POP AF
-	LD H,A
-	LD A,(HL)
-	CALL SENDDATA
-	JP SH1
-
-WriteMemAddress:
-	; Wait for 3 bytes in the serial rx buffer
-	CALL GETDATALEN
-	LD A,L
-	CP 3
-	JP NZ,WriteMemAddress
-	CALL GETDATA
-	PUSH AF
-	CALL GETDATA
-	LD L,A
-	POP AF
-	LD H,A
-	PUSH HL
-	CALL GETDATA
-	POP HL
-	PUSH AF
-
-	; Check if HL < 0x8000
-	LD A,H
-	CP 0x80
-	JP C,WriteFlashAddress ; Jump if HL < 0x8000 (carry set means H < 80h)
-	POP AF
-	LD (HL),A
-
-	LD A,1 ; ack
-	CALL SENDDATA
-	JP SH1
-
-WriteFlashAddress:
+S_WriteFlashAddress:
 
 	POP AF
 	; change this to write to the flash
@@ -980,6 +997,10 @@ wfa2:
 	LD A,1 ;ack
 	CALL SENDDATA
 	JP SH1
+
+;------------------------------------------------------------------------------
+ENDIF ; /FLASH
+;------------------------------------------------------------------------------
 
 Hex2SCR:
 	PUSH AF
@@ -1049,12 +1070,6 @@ PortMSG:
 DataMSG:
 	DB "Data?",0
 
-EraseMSG:
-	DB "Are you sure you want to erase the flash card? (y/N)",0
-
-ErasingMSG:
-	DB "Erasing...",0
-
 SerialMSG:
 	DB "Serial Interface Active (9600,8n1)",0
 
@@ -1068,8 +1083,15 @@ HelpMSG4:
 	DB "P - Write to I/O port (set rom ic card bank: port 51 data 0F-1F)",0
 HelpMSG5:
 	DB "Up/Dn - Move by 0x80",0
+
+IF FLASH
 HelpMSG6:
 	DB "E - Erase Flash IC Card",0
+EraseMSG:
+	DB "Are you sure you want to erase the flash card? (y/N)",0
+ErasingMSG:
+	DB "Erasing...",0
+ENDIF
 
 ExitLabel:
 	DB "Cncl - EXIT",0
@@ -1087,6 +1109,6 @@ AppName:
 	DB "MemUtil",0
 
 AppVer:
-	DB "v1.4",0
+	DB "v1.5",0
 
 PRGEND:

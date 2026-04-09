@@ -9,7 +9,7 @@ Z80ASM = z88dk-z80asm
 FLAGS := # -v
 
 # PI output crashes on WP-2
-all: PR # PI
+all: PR PI
 
 .PHONY: PR
 PR: $(PR)
