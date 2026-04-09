@@ -1,4 +1,4 @@
-; MemUtil 1.0 - Brian K. White
+; MemUtil - Brian K. White
 ; Forked from HexViewer 2.2 - Ben Grimmett
 ; Compile to RUN File:  z88dk-z80asm -v -b -o=foo.PR foo.asm
 ; Compile to ROM Image: z88dk-z80asm -v -DROM -b -o=foo.PI foo.asm
