@@ -8,8 +8,6 @@
 ; build RUN file : z88dk-z80asm -b -o=foo.PR foo.asm
 ; build ROM image: z88dk-z80asm -DROM -b -o=foo.PI foo.asm
 
-; FIXME - the ROM target output crashes
-
 ; WP-2 System ROM Calls
 CMPHLDE			EQU		0x0020	; Compare HL to DE
 CHARSENSE		EQU		0x0100	; Check keyboard buffer, nonblocking get status
