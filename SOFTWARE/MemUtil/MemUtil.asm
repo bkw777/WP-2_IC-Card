@@ -3,7 +3,6 @@
 ; Compile to RUN File:  z88dk-z80asm -v -b -o=foo.PR foo.asm
 ; Compile to ROM Image: z88dk-z80asm -v -DROM -b -o=foo.PI foo.asm
 ;
-; FIXME:  ROM image output is not correct? TODO: look at MENU.PI
 ; TODO: figure out the limits/rules about the file size
 ; TODO: figure out how to do "sub run files" to get past the size limit
 ;
@@ -16,6 +15,10 @@
 ; And the program still runs and works.
 ; I think the 3 bytes are the same that always appear after the padding 0x1A's
 ; at the end of the file in ram ...1A 1A 1A 46 F9 03
+;
+; ROM target is not fully working but it builds, runs, partly works, returns.
+; All flash functions ifdef'ed out when compiling for ROM as simply the initial
+; crude way to avoid the conflict of touching the hardware you're running from.
 ;
 
 ; WP-2 System ROM Calls
@@ -263,27 +266,27 @@ DisplayHELP:
 
 	LD HL,0x0001
 	CALL SETLOC
-	LD HL,HelpMSG1
+	LD HL,HelpMSG_S
 	CALL STROUT
 
 	LD HL,0x0002
 	CALL SETLOC
-	LD HL,HelpMSG2
+	LD HL,HelpMSG_G
 	CALL STROUT
 
 	LD HL,0x0003
 	CALL SETLOC
-	LD HL,HelpMSG3
+	LD HL,HelpMSG_W
 	CALL STROUT
 
 	LD HL,0x0004
 	CALL SETLOC
-	LD HL,HelpMSG4
+	LD HL,HelpMSG_P
 	CALL STROUT
 
 	LD HL,0x0005
 	CALL SETLOC
-	LD HL,HelpMSG5
+	LD HL,HelpMSG_UD
 	CALL STROUT
 
 IF FLASH
@@ -841,7 +844,7 @@ FlashHelp:
 	RET Z
 	LD HL,0x0006
 	CALL SETLOC
-	LD HL,HelpMSG6
+	LD HL,HelpMSG_E
 	CALL STROUT
 	CALL PrintFlashType
 	RET
@@ -1117,19 +1120,19 @@ DataMSG:
 SerialMSG:
 	DB "Serial Interface Active (9600,8n1)",0
 
-HelpMSG1:
+HelpMSG_S:
 	DB "S - Serial interface mode",0
-HelpMSG2:
+HelpMSG_G:
 	DB "G - Go to address (rom bank window: 4000-7FFF)",0
-HelpMSG3:
+HelpMSG_W:
 	DB "W - Write a byte to a memory address",0
-HelpMSG4:
+HelpMSG_P:
 	DB "P - Write to I/O port (set rom ic card bank: port 51 data 0F-1F)",0
-HelpMSG5:
+HelpMSG_UD:
 	DB "Up/Dn - Move by 0x80",0
 
 IF FLASH
-HelpMSG6:
+HelpMSG_E:
 	DB "E - Erase Flash IC Card",0
 EraseMSG:
 	DB "Are you sure you want to erase the flash card? (y/N)",0
