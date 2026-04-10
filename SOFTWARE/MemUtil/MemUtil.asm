@@ -154,6 +154,11 @@ ENDIF
 ;------------------------------------------------------------------------------
 PRGTOP:
 START:
+
+
+;------------------------------------------------------------------------------
+; CONSOLE
+;------------------------------------------------------------------------------
 IF FLASH
 	CALL TestForFlash
 ENDIF
@@ -540,6 +545,38 @@ InvalidNibble:
 	LD A,0                ; Return 0 for invalid input
 	RET
 
+Hex2SCR:
+	PUSH AF
+	PUSH BC
+	PUSH DE
+	; Hex in, Ascii printed to screen
+	LD B,A
+	PUSH BC
+	AND 0xF0
+	RLC A
+	RLC A
+	RLC A
+	RLC A
+	CALL Nib2Asc
+	POP BC
+	LD A,B
+	AND 0x0F
+	CALL Nib2Asc
+	POP DE
+	POP BC
+	POP AF
+	RET
+Nib2Asc:
+	CP 0x0A
+	JP C,HexIsNum
+	ADD A,55
+	CALL CHAROUT
+	RET
+HexIsNum:
+	ADD A,48
+	CALL CHAROUT
+	RET
+
 ; Draw 8 lines of hex data
 DisplayRAM:
 	LD DE,(AddressPointer)
@@ -644,6 +681,15 @@ AsciiInv:
 	CALL CHAROUT
 	RET
 
+;------------------------------------------------------------------------------
+; /CONSOLE
+;------------------------------------------------------------------------------
+
+
+;------------------------------------------------------------------------------
+; SERIAL
+;------------------------------------------------------------------------------
+
 ; Pass control over to the serial port for flash erase/writing
 SerialHandler:
 	CALL DrawTitle
@@ -691,6 +737,8 @@ ENDIF
 	JP Z,WritePort51
 	CP 'p' ; read port 51
 	JP Z,ReadPort51
+	CP 'X' ; raw write mem
+	JP Z,RawWriteMemAddress
 	LD A,'?' ; Nack
 	CALL SENDDATA
 	JP MAIN
@@ -758,6 +806,30 @@ ENDIF
 	LD A,1 ; ack
 	CALL SENDDATA
 	JP SH1
+
+RawWriteMemAddress:
+    ;Wait for 3 bytes in the serial rx buffer
+    CALL GETDATALEN
+    LD A,L
+    CP 3
+    JP NZ,RawWriteMemAddress
+    CALL GETDATA
+    PUSH AF
+    CALL GETDATA
+    LD L,A
+    POP AF
+    LD H,A
+    PUSH HL
+    CALL GETDATA
+    POP HL
+    LD (HL),A
+    LD A,1 ;ack
+    CALL SENDDATA
+    JP SH1
+
+;------------------------------------------------------------------------------
+; /SERIAL
+;------------------------------------------------------------------------------
 
 ;------------------------------------------------------------------------------
 IF FLASH
@@ -1002,39 +1074,11 @@ wfa2:
 ENDIF ; /FLASH
 ;------------------------------------------------------------------------------
 
-Hex2SCR:
-	PUSH AF
-	PUSH BC
-	PUSH DE
-	; Hex in, Ascii printed to screen
-	LD B,A
-	PUSH BC
-	AND 0xF0
-	RLC A
-	RLC A
-	RLC A
-	RLC A
-	CALL Nib2Asc
-	POP BC
-	LD A,B
-	AND 0x0F
-	CALL Nib2Asc
-	POP DE
-	POP BC
-	POP AF
-	RET
-Nib2Asc:
-	CP 0x0A
-	JP C,HexIsNum
-	ADD A,55
-	CALL CHAROUT
-	RET
-HexIsNum:
-	ADD A,48
-	CALL CHAROUT
-	RET
 
-; Volatile variables
+;------------------------------------------------------------------------------
+; Variables, Constatnts, Strings
+;------------------------------------------------------------------------------
+
 ALIGN 2
 
 Value16Bit:
@@ -1109,6 +1153,10 @@ AppName:
 	DB "MemUtil",0
 
 AppVer:
-	DB "v1.5",0
+	DB "v1.6",0
+
+;------------------------------------------------------------------------------
+; /Variables, Constatnts, Strings
+;------------------------------------------------------------------------------
 
 PRGEND:
