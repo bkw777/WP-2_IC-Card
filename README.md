@@ -303,11 +303,13 @@ Remove jumper from  GND to /DET on the card.
 
 ### Reading/Writing the RAM card
 
-Set all 4 jumpers on the programming adapter to RAM.
+Set all 4 jumpers on the programming adapter to RAM.  
+(This makes the pinout of the DIP pins match a standard SRAM chip.)
 
-Examples using a TL-866 programmer (628128 is the generic part number compatible with the SRAM on the card):  
-`minipro --skip_id --device 628128 --read ram.bin`  
-`minipro --skip_id --device 628128 --write ram.bin`
+Examples using a TL-866 programmer:  
+This tells the programmer to assume the chip is a "DS1245AB(RW)", which is just a device that the programmer software happens to support, which also happens to function the same way as the card. It's a 5 volt, parallel, 128Kx8 SRAM, with a battery, which is all the same as the card when it's in the programming adapter and the jumpers are all set to RAM.
+`minipro --device "DS1245AB(RW)" --read ram.bin`  
+`minipro --device "DS1245AB(RW)" --write ram.bin`
 
 ----
 
