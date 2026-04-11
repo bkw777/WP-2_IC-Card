@@ -742,6 +742,10 @@ ENDIF
 	JP Z,ReadPort51
 	CP 'X' ; raw write mem
 	JP Z,RawWriteMemAddress
+	CP 'B'
+	JP Z, BurstReadAddress
+	CP 'V' ;rawwrite Mem address
+	JP Z, BurstWriteAddress
 	LD A,'?' ; Nack
 	CALL SENDDATA
 	JP MAIN
@@ -829,6 +833,68 @@ RawWriteMemAddress:
     LD A,1 ;ack
     CALL SENDDATA
     JP SH1
+
+BurstReadAddress:
+    ; Wait for 3 bytes: addrHi, addrLo, count
+    CALL GETDATALEN
+    LD A,L
+    CP 3
+    JP NZ,BurstReadAddress
+    CALL GETDATA
+    PUSH AF
+    CALL GETDATA
+    LD L,A
+    POP AF
+    LD H,A          ; HL = address
+    PUSH HL
+    CALL GETDATA    ; A = count (1-128)
+    LD B,A          ; B = byte counter
+    POP HL
+BurstReadLoop:
+    LD A,(HL)
+    CALL SENDDATA
+    INC HL
+    DJNZ BurstReadLoop
+    JP SH1
+
+BurstWriteAddress:
+    CALL GETDATALEN
+    LD A,L
+    CP 10        ; wait for addr(2) + data(8) = 10 bytes total
+    JP NZ,BurstWriteAddress
+    CALL GETDATA
+    PUSH AF
+    CALL GETDATA
+    LD L,A
+    POP AF
+    LD H,A       ; HL = start address
+    LD B,8       ; fixed burst of 8 bytes
+BurstWriteLoop:
+    PUSH BC
+    PUSH HL
+    CALL GETDATA
+IF FLASH
+    PUSH AF
+    LD A,0xA0
+    CALL FlashPreamble
+    LD A,(TempBank)
+    OUT (pBANKCTL),A
+    POP AF
+ENDIF
+    POP HL
+    LD (HL),A
+BWpoll:
+    LD C,(HL)
+    LD A,(HL)
+    CP C
+    JP NZ,BWpoll
+    INC HL
+    POP BC
+    DJNZ BurstWriteLoop
+    LD A,1
+    CALL SENDDATA
+    JP SH1
+
 
 ;------------------------------------------------------------------------------
 ; /SERIAL
@@ -1156,7 +1222,7 @@ AppName:
 	DB "MemUtil",0
 
 AppVer:
-	DB "v1.6",0
+	DB "v1.7",0
 
 ;------------------------------------------------------------------------------
 ; /Variables, Constatnts, Strings

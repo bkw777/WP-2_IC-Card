@@ -25,6 +25,7 @@ BKSP EQU 08H
         DW PRGSTART
         DW 0
 		
+		
 PRGSTART:
 		call TestForFlash
 START:
@@ -705,6 +706,12 @@ SerialDataRX:
 	jp z, ReadMemAddress
 	cp 'W' ;write Mem address
 	jp z, WriteMemAddress
+	cp 'B'
+	jp z, BurstReadAddress
+	cp 'X' ;rawwrite Mem address
+	jp z, RawWriteMemAddress
+	cp 'V' ;rawwrite Mem address
+	jp z, BurstWriteAddress
 	cp 'P' ;write port 51
 	jp z, WritePort51
 	cp 'p' ;read port 51
@@ -713,6 +720,11 @@ SerialDataRX:
 	CALL SENDDATA
 	
 	JMP START
+	
+	BurstReadAddress:
+	jmp BurstReadAddressMain
+	BurstWriteAddress:
+	jmp BurstWriteAddressMain
 SerialErase:
 	in a,(51h) ;backup current bank
 	push af
@@ -796,6 +808,28 @@ WriteMemAddress:
 	ld a,01 ;ack
 	CALL SENDDATA
 	JMP SH1
+
+RawWriteMemAddress:
+	;Wait for 3 bytes in the serial rx buffer
+	CALL GETDATALEN
+	ld a,l
+	cp 3
+	jr nz,RawWriteMemAddress
+	call GETDATA
+	push af
+	call GETDATA
+	ld l,a
+	pop af
+	ld h,a
+	push HL
+	call GETDATA
+	pop HL
+	ld (HL),A
+	ld a,01 ;ack
+	CALL SENDDATA
+	JMP SH1
+
+
 WriteFlashAddress:
 	
 		pop af	
@@ -821,6 +855,68 @@ wffc: ;wait for flash complete
 		ld a,01 ;ack
 		CALL SENDDATA
 		jmp SH1
+		
+		
+		
+BurstReadAddressMain:
+    ; Wait for 3 bytes: addrHi, addrLo, count
+    CALL GETDATALEN
+    ld a,l
+    cp 3
+    jr nz,BurstReadAddressMain
+    call GETDATA
+    push af
+    call GETDATA
+    ld l,a
+    pop af
+    ld h,a          ; HL = address
+    push HL
+    call GETDATA    ; A = count (1-128)
+    ld b,a          ; B = byte counter
+    pop HL
+BurstReadLoop:
+    ld a,(HL)
+    call SENDDATA
+    inc HL
+    djnz BurstReadLoop
+    jmp SH1
+
+
+BurstWriteAddressMain:
+    CALL GETDATALEN
+    ld a,l
+    cp 10        ; wait for addr(2) + data(8) = 10 bytes total
+    jr nz,BurstWriteAddressMain
+    call GETDATA
+    push af
+    call GETDATA
+    ld l,a
+    pop af
+    ld h,a       ; HL = start address
+    ld b,8       ; fixed burst of 8 bytes
+BurstWriteLoop:
+    push BC
+    push HL
+    call GETDATA
+    push AF
+    LD A,0A0h
+    call FlashPreamble
+    ld a,(TempBank)
+    out (51h),a
+    pop AF
+    pop HL
+    ld (HL),a
+BWpoll:
+    ld c,(HL)
+    ld a,(HL)
+    cp c
+    jr nz,BWpoll
+    inc HL
+    pop BC
+    djnz BurstWriteLoop
+    ld a,01h
+    CALL SENDDATA
+    jmp SH1
 
 Hex2SCR: 
 	push af
