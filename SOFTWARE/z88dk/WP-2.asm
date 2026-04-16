@@ -76,11 +76,9 @@ szRAMBANK	EQU		0x8000
 aWORKAREA	EQU		0xAC00
 
 ; RST Hooks
-hBREAK		EQU		0x28	; debug hook table break pointer
+hCMPHLDE	EQU		0x20	; Compare HL to DE
+hBREAK		EQU		0x28	; Debug hook table break pointer
 hCALLFAR	EQU		0x30	; Call a routine in another slot
-;	RST hCALLFAR
-;	DB slot
-;	DW addr
 
 ; Keyboard keys
 kTAB	EQU		0x0B
@@ -92,6 +90,17 @@ kLEFT	EQU		0x1D
 kUP		EQU		0x1E
 kDOWN	EQU		0x1F
 kDEL	EQU		0x7F
+
+; vt52 esc sequences
+eUP		EQU		'A'
+eDOWN	EQU		'B'
+eRIGHT	EQU		'C'
+eLEFT	EQU		'D'
+eHOME	EQU		'E'
+eEOS	EQU		'J'
+eEOL	EQU		'K'
+eCP		EQU		'Y'	; cursor position, follow with line column, kESC eCP line column
+eENQ	EQU		'Z'
 
 ; Keyboard modifiers (L bits after CHARSENSE or CHARGET)
 mF2			EQU		0	; BIT mF2,L NZ = F2 is pressed
@@ -136,12 +145,10 @@ START:
 ; ...program code...
 
 EXIT:
-IFDEF ROM
-	RET Z
-ELSE
-	XOR A
+	; A = exit flag to system
+	;LD A,0xFF	; A=0xFF = keep program area as driver/filter/tsr
+	XOR A		; A=0x00 = return program area to system
 	RET
-ENDIF
 
 ; ...program code...
 

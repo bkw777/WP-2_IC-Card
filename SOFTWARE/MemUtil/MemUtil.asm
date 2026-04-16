@@ -79,7 +79,9 @@ RSCLOSE			EQU		0x014C	; Close RS232C
 ;GETWORK		EQU		0x01BB	; Get work area
 
 ; I/O Ports
-pBANKCTL	EQU		0x51
+pUARTDATA	EQU		0x10		; 8251 character data
+pUARTCTRL	EQU		0x11		; 8251 control/status
+pBANKCTRL	EQU		0x51
 
 ; Memory Addresses
 aROMWINDOW	EQU		0x4000
@@ -89,11 +91,9 @@ szRAMBANK	EQU		0x8000
 aWORKAREA	EQU		0xAC00
 
 ; RST Hooks
-;hBREAK		EQU		0x28	; debug hook table break pointer
+;hCMPHLDE	EQU		0x20	; Compare HL to DE
+;hBREAK		EQU		0x28	; Debug hook table break pointer
 ;hCALLFAR	EQU		0x30	; Call a routine in another slot
-;	RST hCALLFAR
-;	DB slot
-;	DW addr
 
 ; Keyboard keys
 kTAB	EQU		0x0B
@@ -128,6 +128,15 @@ ID_AT		EQU		0x1F	; Atmel	AT29C010A-70TC				5555:AA	2AAA:55
 							; Atmel	AT28C010-12TU				5555:AA	2AAA:55
 ID_MXs 		EQU 	0x43	; not a real mfr id, MX chip on borked PCB design
 
+; Flash chip commands
+fcGetId		EQU		0x90
+fcExitId	EQU		0xF0
+fcErase		EQU		0x80
+fcEraseChip	EQU		0x10
+fcEraseSect	EQU		0x30
+fcByteProg	EQU		0xA0
+
+
 ;------------------------------------------------------------------------------
 ; HEADER
 ;------------------------------------------------------------------------------
@@ -157,7 +166,6 @@ ENDIF
 ;------------------------------------------------------------------------------
 PRGTOP:
 START:
-
 
 ;------------------------------------------------------------------------------
 ; CONSOLE
@@ -228,13 +236,9 @@ RKEXIT:
 	; fall through to Exit:
 ; Return to the OS
 Exit:
-	XOR A
-	OUT (pBANKCTL),A
-IFDEF ROM
-	RET Z
-ELSE
-	RET
-ENDIF
+	XOR A				; A=0x00
+	OUT (pBANKCTRL),A	; reset bank to 0x00 before exit
+	RET					; exit flag A=0x00: system reclaims program area memory
 
 DrawTitle:
 	CALL CLS
@@ -333,197 +337,70 @@ PREVIOUS:
 
 ; Go to a user requested memory location
 GOTO:
-	LD HL,0x4803
-	CALL SETLOC
-	LD HL,AddressMSG
-	CALL STROUT
-	LD HL,0x4804
-	CALL SETLOC
-	LD HL,DataEntryMSG
-	CALL STROUT
-	LD A,0
-	CALL SETCURSORTYPE
-	LD A,0
-	CALL SETCURSORONOFF
-	LD HL,0x4A04
-	CALL SETLOC
-
-	CALL Get16bitFromUser ; returns value in HL
+	LD DE,0x4803
+	LD BC,AddressMSG
+	LD A,16
+	CALL HexInput
 	LD (AddressPointer),HL
-
-	LD A,1
-	CALL SETCURSORONOFF
 	JP MAIN
 
 ; Write a value to an IO port
 WRITEPORT:
-	LD HL,0x4802
-	CALL SETLOC
-	LD HL,PortMSG
-	CALL STROUT
-	LD HL,0x4803
-	CALL SETLOC
-	LD HL,DataEntryMSG
-	CALL STROUT
+	; get port number
+	LD BC,PortMSG
+	LD DE,0x4802
+	LD A,8
+	CALL HexInput
+	LD H,L				; L = port, copy to H
+	PUSH HL				; H = port
 
-	LD A,0
-	CALL SETCURSORTYPE
-	LD A,0
-	CALL SETCURSORONOFF
-	LD HL,0x4A03
-	CALL SETLOC
+	; get data
+	LD BC,DataMSG
+	LD DE,0x4804
+	LD A,8
+	CALL HexInput
+	LD C,L				; L = data
+	POP HL
+	LD L,C				; H = port, L = data
 
-	CALL Get8bitFromUser
-	PUSH AF
+	LD C,H
+	OUT (C),L			; write data to port
 
-	LD HL,0x4804
-	CALL SETLOC
-	LD HL,DataMSG
-	CALL STROUT
-	LD HL,0x4805
-	CALL SETLOC
-	LD HL,DataEntryMSG
-	CALL STROUT
-	LD HL,0x4A05
-	CALL SETLOC
-
-	POP AF
-	LD C,A
-	CALL Get8bitFromUser
-
-	OUT (C),A
-	LD (TempBank),A
-
-	LD A,1
-	CALL SETCURSORONOFF
+	; if port=pBANKCTRL then save data to (Bank)
+	LD A,C
+	CP pBANKCTRL
+	JP NZ,MAIN
+	LD A,L
+	LD (Bank),A
 	JP MAIN
 
 ; Write a value to a memory location
 WRITERAM:
-	LD HL,0x4802
-	CALL SETLOC
-	LD HL,AddressMSG
-	CALL STROUT
-	LD HL,0x4803
-	CALL SETLOC
-	LD HL,DataEntryMSG
-	CALL STROUT
+	LD DE,0x4802
+	LD BC,AddressMSG
+	LD A,16
+	CALL HexInput
+	PUSH HL				; HL = addr
 
-	LD A,0
-	CALL SETCURSORTYPE
-	LD A,0
-	CALL SETCURSORONOFF
-	LD HL,0x4A03
-	CALL SETLOC
-
-	CALL Get16bitFromUser
-	PUSH HL
-
-	LD HL,0x4804
-	CALL SETLOC
-	LD HL,DataMSG
-	CALL STROUT
-	LD HL,0x4805
-	CALL SETLOC
-	LD HL,DataEntryMSG
-	CALL STROUT
-	LD HL,0x4A05
-	CALL SETLOC
-
-	CALL Get8bitFromUser
+	LD DE,0x4804
+	LD BC,DataMSG
+	LD A,8
+	CALL HexInput
+	LD A,L				; A = data
 	POP HL
-	PUSH AF
 
 IF FLASH
-	; TODO test actual proper conditions before deciding flash write:
-	; * addr >= aRomBank
-	; * addr < aRomBank + lRomBank
-	; * current bank >= 0F
-	; * current bank <= 1F
+	; FIXME also check HL > 0x3FFF, port > 0x0E, port < 0x20, (FlashType) > 0 
 	; Check if HL < 0x8000
+	PUSH AF
 	LD A,H
 	CP 0x80
 	JP C,Write2Flash  ; Jump if HL < 0x8000 (carry set means H < 0x80)
+	POP AF
 ENDIF
 
-	POP AF
 	LD (HL),A
-	LD A,1
-	CALL SETCURSORONOFF
 	JP MAIN
-
-; Ascii Hex input from keyboard, Returns in HL
-Get16bitFromUser:
-	PUSH AF
-	PUSH BC
-	PUSH DE
-	CALL CHARGET
-	LD A,H
-	LD (Buffer),A
-	CALL CHAROUT
-	CALL CHARGET
-	LD A,H
-	LD (Buffer+1),A
-	CALL CHAROUT
-	CALL CHARGET
-	LD A,H
-	LD (Buffer+2),A
-	CALL CHAROUT
-	CALL CHARGET
-	LD A,H
-	LD (Buffer+3),A
-	CALL CHAROUT
-	CALL ConvertHex16
-	LD HL,(Value16Bit)
-	POP DE
-	POP BC
-	POP AF
-	RET
-
-; Ascii Hex input from keyboard, Returns in A
-Get8bitFromUser:
-	PUSH HL
-	PUSH BC
-	PUSH DE
-	LD A,'0'
-	LD (Buffer),A
-	LD A,'0'
-	LD (Buffer+1),A
-	CALL CHARGET
-	LD A,H
-	LD (Buffer+2),A
-	CALL CHAROUT
-	CALL CHARGET
-	LD A,H
-	LD (Buffer+3),A
-	CALL CHAROUT
-	CALL ConvertHex16
-	LD A,(Value16Bit)
-	POP DE
-	POP BC
-	POP HL
-	RET
-
-; Convert 4 ASCII hex digits to 16-bit address
-ConvertHex16:
-	LD HL,0            ; Initialize result
-	LD DE,Buffer       ; Point to ASCII buffer
-	LD B,4             ; Process 4 digits
-ConvertLoop:
-	LD A,(DE)          ; Get ASCII digit
-	CALL ToNibble      ; Convert to 4-bit value
-	; Shift HL left by 4 bits
-	ADD HL,HL
-	ADD HL,HL
-	ADD HL,HL
-	ADD HL,HL
-	OR L               ; Combine nibble with L
-	LD L,A             ; Update L
-	INC DE             ; Next digit
-	DJNZ ConvertLoop
-	; Store result in AddressPointer
-	LD (Value16Bit),HL
-	RET
 
 ; Convert ASCII hex digit in A to 4-bit value (0-15)
 ; Handles 0-9, A-F, a-f
@@ -548,11 +425,11 @@ InvalidNibble:
 	LD A,0                ; Return 0 for invalid input
 	RET
 
+; A to ascii hex pair to screen
 Hex2SCR:
 	PUSH AF
 	PUSH BC
 	PUSH DE
-	; Hex in, Ascii printed to screen
 	LD B,A
 	PUSH BC
 	AND 0xF0
@@ -560,28 +437,94 @@ Hex2SCR:
 	RLC A
 	RLC A
 	RLC A
-	CALL Nib2Asc
+	CALL N2A
 	POP BC
 	LD A,B
 	AND 0x0F
-	CALL Nib2Asc
+	CALL N2A
 	POP DE
 	POP BC
 	POP AF
 	RET
-Nib2Asc:
-	CP 0x0A
-	JP C,HexIsNum
-	ADD A,55
+N2A:			; nybble to ascii
+	ADD A,0x90
+	DAA
+	ADC A,0x40
+	DAA
 	CALL CHAROUT
 	RET
-HexIsNum:
-	ADD A,48
+
+; prompt BC
+; position DE
+; len A
+; return HL
+HexInput:
+	PUSH AF
+	LD HL,DE
+	CALL SETLOC
+	LD HL,BC
+	CALL STROUT
+	LD HL,DE
+	INC L
+	CALL SETLOC
+	LD HL,DataEntryMSG
+	CALL STROUT
+	LD HL,DE
+	INC H
+	INC H
+	INC L
+	CALL SETLOC
+	XOR A
+	CALL SETCURSORONOFF
+	POP AF
+	CP 16
+	JP Z,GetHex16		; jump to collect 4 hex digits
+	LD A,'0'			; fill first 2 digits with 00
+	LD (Buffer),A
+	LD (Buffer+1),A
+	JP GetHex8			; jump to collect last 2 hex digits
+GetHex16:				; collect 4 hex digits
+	CALL CHARGET
+	LD A,H
+	LD (Buffer),A
 	CALL CHAROUT
+	CALL CHARGET
+	LD A,H
+	LD (Buffer+1),A
+	CALL CHAROUT
+GetHex8:				; collect 2 hex digits
+	CALL CHARGET
+	LD A,H
+	LD (Buffer+2),A
+	CALL CHAROUT
+	CALL CHARGET
+	LD A,H
+	LD (Buffer+3),A
+	CALL CHAROUT		; why bother? no time to see it
+	LD A,1
+	CALL SETCURSORONOFF
+ConvertHex16:	; Convert 4 ASCII hex digits to 16-bit address
+	LD HL,0            ; Initialize result
+	LD DE,Buffer       ; Point to ASCII buffer
+	LD B,4             ; Process 4 digits
+CH16L:
+	LD A,(DE)          ; Get ASCII digit
+	CALL ToNibble      ; Convert to 4-bit value
+	; Shift HL left by 4 bits
+	ADD HL,HL
+	ADD HL,HL
+	ADD HL,HL
+	ADD HL,HL
+	OR L               ; Combine nibble with L
+	LD L,A             ; Update L
+	INC DE             ; Next digit
+	DJNZ CH16L
 	RET
 
 ; Draw 8 lines of hex data
 DisplayRAM:
+	LD A,1
+	CALL SETCURSORONOFF
 	LD DE,(AddressPointer)
 	PUSH DE
 	CALL CLS
@@ -758,14 +701,14 @@ WritePort51:
 ;	CALL WAIT
 ;	JP WritePort51
 ;wp51a:
-	OUT (pBANKCTL),A
-	LD (TempBank),A
+	OUT (pBANKCTRL),A
+	LD (Bank),A
 	LD A,1 ; ack
 	CALL SENDDATA
 	JP SH1
 
 ReadPort51:
-	IN A,(pBANKCTL)
+	IN A,(pBANKCTRL)
 	CALL SENDDATA
 	JP SH1
 
@@ -875,10 +818,10 @@ BurstWriteLoop:
     CALL GETDATA
 IF FLASH
     PUSH AF
-    LD A,0xA0
+    LD A,fcByteProg
     CALL FlashPreamble
-    LD A,(TempBank)
-    OUT (pBANKCTL),A
+    LD A,(Bank)
+    OUT (pBANKCTRL),A
     POP AF
 ENDIF
     POP HL
@@ -932,11 +875,11 @@ Write2Flash:
 	PUSH HL
 	PUSH AF
 
-	LD A,0xA0
+	LD A,fcByteProg
 	CALL FlashPreamble ; start flash write cmd
 
-	LD A,(TempBank)
-	OUT (pBANKCTL),A ; switch to flash bank
+	LD A,(Bank)
+	OUT (pBANKCTRL),A ; switch to flash bank
 
 	POP AF ; restore data byte to A
 	POP HL ; restore addr to HL
@@ -954,22 +897,6 @@ Write2Flash:
 ;;	CALL WAIT	; sleep 100ms
 ;	JP wffw
 ;wffe:
-
-	LD A,1
-	CALL SETCURSORONOFF
-
-; works, just not needed now
-;----DEBUG--------------
-; show how many loops it took to write
-; ...answer: always 01
-;	LD HL,0x4806
-;	CALL SETLOC
-;	LD A,0xFF
-;	SUB B
-;	CALL Hex2SCR
-;	CALL CHARGET
-;	CALL KILLBUF
-;-----------------------
 
 	JP MAIN
 
@@ -997,12 +924,12 @@ EF1:
 	CALL STROUT
 
 ; Flash erase code here
-	IN A,(pBANKCTL) ;backup current bank
+	IN A,(pBANKCTRL) ;backup current bank
 	PUSH AF
 
-	LD A,0x80
+	LD A,fcErase
 	CALL FlashPreamble
-	LD A,0x10
+	LD A,fcEraseChip
 	CALL FlashPreamble
 w4fe:
 	LD A,(aROMWINDOW)
@@ -1011,20 +938,17 @@ w4fe:
 	CP A,B
 	JP NZ, w4fe
 
-	LD A,0xF0
+	LD A,fcExitId
 	CALL FlashPreamble
 
 	POP AF
-	OUT (pBANKCTL),A ; restore current bank
+	OUT (pBANKCTRL),A ; restore current bank
 	JP MAIN
 
 ; We don't actually do anything different depending on chip_id any more
 ; except to overall enable/disable writing if we recognize any flash at all.
 TestForFlash: ; CFI query
-	IN A,(pBANKCTL) ; backup current bank
-	PUSH AF
-
-	LD A,0x90
+	LD A,fcGetId
 	CALL FlashPreamble
 	LD A,(aROMWINDOW)
 	CP ID_SST	; SST / Greenliant / Microchip
@@ -1046,17 +970,18 @@ TF2:
 	LD (FlashType),A	; store the finding
 	CP 0
 	JP Z,TFend			; skip the rest if no flash
-	LD A,0xF0
+	LD A,fcExitId
 	CALL FlashPreamble	; reset the chip out of command mode
 TFend:
-	POP AF
-	OUT (pBANKCTL),A ; restore current bank
+	XOR A
+	OUT (pBANKCTRL),A ; resect bank ctl
 	RET
 
 FlashPreamble: ; command in A
-	PUSH BC	; stash B
-	LD B,A	; save COMMAND in B
-	;LD C,pBANKCTL ; we never use it between here & pop?
+	;PUSH BC
+	PUSH HL
+	LD L,A	; save COMMAND in L
+	;LD C,pBANKCTRL ; we never use it between here & pop?
 
 	; flash command sequence = 0x5555<0xAA, 0x2AAA<0x55, 0x5555<COMMAND
 	; bank@ic = [addr@ic/banklen]   (division without remainder)
@@ -1066,32 +991,33 @@ FlashPreamble: ; command in A
 
 	; write 0xAA to addr 0x5555
 	LD A,0x10 ; addr 0x5555/0x4000 = bank 1 + 0x0F = 0x10
-	OUT (pBANKCTL),A ; set flash bank 1
+	OUT (pBANKCTRL),A ; set flash bank 1
 	LD A,0xAA
 	LD (0x5555),A ; addr 0x5555 - (1*0x4000) + 0x4000 = same 0x5555
 
 	; write 0x55 to addr 0x2AAA
 	LD A,0x0F ; addr 0x2AAA/0x4000 = bank 0 + 0x0F = 0x0F
-	OUT (pBANKCTL),A ; set flash bank 0
+	OUT (pBANKCTRL),A ; set flash bank 0
 	LD A,0x55
 	LD (0x6AAA),A ; addr 0x2AAA - (0*0x4000) + 0x4000 = 0x6AAA
 
 	; write COMMAND (saved in B) to addr 0x5555
 	LD A,0x10
-	OUT (pBANKCTL),A ; set flash bank 1
-	LD A,B
+	OUT (pBANKCTRL),A ; set flash bank 1
+	LD A,L
 	LD (0x5555),A
 
-	POP BC
+	POP HL
+	;POP BC
 	RET
 
 SerialErase:
-	IN A,(pBANKCTL) ; backup current bank
+	IN A,(pBANKCTRL) ; backup current bank
 	PUSH AF
 
-	LD A,0x80
+	LD A,fcErase
 	CALL FlashPreamble
-	LD A,0x10
+	LD A,fcEraseChip
 	CALL FlashPreamble
 Sw4fe:
 	LD A,(aROMWINDOW)
@@ -1100,11 +1026,11 @@ Sw4fe:
 	CP A,B
 	JP NZ,Sw4fe
 
-	LD A,0xF0
+	LD A,fcExitId
 	CALL FlashPreamble
 
 	POP AF
-	OUT (pBANKCTL),A ; restore current bank
+	OUT (pBANKCTRL),A ; restore current bank
 
 	LD A,1 ; ok
 	CALL SENDDATA
@@ -1117,11 +1043,11 @@ S_WriteFlashAddress:
 	PUSH HL
 	PUSH AF
 
-	LD A,0xA0
+	LD A,fcByteProg
 	CALL FlashPreamble
 
-	LD A,(TempBank)
-	OUT (pBANKCTL),A
+	LD A,(Bank)
+	OUT (pBANKCTRL),A
 	POP AF
 	POP HL
 	LD (HL),A
@@ -1150,20 +1076,11 @@ ENDIF ; /FLASH
 
 ALIGN 2
 
-Value16Bit:
-	DW 0;
-
 AddressPointer:
 	DW 0;
 
-WriteAddressPointer:
-	DW 0;
-
-WriteDataPointer:
-	DW 0;
-
-TempBank:
-	DB 0x0F
+Bank:
+	DB 0
 
 FlashType:
 	DB 0
@@ -1222,7 +1139,7 @@ AppName:
 	DB "MemUtil",0
 
 AppVer:
-	DB "v1.7",0
+	DB "1.08",0
 
 ;------------------------------------------------------------------------------
 ; /Variables, Constatnts, Strings
