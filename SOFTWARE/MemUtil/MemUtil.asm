@@ -390,15 +390,33 @@ WRITERAM:
 	POP HL
 
 IF FLASH
-	; FIXME also check HL > 0x3FFF, port > 0x0E, port < 0x20, (FlashType) > 0 
-	; Check if HL < 0x8000
 	PUSH AF
+	; only do flash write cmd if:
+	; FlashType > 0 : flash ic card detected
+	; 0E < bank < 1F : rom ic card bank
+	; 0x3FFF < addr < 0x8000 : rom ic card bank window addr
+	LD A,(FlashType)
+	CP 0
+	JP Z,Wb		; no flash detected
 	LD A,H
+	CP 0x40
+	JP C,Wb		; addr < 0x4000
 	CP 0x80
-	JP C,Write2Flash  ; Jump if HL < 0x8000 (carry set means H < 0x80)
+	JP NC,Wb	; addr !< 0x8000
+	LD A,(Bank)
+	CP 0x0F
+	JP C,Wb		; bank < 0x0F
+	CP 0x1F
+	JP NC,Wb	; bank !< 0x1F
+	;PUSH HL
+	LD A,fcByteProg
+	CALL FlashPreamble
+	LD A,(Bank)
+	OUT (pBANKCTRL),A ; switch to flash bank
+	;POP HL
+Wb:
 	POP AF
 ENDIF
-
 	LD (HL),A
 	JP MAIN
 
@@ -743,6 +761,8 @@ WriteMemAddress:
 	PUSH HL
 	CALL GETDATA
 	POP HL
+	; HL = addr
+	; A = data
 IF FLASH
 	; Check if HL < 0x8000
 	PUSH AF
@@ -814,7 +834,6 @@ BurstWriteAddress:
     LD B,8       ; fixed burst of 8 bytes
 BurstWriteLoop:
     PUSH BC
-    PUSH HL
     CALL GETDATA
 IF FLASH
     PUSH AF
@@ -824,7 +843,6 @@ IF FLASH
     OUT (pBANKCTRL),A
     POP AF
 ENDIF
-    POP HL
     LD (HL),A
 BWpoll:
     LD C,(HL)
@@ -869,37 +887,6 @@ PrintFlashType:
 	CALL CHAROUT
 	RET
 
-Write2Flash:
-	POP AF
-	; change this to write to the flash
-	PUSH HL
-	PUSH AF
-
-	LD A,fcByteProg
-	CALL FlashPreamble ; start flash write cmd
-
-	LD A,(Bank)
-	OUT (pBANKCTRL),A ; switch to flash bank
-
-	POP AF ; restore data byte to A
-	POP HL ; restore addr to HL
-	LD (HL),A	; write data to addr
-
-; works, just not needed
-;	LD	B,0xFF ; abort counter
-;	LD C,A
-;wffw: ; wait for flash complete
-;	LD A,(HL)
-;	CP C
-;	JP Z,wffe
-;	DJNZ wffe	; if we tried 256 times then give up
-;;	LD A,1
-;;	CALL WAIT	; sleep 100ms
-;	JP wffw
-;wffe:
-
-	JP MAIN
-
 ERASEFLASH:
 	LD A,(FlashType)
 	CP 0
@@ -923,7 +910,6 @@ EF1:
 	LD HL,ErasingMSG
 	CALL STROUT
 
-; Flash erase code here
 	IN A,(pBANKCTRL) ;backup current bank
 	PUSH AF
 
@@ -978,10 +964,8 @@ TFend:
 	RET
 
 FlashPreamble: ; command in A
-	;PUSH BC
 	PUSH HL
 	LD L,A	; save COMMAND in L
-	;LD C,pBANKCTRL ; we never use it between here & pop?
 
 	; flash command sequence = 0x5555<0xAA, 0x2AAA<0x55, 0x5555<COMMAND
 	; bank@ic = [addr@ic/banklen]   (division without remainder)
@@ -1001,14 +985,13 @@ FlashPreamble: ; command in A
 	LD A,0x55
 	LD (0x6AAA),A ; addr 0x2AAA - (0*0x4000) + 0x4000 = 0x6AAA
 
-	; write COMMAND (saved in B) to addr 0x5555
+	; write COMMAND (L) to addr 0x5555
 	LD A,0x10
 	OUT (pBANKCTRL),A ; set flash bank 1
 	LD A,L
 	LD (0x5555),A
 
 	POP HL
-	;POP BC
 	RET
 
 SerialErase:
@@ -1036,25 +1019,19 @@ Sw4fe:
 	CALL SENDDATA
 	JP SH1
 
+; HL = addr
+; A = data, & pushed AF
 S_WriteFlashAddress:
-
-	POP AF
-	; change this to write to the flash
-	PUSH HL
-	PUSH AF
-
 	LD A,fcByteProg
 	CALL FlashPreamble
-
 	LD A,(Bank)
 	OUT (pBANKCTRL),A
 	POP AF
-	POP HL
 	LD (HL),A
-
+; wait for flash write to complete
 	LD B,0xFF ; abort counter
 	LD C,A
-wfa1: ; wait for flash complete
+wfa1:
 	LD A,(HL)
 	CP C
 	JP Z,wfa2 ; write done
