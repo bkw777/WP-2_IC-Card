@@ -22,7 +22,6 @@
 ;
 
 ; WP-2 System ROM Calls
-;CMPHLDE			EQU		0x0020	; Compare HL to DE
 CHARSENSE		EQU		0x0100	; Check keyboard buffer, nonblocking get status
 CHARGET			EQU		0x0103	; Get one character, wait for input
 KILLBUF			EQU		0x0106	; Kill key buffer
@@ -126,7 +125,7 @@ ID_ST		EQU		0x20	; STM	M29F512B-70NZ				555:AA	2AA:55
 ID_AM		EQU		0x01	; AMD	AM29F010-70EC				5555:AA	2AAA:55
 ID_AT		EQU		0x1F	; Atmel	AT29C010A-70TC				5555:AA	2AAA:55
 							; Atmel	AT28C010-12TU				5555:AA	2AAA:55
-ID_MXs 		EQU 	0x43	; not a real mfr id, MX chip on borked PCB design
+;ID_MXs 		EQU 	0x43	; not a real mfr id, MX chip on borked PCB design
 
 ; Flash chip commands
 fcGetId		EQU		0x90
@@ -389,6 +388,8 @@ WRITERAM:
 	LD A,L				; A = data
 	POP HL
 
+; TODO - do these checks when the state changes and only check the state here
+; instead of doing all these checks on every byte
 IF FLASH
 	PUSH AF
 	; only do flash write cmd if:
@@ -420,25 +421,23 @@ ENDIF
 
 ; Convert ASCII hex digit in A to 4-bit value (0-15)
 ; Handles 0-9, A-F, a-f
-ToNibble:
-	; Check for 0-9
+h2nyb:
 	CP '0'
-	JP C,InvalidNibble    ; < '0' is invalid
+	JP C,h2nyb_invalid		; < '0' invalid
 	CP '9'+1
-	JP NC,CheckLetters    ; >= '9'+1, try letters
-	SUB '0'               ; Convert '0'-'9' to 0-9
+	JP NC,h2nyb_af			; > '9', try a-f
+	SUB '0'					; '0'-'9' to 0-9
 	RET
-CheckLetters:
-	; Convert a-f to A-F by clearing bit 5
-	AND 0xDF              ; Make uppercase (e.g., 'a' -> 'A')
+h2nyb_af:
+	AND 0xDF				; a-f to A-F by clearing bit 5
 	CP 'A'
-	JP C,InvalidNibble    ; < 'A' is invalid
+	JP C,h2nyb_invalid		; < 'A' invalid
 	CP 'F'+1
-	JP NC,InvalidNibble   ; >= 'F'+1 is invalid
-	SUB 'A'-10            ; Convert 'A'-'F' to 10-15
+	JP NC,h2nyb_invalid		; > 'F' invalid
+	SUB 'A'-10				; 'A'-'F' to 10-15
 	RET
-InvalidNibble:
-	LD A,0                ; Return 0 for invalid input
+h2nyb_invalid:
+	XOR A					; Return 0 for invalid input
 	RET
 
 ; A to ascii hex pair to screen
@@ -525,7 +524,7 @@ ConvertHex16:	; Convert 4 ASCII hex digits to 16-bit address
 	LD B,4             ; Process 4 digits
 CH16L:
 	LD A,(DE)          ; Get ASCII digit
-	CALL ToNibble      ; Convert to 4-bit value
+	CALL h2nyb      ; Convert to 4-bit value
 	; Shift HL left by 4 bits
 	ADD HL,HL
 	ADD HL,HL
@@ -946,19 +945,18 @@ TestForFlash: ; CFI query
 	CP ID_AT	; Atmel
 	JP Z,TF2
 
-	; no flash found
+	; no flash found - zero anything we don't recognize
 	XOR A
 
 TF2:
-	; remember whaever we found
-	LD (FlashType),A	; store the finding
+	LD (FlashType),A	; store the result
 	CP 0
 	JP Z,TFend			; skip the rest if no flash
 	LD A,fcExitId
 	CALL FlashPreamble	; reset the chip out of command mode
 TFend:
 	XOR A
-	OUT (pBANKCTRL),A ; resect bank ctl
+	OUT (pBANKCTRL),A	; resect bank ctl
 	RET
 
 FlashPreamble: ; command in A
