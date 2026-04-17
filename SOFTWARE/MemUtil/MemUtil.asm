@@ -408,12 +408,10 @@ IF FLASH
 	JP C,Wb		; bank < 0x0F
 	CP 0x1F
 	JP NC,Wb	; bank !< 0x1F
-	;PUSH HL
 	LD A,fcByteProg
 	CALL FlashPreamble
 	LD A,(Bank)
 	OUT (pBANKCTRL),A ; switch to flash bank
-	;POP HL
 Wb:
 	POP AF
 ENDIF
@@ -1063,10 +1061,7 @@ FlashType:
 	DB 0
 
 Buffer:
-	DB '0'
-	DB '0'
-	DB '0'
-	DB '0'
+	DB 4,0
 
 AddressMSG:
 	DB "Address?",0
@@ -1087,7 +1082,7 @@ HelpMSG_G:
 HelpMSG_W:
 	DB "W - Write a byte to a memory address",0
 HelpMSG_P:
-	DB "P - Write to I/O port (set rom ic card bank: port 51 data 0F-1F)",0
+	DB "P - Write to I/O port (set rom ic card bank: port 51 data 0F-1E)",0
 HelpMSG_UD:
 	DB "Up/Dn - Move by 0x80",0
 
