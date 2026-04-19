@@ -107,8 +107,8 @@ mCTRL		EQU		2	; BIT mCTRL,L NZ = Ctrl is pressed
 mRSHIFT		EQU		3	; BIT mRSHIFT,L NZ = Right Shift is pressed
 mLSHIFT		EQU		4	; BIT mLSHIFT,L NZ = Left Shift is pressed
 mCAPSLOCK	EQU		5	; BIT mCAPSLOCK,L NZ = Caps Lock is on
-mGRPH		EQU		6	; BIT mGRPH,L NZ = either GRPH or CODE mode is active
-mCODE		EQU		7	; If mGRPH, Then: BIT mCODE,L Z = GRPH, NZ = CODE
+mCODE		EQU		6	; BIT mCODE,L Z = ALT=GRPH, NZ = ALT=CODE
+mALT		EQU		7	; BIT mALT,L Z = normal, NZ = ALT
 
 ;------------------------------------------------------------------------------
 ; Application constants
