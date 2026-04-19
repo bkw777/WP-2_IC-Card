@@ -976,7 +976,7 @@ MonitorEnabled: DB 0
 MonitorPortAddress: DB 0
 
 Instructions:
-	DB "HexViewer---v2.2"
+	DB "HexViewer---v2.3"
 	DB "S - Serial xfer "
 	DB "G - Goto Address" 
 	DB "W - Write Data  "
