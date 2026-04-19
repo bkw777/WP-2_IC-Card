@@ -116,22 +116,25 @@ mCODE		EQU		7	; If mGRPH, Then: BIT mCODE,L Z = GRPH, NZ = CODE
 ;------------------------------------------------------------------------------
 ; HEADER
 ;------------------------------------------------------------------------------
+
+; PI and PR headers are not the same length
+
 IFDEF ROM	; Header for WP-2 executable ROM image
 
-ORG aROMWINDOW	; rom bank window
-DB "PI"			; ID
-DW 0			; reserved
-DB 0x0F			; bank number (15-31), 0x0F = first 16k of rom ic card
-DW START		; entry addr ; error in service manual, says DB
-DW 0			; reserved
+ORG aROMWINDOW		; rom bank window
+DB "PI"				; ID
+DW 0				; reserved
+DB 0x0F				; bank number (15-31), 0x0F = first 16k of rom ic card
+DW START			; entry addr (service manual p37 incorrect DB, p132 correct DW)
+DW 0				; reserved
 
 ELSE		; Header for WP-2 executable RUN file
 
-ORG aWORKAREA-8	; application work area
-DB "PR"			; ID
+ORG aWORKAREA-8		; application_work_area - length_of_header
+DB "PR"				; ID
 DW PRGEND-PRGTOP+1	; length
-DW START		; entry addr
-DW 0			; located addr (0="here")
+DW START			; entry addr
+DW 0				; located addr (0="here")
 
 ENDIF
 
