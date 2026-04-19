@@ -10,6 +10,8 @@
 ; crude way to avoid the conflict of touching the hardware you're running from.
 ;
 
+DEBUG_SERIAL	EQU		1
+
 ;------------------------------------------------------------------------------
 ; WP-2 platform constants
 ;------------------------------------------------------------------------------
@@ -395,6 +397,10 @@ WRITERAM:
 	BIT StateSerial,A
 	JP Z,wa1
 	; else get data from serial
+IFDEF DEBUG_SERIAL
+	LD A,'W'
+	CALL CHAROUT
+ENDIF
 wa0:
 	CALL GETDATALEN
 	LD A,L
@@ -684,10 +690,12 @@ SerialHandler:
 	SET StateSerial,(HL)		; set serial interface mode flag
 
 	CALL DrawTitle
-	LD HL,0x1503
+	LD HL,0x1500
 	CALL SETLOC
 	LD HL,SerialMSG
 	CALL STROUT
+	LD HL,0x0001
+	CALL SETLOC
 
 	; RS-232 SETUP
 	; TODO: the user & service manuals both say there is no RTS/CTS or DSR/DTR,
@@ -726,9 +734,9 @@ ENDIF
 	CP 'W'
 	JP Z,WRITERAM
 	CP 'P'
-	JP Z,WritePort51
+	JP Z,SetBank
 	CP 'p'
-	JP Z,ReadPort51
+	JP Z,GetBank
 	CP 'X'
 	JP Z,RawWriteMemAddress
 	CP 'B'
@@ -739,25 +747,39 @@ ENDIF
 	CALL SENDDATA
 	JP S_MAIN
 
-WritePort51:
+SetBank:
+IFDEF DEBUG_SERIAL
+	LD A,'P'
+	CALL CHAROUT
+ENDIF
+sb0:
 	CALL GETDATA
-	JP Z,WritePort51
+	JP Z,sb0
 	OUT (pBANKCTRL),A
 	LD A,1 ; ack
 	CALL SENDDATA
 	JP S_MAIN
 
-ReadPort51:
+GetBank:
+IFDEF DEBUG_SERIAL
+	LD A,'p'
+	CALL CHAROUT
+ENDIF
 	IN A,(pBANKCTRL)
 	CALL SENDDATA
 	JP S_MAIN
 
 ReadMemAddress:
+IFDEF DEBUG_SERIAL
+	LD A,'R'
+	CALL CHAROUT
+ENDIF
+ra0:
 	; Wait for 2 bytes in the serial rx buffer
 	CALL GETDATALEN
 	LD A,L
 	CP 2
-	JP NZ,ReadMemAddress
+	JP NZ,ra0
 	CALL GETDATA
 	LD H,A
 	CALL GETDATA
@@ -887,8 +909,15 @@ ERASEFLASH:
 	; show ui if in ui mode
 	LD A,(State)
 	BIT StateSerial,A
-	CALL Z,EraseFlashUI
-	; send the commands to the flash chip
+	JP NZ,ef0
+	CALL EraseFlashUI	; console ui
+	JP ef1
+ef0:				; serial debug
+IFDEF DEBUG_SERIAL
+	LD A,'E'
+	CALL CHAROUT
+ENDIF
+ef1:				; send the commands to the flash chip
 	LD A,fcErase
 	CALL FlashCMD
 	LD A,fcEraseChip
