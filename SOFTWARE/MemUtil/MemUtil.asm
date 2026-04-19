@@ -3,23 +3,16 @@
 ; Compile to RUN File:  z88dk-z80asm -v -b -o=foo.PR foo.asm
 ; Compile to ROM Image: z88dk-z80asm -v -DROM -b -o=foo.PI foo.asm
 ;
-; TODO: figure out the limits/rules about the file size
-; TODO: figure out how to do "sub run files" to get past the size limit
-;
-; MYSTERY
-; When the output file grows past ~2024 bytes there is some sort of
-; truncation or corruption when the OS loads the file into ram to run.
-; The help screen text is truncated mid way and ends with 3 bytes of some kind
-; of binary, and it's always the same 3 bytes. Yet, the other strings that come
-; later in the asm source are still present? Only HelpMSG# gets corrupted.
-; And the program still runs and works.
-; I think the 3 bytes are the same that always appear after the padding 0x1A's
-; at the end of the file in ram ...1A 1A 1A 46 F9 03
+; TODO: serial mode is not tested at all
 ;
 ; ROM target is not fully working but it builds, runs, partly works, returns.
 ; All flash functions ifdef'ed out when compiling for ROM as simply the initial
 ; crude way to avoid the conflict of touching the hardware you're running from.
 ;
+
+;------------------------------------------------------------------------------
+; WP-2 platform constants
+;------------------------------------------------------------------------------
 
 ; WP-2 System ROM Calls
 CHARSENSE		EQU		0x0100	; Check keyboard buffer, nonblocking get status
@@ -70,7 +63,7 @@ RSCLOSE			EQU		0x014C	; Close RS232C
 ;FORMAT			EQU		0X019A	; Format a disk-device
 ;DEVROOM		EQU		0x01C1	; Get devices rest size (remaining 128-byte blocks)
 ;SEEK			EQU		0x01BE	; Seek file pointer - only ram disk & ic card ram disk
-WAIT			EQU		0x01A0	; Wait for fixed time in 0.1s
+;WAIT			EQU		0x01A0	; Wait for fixed time in 0.1s
 ;RUNIC			EQU		0x01AF	; Run IC card program
 ;RUNFILE		EQU		0x01B2	; Run a program file
 ;POFFCOUNTPOINTER	EQU	0x01B5	; Get power off counter pointer
@@ -117,6 +110,9 @@ mCAPSLOCK	EQU		5	; BIT mCAPSLOCK,L NZ = Caps Lock is on
 mGRPH		EQU		6	; BIT mGRPH,L NZ = either GRPH or CODE mode is active
 mCODE		EQU		7	; If mGRPH, Then: BIT mCODE,L Z = GRPH, NZ = CODE
 
+;------------------------------------------------------------------------------
+; Application constants
+;------------------------------------------------------------------------------
 
 ; Flash chip manufacturer IDs
 ; 0x5555/0x2AAA actually works on all, 0x555/0x2AA does not
@@ -148,13 +144,13 @@ StateSerial		EQU		0		; State bit 0: UI mode: 0=ui 1=serial
 ;StateXX		EQU		7		; State bit 7:
 
 ;------------------------------------------------------------------------------
-; HEADER
+; Executable header
 ;------------------------------------------------------------------------------
 
 ; yes these 2 headers are not the same length
 
-IFDEF ROM	; Header for WP-2 executable ROM image
-FLASH		EQU 0
+IFDEF ROM	; Header for WP-2 ROM image
+FLASH_SUPPORT		EQU 0
 
 ORG aROMWINDOW		; rom bank window start
 DB "PI"				; ID
@@ -163,8 +159,8 @@ DB 0x0F				; bank number (15-31), bank 15 is the first 16k of the rom ic
 DW START			; entry addr
 DW 0				; reserved
 
-ELSE		; Header for WP-2 executable RUN-file
-FLASH		EQU 1
+ELSE		; Header for WP-2 RUN file
+FLASH_SUPPORT		EQU 1
 
 ORG aWORKAREA-8		; application_work_area - length_of_header
 DB "PR"				; ID
@@ -185,13 +181,13 @@ START:
 ;------------------------------------------------------------------------------
 ; CONSOLE
 ;------------------------------------------------------------------------------
-IF FLASH
+IF FLASH_SUPPORT
 	CALL TestForFlash
 ENDIF
 
-MAIN:
+C_MAIN:
 	LD HL,State
-	RES StateSerial,(HL)
+	RES StateSerial,(HL)		; unset serial interface mode flag
 
 	CALL DisplayRAM
 
@@ -222,7 +218,7 @@ ReadKeyboard:
 	JP Z,WRITEPORT
 	CP 'p'
 	JP Z,WRITEPORT
-IF FLASH
+IF FLASH_SUPPORT
 	CP 'E'
 	JP Z,ERASEFLASH
 	CP 'e'
@@ -317,7 +313,7 @@ DisplayHELP:
 	LD HL,HelpMSG_UD
 	CALL STROUT
 
-IF FLASH
+IF FLASH_SUPPORT
 	CALL FlashHelp
 ENDIF
 
@@ -340,7 +336,7 @@ ENDIF
 	CALL STROUT
 
 	CALL GetAnyKey
-	JP MAIN
+	JP C_MAIN
 
 ; Add 0x80 to address pointer
 NEXT:
@@ -348,7 +344,7 @@ NEXT:
 	LD DE,0x80
 	ADD HL,DE
 	LD (AddressPointer),HL
-	JP MAIN
+	JP C_MAIN
 
 ; Subtract 0x80 from address pointer
 PREVIOUS:
@@ -357,7 +353,7 @@ PREVIOUS:
 	OR A
 	SBC HL,DE
 	LD (AddressPointer),HL
-	JP MAIN
+	JP C_MAIN
 
 ; Go to a user requested memory location
 GOTO:
@@ -366,7 +362,7 @@ GOTO:
 	LD A,16
 	CALL HexInput
 	LD (AddressPointer),HL
-	JP MAIN
+	JP C_MAIN
 
 ; Write a value to an IO port
 WRITEPORT:
@@ -387,10 +383,10 @@ WRITEPORT:
 	; if port=pBANKCTRL then save data to (Bank)
 	;LD A,C
 	;CP pBANKCTRL
-	;JP NZ,MAIN
+	;JP NZ,C_MAIN
 	;LD A,L
 	;LD (Bank),A
-	JP MAIN
+	JP C_MAIN
 
 ; Write a value to a memory location
 WRITERAM:
@@ -419,7 +415,7 @@ wa1:
 ; HL = addr
 ; A = data
 wa2:
-IF FLASH
+IF FLASH_SUPPORT
 	LD D,A
 	; only do flash write cmd if:
 	; FlashType > 0 : flash ic card detected
@@ -441,20 +437,13 @@ IF FLASH
 	; met all flash criteria, do flash write
 	LD A,D
 	CALL FlashByteProg
-	JP wa4
+	JP ENDC
 wa3:
 	; not flash, do normal write
 	LD A,D
 ENDIF
 	LD (HL),A
-wa4:
-	; ui vs serial return
-	LD A,(State)
-	BIT StateSerial,A
-	JP Z,MAIN
-	LD A,1
-	CALL SENDDATA
-	JP SH1
+	JP ENDC
 
 WriteAddrUI:
 	LD DE,0x4802
@@ -675,10 +664,15 @@ DrawCtrl:
 	XOR A
 	JP SETCOLOR
 
-;------------------------------------------------------------------------------
-; /CONSOLE
-;------------------------------------------------------------------------------
-
+; end of command
+; ui vs serial return
+ENDC:
+	LD A,(State)
+	BIT StateSerial,A
+	JP Z,C_MAIN		; ui return
+	LD A,1
+	CALL SENDDATA
+	JP S_MAIN		; serial return
 
 ;------------------------------------------------------------------------------
 ; SERIAL
@@ -687,7 +681,8 @@ DrawCtrl:
 ; Pass control over to the serial port for flash erase/writing
 SerialHandler:
 	LD HL,State
-	SET StateSerial,(HL)
+	SET StateSerial,(HL)		; set serial interface mode flag
+
 	CALL DrawTitle
 	LD HL,0x1503
 	CALL SETLOC
@@ -702,66 +697,60 @@ SerialHandler:
 	LD HL,0x084C ; 9600, 8n1, no xonoff, timer enabled
 	CALL RSINIT
 
-SH1:
+; top of serial interface command loop
+S_MAIN:
 	CALL GETDATA
-	JP NZ,SerialDataRX
-	CALL CHARSENSE
-	JP Z,SH1 ; no data from keyboard, loop
+	JP NZ,S_CMD			; got a byte, jump to process it
+	CALL CHARSENSE		; no serial byte, check keyboard for exit key
+	JP Z,S_MAIN			; no keypress, loop
 
 	; Key pressed - exit loop if Esc or EXIT (F2+BS)
 	CP kESC		; ESC?
-	JP Z,MAIN	; yes, quit
+	JP Z,C_MAIN	; yes, quit
 	CP kBS		; no, BS?
-	JP NZ,SH1	; no, loop
+	JP NZ,S_MAIN	; no, loop
 	BIT mF2,L	; yes, also F2?
-	JP NZ,MAIN	; yes, quit
-	JP SH1		; loop
+	JP NZ,C_MAIN	; yes, quit
+	JP S_MAIN		; loop
 
-SerialDataRX:
-	; Received Serial byte is in A
-IF FLASH
-	CP 'E' ; erase command
+; A = cmd
+S_CMD:
+IF FLASH_SUPPORT
+	CP 'E'
 	JP Z,ERASEFLASH
 ENDIF
-	CP 'Q' ; Quit Serial handler
-	JP Z,MAIN
-	CP 'R' ; Read Mem address
+	CP 'Q' ; exit serial interface mode
+	JP Z,C_MAIN
+	CP 'R'
 	JP Z,ReadMemAddress
-	CP 'W' ; write Mem address
+	CP 'W'
 	JP Z,WRITERAM
-	CP 'P' ; write port 51
+	CP 'P'
 	JP Z,WritePort51
-	CP 'p' ; read port 51
+	CP 'p'
 	JP Z,ReadPort51
-	CP 'X' ; raw write mem
+	CP 'X'
 	JP Z,RawWriteMemAddress
 	CP 'B'
 	JP Z, BurstReadAddress
-	CP 'V' ;rawwrite Mem address
+	CP 'V'
 	JP Z, BurstWriteAddress
 	LD A,'?' ; Nack
 	CALL SENDDATA
-	JP MAIN
+	JP S_MAIN
 
 WritePort51:
 	CALL GETDATA
-	JP Z,WritePort51 ; loop immediate
-;	JP NZ,wp51a      ; sleep 100ms then loop
-;	LD A,1
-;	CALL WAIT
-;	JP WritePort51
-;wp51a:
+	JP Z,WritePort51
 	OUT (pBANKCTRL),A
-	;LD (Bank),A
 	LD A,1 ; ack
 	CALL SENDDATA
-	JP SH1
+	JP S_MAIN
 
 ReadPort51:
 	IN A,(pBANKCTRL)
-	;LD (Bank),A
 	CALL SENDDATA
-	JP SH1
+	JP S_MAIN
 
 ReadMemAddress:
 	; Wait for 2 bytes in the serial rx buffer
@@ -770,14 +759,12 @@ ReadMemAddress:
 	CP 2
 	JP NZ,ReadMemAddress
 	CALL GETDATA
-	PUSH AF
+	LD H,A
 	CALL GETDATA
 	LD L,A
-	POP AF
-	LD H,A
 	LD A,(HL)
 	CALL SENDDATA
-	JP SH1
+	JP S_MAIN
 
 RawWriteMemAddress:
     ;Wait for 3 bytes in the serial rx buffer
@@ -786,18 +773,14 @@ RawWriteMemAddress:
     CP 3
     JP NZ,RawWriteMemAddress
     CALL GETDATA
-    PUSH AF
+    LD H,A
     CALL GETDATA
     LD L,A
-    POP AF
-    LD H,A
-    PUSH HL
     CALL GETDATA
-    POP HL
     LD (HL),A
     LD A,1 ;ack
     CALL SENDDATA
-    JP SH1
+    JP S_MAIN
 
 BurstReadAddress:
     ; Wait for 3 bytes: addrHi, addrLo, count
@@ -806,21 +789,17 @@ BurstReadAddress:
     CP 3
     JP NZ,BurstReadAddress
     CALL GETDATA
-    PUSH AF
+    LD H,A
     CALL GETDATA
     LD L,A
-    POP AF
-    LD H,A          ; HL = address
-    PUSH HL
-    CALL GETDATA    ; A = count (1-128)
-    LD B,A          ; B = byte counter
-    POP HL
-BurstReadLoop:
+    CALL GETDATA
+    LD B,A
+br0:
     LD A,(HL)
     CALL SENDDATA
     INC HL
-    DJNZ BurstReadLoop
-    JP SH1
+    DJNZ br0
+    JP S_MAIN
 
 BurstWriteAddress:
     CALL GETDATALEN
@@ -828,43 +807,35 @@ BurstWriteAddress:
     CP 10        ; wait for addr(2) + data(8) = 10 bytes total
     JP NZ,BurstWriteAddress
     CALL GETDATA
-    PUSH AF
+    LD H,A
     CALL GETDATA
     LD L,A
-    POP AF
-    LD H,A       ; HL = start address
     LD B,8       ; fixed burst of 8 bytes
-BurstWriteLoop:
+bw0:
     PUSH BC
     CALL GETDATA
-IF FLASH
+IF FLASH_SUPPORT
+	; FIXME - flash-vs-mem like WRITERAM
     PUSH AF
     LD A,fcByteProg
     CALL FlashCMD
-    ;LD A,(Bank)
-    ;OUT (pBANKCTRL),A
     POP AF
 ENDIF
     LD (HL),A
-BWpoll:
+bw1:
     LD C,(HL)
     LD A,(HL)
     CP C
-    JP NZ,BWpoll
+    JP NZ,bw1
     INC HL
     POP BC
-    DJNZ BurstWriteLoop
+    DJNZ bw0
     LD A,1
     CALL SENDDATA
-    JP SH1
-
-
-;------------------------------------------------------------------------------
-; /SERIAL
-;------------------------------------------------------------------------------
+    JP S_MAIN
 
 ;------------------------------------------------------------------------------
-IF FLASH
+IF FLASH_SUPPORT
 ;------------------------------------------------------------------------------
 
 ; wait for flash cmd to complete (2 consecutive reads match)
@@ -911,7 +882,7 @@ ERASEFLASH:
 	XOR B				; for serial nack
 	LD A,(FlashType)
 	OR A
-	JP Z,fe1
+	JP Z,ENDC
 
 	; show ui if in ui mode
 	LD A,(State)
@@ -923,14 +894,7 @@ ERASEFLASH:
 	LD A,fcEraseChip
 	CALL FlashCMD
 	CALL WaitFlashBusy
-	; ui vs serial return
-fe1:
-	LD A,(State)
-	BIT StateSerial,A
-	JP Z,MAIN	; ui return
-	LD A,1
-	CALL SENDDATA	; serial ack/nack
-	JP SH1
+	JP ENDC
 
 EraseFlashUI:
 	; draw user input
@@ -974,18 +938,18 @@ TestForFlash: ; CFI query
 	; do we recognize the mfr id?
 	LD A,L
 	CP ID_SST	; SST / Greenliant / Microchip
-	JP Z,TF2
+	JP Z,tf0
 	CP ID_MX	; Macronix
-	JP Z,TF2
+	JP Z,tf0
 	CP ID_ST	; STMicro
-	JP Z,TF2
+	JP Z,tf0
 	CP ID_AM	; AMD
-	JP Z,TF2
+	JP Z,tf0
 	CP ID_AT	; Atmel
-	JP Z,TF2
+	JP Z,tf0
 	; no flash recognized
 	XOR A
-TF2:
+tf0:
 	LD (FlashType),A	; store the result
 	OR A
 	RET Z			; skip the rest if no flash
@@ -1003,6 +967,7 @@ FlashCMD: ; CMD in A
 ;	LD L,C
 ;	CALL DBGp
 
+	; FIXME - WHY THE F IS THIS ?
 	; ?????????????????????????????????????????????????????????????????????????
 	; For some reason you must overwrite A with XOR or LD(any value)
 	; before this particular IN. If you do not,
@@ -1074,18 +1039,9 @@ FlashCMD: ; CMD in A
 	POP BC
 	RET
 
-; HL = addr
-; A = data
-S_WriteFlashAddress:
-	CALL FlashByteProg
-	LD A,1
-	CALL SENDDATA
-	JP SH1
-
 ;------------------------------------------------------------------------------
 ENDIF ; /FLASH
 ;------------------------------------------------------------------------------
-
 
 IFDEF DEBUG
 ; A = breakpoint number
@@ -1155,7 +1111,7 @@ HelpMSG_P:
 HelpMSG_UD:
 	DB "Up/Dn - Move by 0x80",0
 
-IF FLASH
+IF FLASH_SUPPORT
 HelpMSG_E:
 	DB "E - Erase Flash IC Card",0
 EraseMSG:
@@ -1181,9 +1137,5 @@ AppName:
 
 AppVer:
 	DB "1.09",0
-
-;------------------------------------------------------------------------------
-; /Variables, Constatnts, Strings
-;------------------------------------------------------------------------------
 
 PRGEND:
