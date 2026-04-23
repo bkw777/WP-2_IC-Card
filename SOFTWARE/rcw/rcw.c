@@ -35,8 +35,13 @@
  * in:  DLE ENC -> discard DLE -> RAW=ENCxor0x40
  */
 #define DLE  0x10	// -> 0x10 0x50
-#define XON  0x11	// -> 0x10 0x51
-#define XOFF 0x13	// -> 0x10 0x53
+#define DC1  0x11
+#define DC2  0x12
+#define DC3  0x13
+#define DC4  0x14
+#define XON  DC1	// -> 0x10 0x51
+#define XOFF DC2	// -> 0x10 0x53
+#define _xfrm(x) (x^0x40)
 
 bool verbose = false;
 
@@ -174,7 +179,7 @@ int send_command(HANDLE hSerial, const unsigned char* cmd, size_t cmd_len, unsig
 			case XON:
 			case XOFF:
 				enc[j]=DLE;
-				enc[++j]=(cmd[i]^0x40);
+				enc[++j]=_xfrm(cmd[i]);
 				break;
 			default:
 				enc[j]=cmd[i];
@@ -193,7 +198,6 @@ int send_command(HANDLE hSerial, const unsigned char* cmd, size_t cmd_len, unsig
 		fprintf(stderr, "Error writing to COM port: %s\n", strerror(errno));
 		return -1;
 	}
-
 	// decode response
 	i = 0;
 	j = 0;
@@ -208,8 +212,8 @@ int send_command(HANDLE hSerial, const unsigned char* cmd, size_t cmd_len, unsig
 			printf("decode: response[bytes_read]=(enc[j]^0x40)\n");
 			printf("decode: response[%d]=(enc[%d]^0x40)\n",bytes_read,j);
 			printf("decode: response[%d]=(%02X^0x40)\n",bytes_read,enc[j]);
-			printf("decode: response[%d]=%02X\n",bytes_read,(enc[j]^0x40));
-			response[bytes_read]=(enc[j]^0x40);
+			printf("decode: response[%d]=%02X\n",bytes_read,_xfrm(enc[j]));
+			response[bytes_read]=_xfrm(enc[j]);
 			//printf("decode: response[%d]=%02X\n",bytes_read,response[bytes_read]);
 		} else {
 			printf("copy: response[bytes_read]=enc[j]\n");
@@ -259,8 +263,7 @@ int set_bank(HANDLE hSerial, unsigned char bank) {
 	unsigned char response;
 	int bytes_read = send_command(hSerial, cmd, 5, &response, 1);
 	if (bytes_read != 1 || response != bank) {
-		fprintf(stderr, "Failed to set bank 0x%02X: got 0x%02X\n",
-			bank, response);
+		fprintf(stderr, "Failed to set bank 0x%02X: got 0x%02X\n", bank, response);
 		return -1;
 	}
 	return 0;

@@ -145,13 +145,22 @@ StateSerial		EQU		0		; State bit 0: UI mode: 0=ui 1=serial
 ;StateXX		EQU		6		; State bit 6:
 ;StateXX		EQU		7		; State bit 7:
 
-; Encode control bytes to allow XON/XOFF.
+; Encode/Decode control bytes to allow XON/XOFF flow control.
+; wp2 serial is 8-bit clean so we only need to encode xon, xoff,
+; and whatever we use as the encoding mark (DLE).
 ; wxmodem style: For each DLE, XON, XOFF:
 ; out: RAW -> ENC=RAWxor0x40 -> DLE ENC
 ; in:  DLE ENC -> discard DLE -> RAW=ENCxor0x40
 DLE		EQU		0x10	; -> 0x10 0x50
-XON		EQU		0x11	; -> 0x10 0x51
-XOFF	EQU		0x13	; -> 0x10 0x53
+DC1		EQU		0x11
+DC2		EQU		0x12
+DC3		EQU		0x13
+DC4		EQU		0x14
+XON		EQU		DC1		; -> 0x10 0x51
+XOFF	EQU		DC3		; -> 0x10 0x53
+MACRO _xfrm
+	XOR 0x40			; encode/decode data transform
+ENDM
 
 ; HL = RS-232 parameters
 ;LD H,8		; bps 9=19200 8=9600 7=4800 6=2400 5=1200 4=600 3=300 2=150 1=75
@@ -1078,15 +1087,15 @@ toupper:
 ; receive serial byte
 ; if DLE, discard and read another byte and xor 0x40
 rxb:
-	CALL GETDATA
-	JP Z,rxb
+	CALL GETDATA	; get a byte from serial
+	JP Z,rxb		; retry until success
 	CP DLE
-	RET NZ
-rx0:
-	CALL GETDATA
-	JP Z,rx0
-	XOR 0x40
-	RET
+	RET NZ			; if it's not DLE then return unmodified data
+rx0:				; else
+	CALL GETDATA	; discard and read another byte
+	JP Z,rx0		; retry until success
+	_xfrm			; transform data
+	RET				; return transformed data
 
 ; send serial byte
 ; if DLE,XON,XOFF, send DLE then A xor 0x40
@@ -1108,7 +1117,7 @@ tx2:
 	CALL SENDDATA
 	JP C,tx2		; retry until sent
 	LD A,D
-	XOR 0x40		; transform data
+	_xfrm			; transform data
 	JP tx0
 
 IFDEF DEBUG
