@@ -1084,6 +1084,8 @@ toupper:
 	_toupper
 	RET
 
+; TODO - DJNZ max retry counters to escape hangs
+
 ; receive serial byte
 ; if DLE, discard and read another byte and xor 0x40
 rxb:
