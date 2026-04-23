@@ -2,15 +2,6 @@
  * Port of Ben Grimmett's RomCardWriter.cpp to cross-platform plain c
  */
 
-/*
- * TODO Escape control bytes to allow XON/XOFF
- * because the WP-2 does not support RTS/CTS.
- * wxmodem style: escape DLE, XON, XOFF. escape BYTE = DLE BYTExor64
- * DLE:  0x10 -> 0x10 0x50
- * XON:  0x11 -> 0x10 0x51
- * XOFF: 0x13 -> 0x10 0x53
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -36,7 +27,16 @@
 
 #define BANK_SIZE 0x4000 // 16KB per bank (0x4000 to 0x7FFF)
 #define START_ADDRESS 0x4000
-#define ERASE_TIMEOUT_MS 100 // Timeout for erase ACK (20ms typical, padded for safety)
+
+/*
+ * Encode control bytes to allow XON/XOFF.
+ * wxmodem style: For each DLE, XON, XOFF:
+ * out: RAW -> ENC=RAWxor0x40 -> DLE ENC
+ * in:  DLE ENC -> discard DLE -> RAW=ENCxor0x40
+ */
+#define DLE  0x10	// -> 0x10 0x50
+#define XON  0x11	// -> 0x10 0x51
+#define XOFF 0x13	// -> 0x10 0x53
 
 bool verbose = false;
 
@@ -125,10 +125,10 @@ HANDLE open_serial_port(const char* port_name) {
 	// Disable RTS/CTS because WP-2 does not support RTS/CTS.
 	// Disable XON/XOFF because HexViewer and RomCardWriter send raw binary.
 	// hexviewer.asm: LD HL,0x084C ; 9600 bps, 8n1, no xon, timer enabled
-	ti.c_iflag &= ~(IXON|IXOFF|IXANY); // disable xonoff
+	//ti.c_iflag &= ~(IXON|IXOFF|IXANY); // disable xonoff
 	//ti.c_iflag |= (IXON|IXOFF|IXANY); // eable xonoff with IXANY
-	//ti.c_iflag &= ~IXANY;         // disable IXANY
-	//ti.c_iflag |= (IXON|IXOFF);   // eable xonoff without IXANY
+	ti.c_iflag &= ~IXANY;         // disable IXANY
+	ti.c_iflag |= (IXON|IXOFF);   // eable xonoff without IXANY
 	//ti.c_cflag |= CRTSCTS;        // enable rtscts
 	ti.c_cflag &= ~CRTSCTS;        // disable rtscts
 	ti.c_cflag |= (CREAD|CLOCAL);  // disable modem control lines
@@ -137,8 +137,8 @@ HANDLE open_serial_port(const char* port_name) {
 	ti.c_cflag &= ~CSIZE;          // character size mask
 	ti.c_cflag |= CS8;             // 8 bit bytes
 	ti.c_cc[VMIN] = 1;             // minimum bytes, block until at least 1
-	ti.c_cc[VTIME] = 0;            // no timeout
-	//ti.c_cc[VTIME] = 1;            // 100ms timeout
+	//ti.c_cc[VTIME] = 0;            // no timeout
+	ti.c_cc[VTIME] = 1;            // n*100ms timeout between bytes
 
 	// apply all the settings above
 	if (tcsetattr(fd,TCSANOW,&ti)==-1) return INVALID_HANDLE_VALUE;
@@ -148,35 +148,93 @@ HANDLE open_serial_port(const char* port_name) {
 #endif // _WIN32
 
 // Send a command and read response
-int send_command(HANDLE hSerial, const unsigned char* cmd, size_t cmd_len,
-	unsigned char* response, size_t response_len, DWORD timeout_ms) {
+int send_command(HANDLE hSerial, const unsigned char* cmd, size_t cmd_len, unsigned char* response, size_t response_len) {
 	DWORD bytes_written=0, bytes_read=0;
 
-	if (verbose) { putchar('>') ;b2h(cmd,cmd_len) ;putchar('\n') ; }
+	if (verbose) { putchar('\n'); putchar(cmd[1]); putchar('\n'); putchar('>'); b2h(cmd,cmd_len); putchar('\n'); }
 
 #ifdef _WIN32
 	if (!WriteFile(hSerial, cmd, cmd_len, &bytes_written, NULL) || bytes_written != cmd_len) {
 		fprintf(stderr, "Error writing to COM port: %ld\n", GetLastError());
 		return -1;
 	}
-	Sleep(timeout_ms); // Wait for device to process
 	if (!ReadFile(hSerial, response, response_len, &bytes_read, NULL)) {
 		fprintf(stderr, "Error reading from COM port: %ld\n", GetLastError());
 		bytes_read = -1;
 	}
 #else
-	if ((bytes_written = write(hSerial, cmd, cmd_len)) != cmd_len) {
+
+	unsigned char enc[16] = {0}; // max 8 encoded bytes
+	int i=0, j=0;
+
+	// encode cmd
+	for (i=0,j=0;i<cmd_len;i++,j++) {
+		switch (cmd[i]) {
+			case DLE:
+			case XON:
+			case XOFF:
+				enc[j]=DLE;
+				enc[++j]=(cmd[i]^0x40);
+				break;
+			default:
+				enc[j]=cmd[i];
+				break;
+		}
+	}
+
+	if (verbose) { putchar('>') ;b2h(enc,j) ;putchar('\n') ; }
+
+	i = 0;
+	while (bytes_written<j) {
+		if ((i = write(hSerial, enc, j))) bytes_written+=i;
+		tcdrain(hSerial);
+	}
+	if (bytes_written != j) {
 		fprintf(stderr, "Error writing to COM port: %s\n", strerror(errno));
 		return -1;
 	}
-	tcdrain(hSerial);
-	usleep(timeout_ms*1000); // Wait for device to process
-	if ((bytes_read = read(hSerial, response, response_len)) != response_len) {
+
+	// decode response
+	i = 0;
+	j = 0;
+	memset(enc,0,16);
+	memset(response,0,response_len);
+	while (bytes_read<response_len) {
+		if (verbose) { putchar('e'); b2h(enc,16); putchar('\n'); }
+		if (verbose) { putchar('r'); b2h(response,response_len); putchar('\n'); }
+		if (!(i = read(hSerial, enc+j, 1))) continue;
+		if (enc[j]==DLE) {j++; continue; }
+		if (j>0 && enc[j-1]==DLE) {
+			printf("decode: response[bytes_read]=(enc[j]^0x40)\n");
+			printf("decode: response[%d]=(enc[%d]^0x40)\n",bytes_read,j);
+			printf("decode: response[%d]=(%02X^0x40)\n",bytes_read,enc[j]);
+			printf("decode: response[%d]=%02X\n",bytes_read,(enc[j]^0x40));
+			response[bytes_read]=(enc[j]^0x40);
+			//printf("decode: response[%d]=%02X\n",bytes_read,response[bytes_read]);
+		} else {
+			printf("copy: response[bytes_read]=enc[j]\n");
+			printf("copy: response[%d]=enc[%d]\n",bytes_read,j);
+			printf("copy: response[%d]=%02X\n",bytes_read,enc[j]);
+			response[bytes_read]=enc[j];
+			//printf("copy: response[%d]=%02X\n",bytes_read,enc[j]);
+		}
+		printf("response[%d]=%02X\n",bytes_read,response[bytes_read]);
+		j++;
+		bytes_read++;
+	}
+
+	//if (verbose) { putchar('<') ;b2h(enc,j) ;putchar('\n') ; }
+	if (verbose) { putchar('e') ;b2h(enc,16) ;putchar('\n') ; }
+	if (verbose) { putchar('r') ;b2h(response,response_len) ;putchar('\n') ; }
+
+	if (bytes_read!=response_len) {
+	//if ((bytes_read = read(hSerial, response, response_len)) != response_len) {
 		fprintf(stderr, "Error reading from COM port: %s\n", strerror(errno));
 		bytes_read = -1;
 	}
 #endif // _WIN32
 
+	//if (verbose) { putchar('<') ;b2h(response,bytes_read) ;putchar('\n') ; }
 	if (verbose) { putchar('<') ;b2h(response,bytes_read) ;putchar('\n') ; }
 
 	return bytes_read;
@@ -184,9 +242,9 @@ int send_command(HANDLE hSerial, const unsigned char* cmd, size_t cmd_len,
 
 // Erase flash ROM
 int erase_flash(HANDLE hSerial) {
-	unsigned char cmd = 0x45; // 'E' for erase
+	unsigned char cmd[] = {DLE, 'E', 0, 0, 0} ;
 	unsigned char response;
-	int bytes_read = send_command(hSerial, &cmd, 1, &response, 1, ERASE_TIMEOUT_MS);
+	int bytes_read = send_command(hSerial, cmd, 5, &response, 1);
 	if (bytes_read != 1 || response != 0x01) {
 		fprintf(stderr, "Flash erase failed: Expected 0x01, got 0x%02X\n", response);
 		return -1;
@@ -195,70 +253,42 @@ int erase_flash(HANDLE hSerial) {
 	return 0;
 }
 
-// Read current bank using 'p' command
-int read_bank(HANDLE hSerial, unsigned char* current_bank) {
-	unsigned char cmd = 0x70; // 'p' to read bank control register
-	int bytes_read = send_command(hSerial, &cmd, 1, current_bank, 1, 10);
-	if (bytes_read != 1) {
-		fprintf(stderr, "Failed to read current bank: Got %d bytes\n", bytes_read);
-		return -1;
-	}
-	return 0;
-}
-
 // Set bank control register
 int set_bank(HANDLE hSerial, unsigned char bank) {
-	unsigned char cmd[] = { 0x50, bank }; // 'P' followed by bank number
+	unsigned char cmd[] = {DLE, 'B', 0, 0, bank };
 	unsigned char response;
-	int bytes_read = send_command(hSerial, cmd, 2, &response, 1, 10);
-	if (bytes_read != 1 || response != 0x01) {
-		fprintf(stderr, "Failed to set bank 0x%02X: Expected 0x01, got 0x%02X\n",
+	int bytes_read = send_command(hSerial, cmd, 5, &response, 1);
+	if (bytes_read != 1 || response != bank) {
+		fprintf(stderr, "Failed to set bank 0x%02X: got 0x%02X\n",
 			bank, response);
 		return -1;
 	}
-
-	// Verify the bank was set correctly using 'p' command
-	unsigned char current_bank;
-	if (read_bank(hSerial, &current_bank) != 0 || current_bank != bank) {
-		fprintf(stderr, "Bank verification failed: Expected 0x%02X, got 0x%02X\n",
-			bank, current_bank);
-		return -1;
-	}
-
 	return 0;
 }
 
+/*
 // Read a byte from memory using 'R' command (for verification)
 int read_memory(HANDLE hSerial, unsigned short address, unsigned char* data) {
-	unsigned char cmd[] = { 0x52, (address >> 8) & 0xFF, address & 0xFF }; // 'R', high addr, low addr
-	int bytes_read = send_command(hSerial, cmd, 3, data, 1, 10);
+	unsigned char cmd[] = { 'R', (address >> 8) & 0xFF, address & 0xFF }; // 'R', high addr, low addr
+	int bytes_read = send_command(hSerial, cmd, 3, data, 1);
 	if (bytes_read != 1) {
 		fprintf(stderr, "Failed to read address 0x%04X: Got %d bytes\n", address, bytes_read);
 		return -1;
 	}
 	return 0;
 }
+*/
 
 // Write a byte to memory
 int write_memory(HANDLE hSerial, unsigned short address, unsigned char data) {
-	unsigned char cmd[] = { 0x57, (address >> 8) & 0xFF, address & 0xFF, data }; // 'W', high addr, low addr, data
+	unsigned char cmd[] = {DLE, 'W', (address >> 8) & 0xFF, address & 0xFF, data }; // 'W', high addr, low addr, data
 	unsigned char response;
-	int bytes_read = send_command(hSerial, cmd, 4, &response, 1, 10);
+	int bytes_read = send_command(hSerial, cmd, 5, &response, 1);
 	if (bytes_read != 1 || response != 0x01) {
 		fprintf(stderr, "Failed to write 0x%02X to address 0x%04X: Expected 0x01, got 0x%02X\n",
 			data, address, response);
 		return -1;
 	}
-
-	// Optional: Verify the written byte using 'R' command
-	/*
-	unsigned char read_data;
-	if (read_memory(hSerial, address, &read_data) != 0 || read_data != data) {
-		fprintf(stderr, "Write verification failed at address 0x%04X: Expected 0x%02X, got 0x%02X\n",
-			address, data, read_data);
-		return -1;
-	}
-	*/
 
 	return 0;
 }

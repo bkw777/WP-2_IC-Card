@@ -145,6 +145,32 @@ StateSerial		EQU		0		; State bit 0: UI mode: 0=ui 1=serial
 ;StateXX		EQU		6		; State bit 6:
 ;StateXX		EQU		7		; State bit 7:
 
+; Encode control bytes to allow XON/XOFF.
+; wxmodem style: For each DLE, XON, XOFF:
+; out: RAW -> ENC=RAWxor0x40 -> DLE ENC
+; in:  DLE ENC -> discard DLE -> RAW=ENCxor0x40
+DLE		EQU		0x10	; -> 0x10 0x50
+XON		EQU		0x11	; -> 0x10 0x51
+XOFF	EQU		0x13	; -> 0x10 0x53
+
+; HL = RS-232 parameters
+;LD H,8		; bps 9=19200 8=9600 7=4800 6=2400 5=1200 4=600 3=300 2=150 1=75
+;RES 7,L	; 0 0 1 1	stop bits
+;SET 6,L	; 0 1 0 1	0 1 1.5 2
+;RES 5,L	; x 0 1		parity
+;RES 4,L	; 0 1 1		none odd even
+;SET 3,L	; 0 0 1 1	data bits
+;SET 2,L	; 0 1 0 1	5 6 7 8
+;RES 1,L	; xonoff RES=disable SET=enable
+;RES 0,L	; timer interrupt RES=enable SET=disable
+
+;RSINIT_PARAMS	EQU 0x084C	; 9600, 8n1, no xonoff, timer intr enabled
+RSINIT_PARAMS	EQU 0x084E	; 9600, 8n1, xonoff, timer intr enabled
+
+MACRO _toupper
+	AND 0xDF		; a-f to A-F by clearing bit 5
+ENDM
+
 ;------------------------------------------------------------------------------
 ; Executable header
 ;------------------------------------------------------------------------------
@@ -204,55 +230,48 @@ ReadKeyboard:
 	CALL KILLBUF
 	CALL CHARGET
 	LD A,H
+
+	CALL toupper
+
 	CP kUP
 	JP Z,PREVIOUS
 	CP kDOWN
 	JP Z,NEXT
 	CP 'G'
 	JP Z,GOTO
-	CP 'g'
-	JP Z,GOTO
 	CP 'W'
 	JP Z,WRITERAM
-	CP 'w'
-	JP Z,WRITERAM
 	CP 'P'
-	JP Z,WRITEPORT
-	CP 'p'
 	JP Z,WRITEPORT
 IF FLASH_SUPPORT
 	CP 'E'
 	JP Z,ERASEFLASH
-	CP 'e'
-	JP Z,ERASEFLASH
 ENDIF
 	CP 'S'
-	JP Z,SerialHandler
-	CP 's'
 	JP Z,SerialHandler
 
 	; Help on either '?' or HELP (F1+1)
 	CP '?'
 	JP Z,DisplayHELP
 	CP '1'				; F1+1 = HELP
-	JP Z,RKHELP			; check F1
+	JP Z,rkHELP			; Got '1', check F1
 
-	; Exit on either Esc or EXIT
+	; Exit on either Esc/Cncl or EXIT (F2+BS)
 	CP kESC
 	JP Z,Exit
 	CP kBS				; F2+BS = EXIT
-	JP Z,RKEXIT			; check F2
+	JP Z,rkEXIT			; Got BS, check F2
 
 	JP ReadKeyboard
 
 ; got '1', is F1 pressed also?
-RKHELP:
+rkHELP:
 	BIT mF1,L			; F1
 	JP NZ,DisplayHELP
 	JP ReadKeyboard
 
 ; got kBS, is F2 pressed also?
-RKEXIT:
+rkEXIT:
 	BIT mF2,L			; F2
 	JP Z,ReadKeyboard
 	; fall through to Exit:
@@ -391,38 +410,18 @@ WRITEPORT:
 	JP C_MAIN
 
 ; Write a value to a memory location
+; H = addrH
+; L = addrL
+; B = data
 WRITERAM:
 	; show ui if in ui mode
 	LD A,(State)
 	BIT StateSerial,A
-	JP Z,wa1
-	; else get data from serial
-IFDEF DEBUG_SERIAL
-	LD A,'W'
-	CALL CHAROUT
-ENDIF
-wa0:
-	CALL GETDATALEN
-	LD A,L
-	CP 3
-	JP NZ,wa0		; wait until 3 bytes available
-	CALL GETDATA
-	PUSH AF
-	CALL GETDATA
-	LD L,A
-	POP AF
-	LD H,A
-	PUSH HL
-	CALL GETDATA
-	POP HL
-	JP wa2
-wa1:
-	CALL Z,WriteAddrUI
+	CALL Z,WriteAddrUI		; console mode
 ; HL = addr
-; A = data
-wa2:
+; B = data
 IF FLASH_SUPPORT
-	LD D,A
+	;LD D,A
 	; only do flash write cmd if:
 	; FlashType > 0 : flash ic card detected
 	; 0E < bank < 1F : rom ic card bank
@@ -441,14 +440,15 @@ IF FLASH_SUPPORT
 	CP 0x1F
 	JP NC,wa3	; bank !< 0x1F
 	; met all flash criteria, do flash write
-	LD A,D
 	CALL FlashByteProg
+	LD E,1
 	JP ENDC
 wa3:
 	; not flash, do normal write
-	LD A,D
+	;LD A,D
 ENDIF
-	LD (HL),A
+	LD (HL),B
+	LD E,1
 	JP ENDC
 
 WriteAddrUI:
@@ -461,7 +461,7 @@ WriteAddrUI:
 	LD HL,DataMSG
 	LD A,8
 	CALL HexInput
-	LD A,L				; A = data
+	LD B,L				; A = data
 	POP HL
 	RET
 
@@ -475,7 +475,7 @@ h2nyb:
 	SUB '0'					; '0'-'9' to 0-9
 	RET
 h2nyb_af:
-	AND 0xDF				; a-f to A-F by clearing bit 5
+	_toupper
 	CP 'A'
 	JP C,h2nyb_invalid		; < 'A' invalid
 	CP 'F'+1
@@ -620,8 +620,7 @@ dr0:
 
 ; DE = addr
 LineOfHex:
-	;PUSH DE		; parent
-	PUSH BC		; parent DJNZ
+	PUSH BC		; save parents DJNZ
 	PUSH DE		; local use
 ; draw the address
 	LD A,D
@@ -642,15 +641,14 @@ lh0:
 	LD A,' '
 	CALL CHAROUT
 ; Draw the ascii equivalent of the hex data, if its a renderable ascii value
-	POP DE		; /local use - reset to starting addr
+	POP DE		; reset to starting addr
 	LD B,16
 lh1:
 	LD A,(DE)
 	CALL DrawAscii
 	INC DE
 	DJNZ lh1
-	POP BC		; /parent DJNZ
-	;POP DE		; /parent
+	POP BC		; restore parents DJNZ
 	RET
 
 DrawAscii:
@@ -672,12 +670,13 @@ DrawCtrl:
 
 ; end of command
 ; ui vs serial return
+; E = serial return
 ENDC:
 	LD A,(State)
 	BIT StateSerial,A
 	JP Z,C_MAIN		; ui return
-	LD A,1
-	CALL SENDDATA
+	LD A,E
+	CALL txb
 	JP S_MAIN		; serial return
 
 ;------------------------------------------------------------------------------
@@ -700,161 +699,164 @@ SerialHandler:
 	; RS-232 SETUP
 	; TODO: the user & service manuals both say there is no RTS/CTS or DSR/DTR,
 	; but the RTS, CTS, DTR, and DSR are all wired up to IC9 (uPD71051, 8251-clone).
-	; So presumably it should be possible to manually program IC9 to enable RTS/CTS.
-	; TODO: test if maybe it's already silently doing RTS/CTS by default.
-	LD HL,0x084C ; 9600, 8n1, no xonoff, timer enabled
+	; It may be possible to manually program IC9 to enable RTS/CTS.
+
+	;LD H,8		; bps 9=19200 8=9600 7=4800 6=2400 5=1200 4=600 3=300 2=150 1=75
+	;RES 7,L	; 0 0 1 1	stop bits
+	;SET 6,L	; 0 1 0 1	0 1 1.5 2
+	;RES 5,L	; x 0 1		parity
+	;RES 4,L	; 0 1 1		none odd even
+	;SET 3,L	; 0 0 1 1	data bits
+	;SET 2,L	; 0 1 0 1	5 6 7 8
+	;RES 1,L	; xonoff RES=disable SET=enable
+	;RES 0,L	; timer interrupt RES=enable SET=disable
+
+	LD HL,RSINIT_PARAMS
 	CALL RSINIT
 
 ; top of serial interface command loop
 S_MAIN:
-	CALL GETDATA
-	JP NZ,S_CMD			; got a byte, jump to process it
-	CALL CHARSENSE		; no serial byte, check keyboard for exit key
-	JP Z,S_MAIN			; no keypress, loop
-
-	; Key pressed - exit loop if Esc or EXIT (F2+BS)
-	CP kESC		; ESC?
-	JP Z,C_MAIN	; yes, quit
-	CP kBS		; no, BS?
-	JP NZ,S_MAIN	; no, loop
-	BIT mF2,L	; yes, also F2?
-	JP NZ,C_MAIN	; yes, quit
-	JP S_MAIN		; loop
-
-; A = cmd
+	CALL CHARSENSE		; check local keyboard for exit key
+	JP Z,sm0			; no keypress, proceed
+	CP kESC				; ESC?
+	JP Z,C_MAIN			; yes, quit
+	CP kBS				; no, BS?
+	JP NZ,sm0			; no, proceed
+	BIT mF2,L			; yes, also F2?
+	JP NZ,C_MAIN		; yes, quit
+sm0:
+	CALL rxb
+	CP DLE
+	JP NZ,S_MAIN	; read & discard until DLE
+	CALL rxb
+	LD C,A			; cmd
+	CALL rxb
+	LD H,A			; valH
+	CALL rxb
+	LD L,A			; valL
+	CALL rxb
+	LD B,A			; data
+	LD A,C
 S_CMD:
+IFDEF DEBUG_SERIAL
+	CALL CHAROUT
+ENDIF
 IF FLASH_SUPPORT
 	CP 'E'
 	JP Z,ERASEFLASH
 ENDIF
-	CP 'Q' ; exit serial interface mode
-	JP Z,C_MAIN
-	CP 'R'
-	JP Z,ReadMemAddress
+;	CP 'Q' ; exit serial interface mode
+;	JP Z,C_MAIN
+;	CP 'R'
+;	JP Z,ReadMemAddress
 	CP 'W'
 	JP Z,WRITERAM
-	CP 'P'
-	JP Z,SetBank
-	CP 'p'
-	JP Z,GetBank
-	CP 'X'
-	JP Z,RawWriteMemAddress
 	CP 'B'
-	JP Z, BurstReadAddress
-	CP 'V'
-	JP Z, BurstWriteAddress
+	JP Z,SetBank
+;	CP 'p'
+;	JP Z,GetBank
+;	CP 'X'
+;	JP Z,RawWriteMemAddress
+;	CP 'B'
+;	JP Z,BurstReadAddress
+;	CP 'V'
+;	JP Z,BurstWriteAddress
 	LD A,'?' ; Nack
-	CALL SENDDATA
+IFDEF DEBUG_SERIAL
+	CALL CHAROUT
+ENDIF
+	CALL txb
 	JP S_MAIN
 
 SetBank:
-IFDEF DEBUG_SERIAL
-	LD A,'P'
-	CALL CHAROUT
-ENDIF
-sb0:
-	CALL GETDATA
-	JP Z,sb0
+	LD A,B
 	OUT (pBANKCTRL),A
-	LD A,1 ; ack
-	CALL SENDDATA
-	JP S_MAIN
-
 GetBank:
-IFDEF DEBUG_SERIAL
-	LD A,'p'
-	CALL CHAROUT
-ENDIF
 	IN A,(pBANKCTRL)
-	CALL SENDDATA
+	CALL txb
 	JP S_MAIN
 
-ReadMemAddress:
-IFDEF DEBUG_SERIAL
-	LD A,'R'
-	CALL CHAROUT
-ENDIF
-ra0:
-	; Wait for 2 bytes in the serial rx buffer
-	CALL GETDATALEN
-	LD A,L
-	CP 2
-	JP NZ,ra0
-	CALL GETDATA
-	LD H,A
-	CALL GETDATA
-	LD L,A
-	LD A,(HL)
-	CALL SENDDATA
-	JP S_MAIN
+;ReadMemAddress:
+;	; Wait for 2 bytes in the serial rx buffer
+;	CALL GETDATALEN
+;	LD A,L
+;	CP 2
+;	JP NZ,ReadMemAddress
+;	CALL GETDATA
+;	LD H,A
+;	CALL GETDATA
+;	LD L,A
+;	LD A,(HL)
+;	CALL SENDDATA
+;	JP S_MAIN
+;
+;RawWriteMemAddress:
+;Wait for 3 bytes in the serial rx buffer
+;	CALL GETDATALEN
+;	LD A,L
+;	CP 3
+;	JP NZ,RawWriteMemAddress
+;	CALL GETDATA
+;	LD H,A
+;	CALL GETDATA
+;    LD L,A
+;    CALL GETDATA
+;    LD (HL),A
+;    LD A,1 ;ack
+;    CALL SENDDATA
+;    JP S_MAIN
 
-RawWriteMemAddress:
-    ;Wait for 3 bytes in the serial rx buffer
-    CALL GETDATALEN
-    LD A,L
-    CP 3
-    JP NZ,RawWriteMemAddress
-    CALL GETDATA
-    LD H,A
-    CALL GETDATA
-    LD L,A
-    CALL GETDATA
-    LD (HL),A
-    LD A,1 ;ack
-    CALL SENDDATA
-    JP S_MAIN
-
-BurstReadAddress:
-    ; Wait for 3 bytes: addrHi, addrLo, count
-    CALL GETDATALEN
-    LD A,L
-    CP 3
-    JP NZ,BurstReadAddress
-    CALL GETDATA
-    LD H,A
-    CALL GETDATA
-    LD L,A
-    CALL GETDATA
-    LD B,A
-br0:
-    LD A,(HL)
-    CALL SENDDATA
-    INC HL
-    DJNZ br0
-    JP S_MAIN
-
-BurstWriteAddress:
-    CALL GETDATALEN
-    LD A,L
-    CP 10        ; wait for addr(2) + data(8) = 10 bytes total
-    JP NZ,BurstWriteAddress
-    CALL GETDATA
-    LD H,A
-    CALL GETDATA
-    LD L,A
-    LD B,8       ; fixed burst of 8 bytes
-bw0:
-    PUSH BC
-    CALL GETDATA
-IF FLASH_SUPPORT
-	; FIXME - flash-vs-mem like WRITERAM
-    PUSH AF
-    LD A,fcByteProg
-    CALL FlashCMD
-    POP AF
-ENDIF
-    LD (HL),A
-bw1:
-    LD C,(HL)
-    LD A,(HL)
-    CP C
-    JP NZ,bw1
-    INC HL
-    POP BC
-    DJNZ bw0
-    LD A,1
-    CALL SENDDATA
-    JP S_MAIN
+;BurstReadAddress:
+;    ; Wait for 3 bytes: addrHi, addrLo, count
+;    CALL GETDATALEN
+;    LD A,L
+;    CP 3
+;    JP NZ,BurstReadAddress
+;    CALL GETDATA
+;    LD H,A
+;    CALL GETDATA
+;    LD L,A
+;    CALL GETDATA
+;    LD B,A
+;br0:
+;    LD A,(HL)
+;    CALL SENDDATA
+;    INC HL
+;    DJNZ br0
+;    JP S_MAIN
+;
+;BurstWriteAddress:
+;    CALL GETDATALEN
+;    LD A,L
+;    CP 10        ; wait for addr(2) + data(8) = 10 bytes total
+;    JP NZ,BurstWriteAddress
+;    CALL GETDATA
+;    LD H,A
+;    CALL GETDATA
+;    LD L,A
+;    LD B,8       ; fixed burst of 8 bytes
+;bw0:
+;    PUSH BC
+;    CALL GETDATA
+;IF FLASH_SUPPORT
+;	; FIXME - flash-vs-mem like WRITERAM
+;    PUSH AF
+;    LD A,fcByteProg
+;    CALL FlashCMD
+;    POP AF
+;ENDIF
+;    LD (HL),A
+;bw1:
+;    LD C,(HL)
+;    LD A,(HL)
+;    CP C
+;    JP NZ,bw1
+;    INC HL
+;    POP BC
+;    DJNZ bw0
+;    LD A,1
+;    CALL SENDDATA
+;    JP S_MAIN
 
 ;------------------------------------------------------------------------------
 IF FLASH_SUPPORT
@@ -870,8 +872,9 @@ wfb0:
 	JP NZ,wfb0
 	RET
 
+; HL = addr
+; D = data
 FlashByteProg:
-	LD D,A
 	LD A,fcByteProg
 	CALL FlashCMD
 	LD (HL),D
@@ -901,32 +904,25 @@ PrintFlashType:
 
 ERASEFLASH:
 	; abort if not flash
-	XOR B				; for serial nack
 	LD A,(FlashType)
-	OR A
+	LD E,A
+	OR E
 	JP Z,ENDC
 
 	; show ui if in ui mode
 	LD A,(State)
 	BIT StateSerial,A
-	JP NZ,ef0
-	CALL EraseFlashUI	; console ui
-	JP ef1
-ef0:				; serial debug
-IFDEF DEBUG_SERIAL
-	LD A,'E'
-	CALL CHAROUT
-ENDIF
-ef1:				; send the commands to the flash chip
+	CALL Z,EraseFlashUI	; console ui
 	LD A,fcErase
 	CALL FlashCMD
 	LD A,fcEraseChip
 	CALL FlashCMD
 	CALL WaitFlashBusy
+	LD E,1
 	JP ENDC
 
 EraseFlashUI:
-	; draw user input
+	; draw prompt
 	CALL DrawTitle
 	LD HL,0x0001
 	CALL SETLOC
@@ -937,7 +933,7 @@ EraseFlashUI:
 	CALL SETCURSORONOFF
 	CALL CHARGET
 	LD A,H
-	AND 0xDF	; toupper
+	_toupper
 	CP A,'Y'
 	RET NZ
 	LD HL,0x0002
@@ -1048,7 +1044,6 @@ FlashCMD: ; CMD in A
 	LD (0x5555),A		; addr = 0x5555 - ([0x5555/0x4000] * 0x4000) + 0x4000 = 0x5555
 
 	; restore initial bank settimg
-	;LD A,(Bank)
 
 	;LD A,0x22
 	;LD H,'E'
@@ -1071,6 +1066,50 @@ FlashCMD: ; CMD in A
 ;------------------------------------------------------------------------------
 ENDIF ; /FLASH
 ;------------------------------------------------------------------------------
+
+toupper:
+	CP 'a'
+	RET C
+	CP 'z'+1
+	RET NC
+	_toupper
+	RET
+
+; receive serial byte
+; if DLE, discard and read another byte and xor 0x40
+rxb:
+	CALL GETDATA
+	JP Z,rxb
+	CP DLE
+	RET NZ
+rx0:
+	CALL GETDATA
+	JP Z,rx0
+	XOR 0x40
+	RET
+
+; send serial byte
+; if DLE,XON,XOFF, send DLE then A xor 0x40
+txb:
+	CP DLE			; if outgoing data is DLE
+	JP Z,tx1
+	CP XON			; ... or XON
+	JP Z,tx1
+	CP XOFF			; ... or XOFF
+	JP Z,tx1		; then encode it, else...
+tx0:				; send data
+	CALL SENDDATA
+	JP C,tx0		; retry until sent
+	RET
+tx1:				; send DLE prefix
+	LD D,A
+	LD A,DLE
+tx2:
+	CALL SENDDATA
+	JP C,tx2		; retry until sent
+	LD A,D
+	XOR 0x40		; transform data
+	JP tx0
 
 IFDEF DEBUG
 ; A = breakpoint number
