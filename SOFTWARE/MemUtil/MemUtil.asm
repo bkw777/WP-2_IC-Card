@@ -65,7 +65,7 @@ RSCLOSE			EQU		0x014C	; Close RS232C
 ;FORMAT			EQU		0X019A	; Format a disk-device
 ;DEVROOM		EQU		0x01C1	; Get devices rest size (remaining 128-byte blocks)
 ;SEEK			EQU		0x01BE	; Seek file pointer - only ram disk & ic card ram disk
-;WAIT			EQU		0x01A0	; Wait for fixed time in 0.1s
+WAIT			EQU		0x01A0	; Wait for fixed time in 0.1s
 ;RUNIC			EQU		0x01AF	; Run IC card program
 ;RUNFILE		EQU		0x01B2	; Run a program file
 ;POFFCOUNTPOINTER	EQU	0x01B5	; Get power off counter pointer
@@ -87,7 +87,7 @@ aKEYBUF		EQU		0x835E		; 1st byte = status bits: F2 F1 CTRL RSHIFT LSHIFT CAPS GR
 aCONSCTRL	EQU		0x8403
 
 ; RST Hooks
-;hCMPHLDE	EQU		0x20	; Compare HL to DE
+hCMPHLDE	EQU		0x20	; Compare HL to DE
 ;hBREAK		EQU		0x28	; Debug hook table break pointer
 ;hCALLFAR	EQU		0x30	; Call a routine in another slot
 
@@ -172,13 +172,44 @@ ENDM
 ;SET 2,L	; 0 1 0 1	5 6 7 8
 ;RES 1,L	; xonoff RES=disable SET=enable
 ;RES 0,L	; timer interrupt RES=enable SET=disable
-
-;RSINIT_PARAMS	EQU 0x084C	; 9600, 8n1, no xonoff, timer intr enabled
+;XONOFF		EQU		1
+;IF XONOFF
 RSINIT_PARAMS	EQU 0x084E	; 9600, 8n1, xonoff, timer intr enabled
+;ELSE
+;RSINIT_PARAMS	EQU 0x084C	; 9600, 8n1, no xonoff, timer intr enabled
+;ENDIF
 
 MACRO _toupper
 	AND 0xDF		; a-f to A-F by clearing bit 5
 ENDM
+
+; time wasters
+MACRO _8T
+	NOP
+ENDM
+
+MACRO _12T
+	INC HL
+	DEC HL
+ENDM
+
+MACRO _21T
+	PUSH AF
+	POP AF
+ENDM
+
+MACRO _38T
+	EX (SP),HL
+	EX (SP),HL
+ENDM
+
+MACRO _100MS
+	PUSH AF
+	LD A,1
+	CALL WAIT
+	POP AF
+ENDM
+
 
 ;------------------------------------------------------------------------------
 ; Executable header
@@ -252,6 +283,8 @@ ReadKeyboard:
 	JP Z,WRITERAM
 	CP 'P'
 	JP Z,WRITEPORT
+	CP 'B'
+	JP Z,SETBANK
 IF FLASH_SUPPORT
 	CP 'E'
 	JP Z,ERASEFLASH
@@ -340,7 +373,8 @@ DisplayHELP:
 
 	LD HL,0x0005
 	CALL SETLOC
-	LD HL,HelpMSG_UD
+	;LD HL,HelpMSG_UD
+	LD HL,HelpMSG_B
 	CALL STROUT
 
 IF FLASH_SUPPORT
@@ -406,8 +440,10 @@ WRITEPORT:
 	; get data
 	LD DE,0x4804
 	LD HL,DataMSG
+wp0:
 	LD A,8
 	CALL HexInput
+wp1:
 	OUT (C),L
 
 	; if port=pBANKCTRL then save data to (Bank)
@@ -416,7 +452,24 @@ WRITEPORT:
 	;JP NZ,C_MAIN
 	;LD A,L
 	;LD (Bank),A
-	JP C_MAIN
+
+	;JP C_MAIN
+	IN A,(C)
+	LD E,A
+	JP ENDC
+
+SETBANK:
+	LD C,pBANKCTRL
+	; show ui if in ui mode
+	LD A,(State)
+	BIT StateSerial,A
+	JP NZ,sb0		; serial mode
+	LD DE,0x4802	; console mode
+	LD HL,BankMSG
+	JP wp0
+sb0:
+	LD L,B
+	JP wp1
 
 ; Write a value to a memory location
 ; H = addrH
@@ -470,7 +523,7 @@ WriteAddrUI:
 	LD HL,DataMSG
 	LD A,8
 	CALL HexInput
-	LD B,L				; A = data
+	LD B,L				; B = data
 	POP HL
 	RET
 
@@ -616,7 +669,16 @@ dr0:
 	LD HL,AppVer
 	CALL STROUT
 
-	LD HL,0x4907
+	LD HL,0x4C06
+	CALL SETLOC
+	LD A,'B'
+	CALL CHAROUT
+	LD A,':'
+	CALL CHAROUT
+	IN A,(pBANKCTRL)
+	CALL Hex2SCR
+
+	LD HL,0x4A07
 	CALL SETLOC
 	LD A,'?'
 	CALL CHAROUT
@@ -692,6 +754,118 @@ ENDC:
 ; SERIAL
 ;------------------------------------------------------------------------------
 
+; DEBUGGING - ridiculous levels of error checking and retry delays etc
+
+RXTX_RETRIES	EQU		1
+
+;PAUSE_COUNT		EQU		0xFF		; 0-255
+;pause:
+;	PUSH BC
+;	LD B,PAUSE_COUNT
+;sp0:
+;	_8T
+;	DJNZ sp0
+;	POP BC
+;	RET
+
+pollwait:
+	PUSH AF
+	;LD A,1
+	;CALL WAIT
+	LD A,'r'
+	CALL CHAROUT
+	;CALL pause
+	POP AF
+	RET
+
+; look at E for GETDATA error flags
+rxerr:
+	PUSH AF
+;	BIT 6,E			; see if there was an overrun error
+	LD A,E
+	CP 0			; see if there was any kind of error
+	JP Z,rxe2
+	LD A,'!'
+	CALL CHAROUT	; log GETDATA error (vs DJNZ expired)
+rxe2:
+	POP AF
+	RET
+
+; wait for GETDATALEN>0
+rxwait:
+	PUSH BC
+	LD B,0xFF
+rxw0:
+	CALL GETDATALEN
+	LD DE,0
+	RST hCMPHLDE
+	JP NZ,rxw1
+	;CALL pause
+	DJNZ rxw0
+	XOR A ; set Z
+rxw1:
+	;CALL pause
+	POP BC
+	RET
+
+; receive serial byte
+; if DLE, discard and read another byte and xor 0x40
+rxb:
+	XOR A
+	LD E,A
+	LD B,RXTX_RETRIES	; read attempt max tries
+rx0:
+	CALL rxwait
+	CALL GETDATA	; get a byte from serial
+	JP NZ,rx1		; if we got a byte, process it
+	CALL pollwait	; else pause
+	DJNZ rx0		; try again
+rx00:
+	SET 0,E			; set error flag
+	RET				; return error
+rx1:
+	CALL rxerr		; show error
+	CP DLE			; is it DLE?
+	RET NZ			; no, return raw data
+	XOR A
+	LD E,A
+	LD B,RXTX_RETRIES	; yes, discard DLE, read attempt max tries
+rx2:
+	CALL rxwait
+	CALL GETDATA	; read another byte (transformed data)
+	JP NZ,rx3		; if we got a byte, process it
+	CALL pollwait	; else pause
+	DJNZ rx2		; try again
+	SET 0,E			; set error flag
+	RET				; return error
+rx3:
+	_xfrm			; (un)transform data
+	CALL rxerr		; show error
+	RET				; return decoded data
+
+; send serial byte
+; if DLE,XON,XOFF, send DLE then A xor 0x40
+txb:
+	CP DLE			; if outgoing data is DLE
+	JP Z,tx1
+	CP XON			; ... or XON
+	JP Z,tx1
+	CP XOFF			; ... or XOFF
+	JP Z,tx1		; then encode it, else...
+tx0:				; send data
+	CALL SENDDATA
+	JP C,tx0		; retry until sent
+	RET
+tx1:				; send DLE prefix
+	LD D,A
+	LD A,DLE
+tx2:
+	CALL SENDDATA
+	JP C,tx2		; retry until sent
+	LD A,D
+	_xfrm			; transform data
+	JP tx0
+
 ; Pass control over to the serial port for flash erase/writing
 SerialHandler:
 	LD HL,State
@@ -722,28 +896,45 @@ SerialHandler:
 
 	LD HL,RSINIT_PARAMS
 	CALL RSINIT
+	JP S_MAIN
+
+
+MACRO _rxb
+	CALL rxb
+	LD D,A
+	LD A,E
+	CP 0
+	JP NZ,sm0 ; log that we got any kind of error
+	LD A,D
+ENDM
 
 ; top of serial interface command loop
+sm0:
+	LD A,'-'
+sm1:
+	CALL CHAROUT
 S_MAIN:
 	CALL CHARSENSE		; check local keyboard for exit key
-	JP Z,sm0			; no keypress, proceed
+	JP Z,sm3			; no keypress, proceed
 	CP kESC				; ESC?
 	JP Z,C_MAIN			; yes, quit
 	CP kBS				; no, BS?
-	JP NZ,sm0			; no, proceed
+	JP NZ,sm3			; no, proceed
 	BIT mF2,L			; yes, also F2?
 	JP NZ,C_MAIN		; yes, quit
-sm0:
-	CALL rxb
+sm3:
+	CALL rxwait		; wait for data without actually reading, without logging the retries
+	JP Z,S_MAIN		; rxwait returns even if no data to allow a chance for keyboard abort
+	_rxb
 	CP DLE
-	JP NZ,S_MAIN	; read & discard until DLE
-	CALL rxb
+	JP NZ,sm1	; read & discard until DLE
+	_rxb
 	LD C,A			; cmd
-	CALL rxb
+	_rxb
 	LD H,A			; valH
-	CALL rxb
+	_rxb
 	LD L,A			; valL
-	CALL rxb
+	_rxb
 	LD B,A			; data
 	LD A,C
 S_CMD:
@@ -761,7 +952,7 @@ ENDIF
 	CP 'W'
 	JP Z,WRITERAM
 	CP 'B'
-	JP Z,SetBank
+	JP Z,SETBANK
 ;	CP 'p'
 ;	JP Z,GetBank
 ;	CP 'X'
@@ -774,14 +965,6 @@ ENDIF
 IFDEF DEBUG_SERIAL
 	CALL CHAROUT
 ENDIF
-	CALL txb
-	JP S_MAIN
-
-SetBank:
-	LD A,B
-	OUT (pBANKCTRL),A
-GetBank:
-	IN A,(pBANKCTRL)
 	CALL txb
 	JP S_MAIN
 
@@ -1084,44 +1267,6 @@ toupper:
 	_toupper
 	RET
 
-; TODO - DJNZ max retry counters to escape hangs
-
-; receive serial byte
-; if DLE, discard and read another byte and xor 0x40
-rxb:
-	CALL GETDATA	; get a byte from serial
-	JP Z,rxb		; retry until success
-	CP DLE
-	RET NZ			; if it's not DLE then return unmodified data
-rx0:				; else
-	CALL GETDATA	; discard and read another byte
-	JP Z,rx0		; retry until success
-	_xfrm			; transform data
-	RET				; return transformed data
-
-; send serial byte
-; if DLE,XON,XOFF, send DLE then A xor 0x40
-txb:
-	CP DLE			; if outgoing data is DLE
-	JP Z,tx1
-	CP XON			; ... or XON
-	JP Z,tx1
-	CP XOFF			; ... or XOFF
-	JP Z,tx1		; then encode it, else...
-tx0:				; send data
-	CALL SENDDATA
-	JP C,tx0		; retry until sent
-	RET
-tx1:				; send DLE prefix
-	LD D,A
-	LD A,DLE
-tx2:
-	CALL SENDDATA
-	JP C,tx2		; retry until sent
-	LD A,D
-	_xfrm			; transform data
-	JP tx0
-
 IFDEF DEBUG
 ; A = breakpoint number
 ; H = register name
@@ -1168,13 +1313,16 @@ State:
 	DB 0
 
 AddressMSG:
-	DB "Address?",0
+	DB "Addr:",0
+
+BankMSG:
+	DB "Bank:",0
 
 PortMSG:
-	DB "Port?",0
+	DB "Port:",0
 
 DataMSG:
-	DB "Data?",0
+	DB "Data:",0
 
 SerialMSG:
 	DB "Serial Interface Active (9600,8n1)",0
@@ -1185,10 +1333,12 @@ HelpMSG_G:
 	DB "G - Go to address (rom bank window: 4000-7FFF)",0
 HelpMSG_W:
 	DB "W - Write a byte to a memory address",0
+HelpMSG_B:
+	DB "B - Bank (shortcut for [P]ort 0x51, rom ic card banks: 0F-1E)",0
 HelpMSG_P:
-	DB "P - Write to I/O port (set rom ic card bank: port 51 data 0F-1E)",0
-HelpMSG_UD:
-	DB "Up/Dn - Move by 0x80",0
+	DB "P - Write to I/O port",0
+;HelpMSG_UD:
+;	DB "Up/Dn - Move by 0x80",0
 
 IF FLASH_SUPPORT
 HelpMSG_E:

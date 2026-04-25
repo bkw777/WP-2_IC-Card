@@ -43,7 +43,8 @@
 #define XOFF DC2	// -> 0x10 0x53
 #define _xfrm(x) (x^0x40)
 
-bool verbose = false;
+//bool verbose = false;
+int verbose = 0;
 
 // write b to stdout as hex pairs
 void b2h(const unsigned char* b, size_t n) {
@@ -156,18 +157,7 @@ HANDLE open_serial_port(const char* port_name) {
 int send_command(HANDLE hSerial, const unsigned char* cmd, size_t cmd_len, unsigned char* response, size_t response_len) {
 	DWORD bytes_written=0, bytes_read=0;
 
-	if (verbose) { putchar('\n'); putchar(cmd[1]); putchar('\n'); putchar('>'); b2h(cmd,cmd_len); putchar('\n'); }
-
-#ifdef _WIN32
-	if (!WriteFile(hSerial, cmd, cmd_len, &bytes_written, NULL) || bytes_written != cmd_len) {
-		fprintf(stderr, "Error writing to COM port: %ld\n", GetLastError());
-		return -1;
-	}
-	if (!ReadFile(hSerial, response, response_len, &bytes_read, NULL)) {
-		fprintf(stderr, "Error reading from COM port: %ld\n", GetLastError());
-		bytes_read = -1;
-	}
-#else
+	if (verbose>0) { putchar('\n'); putchar(cmd[1]); putchar('\n'); putchar('>'); b2h(cmd,cmd_len); putchar('\n'); }
 
 	unsigned char enc[16] = {0}; // max 8 encoded bytes
 	int i=0, j=0;
@@ -187,8 +177,19 @@ int send_command(HANDLE hSerial, const unsigned char* cmd, size_t cmd_len, unsig
 		}
 	}
 
-	if (verbose) { putchar('>') ;b2h(enc,j) ;putchar('\n') ; }
+	if (verbose>0) { putchar('>') ;b2h(enc,j) ;putchar('\n') ; }
 
+// write cmd
+#ifdef _WIN32
+	if (!WriteFile(hSerial, cmd, cmd_len, &bytes_written, NULL) || bytes_written != cmd_len) {
+		fprintf(stderr, "Error writing to COM port: %ld\n", GetLastError());
+		return -1;
+	}
+//	if (!ReadFile(hSerial, response, response_len, &bytes_read, NULL)) {
+//		fprintf(stderr, "Error reading from COM port: %ld\n", GetLastError());
+//		bytes_read = -1;
+//	}
+#else
 	i = 0;
 	while (bytes_written<j) {
 		if ((i = write(hSerial, enc, j))) bytes_written+=i;
@@ -198,48 +199,62 @@ int send_command(HANDLE hSerial, const unsigned char* cmd, size_t cmd_len, unsig
 		fprintf(stderr, "Error writing to COM port: %s\n", strerror(errno));
 		return -1;
 	}
-	// decode response
+
+	//usleep(10000);
+#endif
+
+	// read response
 	i = 0;
 	j = 0;
 	memset(enc,0,16);
 	memset(response,0,response_len);
 	while (bytes_read<response_len) {
-		if (verbose) { putchar('e'); b2h(enc,16); putchar('\n'); }
-		if (verbose) { putchar('r'); b2h(response,response_len); putchar('\n'); }
+		if (verbose>1) { putchar('e'); b2h(enc,16); putchar('\n'); }
+		if (verbose>1) { putchar('r'); b2h(response,response_len); putchar('\n'); }
+
+#ifdef _WIN32
+		if (!ReadFile(hSerial, enc+j, 1, &i, NULL)) continue;
+#else
 		if (!(i = read(hSerial, enc+j, 1))) continue;
+#endif
+
 		if (enc[j]==DLE) {j++; continue; }
+		// decode response
 		if (j>0 && enc[j-1]==DLE) {
-			printf("decode: response[bytes_read]=(enc[j]^0x40)\n");
-			printf("decode: response[%d]=(enc[%d]^0x40)\n",bytes_read,j);
-			printf("decode: response[%d]=(%02X^0x40)\n",bytes_read,enc[j]);
-			printf("decode: response[%d]=%02X\n",bytes_read,_xfrm(enc[j]));
+			if (verbose>2) {
+				printf("decode: response[bytes_read]=(enc[j]^0x40)\n");
+				printf("decode: response[%d]=(enc[%d]^0x40)\n",bytes_read,j);
+				printf("decode: response[%d]=(%02X^0x40)\n",bytes_read,enc[j]);
+				printf("decode: response[%d]=%02X\n",bytes_read,_xfrm(enc[j]));
+			}
 			response[bytes_read]=_xfrm(enc[j]);
 			//printf("decode: response[%d]=%02X\n",bytes_read,response[bytes_read]);
 		} else {
-			printf("copy: response[bytes_read]=enc[j]\n");
-			printf("copy: response[%d]=enc[%d]\n",bytes_read,j);
-			printf("copy: response[%d]=%02X\n",bytes_read,enc[j]);
+			if (verbose>2) {
+				printf("copy: response[bytes_read]=enc[j]\n");
+				printf("copy: response[%d]=enc[%d]\n",bytes_read,j);
+				printf("copy: response[%d]=%02X\n",bytes_read,enc[j]);
+			}
 			response[bytes_read]=enc[j];
 			//printf("copy: response[%d]=%02X\n",bytes_read,enc[j]);
 		}
-		printf("response[%d]=%02X\n",bytes_read,response[bytes_read]);
+		if (verbose>2) printf("response[%d]=%02X\n",bytes_read,response[bytes_read]);
 		j++;
 		bytes_read++;
 	}
 
 	//if (verbose) { putchar('<') ;b2h(enc,j) ;putchar('\n') ; }
-	if (verbose) { putchar('e') ;b2h(enc,16) ;putchar('\n') ; }
-	if (verbose) { putchar('r') ;b2h(response,response_len) ;putchar('\n') ; }
+	if (verbose>1) { putchar('e') ;b2h(enc,16) ;putchar('\n') ; }
+	if (verbose>1) { putchar('r') ;b2h(response,response_len) ;putchar('\n') ; }
 
 	if (bytes_read!=response_len) {
 	//if ((bytes_read = read(hSerial, response, response_len)) != response_len) {
 		fprintf(stderr, "Error reading from COM port: %s\n", strerror(errno));
 		bytes_read = -1;
 	}
-#endif // _WIN32
 
 	//if (verbose) { putchar('<') ;b2h(response,bytes_read) ;putchar('\n') ; }
-	if (verbose) { putchar('<') ;b2h(response,bytes_read) ;putchar('\n') ; }
+	if (verbose>0) { putchar('<') ;b2h(response,bytes_read) ;putchar('\n') ; }
 
 	return bytes_read;
 }
@@ -301,7 +316,8 @@ int write_memory(HANDLE hSerial, unsigned short address, unsigned char data) {
 // Main
 int main(int argc, char* argv[]) {
 
-	if (getenv("VERBOSE")) verbose = true;
+	//if (getenv("VERBOSE")) verbose = true;
+	if (getenv("VERBOSE")) verbose = atoi(getenv("VERBOSE"));
 
 	if (argc != 3) {
 		fprintf(stderr, "Usage: %s <SERIAL_PORT> <FILENAME>\n", argv[0]);
